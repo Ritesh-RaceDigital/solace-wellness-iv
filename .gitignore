@@ -1,0 +1,11 @@
+# Local tooling / editor settings, not part of the site
+.claude/
+
+# Design references, source PDFs, and dev debug screenshots -- not needed
+# to serve the live site, and the PDFs are large duplicates.
+uploads/
+screenshots/
+
+# Empty leftover log files
+stderr.txt
+stdout.txt

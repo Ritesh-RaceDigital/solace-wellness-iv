@@ -1,0 +1,651 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Solace Wellness IV - global site chrome (header + footer)
+   Single source of truth for every page. Edit here, not per-page.
+   Used by the <solace-header> / <solace-footer> custom elements defined
+   in ./solace/site-chrome.js.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --sc-brown-900: rgb(40, 20, 13);
+  --sc-brown-800: rgb(43, 23, 16);
+  --sc-brown-700: rgb(75, 33, 18);
+  --sc-tan: rgb(169, 131, 92);
+  --sc-cream-2: rgb(255, 253, 251);
+  --sc-ink: rgb(34, 34, 34);
+  --sc-line: rgba(43, 23, 16, 0.1);
+  /* Exact colors from the header design - close to but not the same as
+     the brown/tan scale above, so kept as their own tokens. */
+  --sc-nav-ink: rgb(47, 42, 37);
+  --sc-phone-ink: rgb(74, 44, 29);
+}
+
+solace-header,
+solace-footer {
+  display: block;
+}
+
+solace-header *,
+solace-footer *,
+:host,
+:host * {
+  box-sizing: border-box;
+}
+
+/* ─── Announcement bar ────────────────────────────────────────────────── */
+.gh-announce {
+  background: var(--sc-brown-800);
+  color: #fff;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 9px 14px;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .gh-announce {
+    font-size: 14px;
+    letter-spacing: normal;
+  }
+}
+
+/* ─── Header / nav ─────────────────────────────────────────────────────── */
+.gh-header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  box-shadow: 0 1px 0 var(--sc-line);
+}
+
+.gh-nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.gh-logo-link {
+  display: block;
+  line-height: 0;
+}
+
+.gh-logo {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.gh-nav-desktop {
+  display: none;
+}
+
+.gh-nav-actions {
+  display: none;
+}
+
+.gh-nav-desktop a,
+.gh-nav-actions a {
+  text-decoration: none;
+}
+
+.gh-nav-desktop a {
+  color: inherit;
+}
+
+/* ─── "Treatments" nav dropdown ──────────────────────────────────────────
+   Same markup renders in both the desktop nav and the mobile slide-down
+   menu (see site-chrome.js). Mobile styling (accordion, static block) is
+   the default below; the ≥768px override turns it into a flyout panel. */
+.gh-nav-drop-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.gh-caret {
+  flex-shrink: 0;
+  transition: transform .25s ease;
+}
+
+.gh-nav-drop-toggle[aria-expanded="true"] .gh-caret {
+  transform: rotate(180deg);
+}
+
+.gh-nav-drop-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0 10px 14px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .3s ease, opacity .25s ease;
+}
+
+.gh-nav-drop-panel.open {
+  max-height: 1200px;
+  opacity: 1;
+}
+
+.gh-drop-col h4 {
+  position: relative;
+  display: inline-block;
+  margin: 14px 0 9px;
+  padding-bottom: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--sc-brown-800);
+}
+
+.gh-drop-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sc-tan);
+}
+
+/* The one category with a real destination page (Wellness IV Therapy) -
+   signal it's clickable without making it look like a different component. */
+.gh-drop-cat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color .18s ease;
+}
+
+.gh-drop-cat-link:hover {
+  color: var(--sc-tan);
+}
+
+.gh-drop-cat-link::after {
+  content: '\2192';
+  font-size: 12px;
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.gh-drop-cat-link:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.gh-drop-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gh-drop-list li {
+  position: relative;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: rgba(47, 42, 37, 0.75);
+  padding: 5px 0 5px 14px;
+  transition: color .18s ease, transform .18s ease;
+}
+
+.gh-drop-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--sc-tan);
+  opacity: 0;
+  transform: translate(-2px, -50%) scale(0.4);
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.gh-drop-list li:hover {
+  color: var(--sc-brown-800);
+  transform: translateX(3px);
+}
+
+.gh-drop-list li:hover::before {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+.gh-menu .gh-nav-drop-toggle {
+  width: 100%;
+  justify-content: space-between;
+  padding: 14px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--sc-brown-800);
+  border-top: 1px solid var(--sc-line);
+}
+
+.gh-hamburger {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.gh-hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--sc-brown-800);
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.gh-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.gh-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.gh-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.gh-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 0;
+  overflow: hidden;
+  background: rgb(255, 253, 251);
+  transition: max-height .3s ease;
+}
+
+.gh-menu.open {
+  /* The Treatments dropdown, once expanded, is taller than any fixed cap
+     comfortably fits on a phone screen - scroll within the cap instead of
+     silently clipping content under overflow:hidden. */
+  max-height: min(480px, 70vh);
+  overflow-y: auto;
+}
+
+.gh-menu a {
+  padding: 14px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: var(--sc-brown-800);
+  border-top: 1px solid var(--sc-line);
+  text-decoration: none;
+  display: block;
+}
+
+.gh-menu-phone {
+  color: var(--sc-tan) !important;
+  font-weight: 600;
+}
+
+.gh-menu-book {
+  background: linear-gradient(90deg, var(--sc-brown-700), #000);
+  color: #fff !important;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .05em;
+  margin: 10px 20px 16px;
+  border-radius: 999px;
+  border-top: none !important;
+}
+
+.gh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+
+.gh-btn:hover {
+  transform: translateY(-2px);
+}
+
+.gh-btn-solid {
+  background: linear-gradient(90deg, var(--sc-brown-700), #000);
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .gh-nav-actions .gh-btn-solid {
+    font-size: 16px;
+    letter-spacing: 0.54px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (min-width: 768px) {
+  .gh-nav-wrap {
+    padding: 0 20px;
+  }
+
+  .gh-logo {
+    height: clamp(48px, 8vw, 80px);
+  }
+
+  .gh-nav-desktop {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: clamp(14px, 2.2vw, 32px);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--sc-nav-ink);
+    white-space: nowrap;
+  }
+
+  .gh-nav-drop {
+    position: relative;
+  }
+
+  .gh-nav-drop-toggle:hover,
+  .gh-nav-drop-toggle:focus-visible {
+    color: var(--sc-tan);
+  }
+
+  .gh-nav-drop-panel {
+    position: absolute;
+    top: calc(100% + 22px);
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 0;
+    width: max-content;
+    max-width: min(660px, 90vw);
+    max-height: none;
+    overflow: visible;
+    background: var(--sc-cream-2);
+    border-radius: 16px;
+    box-shadow: 0 24px 48px rgba(43, 23, 16, 0.18), 0 4px 14px rgba(43, 23, 16, 0.08);
+    padding: 8px 4px;
+    z-index: 600;
+    white-space: normal;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top left;
+    transition: opacity .22s ease, transform .22s ease, visibility .22s;
+  }
+
+  .gh-nav-drop-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--sc-brown-700), var(--sc-tan));
+  }
+
+  .gh-nav-drop-panel.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .gh-nav-drop-panel .gh-drop-col {
+    padding: 18px 22px;
+  }
+
+  .gh-nav-drop-panel .gh-drop-col:not(:nth-child(3n)) {
+    border-right: 1px solid var(--sc-line);
+  }
+
+  .gh-nav-drop-panel .gh-drop-col:nth-child(n+4) {
+    border-top: 1px solid var(--sc-line);
+  }
+
+  .gh-nav-drop-panel .gh-drop-col h4 {
+    margin-top: 0;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .gh-nav-drop-panel .gh-drop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .gh-nav-drop-panel .gh-drop-list li {
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
+
+  .gh-nav-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .gh-nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--sc-phone-ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .gh-nav-phone .gh-ic {
+    color: var(--sc-tan);
+  }
+
+  .gh-hamburger,
+  .gh-menu {
+    display: none !important;
+  }
+}
+
+/* Tight tablet range: keep the click-to-call icon, drop the number text so
+   the nav row never wraps/overflows before there's room for it again. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gh-nav-phone-text {
+    display: none;
+  }
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+.gf-footer {
+  background: var(--sc-brown-900);
+  text-align: center;
+  padding: 56px 20px 40px;
+}
+
+.gf-subscribe {
+  margin-bottom: 48px;
+}
+
+.gf-subscribe h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.26px;
+  color: var(--sc-cream-2);
+  margin: 0 0 22px;
+}
+
+.gf-subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.gf-subscribe-form input {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  padding: 0 22px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: #fff;
+}
+
+.gf-subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.gf-subscribe-form button {
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: var(--sc-cream-2);
+  color: var(--sc-ink);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0 20px;
+  transition: transform .2s ease;
+}
+
+.gf-subscribe-form button:hover {
+  transform: translateY(-2px);
+}
+
+.gf-logo {
+  height: 56px;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.gf-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin: 0 0 22px;
+}
+
+.gf-links a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  transition: color .18s ease;
+}
+
+.gf-links a:hover {
+  color: #fff;
+}
+
+.gf-footer-url {
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 32px;
+}
+
+.gf-copyright {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12.5px;
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .gf-subscribe-form {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 452px;
+    gap: 22px;
+  }
+
+  .gf-subscribe-form input {
+    flex: 1;
+  }
+
+  .gf-subscribe-form button {
+    flex: none;
+    width: 146px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gf-footer {
+    padding: 72px 20px 48px;
+  }
+
+  .gf-subscribe {
+    margin-bottom: 56px;
+  }
+
+  .gf-subscribe h2 {
+    font-size: 26px;
+  }
+
+  .gf-logo {
+    height: 80px;
+  }
+
+  .gf-links {
+    margin-bottom: 28px;
+  }
+
+  .gf-links a {
+    font-size: 14px;
+  }
+
+  .gf-footer-url {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .gf-copyright {
+    font-size: 14px;
+  }
+}
