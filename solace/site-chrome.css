@@ -564,25 +564,6 @@ solace-footer *,
   display: block;
 }
 
-.gf-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 20px;
-  margin: 0 0 22px;
-}
-
-.gf-links a {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 13px;
-  font-family: 'Lato', sans-serif;
-  transition: color .18s ease;
-}
-
-.gf-links a:hover {
-  color: #fff;
-}
-
 .gf-footer-url {
   color: #fff;
   font-size: 13px;
@@ -630,14 +611,6 @@ solace-footer *,
 
   .gf-logo {
     height: 80px;
-  }
-
-  .gf-links {
-    margin-bottom: 28px;
-  }
-
-  .gf-links a {
-    font-size: 14px;
   }
 
   .gf-footer-url {

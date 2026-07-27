@@ -213,16 +213,8 @@
             </form>
           </div>
           <img class="gf-logo" src="./solace/assets/footer-logo.png" alt="Solace Wellness IV">
-          <nav class="gf-links">
-            <a href="${escapeAttr(PAGES.home)}">Home</a>
-            <a href="${escapeAttr(PAGES.about)}">About Us</a>
-            <a href="${escapeAttr(PAGES.wellnessIvTherapy)}">Wellness IV Therapy</a>
-            <a href="${escapeAttr(PAGES.recoveryIvTherapy)}">Recovery IV Therapy</a>
-            <a href="${escapeAttr(PAGES.home)}#treatments">Treatments</a>
-            <a href="${escapeAttr(PAGES.home)}#book">Contact</a>
-          </nav>
           <p class="gf-footer-url">solaceWELLNESSiv.com</p>
-          <p class="gf-copyright">Copyright &copy; 2026 Solace Wellness IV &mdash; All Rights Reserved</p>
+          <p class="gf-copyright">Copyright &copy; 2026 Solace Wellness IV - All Rights Reserved</p>
         </footer>
       `;
 
