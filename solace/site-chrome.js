@@ -24,6 +24,7 @@
     home: 'Solace Wellness IV.dc.html',
     about: 'Solace Wellness IV - About Us.dc.html',
     wellnessIvTherapy: 'Solace Wellness IV - Wellness IV Therapy.dc.html',
+    recoveryIvTherapy: 'Solace Wellness IV - Recovery IV Therapy.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -31,8 +32,8 @@
 
   // Categories/subcategories shown in the "Treatments" nav dropdown. Most of
   // these are a navigational menu only - no dedicated page exists yet, so
-  // they render as plain labels, not links. "Wellness IV Therapy" is the
-  // exception: it has its own page (PAGES.wellnessIvTherapy), so its
+  // they render as plain labels, not links. "Wellness IV Therapy" and
+  // "Recovery IV Therapy" are the exceptions: each has its own page, so its
   // category name renders as a real link (see `href` below and how
   // treatmentDropdownHtml() uses it).
   const TREATMENT_MENU = [
@@ -41,7 +42,7 @@
     { name: 'NAD+ Therapy', items: ['NAD+ 250mg', 'NAD+ 500mg', 'Cellular Repair', 'Healthy Aging'] },
     { name: 'Vitamin Injections', items: ['Vitamin B12', 'Glutathione', 'Vitamin D3'] },
     { name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy, items: ['Myers Miracle Drip', 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'] },
-    { name: 'Recovery IV Therapy', items: ['Morning After Martini', 'JetSet Revival IV', 'Flawless Fusion', 'Athletic Recovery IV'] },
+    { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Revival IV', 'Flawless Fusion', 'Athletic Recovery IV'] },
     { name: 'Immune Therapy', items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
   ];
 
@@ -216,6 +217,7 @@
             <a href="${escapeAttr(PAGES.home)}">Home</a>
             <a href="${escapeAttr(PAGES.about)}">About Us</a>
             <a href="${escapeAttr(PAGES.wellnessIvTherapy)}">Wellness IV Therapy</a>
+            <a href="${escapeAttr(PAGES.recoveryIvTherapy)}">Recovery IV Therapy</a>
             <a href="${escapeAttr(PAGES.home)}#treatments">Treatments</a>
             <a href="${escapeAttr(PAGES.home)}#book">Contact</a>
           </nav>
