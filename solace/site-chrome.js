@@ -25,25 +25,43 @@
     about: 'Solace Wellness IV - About Us.dc.html',
     wellnessIvTherapy: 'Solace Wellness IV - Wellness IV Therapy.dc.html',
     recoveryIvTherapy: 'Solace Wellness IV - Recovery IV Therapy.dc.html',
+    vitaminB12: 'Solace Wellness IV - Vitamin B12 Injection.dc.html',
+    beautyIvTherapy: 'Solace Wellness IV - Beauty IV Therapy.dc.html',
+    immuneIvTherapy: 'Solace Wellness IV - Immune IV Therapy.dc.html',
+    nadTherapy: 'Solace Wellness IV - NAD+ Therapy.dc.html',
+    myersCocktail: 'Solace Wellness IV - Myers Cocktail IV.dc.html',
+    glutathioneIvTherapy: 'Solace Wellness IV - Glutathione IV Therapy.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
   const PHONE_HREF = 'tel:+17025266763';
 
-  // Categories/subcategories shown in the "Treatments" nav dropdown. Most of
-  // these are a navigational menu only - no dedicated page exists yet, so
-  // they render as plain labels, not links. "Wellness IV Therapy" and
-  // "Recovery IV Therapy" are the exceptions: each has its own page, so its
-  // category name renders as a real link (see `href` below and how
-  // treatmentDropdownHtml() uses it).
+  // Categories/subcategories shown in the "Treatments" nav dropdown. Category
+  // names link to a dedicated page when one exists (via `href`); individual
+  // items can also carry their own `href` (as {name, href} instead of a
+  // plain string) when that specific treatment has its own page - see
+  // treatmentDropdownHtml() for how both are rendered.
   const TREATMENT_MENU = [
     { name: 'Energy Therapy', items: ['MetaboFusion IV', 'Energy Boost IV', 'Brain Fog IV', 'Fatigue Recovery IV'] },
-    { name: 'Beauty Therapy', items: ['Flawless Fusion', 'Glutathione Therapy', 'Beauty Drip', 'Skin Brightening IV'] },
-    { name: 'NAD+ Therapy', items: ['NAD+ 250mg', 'NAD+ 500mg', 'Cellular Repair', 'Healthy Aging'] },
-    { name: 'Vitamin Injections', items: ['Vitamin B12', 'Glutathione', 'Vitamin D3'] },
-    { name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy, items: ['Myers Miracle Drip', 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'] },
-    { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Revival IV', 'Flawless Fusion', 'Athletic Recovery IV'] },
-    { name: 'Immune Therapy', items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
+    {
+      name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
+      items: ['Beauty & Skin Glow IV', { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy }, 'Beauty Drip', 'Skin Brightening IV'],
+    },
+    { name: 'NAD+ Therapy', href: PAGES.nadTherapy, items: ['NAD+ 250mg', 'NAD+ 500mg', 'Cellular Repair', 'Healthy Aging'] },
+    {
+      name: 'Vitamin Injections',
+      items: [
+        { name: 'Vitamin B12', href: PAGES.vitaminB12 },
+        { name: 'Glutathione', href: PAGES.glutathioneIvTherapy },
+        'Vitamin D3',
+      ],
+    },
+    {
+      name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy,
+      items: [{ name: 'Myers Miracle Drip', href: PAGES.myersCocktail }, 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'],
+    },
+    { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Travel Recovery IV', 'Beauty & Skin Glow IV', 'Athletic Recovery IV'] },
+    { name: 'Immune Therapy', href: PAGES.immuneIvTherapy, items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
   ];
 
   // Add/remove/reorder nav items here - every page using <solace-header>
@@ -76,7 +94,11 @@
         ${cat.href
           ? `<h4><a href="${escapeAttr(cat.href)}" class="gh-drop-cat-link">${cat.name}</a></h4>`
           : `<h4>${cat.name}</h4>`}
-        <ul class="gh-drop-list">${cat.items.map((i) => `<li>${i}</li>`).join('')}</ul>
+        <ul class="gh-drop-list">${cat.items.map((i) =>
+          typeof i === 'object'
+            ? `<li><a href="${escapeAttr(i.href)}" class="gh-drop-item-link">${i.name}</a></li>`
+            : `<li>${i}</li>`
+        ).join('')}</ul>
       </div>
     `).join('');
     return `
@@ -212,7 +234,12 @@
               <button type="submit">Subscribe</button>
             </form>
           </div>
-          <img class="gf-logo" src="./solace/assets/footer-logo.png" alt="Solace Wellness IV">
+          <img class="gf-logo" src="./solace/assets/footer-logo.png" alt="Solace Wellness IV" loading="lazy">
+          <address class="gf-address">
+            <strong>Solace Wellness IV</strong><br>
+            <a href="https://maps.google.com/?q=900+S+Pavilion+Center+Dr+Suite+180,+Las+Vegas,+NV+89144" target="_blank" rel="noopener">900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin)</a><br>
+            By appointment &middot; Mobile service also available throughout Las Vegas
+          </address>
           <p class="gf-footer-url">solaceWELLNESSiv.com</p>
           <p class="gf-copyright">Copyright &copy; 2026 Solace Wellness IV - All Rights Reserved</p>
         </footer>

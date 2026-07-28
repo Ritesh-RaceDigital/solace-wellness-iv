@@ -285,7 +285,7 @@ function SOLACEHP(_p = {}) {
       color: "rgb(34,34,34)",
       textTransform: "uppercase"
     }
-  }, "Mobile IV Hydration, Anywhere in Las Vegas"), /*#__PURE__*/React.createElement("span", {
+  }, "IV Therapy in Summerlin & Mobile Across Las Vegas"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -299,7 +299,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "Mobile IV Therapy in Las Vegas"), /*#__PURE__*/React.createElement("span", {
+  }, "Premium IV Therapy in Las Vegas"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -314,7 +314,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "Premium IV Therapy Delivered to Your Residence, Hotel, Office, or Resort"), /*#__PURE__*/React.createElement("span", {
+  }, "Visit Our Summerlin Suite or We Come to Your Hotel, Home & Office"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -327,7 +327,7 @@ function SOLACEHP(_p = {}) {
       lineHeight: "25.500px",
       color: "rgb(34,34,34)"
     }
-  }, "Las Vegas residents and visitors depend on premium mobile IV therapy for hydration, recovery, vitality, immunity, beauty, and wellness. Our licensed medical professionals provide personalized IV treatments directly to your hotel, home, Airbnb, office, or event location in Las Vegas at Solace Wellness IV."), /*#__PURE__*/React.createElement("span", {
+  }, "Las Vegas residents and visitors depend on Solace Wellness IV for hydration, recovery, vitality, immunity, beauty, and wellness IV therapy. Visit our private Summerlin wellness suite, or let our licensed medical professionals bring personalized IV treatments to your hotel, home, Airbnb, office, or event."), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -340,7 +340,7 @@ function SOLACEHP(_p = {}) {
       lineHeight: "25.500px",
       color: "rgb(34,34,34)"
     }
-  }, "Schedule your appointment today and receive professional wellness services at your doorstep."), /*#__PURE__*/React.createElement("div", {
+  }, "Schedule your appointment today - in our Summerlin suite or at your doorstep."), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -2561,7 +2561,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "Get rid of the Hangover with our unique Hangover IV Therapy."), /*#__PURE__*/React.createElement("div", {
+  }, "Helps relieve symptoms associated with dehydration and hangovers."), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -3889,7 +3889,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Cold & Flu Recovery Support")), /*#__PURE__*/React.createElement("span", {
+  }, "Seasonal Immune Support")), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 16,
@@ -5325,7 +5325,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Repairing Cells")), /*#__PURE__*/React.createElement("div", {
+  }, "Cell Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,

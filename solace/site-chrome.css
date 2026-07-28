@@ -224,6 +224,12 @@ solace-footer *,
   transform: translateX(3px);
 }
 
+.gh-drop-item-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
 .gh-drop-list li:hover::before {
   opacity: 1;
   transform: translate(0, -50%) scale(1);
@@ -562,6 +568,30 @@ solace-footer *,
   height: 56px;
   margin: 0 auto 16px;
   display: block;
+}
+
+.gf-address {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.gf-address strong {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.gf-address a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.gf-address a:hover {
+  color: #fff;
 }
 
 .gf-footer-url {
