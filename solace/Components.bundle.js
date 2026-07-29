@@ -274,7 +274,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 0,
       top: 0,
-      width: 338,
+      width: 580,
       height: 10,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 700,
