@@ -31,6 +31,8 @@
     nadTherapy: 'Solace Wellness IV - NAD+ Therapy.dc.html',
     myersCocktail: 'Solace Wellness IV - Myers Cocktail IV.dc.html',
     glutathioneIvTherapy: 'Solace Wellness IV - Glutathione IV Therapy.dc.html',
+    energyTherapy: 'Solace Wellness IV - Energy Therapy.dc.html',
+    vitaminInjections: 'Solace Wellness IV - Vitamin Injections.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -42,18 +44,21 @@
   // plain string) when that specific treatment has its own page - see
   // treatmentDropdownHtml() for how both are rendered.
   const TREATMENT_MENU = [
-    { name: 'Energy Therapy', items: ['MetaboFusion IV', 'Energy Boost IV', 'Brain Fog IV', 'Fatigue Recovery IV'] },
+    {
+      name: 'Energy Therapy', href: PAGES.energyTherapy,
+      items: ['MetaboFusion IV', 'Energy Boost IV', 'Brain Fog IV', 'Fatigue Recovery IV'],
+    },
     {
       name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
       items: ['Beauty & Skin Glow IV', { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy }, 'Beauty Drip', 'Skin Brightening IV'],
     },
     { name: 'NAD+ Therapy', href: PAGES.nadTherapy, items: ['NAD+ 250mg', 'NAD+ 500mg', 'Cellular Repair', 'Healthy Aging'] },
     {
-      name: 'Vitamin Injections',
+      name: 'Vitamin Injections', href: PAGES.vitaminInjections,
       items: [
         { name: 'Vitamin B12', href: PAGES.vitaminB12 },
         { name: 'Glutathione', href: PAGES.glutathioneIvTherapy },
-        'Vitamin D3',
+        { name: 'Vitamin D3', href: PAGES.vitaminInjections },
       ],
     },
     {
