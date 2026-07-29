@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Glutathione IV Therapy &amp; Glutathione Injection in Summerlin, or mobile throughout Las Vegas. Supports detoxification, immune health &amp; glowing skin.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Glutathione%20IV%20Therapy.dc.html">
-      <meta property="og:image" content="./solace/assets/9e6cf73f3151de71.jpg">
+      <meta property="og:image" content="./solace/assets/9e6cf73f3151de71.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Glutathione IV Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="Glutathione IV Therapy &amp; Glutathione Injection in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/9e6cf73f3151de71.jpg">
+      <meta name="twitter:image" content="./solace/assets/9e6cf73f3151de71.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -721,7 +721,7 @@
               </ul>
             </div>
             <div class="gl-hero-media gl-reveal">
-              <div class="gl-hero-photo" style="background-image:url(./solace/assets/9e6cf73f3151de71.jpg)"></div>
+              <div class="gl-hero-photo" style="background-image:url(./solace/assets/9e6cf73f3151de71.webp)"></div>
               <div class="gl-hero-badge">
                 <strong>$40</strong>
                 <span>Per booster shot</span>
@@ -821,7 +821,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="gl-section" id="doorstep" style="background:var(--cream-2);">
           <div class="gl-container gl-split">
-            <div class="gl-split-photo gl-reveal" style="background-image:url(./solace/assets/a55e8e3868c543c3.jpg)">
+            <div class="gl-split-photo gl-reveal" data-bg="./solace/assets/a55e8e3868c543c3.webp">
             </div>
             <div class="gl-reveal">
               <p class="gl-eyebrow">Visit Us or We Come to You</p>
@@ -953,14 +953,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.gl-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('gl-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('gl-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('gl-in');
             io.unobserve(entry.target);
           }

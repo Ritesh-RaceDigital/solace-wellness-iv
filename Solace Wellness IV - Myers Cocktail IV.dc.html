@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Myers Cocktail IV Infusion in Summerlin, or mobile throughout Las Vegas. Hydration plus a balanced blend of vitamins and minerals.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Myers%20Cocktail%20IV.dc.html">
-      <meta property="og:image" content="./solace/assets/3e0f377529cc2fa7.png">
+      <meta property="og:image" content="./solace/assets/3e0f377529cc2fa7.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Myers Cocktail IV in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="Myers Cocktail IV Infusion in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/3e0f377529cc2fa7.png">
+      <meta name="twitter:image" content="./solace/assets/3e0f377529cc2fa7.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -722,7 +722,7 @@
               </ul>
             </div>
             <div class="mc-hero-media mc-reveal">
-              <div class="mc-hero-photo" style="background-image:url(./solace/assets/3e0f377529cc2fa7.png)"></div>
+              <div class="mc-hero-photo" style="background-image:url(./solace/assets/3e0f377529cc2fa7.webp)"></div>
               <div class="mc-hero-badge">
                 <strong>$300</strong>
                 <span>Per treatment</span>
@@ -821,7 +821,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="mc-section" id="doorstep" style="background:var(--cream-2);">
           <div class="mc-container mc-split">
-            <div class="mc-split-photo mc-reveal" style="background-image:url(./solace/assets/f8ccb75735cbb079.jpg)">
+            <div class="mc-split-photo mc-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp">
             </div>
             <div class="mc-reveal">
               <p class="mc-eyebrow">Visit Us or We Come to You</p>
@@ -952,14 +952,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.mc-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('mc-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('mc-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('mc-in');
             io.unobserve(entry.target);
           }

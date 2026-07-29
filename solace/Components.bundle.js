@@ -9176,7 +9176,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(75,33,18)"
     }
-  }, "Mobile IV Therapy - Because Life Is Busy!"), /*#__PURE__*/React.createElement("div", {
+  }, "Visit Our Wellness Suite or We Come to You"), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -9295,7 +9295,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(75,33,18)"
     }
-  }, "Las Vegas, Nevada, United States"))), /*#__PURE__*/React.createElement("div", {
+  }, "Summerlin, Las Vegas, NV 89144"))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,

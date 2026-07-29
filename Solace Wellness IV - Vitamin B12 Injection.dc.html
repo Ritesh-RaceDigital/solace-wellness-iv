@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Vitamin B12 Injection (Methylcobalamin) in Summerlin, or mobile throughout Las Vegas. Fast energy, cognitive, and red blood cell support.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Vitamin%20B12%20Injection.dc.html">
-      <meta property="og:image" content="./solace/assets/8ca6133ce1e2810b.jpg">
+      <meta property="og:image" content="./solace/assets/8ca6133ce1e2810b.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Vitamin B12 Injection in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="Vitamin B12 Injection (Methylcobalamin) in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/8ca6133ce1e2810b.jpg">
+      <meta name="twitter:image" content="./solace/assets/8ca6133ce1e2810b.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -722,7 +722,7 @@
               </ul>
             </div>
             <div class="b12-hero-media b12-reveal">
-              <div class="b12-hero-photo" style="background-image:url(./solace/assets/8ca6133ce1e2810b.jpg)"></div>
+              <div class="b12-hero-photo" style="background-image:url(./solace/assets/8ca6133ce1e2810b.webp)"></div>
               <div class="b12-hero-badge">
                 <strong>$40</strong>
                 <span>Per booster shot</span>
@@ -821,7 +821,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="b12-section" id="doorstep" style="background:var(--cream-2);">
           <div class="b12-container b12-split">
-            <div class="b12-split-photo b12-reveal" style="background-image:url(./solace/assets/9e6cf73f3151de71.jpg)">
+            <div class="b12-split-photo b12-reveal" data-bg="./solace/assets/9e6cf73f3151de71.webp">
             </div>
             <div class="b12-reveal">
               <p class="b12-eyebrow">Visit Us or We Come to You</p>
@@ -954,14 +954,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.b12-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('b12-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('b12-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('b12-in');
             io.unobserve(entry.target);
           }

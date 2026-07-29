@@ -35,12 +35,12 @@
       <meta property="og:description"
         content="Recovery IV Therapy in Summerlin, or mobile throughout Las Vegas - rapid rehydration, electrolyte replacement, and muscle recovery.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Recovery%20IV%20Therapy.dc.html">
-      <meta property="og:image" content="./solace/assets/rt-hero.jpg">
+      <meta property="og:image" content="./solace/assets/rt-hero.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Recovery IV Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description"
         content="Recovery IV Therapy in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/rt-hero.jpg">
+      <meta name="twitter:image" content="./solace/assets/rt-hero.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -863,7 +863,7 @@
                 a rapid recovery, our licensed healthcare specialists come to you, wherever you are.</p>
             </div>
             <div class="rt-hero-media rt-reveal">
-              <div class="rt-hero-photo" style="background-image:url(./solace/assets/rt-hero.jpg)"></div>
+              <div class="rt-hero-photo" style="background-image:url(./solace/assets/rt-hero.webp)"></div>
               <div class="rt-hero-badge">
                 <strong>45-60</strong>
                 <span>Minutes per recovery session</span>
@@ -1195,7 +1195,7 @@
         <!-- ═══ MOBILE IV THERAPY RECOVERY AT YOUR DOORSTEP ═══ -->
         <section class="rt-section" id="doorstep" style="background:var(--cream-2);">
           <div class="rt-container rt-split">
-            <div class="rt-split-photo rt-reveal" style="background-image:url(./solace/assets/rt-doorstep.jpg)">
+            <div class="rt-split-photo rt-reveal" data-bg="./solace/assets/rt-doorstep.webp">
             </div>
             <div class="rt-reveal">
               <p class="rt-eyebrow">Recovery, Delivered</p>
@@ -1368,14 +1368,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.rt-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('rt-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('rt-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('rt-in');
             io.unobserve(entry.target);
           }

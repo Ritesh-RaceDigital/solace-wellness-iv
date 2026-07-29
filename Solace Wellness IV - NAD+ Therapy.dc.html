@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="NAD+ Therapy in Summerlin &amp; Las Vegas. NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20NAD%2B%20Therapy.dc.html">
-      <meta property="og:image" content="./solace/assets/b280d8466fc811da.jpg">
+      <meta property="og:image" content="./solace/assets/b280d8466fc811da.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="NAD+ Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="NAD+ 250mg and NAD+ 500mg infusions in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/b280d8466fc811da.jpg">
+      <meta name="twitter:image" content="./solace/assets/b280d8466fc811da.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -721,7 +721,7 @@
               </ul>
             </div>
             <div class="nd-hero-media nd-reveal">
-              <div class="nd-hero-photo" style="background-image:url(./solace/assets/b280d8466fc811da.jpg)"></div>
+              <div class="nd-hero-photo" style="background-image:url(./solace/assets/b280d8466fc811da.webp)"></div>
               <div class="nd-hero-badge">
                 <strong>$299+</strong>
                 <span>Starting price</span>
@@ -823,7 +823,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="nd-section" id="doorstep" style="background:var(--cream-2);">
           <div class="nd-container nd-split">
-            <div class="nd-split-photo nd-reveal" style="background-image:url(./solace/assets/28011f9776f04463.jpg)">
+            <div class="nd-split-photo nd-reveal" data-bg="./solace/assets/28011f9776f04463.webp">
             </div>
             <div class="nd-reveal">
               <p class="nd-eyebrow">Visit Us or We Come to You</p>
@@ -956,14 +956,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.nd-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('nd-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('nd-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('nd-in');
             io.unobserve(entry.target);
           }

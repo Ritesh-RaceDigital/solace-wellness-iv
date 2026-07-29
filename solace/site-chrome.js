@@ -151,7 +151,7 @@
         <header class="gh-header">
           <div class="gh-nav-wrap">
             <a class="gh-logo-link" href="${escapeAttr(current === 'home' ? '#' : PAGES.home)}" aria-label="Solace Wellness IV - Home">
-              <img class="gh-logo" src="./solace/assets/header-logo.png" alt="Solace Wellness IV">
+              <img class="gh-logo" src="./solace/assets/header-logo.webp" alt="Solace Wellness IV">
             </a>
             <nav class="gh-nav-desktop">${navLinks}</nav>
             <div class="gh-nav-actions">
@@ -234,7 +234,7 @@
               <button type="submit">Subscribe</button>
             </form>
           </div>
-          <img class="gf-logo" src="./solace/assets/footer-logo.png" alt="Solace Wellness IV" loading="lazy">
+          <img class="gf-logo" src="./solace/assets/footer-logo.webp" alt="Solace Wellness IV" loading="lazy">
           <address class="gf-address">
             <strong>Solace Wellness IV</strong><br>
             <a href="https://maps.google.com/?q=900+S+Pavilion+Center+Dr+Suite+180,+Las+Vegas,+NV+89144" target="_blank" rel="noopener">900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin)</a><br>

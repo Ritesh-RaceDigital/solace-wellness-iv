@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Beauty IV Therapy &amp; Skin Glow IV Drip in Summerlin, or mobile throughout Las Vegas. Nourish healthy, glowing skin from within.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Beauty%20IV%20Therapy.dc.html">
-      <meta property="og:image" content="./solace/assets/a55e8e3868c543c3.jpg">
+      <meta property="og:image" content="./solace/assets/a55e8e3868c543c3.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Beauty IV Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="Beauty IV Therapy &amp; Skin Glow IV Drip in Summerlin, or mobile throughout Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/a55e8e3868c543c3.jpg">
+      <meta name="twitter:image" content="./solace/assets/a55e8e3868c543c3.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -720,7 +720,7 @@
               </ul>
             </div>
             <div class="bt-hero-media bt-reveal">
-              <div class="bt-hero-photo" style="background-image:url(./solace/assets/a55e8e3868c543c3.jpg)"></div>
+              <div class="bt-hero-photo" style="background-image:url(./solace/assets/a55e8e3868c543c3.webp)"></div>
               <div class="bt-hero-badge">
                 <strong>$300</strong>
                 <span>Per treatment</span>
@@ -822,7 +822,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="bt-section" id="doorstep" style="background:var(--cream-2);">
           <div class="bt-container bt-split">
-            <div class="bt-split-photo bt-reveal" style="background-image:url(./solace/assets/f8ccb75735cbb079.jpg)">
+            <div class="bt-split-photo bt-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp">
             </div>
             <div class="bt-reveal">
               <p class="bt-eyebrow">Visit Us or We Come to You</p>
@@ -953,14 +953,20 @@
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    // Below-fold background-image photos load lazily via data-bg, swapped
+    // in at the same moment the element scrolls into view for the reveal
+    // animation - reuses that IntersectionObserver instead of a second one.
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
+
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealEls = document.querySelectorAll('.bt-reveal');
     if (reduce || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => el.classList.add('bt-in'));
+      revealEls.forEach((el) => { applyBg(el); el.classList.add('bt-in'); });
     } else {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            applyBg(entry.target);
             entry.target.classList.add('bt-in');
             io.unobserve(entry.target);
           }
