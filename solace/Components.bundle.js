@@ -1457,7 +1457,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 13,
       top: 110.023,
-      width: 207,
+      width: 212,
       height: 36,
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 600,
@@ -1467,7 +1467,7 @@ function SOLACEHP(_p = {}) {
       color: "rgb(43,23,16)",
       whiteSpace: "pre-wrap"
     }
-  }, "Convenience on\nthe go"), /*#__PURE__*/React.createElement("span", {
+  }, "Visit Us or\nWe'll Come to You"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 13,
@@ -1481,7 +1481,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "Forget the waiting room. We go all over Las Vegas to provide skilled IV therapy to you.")), /*#__PURE__*/React.createElement("div", {
+  }, "Come relax in our Summerlin wellness suite, or let us bring skilled IV therapy anywhere in Las Vegas.")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 259,
@@ -1559,8 +1559,8 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 12.756,
       top: 110.063,
-      width: 158,
-      height: 36,
+      width: 212,
+      height: 58,
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 600,
       fontSize: 18,
@@ -1569,11 +1569,11 @@ function SOLACEHP(_p = {}) {
       color: "rgb(43,23,16)",
       whiteSpace: "pre-wrap"
     }
-  }, "Licensed Medical\nPractitioners"), /*#__PURE__*/React.createElement("span", {
+  }, "Board-Certified Nurse\nPractitioner & Licensed\nProfessionals"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 13,
-      top: 168.063,
+      top: 190.063,
       width: 212,
       height: 99,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
@@ -1583,7 +1583,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "All infusions are administered by trained healthcare professionals dedicated to safe and comfortable treatment.")), /*#__PURE__*/React.createElement("div", {
+  }, "Every infusion is administered by trained healthcare professionals dedicated to safe and comfortable treatment.")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 517,
@@ -1662,7 +1662,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 12.629,
       top: 110.063,
-      width: 172,
+      width: 212,
       height: 36,
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 600,
@@ -1672,7 +1672,7 @@ function SOLACEHP(_p = {}) {
       color: "rgb(43,23,16)",
       whiteSpace: "pre-wrap"
     }
-  }, "Wellness premium\ningredients"), /*#__PURE__*/React.createElement("span", {
+  }, "Premium Medical-Grade\nIngredients"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 13,
@@ -1906,7 +1906,7 @@ function SOLACEHP(_p = {}) {
       left: 108,
       top: 100,
       width: 1223,
-      height: 400,
+      height: 460,
       borderRadius: 24,
       backgroundColor: "rgb(255,253,251)"
     }
@@ -1916,7 +1916,7 @@ function SOLACEHP(_p = {}) {
       left: 0,
       top: 0,
       width: 1223,
-      height: 400.44,
+      height: 460.44,
       borderRadius: 24,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "0px 20px 50px -25px rgba(43,35,25,0.35)"
@@ -1944,7 +1944,7 @@ function SOLACEHP(_p = {}) {
       left: 377,
       top: 101,
       width: 798,
-      height: 198,
+      height: 350,
       overflow: "hidden"
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -1953,14 +1953,15 @@ function SOLACEHP(_p = {}) {
       left: 1,
       top: 65,
       width: 797,
-      height: 133,
+      height: 285,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
       fontSize: 18,
       lineHeight: "30px",
+      whiteSpace: "pre-wrap",
       color: "rgb(34,34,34)"
     }
-  }, "At Solace Wellness IV Therapy, our mission is to enhance health and well-being by providing convenient, personalized, and professional IV hydration and wellness services. We aim to bring comfort and rejuvenation directly to our clients, ensuring they feel revitalized and supported through safe, effective treatments. Our goal is to empower individuals to take charge of their health, offering customized solutions that promote recovery, wellness, and balance in the comfort of their own space."), /*#__PURE__*/React.createElement("span", {
+  }, "Solace Wellness IV was built on the belief that wellness should be proactive, personalized, and medically guided.\n\nFounded by a board-certified Nurse Practitioner with years of experience in hospital, specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that prioritizes education, individualized care, and genuine patient relationships.\n\nWhether clients visit our Summerlin wellness suite or choose our mobile IV service, every treatment begins with a personalized health assessment to ensure it is appropriate for their individual needs."), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -2706,7 +2707,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Relief from Headaches")), /*#__PURE__*/React.createElement("div", {
+  }, "Headache Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -2740,7 +2741,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Relief from nausea")), /*#__PURE__*/React.createElement("div", {
+  }, "Nausea Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 202,
@@ -3070,7 +3071,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Renewing Cells")), /*#__PURE__*/React.createElement("div", {
+  }, "Cellular Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 202,
@@ -3172,7 +3173,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Defense against antioxidants")), /*#__PURE__*/React.createElement("div", {
+  }, "Antioxidant Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -3326,7 +3327,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "General wellness")), /*#__PURE__*/React.createElement("div", {
+  }, "Overall Wellness")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 16,
@@ -3340,7 +3341,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 0,
       top: 0,
-      width: 145,
+      width: 260,
       height: 13,
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 600,
@@ -3351,7 +3352,7 @@ function SOLACEHP(_p = {}) {
       letterSpacing: "-0.190px",
       color: "rgb(43,23,16)"
     }
-  }, "Myers' Miracle 4"), /*#__PURE__*/React.createElement("span", {
+  }, "Classic Myers Cocktail"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,
@@ -3404,7 +3405,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 0,
       top: 124,
-      width: 67,
+      width: 220,
       height: 9,
       overflow: "hidden"
     }
@@ -3423,7 +3424,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 15,
       top: 0,
-      width: 52,
+      width: 205,
       height: 9,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
@@ -3433,7 +3434,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Migraines")), /*#__PURE__*/React.createElement("div", {
+  }, "Normal Energy Metabolism")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -3472,7 +3473,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 0,
       top: 166,
-      width: 102,
+      width: 240,
       height: 9,
       overflow: "hidden"
     }
@@ -3491,7 +3492,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 15,
       top: 0,
-      width: 87,
+      width: 225,
       height: 9,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
@@ -3501,7 +3502,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Stress & Anxiety")), /*#__PURE__*/React.createElement("div", {
+  }, "Replenish Vitamins & Minerals")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -5282,7 +5283,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
-  }, "Next generation health of cell."), /*#__PURE__*/React.createElement("div", {
+  }, "Supports Cellular Energy Production."), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 20,
@@ -5330,7 +5331,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 0,
       top: 22,
-      width: 118,
+      width: 110,
       height: 10,
       overflow: "hidden"
     }
@@ -5349,7 +5350,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 15,
       top: 0,
-      width: 103,
+      width: 95,
       height: 10,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
@@ -5359,12 +5360,12 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Successful Aging")), /*#__PURE__*/React.createElement("div", {
+  }, "Healthy Aging")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
       top: 44,
-      width: 91,
+      width: 110,
       height: 10,
       overflow: "hidden"
     }
@@ -5383,7 +5384,7 @@ function SOLACEHP(_p = {}) {
       position: "absolute",
       left: 15,
       top: 0,
-      width: 76,
+      width: 95,
       height: 10,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
@@ -5393,7 +5394,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "More Power")), /*#__PURE__*/React.createElement("div", {
+  }, "Energy Support")), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 0,
@@ -5495,7 +5496,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(47,42,37)"
     }
-  }, "Wellness Continued")))), /*#__PURE__*/React.createElement("span", {
+  }, "Supports Long-Term Wellness Goals")))), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 123,
@@ -6405,9 +6406,9 @@ function SOLACEHP(_p = {}) {
   }, "2")), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
-      left: 104,
+      left: 0,
       top: 98,
-      width: 113,
+      width: 321,
       height: 13,
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 600,
@@ -6418,7 +6419,7 @@ function SOLACEHP(_p = {}) {
       textBox: "trim-both cap alphabetic",
       color: "rgb(43,23,16)"
     }
-  }, "We Visit You"), /*#__PURE__*/React.createElement("span", {
+  }, "Visit Us or We Come to You"), /*#__PURE__*/React.createElement("span", {
     style: {
       position: "absolute",
       left: 0,

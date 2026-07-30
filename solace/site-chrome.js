@@ -63,7 +63,7 @@
     },
     {
       name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy,
-      items: [{ name: 'Myers Miracle Drip', href: PAGES.myersCocktail }, 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'],
+      items: [{ name: 'Classic Myers Cocktail', href: PAGES.myersCocktail }, 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'],
     },
     { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Travel Recovery IV', 'Beauty & Skin Glow IV', 'Athletic Recovery IV'] },
     { name: 'Immune Therapy', href: PAGES.immuneIvTherapy, items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
@@ -152,7 +152,7 @@
 
       this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./solace/site-chrome.css">
-        <div class="gh-announce">Licensed &amp; Mobile Throughout Las Vegas &middot; Open 24 Hrs &middot; Same-Day Appointments Available</div>
+        <div class="gh-announce">Licensed Medical IV Therapy &middot; Summerlin &amp; Mobile Across Las Vegas &middot; Same-Day Appointments Available</div>
         <header class="gh-header">
           <div class="gh-nav-wrap">
             <a class="gh-logo-link" href="${escapeAttr(current === 'home' ? '#' : PAGES.home)}" aria-label="Solace Wellness IV - Home">

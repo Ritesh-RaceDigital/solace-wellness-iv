@@ -498,6 +498,38 @@
           text-align: left;
         }
 
+        /* meet your provider */
+        .solace-mobile .sm-provider {
+          background: #fff;
+          text-align: center;
+        }
+
+        .solace-mobile .sm-provider .sm-body {
+          text-align: left;
+        }
+
+        .solace-mobile .sm-provider-photo {
+          width: 160px;
+          height: 160px;
+          border-radius: 50%;
+          margin: 0 auto 20px;
+          background-size: cover;
+          background-position: center;
+          box-shadow: 0 10px 24px -12px rgba(43, 23, 16, 0.35);
+        }
+
+        .solace-mobile .sm-provider-name {
+          margin-bottom: 2px;
+        }
+
+        .solace-mobile .sm-provider-role {
+          font-family: 'Poppins', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--tan);
+          margin: 0 0 18px;
+        }
+
         /* dark banner sections (foundation + serving) */
         .solace-mobile .sm-foundation,
         .solace-mobile .sm-serving {
@@ -1126,11 +1158,15 @@
       <section class="sm-mission" id="mission">
         <div class="sm-mission-photo" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img" aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
         <h2>Our Mission</h2>
-        <p class="sm-body">At Solace Wellness IV Therapy, our mission is to enhance health and well-being by providing
-          convenient, personalized, and professional IV hydration and wellness services. We aim to bring comfort and
-          rejuvenation directly to our clients, ensuring they feel revitalized and supported through safe, effective
-          treatments. Our goal is to empower individuals to take charge of their health, offering customized solutions
-          that promote recovery, wellness, and balance in the comfort of their own space.</p>
+        <p class="sm-body">Solace Wellness IV was built on the belief that wellness should be proactive,
+          personalized, and medically guided.</p>
+        <p class="sm-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
+          specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
+          prioritizes education, individualized care, and genuine patient relationships.</p>
+        <p class="sm-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
+          every treatment begins with a personalized health assessment to ensure it is appropriate for their
+          individual needs. We are committed to delivering compassionate, professional care while helping our
+          clients feel their best through hydration, wellness, and preventive health support.</p>
       </section>
 
       <section class="sm-foundation">
@@ -1193,8 +1229,9 @@
                 <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
                 <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
               </svg></div>
-            <h3>Convenience on the go</h3>
-            <p>Forget the waiting room. We go all over Las Vegas to provide skilled IV therapy to you.</p>
+            <h3>Visit Us or We'll Come to You</h3>
+            <p>Come relax in our Summerlin wellness suite, or let us bring skilled IV therapy anywhere in Las
+              Vegas.</p>
           </div>
           <div class="sm-why-card">
             <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
@@ -1202,15 +1239,15 @@
                 <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
                 <path d="M5.7 7.9 7.3 9.5l3-3.3" />
               </svg></div>
-            <h3>Licensed Medical Practitioners</h3>
-            <p>All infusions are administered by trained healthcare professionals dedicated to safe and comfortable
+            <h3>Board-Certified Nurse Practitioner &amp; Licensed Medical Professionals</h3>
+            <p>Every infusion is administered by trained healthcare professionals dedicated to safe and comfortable
               treatment.</p>
           </div>
           <div class="sm-why-card">
             <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
               </svg></div>
-            <h3>Wellness premium ingredients</h3>
+            <h3>Premium Medical-Grade Ingredients</h3>
             <p>IV therapies with premium vitamins, minerals, antioxidants and electrolytes to help with hydration and
               wellness.</p>
           </div>
@@ -1232,6 +1269,26 @@
             <p>Want rapid relief? We provide flexible scheduling and same day appointments when available.</p>
           </div>
         </div>
+      </section>
+
+      <section class="sm-provider" id="provider">
+        <p class="sm-eyebrow">The Person Behind Solace</p>
+        <h2>Meet Your Provider</h2>
+        <!-- Placeholder photo reused from the About page - swap data-bg for Christina's
+             professional headshot once supplied. -->
+        <div class="sm-provider-photo" data-bg="./solace/assets/7b896e3d71894dac.webp" role="img"
+          aria-label="Christina Pangan, founder and board-certified nurse practitioner at Solace Wellness IV">
+        </div>
+        <h3 class="sm-provider-name">Christina Pangan, MSN, APRN, FNP-C</h3>
+        <p class="sm-provider-role">Founder &middot; Board-Certified Nurse Practitioner</p>
+        <p class="sm-body">Solace Wellness IV was founded to provide medically guided, personalized wellness care
+          rooted in compassion, safety, and clinical expertise.</p>
+        <p class="sm-body">With years of experience caring for patients in oncology, medical-surgical, telemetry,
+          orthopedic, neurological, wound care, and military medicine, I wanted to create a practice where every
+          client receives individualized care - not a one-size-fits-all approach.</p>
+        <p class="sm-body">Whether you visit our Summerlin wellness suite or choose our mobile IV service, every
+          treatment begins with a comprehensive medical assessment to ensure it is appropriate for your health
+          needs.</p>
       </section>
 
       <section class="sm-treatments" id="treatments">
@@ -1284,8 +1341,8 @@
                 <li>Recovery from Hangovers</li>
                 <li>Rehydrate</li>
                 <li>Electrolyte replacement</li>
-                <li>Relief from Headaches</li>
-                <li>Relief from nausea</li>
+                <li>May help relieve dehydration-related headaches</li>
+                <li>May help reduce nausea associated with dehydration</li>
                 <li>Quicker Recovery</li>
               </ul>
               <p class="sm-tagline">Perfect for those seeking Hangover IV Drip and Recovery IV Therapy in Las Vegas.</p>
@@ -1304,10 +1361,10 @@
                 <li>Quick Energy Boost</li>
                 <li>Reduces tiredness</li>
                 <li>Supports immune system</li>
-                <li>Renewing Cells</li>
+                <li>Supports Healthy Cellular Function</li>
                 <li>Clarity of Mind</li>
                 <li>Relaxation with magnesium</li>
-                <li>Defense against antioxidants</li>
+                <li>Antioxidant Support</li>
                 <li>Wellness &amp; Energy &ndash; Overall</li>
               </ul>
               <p class="sm-tagline">Ideal for those looking for an Energy IV Drip, Vitamin B Complex IV or a
@@ -1319,19 +1376,18 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/3e0f377529cc2fa7.webp" role="img" aria-label="Myers' Miracle 4 Myers Cocktail IV treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/3e0f377529cc2fa7.webp" role="img" aria-label="Classic Myers Cocktail treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
-              <h4>Myers' Miracle 4</h4>
+              <h4>Classic Myers Cocktail</h4>
               <p class="sm-desc">Our take on the popular Myers Cocktail IV Infusion gives both hydration and a
                 well-balanced blend of vitamins and minerals.</p>
               <ul class="sm-bullets">
-                <li>General wellness</li>
-                <li>Exhaustion</li>
-                <li>Migraines</li>
+                <li>Supports Overall Wellness</li>
+                <li>Exhaustion Support</li>
                 <li>Foggy Mind</li>
-                <li>Stress &amp; Anxiety</li>
-                <li>General Wellness Support</li>
+                <li>Supports Normal Energy Metabolism</li>
+                <li>Helps Replenish Vitamins &amp; Minerals</li>
               </ul>
               <p class="sm-tagline">Great if you are looking for Myers Vitamin Cocktail IV. Myers Cocktail IV Drip,
                 Myers Cocktail IV At Home.</p>
@@ -1456,14 +1512,14 @@
             <div class="sm-treat-body">
               <div class="sm-treat-price">$499</div>
               <h4>NAD+ 500mg</h4>
-              <p class="sm-desc">Next generation health of cell.</p>
+              <p class="sm-desc">Supports Cellular Energy Production.</p>
               <ul class="sm-bullets">
                 <li>Cell Support</li>
-                <li>Successful Aging</li>
-                <li>More Power</li>
+                <li>Supports Healthy Aging</li>
+                <li>Energy Support</li>
                 <li>Improved Performance</li>
                 <li>Support for Brain Function</li>
-                <li>Wellness Continued</li>
+                <li>Supports Long-Term Wellness Goals</li>
               </ul>
             </div>
           </div>
@@ -1544,8 +1600,9 @@
           <div class="sm-step">
             <div class="sm-step-num">2</div>
             <div>
-              <h3>We Visit You</h3>
-              <p>No matter where you are in Las Vegas, our qualified medical professionals will come right to you.</p>
+              <h3>Visit Us or We'll Come to You</h3>
+              <p>Stop by our Summerlin wellness suite, or our qualified medical professionals will come right to
+                you, anywhere in Las Vegas.</p>
             </div>
           </div>
           <div class="sm-step">
