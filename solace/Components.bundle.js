@@ -421,9 +421,9 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 0,
-      top: 1416,
+      top: 1436,
       width: 1440,
-      height: 450,
+      height: 430,
       overflow: "hidden",
       backgroundColor: "rgb(40,20,13)"
     }
@@ -1471,7 +1471,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 168.023,
+      top: 190.023,
       width: 212,
       height: 77,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
@@ -1676,7 +1676,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 168.063,
+      top: 190.063,
       width: 212,
       height: 99,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
@@ -1778,7 +1778,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 168.063,
+      top: 190.063,
       width: 212,
       height: 77,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
@@ -1880,7 +1880,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 12,
-      top: 168.063,
+      top: 190.063,
       width: 212,
       height: 77,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
