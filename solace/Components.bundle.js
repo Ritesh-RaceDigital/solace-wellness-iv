@@ -1906,7 +1906,7 @@ function SOLACEHP(_p = {}) {
       left: 108,
       top: 100,
       width: 1223,
-      height: 460,
+      height: 495,
       borderRadius: 24,
       backgroundColor: "rgb(255,253,251)"
     }
@@ -1916,7 +1916,7 @@ function SOLACEHP(_p = {}) {
       left: 0,
       top: 0,
       width: 1223,
-      height: 460.44,
+      height: 495.44,
       borderRadius: 24,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "0px 20px 50px -25px rgba(43,35,25,0.35)"
@@ -1929,7 +1929,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 80.1,
-      top: 40,
+      top: 88,
       width: 232.8,
       height: 320.1,
       filter: "drop-shadow(0px 6px 12px rgba(0,0,0,0.25))"
@@ -1944,7 +1944,7 @@ function SOLACEHP(_p = {}) {
       left: 377,
       top: 101,
       width: 798,
-      height: 350,
+      height: 293,
       overflow: "hidden"
     }
   }, /*#__PURE__*/React.createElement("span", {
@@ -1953,11 +1953,11 @@ function SOLACEHP(_p = {}) {
       left: 1,
       top: 65,
       width: 797,
-      height: 285,
+      height: "auto",
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 18,
-      lineHeight: "30px",
+      fontSize: 17,
+      lineHeight: "25px",
       whiteSpace: "pre-wrap",
       color: "rgb(34,34,34)"
     }
@@ -4932,7 +4932,7 @@ function SOLACEHP(_p = {}) {
       left: 123,
       top: 2570,
       width: 368,
-      height: 410,
+      height: 440,
       overflow: "hidden",
       borderRadius: 18,
       backgroundColor: "rgb(255,253,251)",
@@ -5203,7 +5203,7 @@ function SOLACEHP(_p = {}) {
       left: 536,
       top: 2570,
       width: 368,
-      height: 410,
+      height: 440,
       overflow: "hidden",
       borderRadius: 18,
       backgroundColor: "rgb(255,253,251)",
@@ -5287,7 +5287,7 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 20,
-      top: 265,
+      top: 285,
       width: 179,
       height: 120,
       overflow: "hidden"
