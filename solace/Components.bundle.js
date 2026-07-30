@@ -1393,7 +1393,7 @@ function SOLACEHP(_p = {}) {
       left: 0,
       top: 128,
       width: 1270,
-      height: 360,
+      height: 300,
       overflow: "hidden"
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -1402,7 +1402,7 @@ function SOLACEHP(_p = {}) {
       left: 0,
       top: 0,
       width: 237,
-      height: 360,
+      height: 300,
       borderRadius: 22.145315170288086,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "inset 0 0 0 1.107px rgba(0,0,0,0), 0px 4px 6px 0px rgba(34,34,34,0.18)"
@@ -1471,13 +1471,13 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 204,
+      top: 174,
       width: 212,
-      height: 135,
+      height: 72,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 16,
-      lineHeight: "22px",
+      fontSize: 12,
+      lineHeight: "17px",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
@@ -1487,7 +1487,7 @@ function SOLACEHP(_p = {}) {
       left: 259,
       top: 0,
       width: 236,
-      height: 360,
+      height: 300,
       borderRadius: 22.145315170288086,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "inset 0 0 0 1.107px rgba(0,0,0,0), 0px 4px 6px 0px rgba(34,34,34,0.18)"
@@ -1573,13 +1573,13 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 204,
+      top: 206,
       width: 212,
-      height: 135,
+      height: 72,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 16,
-      lineHeight: "22px",
+      fontSize: 12,
+      lineHeight: "17px",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
@@ -1589,7 +1589,7 @@ function SOLACEHP(_p = {}) {
       left: 517,
       top: 0,
       width: 236,
-      height: 360,
+      height: 300,
       borderRadius: 22.145315170288086,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "inset 0 0 0 1.107px rgba(0,0,0,0), 0px 4px 6px 0px rgba(34,34,34,0.18)"
@@ -1676,13 +1676,13 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 204,
+      top: 206,
       width: 212,
-      height: 135,
+      height: 72,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 16,
-      lineHeight: "22px",
+      fontSize: 12,
+      lineHeight: "17px",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
@@ -1692,7 +1692,7 @@ function SOLACEHP(_p = {}) {
       left: 775,
       top: 0,
       width: 236,
-      height: 360,
+      height: 300,
       borderRadius: 22.145315170288086,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "inset 0 0 0 1.107px rgba(0,0,0,0), 0px 4px 6px 0px rgba(34,34,34,0.18)"
@@ -1778,13 +1778,13 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 13,
-      top: 204,
+      top: 174,
       width: 212,
-      height: 135,
+      height: 72,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 16,
-      lineHeight: "22px",
+      fontSize: 12,
+      lineHeight: "17px",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
@@ -1794,7 +1794,7 @@ function SOLACEHP(_p = {}) {
       left: 1033,
       top: 0,
       width: 237,
-      height: 360,
+      height: 300,
       borderRadius: 22.145315170288086,
       backgroundColor: "rgb(254,250,245)",
       boxShadow: "inset 0 0 0 1.107px rgba(0,0,0,0), 0px 4px 6px 0px rgba(34,34,34,0.18)"
@@ -1880,13 +1880,13 @@ function SOLACEHP(_p = {}) {
     style: {
       position: "absolute",
       left: 12,
-      top: 204,
+      top: 174,
       width: 212,
-      height: 135,
+      height: 72,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 400,
-      fontSize: 16,
-      lineHeight: "22px",
+      fontSize: 12,
+      lineHeight: "17px",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
