@@ -37,6 +37,9 @@
     energyBoostIv: 'Solace Wellness IV - Energy Boost IV.dc.html',
     brainFogIv: 'Solace Wellness IV - Brain Fog IV.dc.html',
     fatigueRecoveryIv: 'Solace Wellness IV - Fatigue Recovery IV.dc.html',
+    beautySkinGlowIv: 'Solace Wellness IV - Beauty & Skin Glow IV.dc.html',
+    beautyDrip: 'Solace Wellness IV - Beauty Drip.dc.html',
+    skinBrighteningIv: 'Solace Wellness IV - Skin Brightening IV.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -59,7 +62,12 @@
     },
     {
       name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
-      items: ['Beauty & Skin Glow IV', { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy }, 'Beauty Drip', 'Skin Brightening IV'],
+      items: [
+        { name: 'Beauty & Skin Glow IV', href: PAGES.beautySkinGlowIv },
+        { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy },
+        { name: 'Beauty Drip', href: PAGES.beautyDrip },
+        { name: 'Skin Brightening IV', href: PAGES.skinBrighteningIv },
+      ],
     },
     { name: 'NAD+ Therapy', href: PAGES.nadTherapy, items: ['NAD+ 250mg', 'NAD+ 500mg', 'Cellular Repair', 'Healthy Aging'] },
     {

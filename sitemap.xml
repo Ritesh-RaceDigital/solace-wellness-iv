@@ -80,4 +80,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Beauty%20%26%20Skin%20Glow%20IV.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Beauty%20Drip.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Skin%20Brightening%20IV.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
