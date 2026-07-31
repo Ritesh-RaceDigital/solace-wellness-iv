@@ -33,6 +33,10 @@
     glutathioneIvTherapy: 'Solace Wellness IV - Glutathione IV Therapy.dc.html',
     energyTherapy: 'Solace Wellness IV - Energy Therapy.dc.html',
     vitaminInjections: 'Solace Wellness IV - Vitamin Injections.dc.html',
+    metaboFusionIv: 'Solace Wellness IV - MetaboFusion IV.dc.html',
+    energyBoostIv: 'Solace Wellness IV - Energy Boost IV.dc.html',
+    brainFogIv: 'Solace Wellness IV - Brain Fog IV.dc.html',
+    fatigueRecoveryIv: 'Solace Wellness IV - Fatigue Recovery IV.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -46,7 +50,12 @@
   const TREATMENT_MENU = [
     {
       name: 'Energy Therapy', href: PAGES.energyTherapy,
-      items: ['MetaboFusion IV', 'Energy Boost IV', 'Brain Fog IV', 'Fatigue Recovery IV'],
+      items: [
+        { name: 'MetaboFusion IV', href: PAGES.metaboFusionIv },
+        { name: 'Energy Boost IV', href: PAGES.energyBoostIv },
+        { name: 'Brain Fog IV', href: PAGES.brainFogIv },
+        { name: 'Fatigue Recovery IV', href: PAGES.fatigueRecoveryIv },
+      ],
     },
     {
       name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
