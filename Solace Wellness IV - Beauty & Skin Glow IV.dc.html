@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Beauty &amp; Skin Glow IV in Summerlin, or mobile throughout Las Vegas. Biotin, Vitamin C, Glutathione &amp; antioxidants to nourish healthy skin from within.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Beauty%20%26%20Skin%20Glow%20IV.dc.html">
-      <meta property="og:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta property="og:image" content="./solace/assets/9ad7525aacbc8a19.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Beauty &amp; Skin Glow IV in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="Biotin, Vitamin C, Glutathione &amp; antioxidants to nourish healthy skin from within.">
-      <meta name="twitter:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta name="twitter:image" content="./solace/assets/9ad7525aacbc8a19.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -515,6 +515,60 @@
           color: var(--ink-soft);
         }
 
+        .bs-wte-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-top: 32px;
+        }
+
+        .bs-wte-card {
+          background: var(--cream);
+          border-radius: 18px;
+          padding: 26px 24px;
+          text-align: left;
+        }
+
+        .bs-wte-card.avoid {
+          background: var(--cream-2);
+          box-shadow: inset 0 0 0 1px var(--line);
+          border-left: 4px solid var(--tan);
+        }
+
+        .bs-wte-card .bs-ic-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 14px;
+        }
+
+        .bs-wte-card .bs-ic-badge.avoid {
+          background: var(--brown-800);
+        }
+
+        .bs-wte-card .bs-ic-badge .bs-ic {
+          width: 20px;
+          height: 20px;
+        }
+
+        .bs-wte-card h3 {
+          font-size: 16px;
+          margin: 0 0 8px;
+        }
+
+        .bs-wte-card p {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0;
+        }
+
+        @media (min-width: 900px) {
+          .bs-wte-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         .bs-alert {
           background: var(--cream-2);
           border-left: 4px solid var(--tan);
@@ -738,7 +792,7 @@
               </ul>
             </div>
             <div class="bs-hero-media bs-reveal">
-              <div class="bs-hero-photo" style="background-image:url(./solace/assets/a55e8e3868c543c3.webp)" role="img" aria-label="Beauty and Skin Glow IV therapy in Summerlin"></div>
+              <div class="bs-hero-photo" style="background-image:url(./solace/assets/9ad7525aacbc8a19.webp)" role="img" aria-label="Beauty and Skin Glow IV therapy in Summerlin"></div>
               <div class="bs-hero-badge">
                 <strong>$300</strong>
                 <span>Per treatment</span>
@@ -853,26 +907,44 @@
                 <span>$300 per treatment</span>
               </div>
             </div>
-            <p class="bs-lede bs-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
-            <p class="bs-body bs-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Great for
-              self-care days, special events, weddings, and photo shoots - or anyone building skin hydration into
-              their regular wellness routine.</p>
-            <p class="bs-lede bs-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
-            <p class="bs-body bs-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
-              recommended for those who are pregnant or nursing, have a known allergy to any included ingredient,
-              or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this
-              treatment is right for you.</p>
-            <p class="bs-lede bs-center" style="max-width:640px;margin:20px auto 6px;">Aftercare</p>
-            <p class="bs-body bs-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Continue your
-              regular skincare routine and stay hydrated in the days after treatment to help support your
-              results.</p>
+            <div class="bs-wte-grid">
+              <div class="bs-wte-card">
+                <div class="bs-ic-badge">
+                  <svg class="bs-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Who It's For</h3>
+                <p>Great for self-care days, special events, weddings, and photo shoots - or anyone building skin hydration into their regular wellness routine.</p>
+              </div>
+              <div class="bs-wte-card avoid">
+                <div class="bs-ic-badge avoid">
+                  <svg class="bs-ic" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.3">
+                    <path d="M8 1.6 14 12.8H2L8 1.6Z" stroke-linejoin="round" />
+                    <path d="M8 6.4v3" stroke-linecap="round" />
+                    <path d="M8 11.4h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <h3>Who Should Avoid This</h3>
+                <p>Not recommended for those who are pregnant or nursing, have a known allergy to any included ingredient, or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this treatment is right for you.</p>
+              </div>
+              <div class="bs-wte-card">
+                <div class="bs-ic-badge">
+                  <svg class="bs-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M8 1.5c2.4 3.2 4 5.3 4 7.5a4 4 0 0 1-8 0c0-2.2 1.6-4.3 4-7.5Z" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Aftercare</h3>
+                <p>Continue your regular skincare routine and stay hydrated in the days after treatment to help support your results.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="bs-section" id="doorstep" style="background:var(--cream-2);">
           <div class="bs-container bs-split">
-            <div class="bs-split-photo bs-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp" role="img" aria-label="Mobile Beauty and Skin Glow IV therapy setup in Las Vegas">
+            <div class="bs-split-photo bs-reveal" data-bg="./solace/assets/sw-beautyglow-split.jpg" role="img" aria-label="Mobile Beauty and Skin Glow IV therapy across Las Vegas">
             </div>
             <div class="bs-reveal">
               <p class="bs-eyebrow">Visit Us or We Come to You</p>

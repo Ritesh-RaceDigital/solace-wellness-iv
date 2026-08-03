@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Beauty Drip in Summerlin, or mobile throughout Las Vegas. A lighter, everyday hydration IV with Biotin &amp; Vitamin C for skin, hair &amp; nails.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Beauty%20Drip.dc.html">
-      <meta property="og:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta property="og:image" content="./solace/assets/7a204e693ec0df14.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Beauty Drip in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="A lighter, everyday hydration IV with Biotin &amp; Vitamin C for skin, hair &amp; nails.">
-      <meta name="twitter:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta name="twitter:image" content="./solace/assets/7a204e693ec0df14.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -507,6 +507,60 @@
           color: var(--ink-soft);
         }
 
+        .bd-wte-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-top: 32px;
+        }
+
+        .bd-wte-card {
+          background: var(--cream);
+          border-radius: 18px;
+          padding: 26px 24px;
+          text-align: left;
+        }
+
+        .bd-wte-card.avoid {
+          background: var(--cream-2);
+          box-shadow: inset 0 0 0 1px var(--line);
+          border-left: 4px solid var(--tan);
+        }
+
+        .bd-wte-card .bd-ic-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 14px;
+        }
+
+        .bd-wte-card .bd-ic-badge.avoid {
+          background: var(--brown-800);
+        }
+
+        .bd-wte-card .bd-ic-badge .bd-ic {
+          width: 20px;
+          height: 20px;
+        }
+
+        .bd-wte-card h3 {
+          font-size: 16px;
+          margin: 0 0 8px;
+        }
+
+        .bd-wte-card p {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0;
+        }
+
+        @media (min-width: 900px) {
+          .bd-wte-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         .bd-alert {
           background: var(--cream-2);
           border-left: 4px solid var(--tan);
@@ -730,7 +784,7 @@
               </ul>
             </div>
             <div class="bd-hero-media bd-reveal">
-              <div class="bd-hero-photo" style="background-image:url(./solace/assets/a55e8e3868c543c3.webp)" role="img" aria-label="Beauty Drip therapy in Summerlin"></div>
+              <div class="bd-hero-photo" style="background-image:url(./solace/assets/7a204e693ec0df14.webp)" role="img" aria-label="Beauty Drip therapy in Summerlin"></div>
               <div class="bd-hero-badge">
                 <strong>$260</strong>
                 <span>Per treatment</span>
@@ -845,26 +899,44 @@
                 <span>$260 per treatment</span>
               </div>
             </div>
-            <p class="bd-lede bd-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
-            <p class="bd-body bd-center" style="max-width:640px;margin-left:auto;margin-right:auto;">A good fit
-              if you want a quicker, more affordable way to build beauty support into your regular routine,
-              rather than saving it for special occasions.</p>
-            <p class="bd-lede bd-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
-            <p class="bd-body bd-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
-              recommended for those who are pregnant or nursing, have a known allergy to any included ingredient,
-              or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this
-              treatment is right for you.</p>
-            <p class="bd-lede bd-center" style="max-width:640px;margin:20px auto 6px;">Aftercare</p>
-            <p class="bd-body bd-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Continue
-              your regular skincare routine and stay hydrated in the days after treatment to help support your
-              results.</p>
+            <div class="bd-wte-grid">
+              <div class="bd-wte-card">
+                <div class="bd-ic-badge">
+                  <svg class="bd-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Who It's For</h3>
+                <p>A good fit if you want a quicker, more affordable way to build beauty support into your regular routine, rather than saving it for special occasions.</p>
+              </div>
+              <div class="bd-wte-card avoid">
+                <div class="bd-ic-badge avoid">
+                  <svg class="bd-ic" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.3">
+                    <path d="M8 1.6 14 12.8H2L8 1.6Z" stroke-linejoin="round" />
+                    <path d="M8 6.4v3" stroke-linecap="round" />
+                    <path d="M8 11.4h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <h3>Who Should Avoid This</h3>
+                <p>Not recommended for those who are pregnant or nursing, have a known allergy to any included ingredient, or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this treatment is right for you.</p>
+              </div>
+              <div class="bd-wte-card">
+                <div class="bd-ic-badge">
+                  <svg class="bd-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M8 1.5c2.4 3.2 4 5.3 4 7.5a4 4 0 0 1-8 0c0-2.2 1.6-4.3 4-7.5Z" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Aftercare</h3>
+                <p>Continue your regular skincare routine and stay hydrated in the days after treatment to help support your results.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="bd-section" id="doorstep" style="background:var(--cream-2);">
           <div class="bd-container bd-split">
-            <div class="bd-split-photo bd-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp" role="img" aria-label="Mobile Beauty Drip therapy setup in Las Vegas">
+            <div class="bd-split-photo bd-reveal" data-bg="./solace/assets/sw-beautydrip-split.jpg" role="img" aria-label="Mobile Beauty Drip therapy across Las Vegas">
             </div>
             <div class="bd-reveal">
               <p class="bd-eyebrow">Visit Us or We Come to You</p>

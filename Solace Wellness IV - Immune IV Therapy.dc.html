@@ -498,6 +498,60 @@
           color: var(--ink-soft);
         }
 
+        .im-wte-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-top: 32px;
+        }
+
+        .im-wte-card {
+          background: var(--cream);
+          border-radius: 18px;
+          padding: 26px 24px;
+          text-align: left;
+        }
+
+        .im-wte-card.avoid {
+          background: var(--cream-2);
+          box-shadow: inset 0 0 0 1px var(--line);
+          border-left: 4px solid var(--tan);
+        }
+
+        .im-wte-card .im-ic-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 14px;
+        }
+
+        .im-wte-card .im-ic-badge.avoid {
+          background: var(--brown-800);
+        }
+
+        .im-wte-card .im-ic-badge .im-ic {
+          width: 20px;
+          height: 20px;
+        }
+
+        .im-wte-card h3 {
+          font-size: 16px;
+          margin: 0 0 8px;
+        }
+
+        .im-wte-card p {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0;
+        }
+
+        @media (min-width: 900px) {
+          .im-wte-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         .im-alert {
           background: var(--cream-2);
           border-left: 4px solid var(--tan);
@@ -803,25 +857,44 @@
                 <span>$300 per treatment</span>
               </div>
             </div>
-            <p class="im-lede im-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
-            <p class="im-body im-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Great for
-              anyone navigating seasonal wellness challenges, frequent travel, or looking to support their immune
-              system as part of a regular wellness routine.</p>
-            <p class="im-lede im-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
-            <p class="im-body im-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
-              recommended for those who are pregnant or nursing, have a known allergy to any included ingredient,
-              or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this
-              treatment is right for you.</p>
-            <p class="im-lede im-center" style="max-width:640px;margin:20px auto 6px;">Aftercare</p>
-            <p class="im-body im-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Stay hydrated
-              and rest as needed. Most clients return to their day shortly after treatment.</p>
+            <div class="im-wte-grid">
+              <div class="im-wte-card">
+                <div class="im-ic-badge">
+                  <svg class="im-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Who It's For</h3>
+                <p>Great for anyone navigating seasonal wellness challenges, frequent travel, or looking to support their immune system as part of a regular wellness routine.</p>
+              </div>
+              <div class="im-wte-card avoid">
+                <div class="im-ic-badge avoid">
+                  <svg class="im-ic" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.3">
+                    <path d="M8 1.6 14 12.8H2L8 1.6Z" stroke-linejoin="round" />
+                    <path d="M8 6.4v3" stroke-linecap="round" />
+                    <path d="M8 11.4h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <h3>Who Should Avoid This</h3>
+                <p>Not recommended for those who are pregnant or nursing, have a known allergy to any included ingredient, or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this treatment is right for you.</p>
+              </div>
+              <div class="im-wte-card">
+                <div class="im-ic-badge">
+                  <svg class="im-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M8 1.5c2.4 3.2 4 5.3 4 7.5a4 4 0 0 1-8 0c0-2.2 1.6-4.3 4-7.5Z" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Aftercare</h3>
+                <p>Stay hydrated and rest as needed. Most clients return to their day shortly after treatment.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="im-section" id="doorstep" style="background:var(--cream-2);">
           <div class="im-container im-split">
-            <div class="im-split-photo im-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp" role="img" aria-label="Mobile Immune IV therapy setup in Las Vegas">
+            <div class="im-split-photo im-reveal" data-bg="./solace/assets/89b96124c6eb0599.webp" role="img" aria-label="Mobile Immune IV therapy setup in Las Vegas">
             </div>
             <div class="im-reveal">
               <p class="im-eyebrow">Visit Us or We Come to You</p>

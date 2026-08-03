@@ -35,11 +35,11 @@
       <meta property="og:description"
         content="Skin Brightening IV in Summerlin, or mobile throughout Las Vegas. A higher-dose Glutathione &amp; Vitamin C infusion for a brighter, more even skin tone.">
       <meta property="og:url" content="https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Skin%20Brightening%20IV.dc.html">
-      <meta property="og:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta property="og:image" content="./solace/assets/f29dbb95b841de5c.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Skin Brightening IV in Summerlin &amp; Las Vegas | Solace Wellness IV">
       <meta name="twitter:description" content="A higher-dose Glutathione &amp; Vitamin C infusion for a brighter, more even skin tone.">
-      <meta name="twitter:image" content="./solace/assets/a55e8e3868c543c3.webp">
+      <meta name="twitter:image" content="./solace/assets/f29dbb95b841de5c.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -515,6 +515,60 @@
           color: var(--ink-soft);
         }
 
+        .sk-wte-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-top: 32px;
+        }
+
+        .sk-wte-card {
+          background: var(--cream);
+          border-radius: 18px;
+          padding: 26px 24px;
+          text-align: left;
+        }
+
+        .sk-wte-card.avoid {
+          background: var(--cream-2);
+          box-shadow: inset 0 0 0 1px var(--line);
+          border-left: 4px solid var(--tan);
+        }
+
+        .sk-wte-card .sk-ic-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 14px;
+        }
+
+        .sk-wte-card .sk-ic-badge.avoid {
+          background: var(--brown-800);
+        }
+
+        .sk-wte-card .sk-ic-badge .sk-ic {
+          width: 20px;
+          height: 20px;
+        }
+
+        .sk-wte-card h3 {
+          font-size: 16px;
+          margin: 0 0 8px;
+        }
+
+        .sk-wte-card p {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0;
+        }
+
+        @media (min-width: 900px) {
+          .sk-wte-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         .sk-alert {
           background: var(--cream-2);
           border-left: 4px solid var(--tan);
@@ -738,7 +792,7 @@
               </ul>
             </div>
             <div class="sk-hero-media sk-reveal">
-              <div class="sk-hero-photo" style="background-image:url(./solace/assets/a55e8e3868c543c3.webp)" role="img" aria-label="Skin Brightening IV therapy in Summerlin"></div>
+              <div class="sk-hero-photo" style="background-image:url(./solace/assets/f29dbb95b841de5c.webp)" role="img" aria-label="Skin Brightening IV therapy in Summerlin"></div>
               <div class="sk-hero-badge">
                 <strong>$320</strong>
                 <span>Per treatment</span>
@@ -854,25 +908,44 @@
                 <span>$320 per treatment</span>
               </div>
             </div>
-            <p class="sk-lede sk-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
-            <p class="sk-body sk-center" style="max-width:640px;margin-left:auto;margin-right:auto;">A good fit
-              if skin tone brightening and evenness is your primary goal, and you're looking for a more
-              concentrated Glutathione dose than our general beauty formulas provide.</p>
-            <p class="sk-lede sk-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
-            <p class="sk-body sk-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
-              recommended for those who are pregnant or nursing, have a known allergy to any included ingredient,
-              or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this
-              treatment is right for you.</p>
-            <p class="sk-lede sk-center" style="max-width:640px;margin:20px auto 6px;">Aftercare</p>
-            <p class="sk-body sk-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Stay
-              hydrated and use daily sun protection - it helps protect your results between visits.</p>
+            <div class="sk-wte-grid">
+              <div class="sk-wte-card">
+                <div class="sk-ic-badge">
+                  <svg class="sk-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Who It's For</h3>
+                <p>A good fit if skin tone brightening and evenness is your primary goal, and you're looking for a more concentrated Glutathione dose than our general beauty formulas provide.</p>
+              </div>
+              <div class="sk-wte-card avoid">
+                <div class="sk-ic-badge avoid">
+                  <svg class="sk-ic" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.3">
+                    <path d="M8 1.6 14 12.8H2L8 1.6Z" stroke-linejoin="round" />
+                    <path d="M8 6.4v3" stroke-linecap="round" />
+                    <path d="M8 11.4h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <h3>Who Should Avoid This</h3>
+                <p>Not recommended for those who are pregnant or nursing, have a known allergy to any included ingredient, or have certain kidney, heart, or liver conditions. A brief health screening confirms whether this treatment is right for you.</p>
+              </div>
+              <div class="sk-wte-card">
+                <div class="sk-ic-badge">
+                  <svg class="sk-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M8 1.5c2.4 3.2 4 5.3 4 7.5a4 4 0 0 1-8 0c0-2.2 1.6-4.3 4-7.5Z" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Aftercare</h3>
+                <p>Stay hydrated and use daily sun protection - it helps protect your results between visits.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="sk-section" id="doorstep" style="background:var(--cream-2);">
           <div class="sk-container sk-split">
-            <div class="sk-split-photo sk-reveal" data-bg="./solace/assets/f8ccb75735cbb079.webp" role="img" aria-label="Mobile Skin Brightening IV therapy setup in Las Vegas">
+            <div class="sk-split-photo sk-reveal" data-bg="./solace/assets/sw-skinbright-split.jpg" role="img" aria-label="Mobile Skin Brightening IV therapy across Las Vegas">
             </div>
             <div class="sk-reveal">
               <p class="sk-eyebrow">Visit Us or We Come to You</p>

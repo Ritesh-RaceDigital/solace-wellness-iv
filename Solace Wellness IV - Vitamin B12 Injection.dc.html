@@ -522,6 +522,60 @@
           color: var(--ink-soft);
         }
 
+        .b12-wte-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-top: 32px;
+        }
+
+        .b12-wte-card {
+          background: var(--cream);
+          border-radius: 18px;
+          padding: 26px 24px;
+          text-align: left;
+        }
+
+        .b12-wte-card.avoid {
+          background: var(--cream-2);
+          box-shadow: inset 0 0 0 1px var(--line);
+          border-left: 4px solid var(--tan);
+        }
+
+        .b12-wte-card .b12-ic-badge {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 14px;
+        }
+
+        .b12-wte-card .b12-ic-badge.avoid {
+          background: var(--brown-800);
+        }
+
+        .b12-wte-card .b12-ic-badge .b12-ic {
+          width: 20px;
+          height: 20px;
+        }
+
+        .b12-wte-card h3 {
+          font-size: 16px;
+          margin: 0 0 8px;
+        }
+
+        .b12-wte-card p {
+          font-size: 14px;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0;
+        }
+
+        @media (min-width: 900px) {
+          .b12-wte-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
         .b12-alert {
           background: var(--cream-2);
           border-left: 4px solid var(--tan);
@@ -891,25 +945,44 @@
                 <span>$40 per booster</span>
               </div>
             </div>
-            <p class="b12-lede b12-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
-            <p class="b12-body b12-center" style="max-width:640px;margin-left:auto;margin-right:auto;">We see a
-              lot of people who describe themselves as "tired but wired" - running on adrenaline through a busy
-              week and crashing on the weekend. It's also popular with frequent flyers, plant-based eaters (B12
-              mainly comes from animal products), and anyone who just wants a simple, ongoing energy routine.</p>
-            <p class="b12-lede b12-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
-            <p class="b12-body b12-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
-              recommended for those with a known allergy to cobalamin or cobalt. A brief health screening confirms
-              whether this treatment is right for you.</p>
-            <p class="b12-lede b12-center" style="max-width:640px;margin:20px auto 6px;">Aftercare</p>
-            <p class="b12-body b12-center" style="max-width:640px;margin-left:auto;margin-right:auto;">No downtime
-              - most clients return to their day immediately after the injection.</p>
+            <div class="b12-wte-grid">
+              <div class="b12-wte-card">
+                <div class="b12-ic-badge">
+                  <svg class="b12-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Who It's For</h3>
+                <p>We see a lot of people who describe themselves as "tired but wired" - running on adrenaline through a busy week and crashing on the weekend. It's also popular with frequent flyers, plant-based eaters (B12 mainly comes from animal products), and anyone who just wants a simple, ongoing energy routine.</p>
+              </div>
+              <div class="b12-wte-card avoid">
+                <div class="b12-ic-badge avoid">
+                  <svg class="b12-ic" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.3">
+                    <path d="M8 1.6 14 12.8H2L8 1.6Z" stroke-linejoin="round" />
+                    <path d="M8 6.4v3" stroke-linecap="round" />
+                    <path d="M8 11.4h.01" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <h3>Who Should Avoid This</h3>
+                <p>Not recommended for those with a known allergy to cobalamin or cobalt. A brief health screening confirms whether this treatment is right for you.</p>
+              </div>
+              <div class="b12-wte-card">
+                <div class="b12-ic-badge">
+                  <svg class="b12-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+                    <path d="M8 1.5c2.4 3.2 4 5.3 4 7.5a4 4 0 0 1-8 0c0-2.2 1.6-4.3 4-7.5Z" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3>Aftercare</h3>
+                <p>No downtime - most clients return to their day immediately after the injection.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="b12-section" id="doorstep" style="background:var(--cream-2);">
           <div class="b12-container b12-split">
-            <div class="b12-split-photo b12-reveal" data-bg="./solace/assets/9e6cf73f3151de71.webp" role="img" aria-label="Mobile Vitamin B12 injection service in Las Vegas">
+            <div class="b12-split-photo b12-reveal" data-bg="./solace/assets/sw-vitaminb12-split.jpg" role="img" aria-label="Mobile Vitamin B12 injection service in Las Vegas">
             </div>
             <div class="b12-reveal">
               <p class="b12-eyebrow">Visit Us or We Come to You</p>

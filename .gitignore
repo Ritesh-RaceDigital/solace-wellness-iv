@@ -5,6 +5,7 @@
 # to serve the live site, and the PDFs are large duplicates.
 uploads/
 screenshots/
+_preview/
 
 # Empty leftover log files
 stderr.txt

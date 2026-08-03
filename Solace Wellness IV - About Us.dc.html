@@ -339,6 +339,78 @@
           color: var(--tan);
         }
 
+        /* ─── Founder card ────────────────────────────────────────────────── */
+        .au-founder-card {
+          position: relative;
+          text-align: left;
+          background: #fff;
+          border-radius: 24px;
+          padding: 40px 28px 32px;
+          margin-top: 30px;
+          box-shadow: 0 24px 48px -30px rgba(43, 23, 16, 0.18), inset 0 0 0 1px var(--line);
+        }
+
+        .au-founder-card .au-body {
+          max-width: none;
+        }
+
+        .au-founder-card .au-body:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .au-founder-quote {
+          width: 34px;
+          height: 26px;
+          color: var(--tan);
+          opacity: 0.55;
+          margin: 0 0 14px;
+        }
+
+        .au-founder-sign {
+          margin: 22px 0 0;
+          padding-top: 18px;
+          border-top: 1px solid var(--line);
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          color: var(--brown-800);
+        }
+
+        .au-cred-row {
+          margin: 26px 0 0;
+          padding: 0;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .au-cred-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          color: var(--brown-800);
+          background: var(--tan-soft);
+          border-radius: 999px;
+          padding: 10px 18px;
+        }
+
+        .au-cred-pill .au-ic {
+          width: 16px;
+          height: 16px;
+          color: var(--tan);
+        }
+
+        @media (min-width: 900px) {
+          .au-founder-card {
+            padding: 48px 52px 40px;
+          }
+        }
+
         /* ─── Dark section (mission/vision, process bg accents) ─────────────── */
         .au-section-dark {
           background: var(--brown-900);
@@ -755,28 +827,36 @@
 
         <!-- ═══ FOUNDER STORY ═══ -->
         <section class="au-section" id="founder" style="background:var(--cream-2);">
-          <div class="au-container au-center" style="max-width:760px;">
+          <div class="au-container au-center" style="max-width:720px;">
             <p class="au-eyebrow">Meet Our Founder</p>
             <h2>Founded by a Board-Certified Nurse Practitioner</h2>
-            <p class="au-body au-center">Founded by board-certified nurse practitioner Christina, Solace Wellness
-              IV was created to bring a more personalized and medically guided approach to IV vitamin therapy.</p>
-            <p class="au-body au-center">After years caring for patients in hospitals and serving in the United
-              States Air Force medical field, she recognized the need for wellness care focused on prevention,
-              education, and individualized treatment - rather than one-size-fits-all services.</p>
-            <p class="au-body au-center">Today, patients can receive care in our Summerlin wellness suite or
-              through our convenient mobile IV service throughout Las Vegas.</p>
-            <ul class="au-inline-check" style="align-items:center;justify-content:center;flex-direction:row;flex-wrap:wrap;gap:10px 22px;margin-top:22px;">
-              <li>
+
+            <div class="au-founder-card">
+              <svg class="au-founder-quote" viewBox="0 0 32 24" fill="currentColor">
+                <path d="M0 24V14.4C0 6.4 4.8 1.2 12 0l1.6 3.6C9.2 5.2 7 8 7 11.6h6V24H0Zm18 0V14.4c0-8 4.8-13.2 12-14.4l1.6 3.6c-4.4 1.6-6.6 4.4-6.6 8h6V24H18Z" />
+              </svg>
+              <p class="au-body">Founded by board-certified nurse practitioner Christina, Solace Wellness
+                IV was created to bring a more personalized and medically guided approach to IV vitamin therapy.</p>
+              <p class="au-body">After years caring for patients in hospitals and serving in the United
+                States Air Force medical field, she recognized the need for wellness care focused on prevention,
+                education, and individualized treatment - rather than one-size-fits-all services.</p>
+              <p class="au-body">Today, patients can receive care in our Summerlin wellness suite or
+                through our convenient mobile IV service throughout Las Vegas.</p>
+              <p class="au-founder-sign">— Christina, NP · Founder, Solace Wellness IV</p>
+            </div>
+
+            <ul class="au-cred-row">
+              <li class="au-cred-pill">
                 <svg class="au-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                   <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>Board-Certified Nurse Practitioner
               </li>
-              <li>
+              <li class="au-cred-pill">
                 <svg class="au-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                   <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>U.S. Air Force Medical Professional
               </li>
-              <li>
+              <li class="au-cred-pill">
                 <svg class="au-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                   <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>Hospital-Trained Patient Care
