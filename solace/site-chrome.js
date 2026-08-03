@@ -50,6 +50,9 @@
     morningAfterMartini: 'Solace Wellness IV - Morning After Martini.dc.html',
     jetsetTravelRecoveryIv: 'Solace Wellness IV - JetSet Travel Recovery IV.dc.html',
     athleticRecoveryIv: 'Solace Wellness IV - Athletic Recovery IV.dc.html',
+    vitaminCIv: 'Solace Wellness IV - Vitamin C IV.dc.html',
+    immuneBoostTherapy: 'Solace Wellness IV - Immune Boost Therapy.dc.html',
+    seasonalWellnessIv: 'Solace Wellness IV - Seasonal Wellness IV.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -114,7 +117,15 @@
         { name: 'Athletic Recovery IV', href: PAGES.athleticRecoveryIv },
       ],
     },
-    { name: 'Immune Therapy', href: PAGES.immuneIvTherapy, items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
+    {
+      name: 'Immune Therapy', href: PAGES.immuneIvTherapy,
+      items: [
+        { name: 'ImmunoShield IV', href: PAGES.immuneIvTherapy },
+        { name: 'Vitamin C IV', href: PAGES.vitaminCIv },
+        { name: 'Immune Boost Therapy', href: PAGES.immuneBoostTherapy },
+        { name: 'Seasonal Wellness IV', href: PAGES.seasonalWellnessIv },
+      ],
+    },
   ];
 
   // Add/remove/reorder nav items here - every page using <solace-header>

@@ -145,4 +145,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Vitamin%20C%20IV.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Immune%20Boost%20Therapy.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Seasonal%20Wellness%20IV.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
