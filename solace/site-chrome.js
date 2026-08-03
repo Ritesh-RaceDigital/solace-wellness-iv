@@ -47,6 +47,9 @@
     revitadrip: 'Solace Wellness IV - Solace RevitaDrip.dc.html',
     wellnessHydrationIv: 'Solace Wellness IV - Wellness Hydration IV.dc.html',
     vitaminIvTherapy: 'Solace Wellness IV - Vitamin IV Therapy.dc.html',
+    morningAfterMartini: 'Solace Wellness IV - Morning After Martini.dc.html',
+    jetsetTravelRecoveryIv: 'Solace Wellness IV - JetSet Travel Recovery IV.dc.html',
+    athleticRecoveryIv: 'Solace Wellness IV - Athletic Recovery IV.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -102,7 +105,15 @@
         { name: 'Vitamin IV Therapy', href: PAGES.vitaminIvTherapy },
       ],
     },
-    { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Travel Recovery IV', 'Beauty & Skin Glow IV', 'Athletic Recovery IV'] },
+    {
+      name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy,
+      items: [
+        { name: 'Morning After Martini', href: PAGES.morningAfterMartini },
+        { name: 'JetSet Travel Recovery IV', href: PAGES.jetsetTravelRecoveryIv },
+        { name: 'Beauty & Skin Glow IV', href: PAGES.beautySkinGlowIv },
+        { name: 'Athletic Recovery IV', href: PAGES.athleticRecoveryIv },
+      ],
+    },
     { name: 'Immune Therapy', href: PAGES.immuneIvTherapy, items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
   ];
 
