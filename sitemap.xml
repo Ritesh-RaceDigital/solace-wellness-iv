@@ -115,4 +115,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Solace%20RevitaDrip.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Wellness%20Hydration%20IV.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://solacewellnessiv.com/Solace%20Wellness%20IV%20-%20Vitamin%20IV%20Therapy.dc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

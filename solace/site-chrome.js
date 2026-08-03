@@ -44,6 +44,9 @@
     nad500mg: 'Solace Wellness IV - NAD+ 500mg.dc.html',
     cellularRepair: 'Solace Wellness IV - Cellular Repair.dc.html',
     healthyAging: 'Solace Wellness IV - Healthy Aging.dc.html',
+    revitadrip: 'Solace Wellness IV - Solace RevitaDrip.dc.html',
+    wellnessHydrationIv: 'Solace Wellness IV - Wellness Hydration IV.dc.html',
+    vitaminIvTherapy: 'Solace Wellness IV - Vitamin IV Therapy.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -92,7 +95,12 @@
     },
     {
       name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy,
-      items: [{ name: 'Classic Myers Cocktail', href: PAGES.myersCocktail }, 'Solace RevitaDrip', 'Wellness Hydration IV', 'Vitamin IV Therapy'],
+      items: [
+        { name: 'Classic Myers Cocktail', href: PAGES.myersCocktail },
+        { name: 'Solace RevitaDrip', href: PAGES.revitadrip },
+        { name: 'Wellness Hydration IV', href: PAGES.wellnessHydrationIv },
+        { name: 'Vitamin IV Therapy', href: PAGES.vitaminIvTherapy },
+      ],
     },
     { name: 'Recovery IV Therapy', href: PAGES.recoveryIvTherapy, items: ['Morning After Martini', 'JetSet Travel Recovery IV', 'Beauty & Skin Glow IV', 'Athletic Recovery IV'] },
     { name: 'Immune Therapy', href: PAGES.immuneIvTherapy, items: ['ImmunoShield IV', 'Vitamin C IV', 'Immune Boost Therapy', 'Seasonal Wellness IV'] },
