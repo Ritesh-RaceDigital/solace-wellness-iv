@@ -147,8 +147,10 @@
     return current === 'home' ? item.hash : PAGES.home + item.hash;
   }
 
-  function bookHref(current) {
-    return current === 'home' ? '#book' : PAGES.home + '#book';
+  const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/';
+
+  function bookHref() {
+    return BOOKING_URL;
   }
 
   function escapeAttr(str) {
@@ -223,7 +225,7 @@
             <nav class="gh-nav-desktop">${navLinks}</nav>
             <div class="gh-nav-actions">
               <a href="${PHONE_HREF}" class="gh-nav-phone">${phoneIconSvg()}<span class="gh-nav-phone-text">${PHONE_DISPLAY}</span></a>
-              <a href="${escapeAttr(book)}" class="gh-btn gh-btn-solid">Book Now</a>
+              <a href="${escapeAttr(book)}" target="_blank" rel="noopener" class="gh-btn gh-btn-solid">Book Now</a>
             </div>
             <button class="gh-hamburger" type="button" aria-expanded="false" aria-label="Menu">
               <span></span><span></span><span></span>
@@ -232,7 +234,7 @@
           <nav class="gh-menu">
             ${navLinks}
             <a href="${PHONE_HREF}" class="gh-menu-phone">&#128222; ${PHONE_DISPLAY}</a>
-            <a href="${escapeAttr(book)}" class="gh-menu-book">Book Now</a>
+            <a href="${escapeAttr(book)}" target="_blank" rel="noopener" class="gh-menu-book">Book Now</a>
           </nav>
         </header>
       `;
