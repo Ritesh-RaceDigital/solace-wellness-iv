@@ -295,7 +295,7 @@ function SOLACEHP(_p = {}) {
       fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 800,
       fontSize: 46,
-      lineHeight: "56px",
+      lineHeight: "1.1",
       textBox: "trim-both cap alphabetic",
       color: "rgb(34,34,34)"
     }
