@@ -53,6 +53,8 @@
     vitaminCIv: 'Solace Wellness IV - Vitamin C IV.dc.html',
     immuneBoostTherapy: 'Solace Wellness IV - Immune Boost Therapy.dc.html',
     seasonalWellnessIv: 'Solace Wellness IV - Seasonal Wellness IV.dc.html',
+    process: 'Solace Wellness IV - How It Works.dc.html',
+    contact: 'Solace Wellness IV - Contact.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -134,9 +136,9 @@
   const NAV_ITEMS = [
     { key: 'treatments', label: 'Treatments', type: 'dropdown', menu: TREATMENT_MENU },
     { key: 'about', label: 'About', type: 'page' },
-    { key: 'process', label: 'How It Works', type: 'hash', hash: '#process' },
+    { key: 'process', label: 'How It Works', type: 'page' },
     { key: 'reviews', label: 'Reviews', type: 'hash', hash: '#reviews' },
-    { key: 'contact', label: 'Contact', type: 'hash', hash: '#book' },
+    { key: 'contact', label: 'Contact', type: 'page' },
   ];
 
   function hrefFor(item, current) {
