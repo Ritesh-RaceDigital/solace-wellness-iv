@@ -1091,6 +1091,152 @@
           color: #fff;
         }
 
+        /* press & recognition (top strip) */
+        .solace-mobile .sm-press {
+          background: var(--cream);
+          padding: 32px 20px;
+        }
+
+        .solace-mobile .sm-press-row {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 14px;
+          margin-top: 6px;
+        }
+
+        .solace-mobile .sm-press-award {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          background: #fff;
+          border-radius: 14px;
+          padding: 14px 16px;
+          box-shadow: 0 10px 24px -16px rgba(43, 23, 16, 0.35);
+        }
+
+        .solace-mobile .sm-press-trophy {
+          font-size: 24px;
+          line-height: 1;
+          flex: none;
+        }
+
+        .solace-mobile .sm-press-award strong {
+          display: block;
+          font-family: 'Poppins', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--brown-800);
+          line-height: 1.35;
+        }
+
+        .solace-mobile .sm-press-award small {
+          display: block;
+          font-size: 12px;
+          color: var(--ink-soft);
+          margin-top: 2px;
+        }
+
+        .solace-mobile .sm-press-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+
+        .solace-mobile .sm-press-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: #fff;
+          box-shadow: inset 0 0 0 1px var(--line);
+          color: var(--brown-800);
+          font-family: 'Poppins', sans-serif;
+          font-size: 12.5px;
+          font-weight: 600;
+          padding: 9px 16px;
+          border-radius: 999px;
+        }
+
+        /* recognition section (after Meet Your Provider) */
+        .solace-mobile .sm-recognition {
+          background: var(--cream);
+          text-align: center;
+        }
+
+        .solace-mobile .sm-recognition-award {
+          font-size: 20px;
+          font-weight: 700;
+          font-family: 'Poppins', sans-serif;
+          color: var(--brown-800);
+          margin: 0 0 4px;
+        }
+
+        .solace-mobile .sm-recognition-featured {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 13px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--tan);
+          margin: 20px 0 10px;
+        }
+
+        .solace-mobile .sm-recognition-list {
+          list-style: none;
+          margin: 0 0 8px;
+          padding: 0;
+        }
+
+        .solace-mobile .sm-recognition-list li {
+          margin-bottom: 8px;
+        }
+
+        .solace-mobile .sm-recognition-list a {
+          color: var(--tan);
+          font-weight: 600;
+          text-decoration: underline;
+        }
+
+        /* trust checklist (under provider bio, and final reminder) */
+        .solace-mobile .sm-trust-list {
+          list-style: none;
+          margin: 16px 0 0;
+          padding: 0;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .solace-mobile .sm-trust-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          font-size: 14.5px;
+          color: var(--ink);
+        }
+
+        .solace-mobile .sm-trust-check {
+          flex: none;
+          width: 18px;
+          height: 18px;
+          color: var(--tan);
+          margin-top: 1px;
+        }
+
+        .solace-mobile .sm-trust-final {
+          background: var(--brown-900);
+        }
+
+        .solace-mobile .sm-trust-final .sm-trust-list li {
+          color: rgba(255, 255, 255, 0.92);
+        }
+
+        .solace-mobile .sm-trust-final .sm-trust-check {
+          color: var(--tan);
+        }
+
       </style>
     </helmet>
 
@@ -1121,6 +1267,23 @@
           <div class="sm-btn-row">
             <a href="#treatments" class="sm-btn sm-btn-outline">View Treatments</a>
             <a href="https://solacewellnessiv.janeapp.com/" target="_blank" rel="noopener" class="sm-btn sm-btn-solid">Book Now</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="sm-press" id="press">
+        <p class="sm-eyebrow" style="text-align:center;">Recognized &amp; Featured In</p>
+        <div class="sm-press-row">
+          <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" class="sm-press-award">
+            <span class="sm-press-trophy" aria-hidden="true">🏆</span>
+            <span>
+              <strong>Best IV Therapy Clinic in Las Vegas – 2026</strong>
+              <small>Recognized by Best of Best Review</small>
+            </span>
+          </a>
+          <div class="sm-press-pills">
+            <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" class="sm-press-pill">📰 USA News</a>
+            <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" class="sm-press-pill">📰 Women's Insider</a>
           </div>
         </div>
       </section>
@@ -1289,6 +1452,29 @@
         <p class="sm-body">Whether you visit our Summerlin wellness suite or choose our mobile IV service, every
           treatment begins with a comprehensive medical assessment to ensure it is appropriate for your health
           needs.</p>
+        <ul class="sm-trust-list">
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Board-Certified Nurse Practitioner</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>U.S. Air Force Medical Professional</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Featured in USA News</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Featured in Women's Insider</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Best IV Therapy Clinic in Las Vegas – 2026</li>
+        </ul>
+      </section>
+
+      <section class="sm-recognition" id="recognition">
+        <p class="sm-eyebrow" style="text-align:center;">Recognized for Excellence</p>
+        <p class="sm-recognition-award">🏆 Best IV Therapy Clinic in Las Vegas – 2026</p>
+        <p class="sm-body" style="text-align:center;">Recognized by
+          <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" style="color:var(--tan);font-weight:600;text-decoration:underline;">Best of Best Review</a>
+        </p>
+        <p class="sm-recognition-featured">Featured In</p>
+        <ul class="sm-recognition-list">
+          <li><a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener">USA News</a></li>
+          <li><a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener">Women's Insider</a></li>
+        </ul>
+        <div style="margin-top:8px;">
+          <a href="Solace Wellness IV - Press & Recognition.dc.html" class="sm-btn sm-btn-outline" style="display:inline-flex;">Read Our Story</a>
+        </div>
       </section>
 
       <section class="sm-treatments" id="treatments">
@@ -2057,6 +2243,20 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="sm-trust-final" id="why-solace">
+        <p class="sm-eyebrow light" style="text-align:center;">Before You Book</p>
+        <h2 class="light" style="text-align:center;">Why Patients Choose Solace</h2>
+        <ul class="sm-trust-list">
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Board-Certified Nurse Practitioner</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Personalized Medical Assessment</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Mobile + Summerlin Location</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Premium Medical-Grade Ingredients</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Featured in USA News</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Featured in Women's Insider</li>
+          <li><svg class="sm-trust-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" /></svg>Best IV Therapy Clinic in Las Vegas – 2026</li>
+        </ul>
       </section>
 
       <section class="sm-contact" id="book">
