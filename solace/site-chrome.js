@@ -55,6 +55,7 @@
     seasonalWellnessIv: 'Solace Wellness IV - Seasonal Wellness IV.dc.html',
     process: 'Solace Wellness IV - How It Works.dc.html',
     contact: 'Solace Wellness IV - Contact.dc.html',
+    reviews: 'Solace Wellness IV - Reviews.dc.html',
   };
 
   const PHONE_DISPLAY = '(702) 526-6763';
@@ -137,7 +138,7 @@
     { key: 'treatments', label: 'Treatments', type: 'dropdown', menu: TREATMENT_MENU },
     { key: 'about', label: 'About', type: 'page' },
     { key: 'process', label: 'How It Works', type: 'page' },
-    { key: 'reviews', label: 'Reviews', type: 'hash', hash: '#reviews' },
+    { key: 'reviews', label: 'Reviews', type: 'page' },
     { key: 'contact', label: 'Contact', type: 'page' },
   ];
 
