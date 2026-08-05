@@ -8,22 +8,13 @@
     content="Recovery IV Therapy in Summerlin, or mobile throughout Las Vegas - rapid rehydration, electrolyte replacement, and muscle recovery. Licensed nurses, same-day appointments.">
   <title>Recovery IV Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -142,41 +133,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .rt-page {
+.rt-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -219,7 +176,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -430,7 +387,7 @@
         }
 
         .rt-inline-check .rt-ic {
-          color: var(--tan);
+          color: var(--tan-text);
           margin-top: 3px;
         }
 
@@ -506,7 +463,7 @@
           font-family: 'Poppins', sans-serif;
           font-weight: 500;
           font-size: 13.5px;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 12px;
         }
 
@@ -639,7 +596,7 @@
         }
 
         .rt-chip .rt-ic {
-          color: var(--tan);
+          color: var(--tan-text);
           width: 14px;
           height: 14px;
         }
@@ -685,7 +642,7 @@
 
         .rt-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -826,7 +783,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="rt-page" id="rt-page">
 
@@ -1027,7 +997,7 @@
                   until you're feeling fully recovered.</p>
                 <p class="rt-svc-note">Whether you're staying on the Strip or relaxing at your hotel, Solace Wellness
                   IV comes directly to you. <a href="/morning-after-martini"
-                    style="color:var(--tan);font-weight:600;">See our full Morning After Martini page &rarr;</a></p>
+                    style="color:var(--tan-text);font-weight:600;">See our full Morning After Martini page &rarr;</a></p>
               </div>
               <div class="rt-svc-card rt-reveal">
                 <h3>JetSet Travel Recovery IV</h3>
@@ -1078,7 +1048,7 @@
                   clients feel refreshed within a few hours.</p>
                 <p class="rt-svc-note">Come to Las Vegas feeling your best, or recover before you head home.
                   <a href="/jetset-travel-recovery-iv"
-                    style="color:var(--tan);font-weight:600;">See our full JetSet Travel Recovery IV page &rarr;</a></p>
+                    style="color:var(--tan-text);font-weight:600;">See our full JetSet Travel Recovery IV page &rarr;</a></p>
               </div>
               <div class="rt-svc-card rt-reveal">
                 <h3>Beauty & Skin Glow IV</h3>
@@ -1130,7 +1100,7 @@
                   treatment to help support your results.</p>
                 <p class="rt-svc-note">This beauty-focused recovery drip is a favorite before holidays, special
                   occasions, and important events. <a href="/beauty-iv-therapy"
-                    style="color:var(--tan);font-weight:600;">See our full Beauty IV Therapy page &rarr;</a></p>
+                    style="color:var(--tan-text);font-weight:600;">See our full Beauty IV Therapy page &rarr;</a></p>
               </div>
               <div class="rt-svc-card rt-reveal">
                 <h3>Athletic Recovery IV</h3>
@@ -1182,7 +1152,7 @@
                   of the day to let your body fully recover.</p>
                 <p class="rt-svc-note">Stay at peak performance and recover in place.
                   <a href="/athletic-recovery-iv"
-                    style="color:var(--tan);font-weight:600;">See our full Athletic Recovery IV page &rarr;</a></p>
+                    style="color:var(--tan-text);font-weight:600;">See our full Athletic Recovery IV page &rarr;</a></p>
               </div>
             </div>
             <div class="rt-alert rt-reveal">

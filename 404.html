@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="robots" content="noindex">
+  <title>Page Not Found | Solace Wellness IV</title>
+  <link rel="stylesheet" href="./solace/site-chrome.css">
+  <script src="./solace/site-chrome.js"></script>
+  <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #fff; }
+    a { color: inherit; text-decoration: none; }
+
+    .nf-page {
+      --brown-900: rgb(40, 20, 13);
+      --brown-800: rgb(43, 23, 16);
+      --brown-700: rgb(75, 33, 18);
+      --tan: rgb(169, 131, 92);
+      --tan-text: rgb(122, 92, 61);
+      --cream: rgb(254, 250, 245);
+      --ink: rgb(34, 34, 34);
+      --ink-soft: rgb(47, 42, 37);
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--ink);
+    }
+
+    .nf-main {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 20px;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .nf-eyebrow {
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tan-text);
+      margin: 0 0 12px;
+    }
+
+    .nf-page h1 {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      color: var(--brown-800);
+      margin: 0 0 14px;
+    }
+
+    .nf-body {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 52ch;
+      margin: 0 auto 28px;
+    }
+
+    .nf-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .nf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 26px;
+      border-radius: 999px;
+      transition: transform .2s ease;
+    }
+
+    .nf-btn:hover { transform: translateY(-2px); }
+    .nf-btn:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+
+    .nf-btn-solid {
+      background: linear-gradient(90deg, var(--brown-700), #000);
+      color: #fff;
+    }
+
+    .nf-btn-outline {
+      background: transparent;
+      color: var(--brown-800);
+      box-shadow: inset 0 0 0 1.5px var(--brown-800);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nf-page">
+    <solace-header current="404"></solace-header>
+    <main class="nf-main">
+      <div>
+        <p class="nf-eyebrow">404 &middot; Page Not Found</p>
+        <h1>We Couldn't Find That Page</h1>
+        <p class="nf-body">The page you're looking for may have moved or no longer exists. Let's get you back to
+          IV therapy in Summerlin and mobile across Las Vegas.</p>
+        <div class="nf-actions">
+          <a href="/" class="nf-btn nf-btn-solid">Back to Home</a>
+          <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank" rel="noopener" class="nf-btn nf-btn-outline">Book Now</a>
+        </div>
+      </div>
+    </main>
+    <solace-footer></solace-footer>
+  </div>
+</body>
+
+</html>

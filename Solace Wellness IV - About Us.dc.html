@@ -8,22 +8,13 @@
     content="About Solace Wellness IV - a board-certified nurse practitioner's IV therapy practice with a private Summerlin wellness suite and mobile service across Las Vegas. Learn our story, credentials, and values.">
   <title>About Solace Wellness IV | IV Therapy Summerlin &amp; Las Vegas</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -36,12 +27,12 @@
       <meta property="og:description"
         content="A board-certified nurse practitioner's IV therapy practice with a private Summerlin wellness suite and mobile service across Las Vegas.">
       <meta property="og:url" content="https://solacewellnessiv.com/about-us">
-      <meta property="og:image" content="./solace/assets/sw-aboutus-hero.jpg">
+      <meta property="og:image" content="./solace/assets/sw-aboutus-hero.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="About Solace Wellness IV | IV Therapy Summerlin &amp; Las Vegas">
       <meta name="twitter:description"
         content="A board-certified nurse practitioner's IV therapy practice in Summerlin, with mobile service across Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/sw-aboutus-hero.jpg">
+      <meta name="twitter:image" content="./solace/assets/sw-aboutus-hero.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,41 +44,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .au-page {
+.au-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -130,7 +87,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -337,7 +294,7 @@
         }
 
         .au-inline-check .au-ic {
-          color: var(--tan);
+          color: var(--tan-text);
         }
 
         /* ─── Founder card ────────────────────────────────────────────────── */
@@ -362,7 +319,7 @@
         .au-founder-quote {
           width: 34px;
           height: 26px;
-          color: var(--tan);
+          color: var(--tan-text);
           opacity: 0.55;
           margin: 0 0 14px;
         }
@@ -403,7 +360,7 @@
         .au-cred-pill .au-ic {
           width: 16px;
           height: 16px;
-          color: var(--tan);
+          color: var(--tan-text);
         }
 
         @media (min-width: 900px) {
@@ -463,7 +420,7 @@
         }
 
         .au-mv-card .au-ic-badge .au-ic {
-          color: var(--tan);
+          color: var(--tan-text);
         }
 
         /* ─── Card grids (why us / values / services) ────────────────────────── */
@@ -552,7 +509,7 @@
           font-family: 'Poppins', sans-serif;
           font-weight: 700;
           font-size: 20px;
-          color: var(--tan);
+          color: var(--tan-text);
           position: relative;
           z-index: 1;
         }
@@ -752,7 +709,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="au-page" id="au-page">
 
@@ -779,7 +749,7 @@
               </div>
             </div>
             <div class="au-hero-media au-reveal">
-              <div class="au-hero-photo" style="background-image:url(./solace/assets/sw-aboutus-hero.jpg)" role="img" aria-label="IV therapy equipment used at Solace Wellness IV"></div>
+              <div class="au-hero-photo" style="background-image:url(./solace/assets/sw-aboutus-hero.webp)" role="img" aria-label="IV therapy equipment used at Solace Wellness IV"></div>
               <div class="au-hero-badge">
                 <strong>24/7</strong>
                 <span>Availability by appointment</span>
@@ -792,7 +762,7 @@
         <section class="au-section" id="story">
           <div class="au-container au-split">
             <div class="au-story-photo au-reveal"
-              data-bg="./solace/assets/sw-aboutus-story.jpg" role="img" aria-label="IV therapy treatment in progress at Solace Wellness IV"></div>
+              data-bg="./solace/assets/sw-aboutus-story.webp" role="img" aria-label="IV therapy treatment in progress at Solace Wellness IV"></div>
             <div class="au-reveal">
               <p class="au-eyebrow">Who We Are</p>
               <h2>Wellness, Delivered However Las Vegas Needs It</h2>
@@ -834,8 +804,7 @@
           </div>
 
           <div class="au-container au-split" style="margin-top:40px;">
-            <div class="au-story-photo au-reveal" data-bg="./solace/assets/sw-founder-christina.jpg" role="img"
-              style="background-position:center 22%;"
+            <div class="au-story-photo au-reveal" data-bg="./solace/assets/sw-founder-christina.webp" role="img"
               aria-label="Christina Pangan, founder and board-certified nurse practitioner at Solace Wellness IV"></div>
             <div class="au-reveal">
               <div class="au-founder-card" style="margin-top:0;">
@@ -1187,7 +1156,7 @@
               </div>
             </div>
             <p class="au-center" style="margin-top:20px;"><a href="/how-it-works"
-                style="color:var(--tan);font-weight:600;text-decoration:underline;">See the full walkthrough,
+                style="color:var(--tan-text);font-weight:600;text-decoration:underline;">See the full walkthrough,
                 including what to expect at your first visit &rarr;</a></p>
           </div>
         </section>

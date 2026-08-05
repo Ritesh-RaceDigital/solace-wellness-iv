@@ -8,22 +8,13 @@
     content="Contact Solace Wellness IV - visit our private Summerlin wellness suite or book mobile IV therapy anywhere in Las Vegas. Call, text, or send a message to get started.">
   <title>Contact Us | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -36,11 +27,11 @@
       <meta property="og:description"
         content="Visit our private Summerlin wellness suite or book mobile IV therapy anywhere in Las Vegas. Call, text, or send a message to get started.">
       <meta property="og:url" content="https://solacewellnessiv.com/contact">
-      <meta property="og:image" content="./solace/assets/sw-contact-hero.jpg">
+      <meta property="og:image" content="./solace/assets/sw-contact-hero.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Contact Us | Solace Wellness IV">
       <meta name="twitter:description" content="Visit our private Summerlin wellness suite or book mobile IV therapy anywhere in Las Vegas.">
-      <meta name="twitter:image" content="./solace/assets/sw-contact-hero.jpg">
+      <meta name="twitter:image" content="./solace/assets/sw-contact-hero.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -100,41 +91,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .ct-page {
+.ct-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -176,7 +133,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -407,61 +364,6 @@
           padding: 32px 28px;
         }
 
-        .ct-field {
-          margin-bottom: 16px;
-        }
-
-        .ct-field label {
-          display: block;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
-          font-size: 12.5px;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          color: var(--brown-800);
-          margin-bottom: 6px;
-        }
-
-        .ct-field input,
-        .ct-field textarea {
-          width: 100%;
-          font-family: 'Lato', sans-serif;
-          font-size: 15px;
-          padding: 12px 14px;
-          border-radius: 10px;
-          border: 1px solid var(--line);
-          background: #fff;
-          color: var(--ink);
-          box-sizing: border-box;
-        }
-
-        .ct-field textarea {
-          min-height: 96px;
-          resize: vertical;
-        }
-
-        .ct-submit {
-          width: 100%;
-          margin-top: 6px;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
-          font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          padding: 15px 26px;
-          border-radius: 999px;
-          border: none;
-          cursor: pointer;
-          background: linear-gradient(90deg, var(--brown-700), #000);
-          color: #fff;
-          box-shadow: 0 10px 24px -12px rgba(43, 23, 16, 0.55);
-          transition: transform .2s ease;
-        }
-
-        .ct-submit:hover {
-          transform: translateY(-2px);
-        }
-
         .ct-info {
           display: flex;
           flex-direction: column;
@@ -540,7 +442,7 @@
 
         .ct-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -648,7 +550,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="ct-page" id="ct-page">
 
@@ -673,7 +588,7 @@
               </div>
             </div>
             <div class="ct-hero-media ct-reveal">
-              <div class="ct-hero-photo" style="background-image:url(./solace/assets/sw-contact-hero.jpg)" role="img" aria-label="Solace Wellness IV Summerlin wellness suite"></div>
+              <div class="ct-hero-photo" style="background-image:url(./solace/assets/sw-contact-hero.webp)" role="img" aria-label="Solace Wellness IV Summerlin wellness suite"></div>
               <div class="ct-hero-badge">
                 <strong>Same-Day Appointments</strong>
                 <span>Often available</span>
@@ -745,7 +660,7 @@
         <!-- ═══ AREAS WE SERVE ═══ -->
         <section class="ct-section" id="areas">
           <div class="ct-container ct-split">
-            <div class="ct-split-photo ct-reveal" data-bg="./solace/assets/sw-contact-split.jpg" role="img" aria-label="Solace Wellness IV Summerlin wellness suite seating area">
+            <div class="ct-split-photo ct-reveal" data-bg="./solace/assets/sw-contact-split.webp" role="img" aria-label="Solace Wellness IV Summerlin wellness suite seating area">
             </div>
             <div class="ct-reveal">
               <p class="ct-eyebrow">Where We Go</p>

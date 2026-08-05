@@ -8,22 +8,13 @@
     content="Beauty IV Therapy in Summerlin &amp; Las Vegas. Beauty &amp; Skin Glow IV, Beauty Drip &amp; Skin Brightening IV to nourish healthy, glowing skin from within. Licensed nurses, same-day appointments.">
   <title>Beauty IV Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -133,41 +124,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .bt-page {
+.bt-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -209,7 +166,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -524,7 +481,7 @@
           font-family: 'Poppins', sans-serif;
           font-weight: 500;
           font-size: 13.5px;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 12px;
         }
 
@@ -655,7 +612,7 @@
 
         .bt-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -788,7 +745,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="bt-page" id="bt-page">
 
@@ -1011,7 +981,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="bt-section" id="doorstep" style="background:var(--cream-2);">
           <div class="bt-container bt-split">
-            <div class="bt-split-photo bt-reveal" data-bg="./solace/assets/sw-beautyhub-split.jpg" role="img" aria-label="Mobile Beauty IV therapy setup in Las Vegas">
+            <div class="bt-split-photo bt-reveal" data-bg="./solace/assets/sw-beautyhub-split.webp" role="img" aria-label="Mobile Beauty IV therapy setup in Las Vegas">
             </div>
             <div class="bt-reveal">
               <p class="bt-eyebrow">Visit Us or We Come to You</p>

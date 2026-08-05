@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Solace Wellness IV - shared base reset
+   The handful of reset rules every page's own inline <style> block used to
+   repeat verbatim (box-sizing, html/body margin, link/list/image resets).
+   Extracted once here instead of duplicated across all 36 pages - see
+   ./site-chrome.css for the header/footer's own styling.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* --tan (rgb(169,131,92)) is 3.45:1 on white / 3.32:1 on cream - fails
+     WCAG AA (4.5:1) for normal text. This darker variant (~4.6:1 on white)
+     is for anywhere --tan is used as a TEXT color (eyebrow labels, links);
+     --tan itself is untouched for icons/borders/backgrounds/dark-bg text,
+     where it already passes. */
+  --tan-text: rgb(122, 92, 61);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Only one :focus-visible rule existed site-wide (the header's dropdown
+   toggle) before this - every other link/button/patched CTA fell back to
+   the bare browser-default outline, which looks broken against pill-shaped
+   buttons and risks being clipped by ancestor overflow:hidden containers. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="link"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--tan-text);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

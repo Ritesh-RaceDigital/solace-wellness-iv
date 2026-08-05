@@ -8,22 +8,13 @@
     content="How Solace Wellness IV works: book online or by phone, visit our Summerlin suite or have a licensed nurse come to you, and relax through a 30-60 minute IV treatment.">
   <title>How It Works | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -36,11 +27,11 @@
       <meta property="og:description"
         content="Book online or by phone, visit our Summerlin suite or have a licensed nurse come to you, and relax through a 30-60 minute IV treatment.">
       <meta property="og:url" content="https://solacewellnessiv.com/how-it-works">
-      <meta property="og:image" content="./solace/assets/sw-howitworks-hero.jpg">
+      <meta property="og:image" content="./solace/assets/sw-howitworks-hero.webp">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="How It Works | Solace Wellness IV">
       <meta name="twitter:description" content="From booking to feeling better - here's exactly what happens when you book with Solace Wellness IV.">
-      <meta name="twitter:image" content="./solace/assets/sw-howitworks-hero.jpg">
+      <meta name="twitter:image" content="./solace/assets/sw-howitworks-hero.webp">
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -116,41 +107,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .hw-page {
+.hw-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -192,7 +149,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -519,7 +476,7 @@
 
         .hw-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -636,7 +593,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="hw-page" id="hw-page">
 
@@ -662,7 +632,7 @@
               </div>
             </div>
             <div class="hw-hero-media hw-reveal">
-              <div class="hw-hero-photo" style="background-image:url(./solace/assets/sw-howitworks-hero.jpg)" role="img" aria-label="Booking an appointment with Solace Wellness IV"></div>
+              <div class="hw-hero-photo" style="background-image:url(./solace/assets/sw-howitworks-hero.webp)" role="img" aria-label="Booking an appointment with Solace Wellness IV"></div>
               <div class="hw-hero-badge">
                 <strong>30-60 min</strong>
                 <span>Most treatments, start to finish</span>
@@ -742,7 +712,7 @@
         <!-- ═══ SUMMERLIN OR MOBILE ═══ -->
         <section class="hw-section" id="doorstep" style="background:var(--cream-2);">
           <div class="hw-container hw-split">
-            <div class="hw-split-photo hw-reveal" data-bg="./solace/assets/sw-howitworks-split.jpg" role="img" aria-label="Booking a Solace Wellness IV appointment">
+            <div class="hw-split-photo hw-reveal" data-bg="./solace/assets/sw-howitworks-split.webp" role="img" aria-label="Booking a Solace Wellness IV appointment">
             </div>
             <div class="hw-reveal">
               <p class="hw-eyebrow">Visit Us or We Come to You</p>

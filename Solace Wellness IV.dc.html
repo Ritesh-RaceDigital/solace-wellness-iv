@@ -8,6 +8,7 @@
     content="Solace Wellness IV - Premium IV therapy in our Summerlin wellness suite, or mobile throughout Las Vegas. Licensed medical team, open 24 hours, same-day appointments available.">
   <title>IV Therapy Summerlin &amp; Las Vegas | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
@@ -44,19 +45,9 @@
     data-resource-id="8ca6133ce1e2810b" />
   <meta name="ext-resource-dependency" content="./solace/assets/de3f47f0661426b8.webp"
     data-resource-id="de3f47f0661426b8" />
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -237,32 +228,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* ─── Outer viewport wrapper ─────────────────────────────────────────────── */
+/* ─── Outer viewport wrapper ─────────────────────────────────────────────── */
         /* On desktop: full width, no scroll. On mobile: clips to viewport width.    */
         .solace-scale-wrap {
           width: 100%;
@@ -353,7 +319,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 8px;
         }
 
@@ -528,7 +494,7 @@
           font-family: 'Poppins', sans-serif;
           font-size: 13px;
           font-weight: 500;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 18px;
         }
 
@@ -567,7 +533,7 @@
         }
 
         .solace-mobile .sm-pill .sm-ic {
-          color: var(--tan);
+          color: var(--tan-text);
           width: 14px;
           height: 14px;
         }
@@ -630,7 +596,7 @@
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: .04em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 32px 0 4px;
           padding-top: 24px;
           border-top: 1px solid var(--line);
@@ -766,7 +732,7 @@
           font-family: 'Poppins', sans-serif;
           font-weight: 600;
           font-size: 18px;
-          color: var(--tan);
+          color: var(--tan-text);
         }
 
         .solace-mobile .sm-step h3 {
@@ -810,7 +776,7 @@
         }
 
         .solace-mobile .sm-checklist .sm-ic {
-          color: var(--tan);
+          color: var(--tan-text);
           flex: none;
         }
 
@@ -950,7 +916,7 @@
 
         .solace-mobile .sm-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -986,53 +952,6 @@
           border-radius: 20px;
           padding: 24px 20px;
           margin-bottom: 28px;
-        }
-
-        .solace-mobile .sm-field {
-          margin-bottom: 14px;
-        }
-
-        .solace-mobile .sm-field label {
-          display: block;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
-          font-size: 11px;
-          text-transform: uppercase;
-          letter-spacing: .04em;
-          color: var(--brown-700);
-          margin-bottom: 6px;
-        }
-
-        .solace-mobile .sm-field input,
-        .solace-mobile .sm-field textarea {
-          width: 100%;
-          background: rgb(248, 241, 231);
-          border: none;
-          border-radius: 10px;
-          padding: 12px 14px;
-          font-family: 'Lato', sans-serif;
-          font-size: 14px;
-          color: var(--ink);
-        }
-
-        .solace-mobile .sm-field textarea {
-          resize: vertical;
-          min-height: 70px;
-        }
-
-        .solace-mobile .sm-submit {
-          width: 100%;
-          border: none;
-          background: linear-gradient(90deg, var(--brown-700) 14%, var(--ink) 82%);
-          color: #fff;
-          font-family: 'Poppins', sans-serif;
-          font-weight: 600;
-          font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: .05em;
-          padding: 14px;
-          border-radius: 999px;
-          margin-top: 4px;
         }
 
         .solace-mobile .sm-contact-info h3 {
@@ -1180,7 +1099,7 @@
           font-size: 13px;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 20px 0 10px;
         }
 
@@ -1195,7 +1114,7 @@
         }
 
         .solace-mobile .sm-recognition-list a {
-          color: var(--tan);
+          color: var(--tan-text);
           font-weight: 600;
           text-decoration: underline;
         }
@@ -1223,7 +1142,7 @@
           flex: none;
           width: 18px;
           height: 18px;
-          color: var(--tan);
+          color: var(--tan-text);
           margin-top: 1px;
         }
 
@@ -1236,11 +1155,24 @@
         }
 
         .solace-mobile .sm-trust-final .sm-trust-check {
-          color: var(--tan);
+          color: var(--tan-text);
         }
 
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <!-- Global header (shared across every page) - see ./solace/site-chrome.js. -->
     <solace-header current="home"></solace-header>
@@ -1467,7 +1399,7 @@
         <p class="sm-eyebrow" style="text-align:center;">Recognized for Excellence</p>
         <p class="sm-recognition-award">🏆 Best IV Therapy Clinic in Las Vegas – 2026</p>
         <p class="sm-body" style="text-align:center;">Recognized by
-          <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" style="color:var(--tan);font-weight:600;text-decoration:underline;">Best of Best Review</a>
+          <a href="https://bestofbestreview.com/awards/solace-wellness-iv-best-iv-therapy-clinic-in-las-vegas-of-2026" target="_blank" rel="noopener" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Best of Best Review</a>
         </p>
         <p class="sm-recognition-featured">Featured In</p>
         <ul class="sm-recognition-list">
@@ -1485,16 +1417,16 @@
         <p class="sm-subhead2">Unlock optimal wellness with our signature infusions</p>
         <p class="sm-subhead2">Explore our dedicated pages:
           <a href="/wellness-iv-therapy"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">Wellness IV Therapy</a>
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Wellness IV Therapy</a>
           &middot;
           <a href="/recovery-iv-therapy"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">Recovery IV Therapy</a>
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Recovery IV Therapy</a>
           &middot;
           <a href="/energy-therapy"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">Energy Therapy</a>
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Energy Therapy</a>
           &middot;
           <a href="/vitamin-injections"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">Vitamin Injections</a>
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Vitamin Injections</a>
         </p>
 
         <div class="sm-treatment-grid">
@@ -1538,7 +1470,7 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-energyboost-hero.jpg" role="img" aria-label="Energy Boost IV treatment for energy and vitality"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-energyboost-hero.webp" role="img" aria-label="Energy Boost IV treatment for energy and vitality"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
               <h4>Energy Boost IV</h4>
@@ -1558,7 +1490,7 @@
               <p class="sm-tagline">Ideal for those looking for an Energy IV Drip, Vitamin B Complex IV or a
                 comprehensive wellness infusion. Also known as RevitaDrip Energy IV.</p>
               <p class="sm-tagline"><a href="/energy-boost-iv"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Energy Boost
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Energy Boost
                   IV &rarr;</a></p>
             </div>
           </div>
@@ -1580,7 +1512,7 @@
               <p class="sm-tagline">Great if you are looking for Myers Vitamin Cocktail IV. Myers Cocktail IV Drip,
                 Myers Cocktail IV At Home.</p>
               <p class="sm-tagline"><a href="/myers-cocktail-iv"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Myers
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Myers
                   Cocktail IV &rarr;</a></p>
             </div>
           </div>
@@ -1603,7 +1535,7 @@
               <p class="sm-tagline">For people looking for Immune IV Therapy, Immune Support IV Therapy, and Immunity IV
                 Drip.</p>
               <p class="sm-tagline"><a href="/immune-iv-therapy"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Immune IV
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Immune IV
                   Therapy &rarr;</a></p>
             </div>
           </div>
@@ -1625,7 +1557,7 @@
               <p class="sm-tagline">Great for travelers looking for Travel Recovery IV, Jet Lag IV Drip or Jet Lag
                 Therapy.</p>
               <p class="sm-tagline"><a href="/jetset-travel-recovery-iv"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about JetSet
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about JetSet
                   Travel Recovery IV &rarr;</a></p>
             </div>
           </div>
@@ -1645,7 +1577,7 @@
               </ul>
               <p class="sm-tagline">Great option for Beauty IV Therapy and Skin Glow IV Therapy.</p>
               <p class="sm-tagline"><a href="/beauty-skin-glow-iv"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Beauty
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Beauty
                   &amp; Skin Glow IV &rarr;</a></p>
             </div>
           </div>
@@ -1654,7 +1586,7 @@
         <h3 class="sm-group-label">Specialty Care</h3>
         <div class="sm-treatment-grid">
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-metabo-hero.jpg" role="img" aria-label="MetaboFusion IV metabolism support treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-metabo-hero.webp" role="img" aria-label="MetaboFusion IV metabolism support treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$280</div>
               <h4>MetaboFusion IV</h4>
@@ -1671,7 +1603,7 @@
               <p class="sm-tagline">Perfect for anyone looking for Metabolism Boost IV, Metabolism Booster IV Drip, and
                 IV Therapy for Metabolism.</p>
               <p class="sm-tagline"><a href="/metabofusion-iv"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about MetaboFusion
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about MetaboFusion
                   IV &rarr;</a></p>
             </div>
           </div>
@@ -1679,7 +1611,7 @@
 
         <h3 class="sm-group-label">NAD+ Therapy in Las Vegas</h3>
         <p style="margin:-8px 0 12px;"><a href="/nad-therapy"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
             NAD+ Therapy &rarr;</a></p>
         <div class="sm-treatment-grid">
           <div class="sm-treat-card">
@@ -1696,7 +1628,7 @@
                 <li>Decreased Fatigue</li>
                 <li>Recovery supports</li>
               </ul>
-              <p class="sm-tagline"><a href="/nad-250mg" style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about NAD+ 250mg &rarr;</a></p>
+              <p class="sm-tagline"><a href="/nad-250mg" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about NAD+ 250mg &rarr;</a></p>
             </div>
           </div>
           <div class="sm-treat-card">
@@ -1713,7 +1645,7 @@
                 <li>Support for Brain Function</li>
                 <li>Supports Long-Term Wellness Goals</li>
               </ul>
-              <p class="sm-tagline"><a href="/nad-500mg" style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about NAD+ 500mg &rarr;</a></p>
+              <p class="sm-tagline"><a href="/nad-500mg" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about NAD+ 500mg &rarr;</a></p>
             </div>
           </div>
           <div class="sm-treat-card">
@@ -1728,7 +1660,7 @@
                 <li>Oxidative Stress Management</li>
                 <li>Cellular Resilience</li>
               </ul>
-              <p class="sm-tagline"><a href="/cellular-repair" style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Cellular Repair IV &rarr;</a></p>
+              <p class="sm-tagline"><a href="/cellular-repair" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Cellular Repair IV &rarr;</a></p>
             </div>
           </div>
           <div class="sm-treat-card">
@@ -1743,14 +1675,14 @@
                 <li>Biological Longevity Support</li>
                 <li>Immune & Detox Resilience</li>
               </ul>
-              <p class="sm-tagline"><a href="/healthy-aging" style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Healthy Aging IV &rarr;</a></p>
+              <p class="sm-tagline"><a href="/healthy-aging" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Healthy Aging IV &rarr;</a></p>
             </div>
           </div>
         </div>
 
         <h3 class="sm-group-label">Vitamin Booster Shots</h3>
         <p style="margin:-8px 0 12px;"><a href="/vitamin-injections"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
             Vitamin Injections &rarr;</a></p>
         <div class="sm-treatment-grid">
           <div class="sm-treat-card">
@@ -1766,7 +1698,7 @@
               </ul>
               <p class="sm-tagline">Popular for Glutathione Injection, Glutathione IV, and Glutathione IV Therapy.</p>
               <p class="sm-tagline"><a href="/glutathione-iv-therapy"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Glutathione
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Glutathione
                   IV Therapy &rarr;</a></p>
             </div>
           </div>
@@ -1784,7 +1716,7 @@
               <p class="sm-tagline">Great for Vitamin B12 Booster, Vitamin B12 IV, Methylcobalamin Injection and B12
                 Energy Booster.</p>
               <p class="sm-tagline"><a href="/vitamin-b12-injection"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Vitamin B12
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Vitamin B12
                   Injections &rarr;</a></p>
             </div>
           </div>
@@ -1802,7 +1734,7 @@
               </ul>
               <p class="sm-tagline">Available as a Vitamin D3 Shot, Vitamin D Therapy, or Vitamin D Injection.</p>
               <p class="sm-tagline"><a href="/vitamin-injections"
-                  style="color:var(--tan);font-weight:600;text-decoration:underline;">Learn more about Vitamin
+                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Vitamin
                   Injections &rarr;</a></p>
             </div>
           </div>
@@ -1838,7 +1770,7 @@
           </div>
         </div>
         <p class="sm-tagline" style="margin-top:20px;"><a href="/how-it-works"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">See the full walkthrough,
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">See the full walkthrough,
             including what to expect at your first visit &rarr;</a></p>
       </section>
 
@@ -1958,7 +1890,7 @@
           </div>
         </div>
         <p class="sm-tagline" style="margin-top:20px;"><a href="/reviews"
-            style="color:var(--tan);font-weight:600;text-decoration:underline;">Read our real Google reviews
+            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Read our real Google reviews
             (5.0 stars from 13 reviews) &rarr;</a></p>
       </section>
 
@@ -2316,7 +2248,7 @@
               </svg></a>
           </div>
           <p class="sm-body" style="margin-top:18px;"><a href="/contact"
-              style="color:var(--tan);font-weight:600;text-decoration:underline;">Visit our full Contact page
+              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Visit our full Contact page
               for parking info, service area, and more &rarr;</a></p>
         </div>
       </section>
@@ -2606,7 +2538,7 @@ class Component extends DCLogic {
       if (!el || el.dataset.linkPatched === '1') return;
       el.dataset.linkPatched = '1';
       el.style.cursor = 'pointer';
-      el.setAttribute('role', 'link');
+      el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
       el.addEventListener('click', onActivate);
       el.addEventListener('keydown', (e) => {
@@ -2682,7 +2614,7 @@ class Component extends DCLogic {
       fontWeight: '600', fontSize: '13.5px', letterSpacing: '0.54px', textTransform: 'uppercase',
       display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
     });
-    btn.setAttribute('role', 'link');
+    btn.setAttribute('role', 'button');
     btn.setAttribute('tabindex', '0');
     const go = () => window.open(BOOKING_URL, '_blank', 'noopener');
     btn.addEventListener('click', go);

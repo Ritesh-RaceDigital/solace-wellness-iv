@@ -8,22 +8,13 @@
     content="NAD+ Therapy in Summerlin &amp; Las Vegas. NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging. Licensed nurses, same-day appointments.">
   <title>NAD+ Therapy in Summerlin &amp; Las Vegas | Solace Wellness IV</title>
   <script src="./support.js"></script>
+  <link rel="stylesheet" href="./solace/site-base.css">
   <link rel="stylesheet" href="./solace/site-chrome.css">
   <script src="./solace/site-chrome.js"></script>
   <link rel="icon" type="image/png" href="./solace/assets/favicon.png">
-</head>
 
-<body>
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#2b1710" />
-      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
-      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
-        letter-spacing="2">SOLACE</text>
-    </svg>
-  </template>
-  <x-dc>
-    <helmet>
+    <!-- Promoted from <helmet> so fonts/canonical/OG/JSON-LD/critical CSS are in the
+         static HTML instead of being injected by JS on DOMContentLoaded. -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
@@ -149,41 +140,7 @@
       }
       </script>
       <style>
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          -webkit-text-size-adjust: 100%;
-          -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        ul {
-          list-style: none;
-        }
-
-        img {
-          max-width: 100%;
-          display: block;
-        }
-
-        .nd-page {
+.nd-page {
           --brown-900: rgb(40, 20, 13);
           --brown-800: rgb(43, 23, 16);
           --brown-700: rgb(75, 33, 18);
@@ -225,7 +182,7 @@
           font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--tan);
+          color: var(--tan-text);
           margin: 0 0 10px;
         }
 
@@ -579,7 +536,7 @@
 
         .nd-faq-caret {
           flex: none;
-          color: var(--tan);
+          color: var(--tan-text);
           transition: transform .25s ease;
         }
 
@@ -712,7 +669,20 @@
           }
         }
       </style>
-    </helmet>
+    
+  </head>
+
+<body>
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#2b1710" />
+      <path d="M50 26 C50 26 34 46 34 57 C34 66 41 73 50 73 C59 73 66 66 66 57 C66 46 50 26 50 26 Z" fill="#fefaf5" />
+      <text x="50" y="90" font-family="Georgia, serif" font-size="11" fill="#fefaf5" text-anchor="middle"
+        letter-spacing="2">SOLACE</text>
+    </svg>
+  </template>
+  <x-dc>
+    <helmet></helmet>
 
     <div class="nd-page" id="nd-page">
 
@@ -861,14 +831,14 @@
             <div class="nd-card-grid nd-cols-2">
               <a href="/nad-250mg" class="nd-card nd-reveal" style="display:block;">
                 <h3 style="margin-bottom:2px;">NAD+ 250mg - $299 &rarr;</h3>
-                <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--tan);margin-bottom:12px;">
+                <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--tan-text);margin-bottom:12px;">
                   Great for people starting NAD+ therapy</p>
                 <p>Supports clear thinking, better concentration, mood, and decreased fatigue - an accessible
                   entry point into NAD+ Therapy. Click to view dedicated treatment details.</p>
               </a>
               <a href="/nad-500mg" class="nd-card nd-reveal" style="display:block;">
                 <h3 style="margin-bottom:2px;">NAD+ 500mg - $499 &rarr;</h3>
-                <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--tan);margin-bottom:12px;">
+                <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--tan-text);margin-bottom:12px;">
                   Supports cellular energy production</p>
                 <p>A more intensive infusion supporting cell health, healthy aging, improved performance, and
                   brain function for those continuing an established NAD+ routine. Click to view dedicated treatment details.</p>
@@ -877,7 +847,7 @@
             <p class="nd-lede nd-center" style="max-width:640px;margin:28px auto 6px;">Who It's For</p>
             <p class="nd-body nd-center" style="max-width:640px;margin-left:auto;margin-right:auto;">We see two
               kinds of clients here: people in their 40s and beyond who've started paying closer attention to
-              <a href="/healthy-aging" style="color:var(--tan);text-decoration:underline;">healthy aging</a>, and a younger, biohacker-leaning crowd chasing an edge in energy and <a href="/cellular-repair" style="color:var(--tan);text-decoration:underline;">cellular repair</a>. Both
+              <a href="/healthy-aging" style="color:var(--tan-text);text-decoration:underline;">healthy aging</a>, and a younger, biohacker-leaning crowd chasing an edge in energy and <a href="/cellular-repair" style="color:var(--tan-text);text-decoration:underline;">cellular repair</a>. Both
               groups tend to start with 250mg and decide from there whether to work up to 500mg.</p>
             <p class="nd-lede nd-center" style="max-width:640px;margin:20px auto 6px;">Who Should Avoid This</p>
             <p class="nd-body nd-center" style="max-width:640px;margin-left:auto;margin-right:auto;">Not
