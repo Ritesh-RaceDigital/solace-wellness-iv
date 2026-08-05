@@ -1,6 +1,403 @@
 {
   "routes": [
-    { "src": "^/$", "dest": "/Solace Wellness IV.dc.html" },
-    { "handle": "filesystem" }
+    {
+      "src": "^/Solace%20Wellness%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20About%20Us\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/about-us"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Wellness%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/wellness-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Recovery%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/recovery-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Vitamin%20B12%20Injection\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/vitamin-b12-injection"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Beauty%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/beauty-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Immune%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/immune-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Myers%20Cocktail%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/myers-cocktail-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Glutathione%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/glutathione-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Energy%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/energy-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Vitamin%20Injections\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/vitamin-injections"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20MetaboFusion%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/metabofusion-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Energy%20Boost%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/energy-boost-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Brain%20Fog%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/brain-fog-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Fatigue%20Recovery%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/fatigue-recovery-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Beauty%20%26%20Skin%20Glow%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/beauty-skin-glow-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Beauty%20Drip\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/beauty-drip"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Skin%20Brightening%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/skin-brightening-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20250mg\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-250mg"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20500mg\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-500mg"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Cellular%20Repair\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/cellular-repair"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Healthy%20Aging\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/healthy-aging"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Solace%20RevitaDrip\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/solace-revitadrip"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Wellness%20Hydration%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/wellness-hydration-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Vitamin%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/vitamin-iv-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Morning%20After%20Martini\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/morning-after-martini"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20JetSet%20Travel%20Recovery%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/jetset-travel-recovery-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Athletic%20Recovery%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/athletic-recovery-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Vitamin%20C%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/vitamin-c-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Immune%20Boost%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/immune-boost-therapy"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Seasonal%20Wellness%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/seasonal-wellness-iv"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/how-it-works"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Contact\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/contact"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Reviews\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/reviews"
+      }
+    },
+    {
+      "src": "^/Solace%20Wellness%20IV%20-%20Press%20%26%20Recognition\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/press-recognition"
+      }
+    },
+    {
+      "src": "^/$",
+      "dest": "/Solace Wellness IV.dc.html"
+    },
+    {
+      "src": "^/about-us$",
+      "dest": "/Solace Wellness IV - About Us.dc.html"
+    },
+    {
+      "src": "^/wellness-iv-therapy$",
+      "dest": "/Solace Wellness IV - Wellness IV Therapy.dc.html"
+    },
+    {
+      "src": "^/recovery-iv-therapy$",
+      "dest": "/Solace Wellness IV - Recovery IV Therapy.dc.html"
+    },
+    {
+      "src": "^/vitamin-b12-injection$",
+      "dest": "/Solace Wellness IV - Vitamin B12 Injection.dc.html"
+    },
+    {
+      "src": "^/beauty-iv-therapy$",
+      "dest": "/Solace Wellness IV - Beauty IV Therapy.dc.html"
+    },
+    {
+      "src": "^/immune-iv-therapy$",
+      "dest": "/Solace Wellness IV - Immune IV Therapy.dc.html"
+    },
+    {
+      "src": "^/nad-therapy$",
+      "dest": "/Solace Wellness IV - NAD+ Therapy.dc.html"
+    },
+    {
+      "src": "^/myers-cocktail-iv$",
+      "dest": "/Solace Wellness IV - Myers Cocktail IV.dc.html"
+    },
+    {
+      "src": "^/glutathione-iv-therapy$",
+      "dest": "/Solace Wellness IV - Glutathione IV Therapy.dc.html"
+    },
+    {
+      "src": "^/energy-therapy$",
+      "dest": "/Solace Wellness IV - Energy Therapy.dc.html"
+    },
+    {
+      "src": "^/vitamin-injections$",
+      "dest": "/Solace Wellness IV - Vitamin Injections.dc.html"
+    },
+    {
+      "src": "^/metabofusion-iv$",
+      "dest": "/Solace Wellness IV - MetaboFusion IV.dc.html"
+    },
+    {
+      "src": "^/energy-boost-iv$",
+      "dest": "/Solace Wellness IV - Energy Boost IV.dc.html"
+    },
+    {
+      "src": "^/brain-fog-iv$",
+      "dest": "/Solace Wellness IV - Brain Fog IV.dc.html"
+    },
+    {
+      "src": "^/fatigue-recovery-iv$",
+      "dest": "/Solace Wellness IV - Fatigue Recovery IV.dc.html"
+    },
+    {
+      "src": "^/beauty-skin-glow-iv$",
+      "dest": "/Solace Wellness IV - Beauty & Skin Glow IV.dc.html"
+    },
+    {
+      "src": "^/beauty-drip$",
+      "dest": "/Solace Wellness IV - Beauty Drip.dc.html"
+    },
+    {
+      "src": "^/skin-brightening-iv$",
+      "dest": "/Solace Wellness IV - Skin Brightening IV.dc.html"
+    },
+    {
+      "src": "^/nad-250mg$",
+      "dest": "/Solace Wellness IV - NAD+ 250mg.dc.html"
+    },
+    {
+      "src": "^/nad-500mg$",
+      "dest": "/Solace Wellness IV - NAD+ 500mg.dc.html"
+    },
+    {
+      "src": "^/cellular-repair$",
+      "dest": "/Solace Wellness IV - Cellular Repair.dc.html"
+    },
+    {
+      "src": "^/healthy-aging$",
+      "dest": "/Solace Wellness IV - Healthy Aging.dc.html"
+    },
+    {
+      "src": "^/solace-revitadrip$",
+      "dest": "/Solace Wellness IV - Solace RevitaDrip.dc.html"
+    },
+    {
+      "src": "^/wellness-hydration-iv$",
+      "dest": "/Solace Wellness IV - Wellness Hydration IV.dc.html"
+    },
+    {
+      "src": "^/vitamin-iv-therapy$",
+      "dest": "/Solace Wellness IV - Vitamin IV Therapy.dc.html"
+    },
+    {
+      "src": "^/morning-after-martini$",
+      "dest": "/Solace Wellness IV - Morning After Martini.dc.html"
+    },
+    {
+      "src": "^/jetset-travel-recovery-iv$",
+      "dest": "/Solace Wellness IV - JetSet Travel Recovery IV.dc.html"
+    },
+    {
+      "src": "^/athletic-recovery-iv$",
+      "dest": "/Solace Wellness IV - Athletic Recovery IV.dc.html"
+    },
+    {
+      "src": "^/vitamin-c-iv$",
+      "dest": "/Solace Wellness IV - Vitamin C IV.dc.html"
+    },
+    {
+      "src": "^/immune-boost-therapy$",
+      "dest": "/Solace Wellness IV - Immune Boost Therapy.dc.html"
+    },
+    {
+      "src": "^/seasonal-wellness-iv$",
+      "dest": "/Solace Wellness IV - Seasonal Wellness IV.dc.html"
+    },
+    {
+      "src": "^/how-it-works$",
+      "dest": "/Solace Wellness IV - How It Works.dc.html"
+    },
+    {
+      "src": "^/contact$",
+      "dest": "/Solace Wellness IV - Contact.dc.html"
+    },
+    {
+      "src": "^/reviews$",
+      "dest": "/Solace Wellness IV - Reviews.dc.html"
+    },
+    {
+      "src": "^/press-recognition$",
+      "dest": "/Solace Wellness IV - Press & Recognition.dc.html"
+    },
+    {
+      "handle": "filesystem"
+    }
   ]
 }
