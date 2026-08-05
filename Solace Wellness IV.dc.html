@@ -2461,8 +2461,8 @@ class Component extends DCLogic {
     if (heroSec) {
       heroSec.style.background = `rgb(254,250,245) url(${asset('herobg')}) center / cover no-repeat`;
       Array.from(heroSec.querySelectorAll('div')).forEach(d => {
+        if (d.className && d.className.indexOf('fig-asset-9ad7525aacbc8a19') !== -1) { d.style.display = 'none'; return; }
         const bi = getComputedStyle(d).backgroundImage;
-        if (bi.indexOf('9ad7525aacbc8a19') !== -1) { d.style.display = 'none'; return; }
         if (bi.indexOf('gradient') !== -1 && !(d.textContent || '').trim() && d.offsetWidth > 150) {
           d.style.display = 'none';
         }
@@ -2515,7 +2515,7 @@ class Component extends DCLogic {
     });
 
     // Treatment card photos
-    const tHashes = ['a55e8e3868c543c3','69dee31f18bf38c1','sw-nad-combo',
+    const tHashes = ['sw-flawless-fusion','69dee31f18bf38c1','sw-nad-combo',
       'sw-nad-combo','9e6cf73f3151de71','8ca6133ce1e2810b','de3f47f0661426b8'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
