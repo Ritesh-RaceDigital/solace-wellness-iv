@@ -219,7 +219,7 @@
         <div class="gh-announce">Licensed Medical IV Therapy &middot; Summerlin &amp; Mobile Across Las Vegas &middot; Same-Day Appointments Available</div>
         <header class="gh-header">
           <div class="gh-nav-wrap">
-            <a class="gh-logo-link" href="${escapeAttr(current === 'home' ? '#' : PAGES.home)}" aria-label="Solace Wellness IV - Home">
+            <a class="gh-logo-link" href="/" aria-label="Solace Wellness IV - Home">
               <img class="gh-logo" src="./solace/assets/header-logo.webp" alt="Solace Wellness IV">
             </a>
             <nav class="gh-nav-desktop">${navLinks}</nav>
