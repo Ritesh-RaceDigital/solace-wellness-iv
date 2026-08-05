@@ -1431,7 +1431,7 @@
 
         <div class="sm-treatment-grid">
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/2e9f37658d4b208b.webp" role="img" aria-label="PreGame Potion IV pre-party hydration treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-pregame-potion.webp" role="img" aria-label="PreGame Potion IV pre-party hydration treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$180</div>
               <h4>PreGame Potion IV</h4>
@@ -1470,7 +1470,7 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-energyboost-hero.webp" role="img" aria-label="Energy Boost IV treatment for energy and vitality"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-revitadrip-card.webp" role="img" aria-label="Energy Boost IV treatment, also known as RevitaDrip Energy IV"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
               <h4>Energy Boost IV</h4>
@@ -1518,7 +1518,7 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/166d167ca260a9b5.webp" role="img" aria-label="IV Immunoshield immune support IV treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-immunoshield.webp" role="img" aria-label="IV Immunoshield immune support IV treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
               <h4>IV Immunoshield</h4>
@@ -1541,7 +1541,7 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/f29dbb95b841de5c.webp" role="img" aria-label="JetSet Travel Recovery IV treatment for travel fatigue and jet lag"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-jetset-revival.webp" role="img" aria-label="JetSet Travel Recovery IV treatment for travel fatigue and jet lag"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$250</div>
               <h4>JetSet Travel Recovery IV</h4>
@@ -1563,7 +1563,7 @@
           </div>
 
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/9ad7525aacbc8a19.webp" role="img" aria-label="Beauty & Skin Glow IV treatment for skin health"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-flawless-fusion.webp" role="img" aria-label="Beauty & Skin Glow IV treatment, also known as Flawless Fusion IV"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
               <h4>Beauty & Skin Glow IV</h4>
@@ -1615,7 +1615,7 @@
             NAD+ Therapy &rarr;</a></p>
         <div class="sm-treatment-grid">
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/b280d8466fc811da.webp" role="img" aria-label="NAD+ 250mg IV therapy treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img" aria-label="NAD+ 250mg IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$299</div>
               <h4><a href="/nad-250mg" style="color:inherit;text-decoration:none;">NAD+ 250mg &rarr;</a></h4>
@@ -1632,7 +1632,7 @@
             </div>
           </div>
           <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/28011f9776f04463.webp" role="img" aria-label="NAD+ 500mg IV therapy treatment"></div>
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img" aria-label="NAD+ 500mg IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$499</div>
               <h4><a href="/nad-500mg" style="color:inherit;text-decoration:none;">NAD+ 500mg &rarr;</a></h4>
@@ -2515,8 +2515,8 @@ class Component extends DCLogic {
     });
 
     // Treatment card photos
-    const tHashes = ['a55e8e3868c543c3','69dee31f18bf38c1','b280d8466fc811da',
-      '28011f9776f04463','9e6cf73f3151de71','8ca6133ce1e2810b','de3f47f0661426b8'];
+    const tHashes = ['a55e8e3868c543c3','69dee31f18bf38c1','sw-nad-combo',
+      'sw-nad-combo','9e6cf73f3151de71','8ca6133ce1e2810b','de3f47f0661426b8'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
       getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);
