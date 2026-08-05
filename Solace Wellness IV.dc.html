@@ -2262,17 +2262,14 @@
 
       <section class="sm-contact" id="book">
         <div class="sm-contact-form">
-          <p class="sm-eyebrow">Contact Us</p>
+          <p class="sm-eyebrow">Ready When You Are</p>
           <h3>Book Now!</h3>
-          <p class="sm-body">Rehydrate, Revive, and Thrive with our convenient and personalized IV treatments. From
-            energy boosts to immune support, we've got you covered. Book now to visit our Summerlin wellness suite,
-            or let us bring wellness to your doorstep!</p>
-          <div class="sm-field"><label>Name</label><input type="text" placeholder="Your full name"></div>
-          <div class="sm-field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-          <div class="sm-field"><label>Phone</label><input type="tel" placeholder="(702) 000-0000"></div>
-          <div class="sm-field"><label>Other Notes</label><textarea
-              placeholder="Preferred treatment / location"></textarea></div>
-          <button type="button" class="sm-submit">Send Request</button>
+          <p class="sm-body">Rehydrate, revive, and thrive with personalized IV treatments - from energy boosts to
+            immune support, we've got you covered. Visit our Summerlin wellness suite, or let us bring wellness
+            straight to your doorstep.</p>
+          <p class="sm-body">No forms, no waiting on email - booking takes less than a minute, and a real person
+            confirms every appointment.</p>
+          <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank" rel="noopener" class="sm-btn sm-btn-solid full">Book Now</a>
         </div>
         <div class="sm-contact-info">
           <p class="sm-eyebrow">Get In Touch</p>
@@ -2402,6 +2399,7 @@ class Component extends DCLogic {
       this._scale();
       try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
       try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
+      try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
       if (!this._animated) {
         this._animated = true;
@@ -2645,6 +2643,55 @@ class Component extends DCLogic {
         wire(block, () => { window.location.href = 'tel:+17025266763'; });
       }
     });
+  }
+
+  // ─── Replace the contact-form card's dead inputs with one real button ─────
+  // The client asked to drop the Name/Email/Phone/Notes fields on the "Book
+  // Now!" card entirely - just a description and one working Book Now button.
+  // The fields (and their "Send Request" pill) are just more un-wired Figma
+  // text/divs like the buttons _patchLinks fixes, so they're hidden here and
+  // a real clickable button takes their place.
+  _patchContactForm(root) {
+    const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1';
+
+    const heading = Array.from(root.querySelectorAll('span'))
+      .find((s) => (s.textContent || '').trim() === 'Book Now!');
+    if (!heading) return;
+    const card = heading.parentElement;
+    if (!card || card.dataset.formPatched === '1') return;
+    card.dataset.formPatched = '1';
+
+    const nameLabel = Array.from(card.querySelectorAll('span'))
+      .find((s) => (s.textContent || '').trim() === 'Name');
+    const fieldsWrap = nameLabel && nameLabel.parentElement;
+    if (fieldsWrap) fieldsWrap.style.display = 'none';
+
+    const NEW_H = 300;
+    card.style.height = NEW_H + 'px';
+    const shadowBox = Array.from(card.children)
+      .find((c) => getComputedStyle(c).backgroundColor === 'rgba(255, 255, 255, 0.002)');
+    if (shadowBox) shadowBox.style.height = NEW_H + 'px';
+
+    const btn = document.createElement('div');
+    btn.textContent = 'Book Now';
+    Object.assign(btn.style, {
+      position: 'absolute', left: '44px', top: '212px', width: '260px', height: '52px',
+      borderRadius: '999px',
+      background: 'linear-gradient(90deg, rgb(75,33,18) 13.88%, rgb(34,34,34) 82.27%)',
+      boxShadow: '0px 8px 12px 0px rgba(0,0,0,0.25)',
+      color: 'rgb(255,253,251)',
+      fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+      fontWeight: '600', fontSize: '13.5px', letterSpacing: '0.54px', textTransform: 'uppercase',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+    });
+    btn.setAttribute('role', 'link');
+    btn.setAttribute('tabindex', '0');
+    const go = () => window.open(BOOKING_URL, '_blank', 'noopener');
+    btn.addEventListener('click', go);
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+    card.appendChild(btn);
   }
 
   // ─── 4) Fix text cropping ──────────────────────────────────────────────────

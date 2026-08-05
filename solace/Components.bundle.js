@@ -8890,7 +8890,7 @@ function SOLACEHP(_p = {}) {
       left: 44,
       top: 126,
       width: 511,
-      height: 58,
+      height: 76,
       fontFamily: "Lato, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
       fontWeight: 300,
       fontSize: 14,
@@ -8898,7 +8898,7 @@ function SOLACEHP(_p = {}) {
       color: "rgb(34,34,34)",
       whiteSpace: "pre-wrap"
     }
-  }, "Rehydrate, Revive, and Thrive with our convenient and personalized IV treatments.\nFrom energy boosts to immune support, we've got you covered. Book now and let us\nbring wellness to your doorstep!"), /*#__PURE__*/React.createElement("div", {
+  }, "Rehydrate, revive, and thrive with personalized IV treatments - from energy boosts to\nimmune support, we've got you covered. Booking takes less than a minute, and a real\nperson confirms every appointment."), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 44,
