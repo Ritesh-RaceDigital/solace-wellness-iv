@@ -1,5 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/Solace Wellness IV.dc.html" }
+  "routes": [
+    { "src": "^/$", "dest": "/Solace Wellness IV.dc.html" },
+    { "handle": "filesystem" }
   ]
 }
