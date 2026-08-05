@@ -1267,7 +1267,7 @@
             at your doorstep.</p>
           <div class="sm-btn-row">
             <a href="#treatments" class="sm-btn sm-btn-outline">View Treatments</a>
-            <a href="https://solacewellnessiv.janeapp.com/" target="_blank" rel="noopener" class="sm-btn sm-btn-solid">Book Now</a>
+            <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank" rel="noopener" class="sm-btn sm-btn-solid">Book Now</a>
           </div>
         </div>
       </section>
@@ -1906,7 +1906,7 @@
             Vitamin B12 IV Therapy. Schedule your Solace Wellness IV appointment now by calling or booking
             online and experience premium hydration and wellness care, in our Summerlin suite or delivered
             right to your doorstep.</p>
-          <a href="https://solacewellnessiv.janeapp.com/" target="_blank" rel="noopener" class="sm-btn sm-btn-solid full">Book Now</a>
+          <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank" rel="noopener" class="sm-btn sm-btn-solid full">Book Now</a>
         </div>
       </section>
 
@@ -2401,6 +2401,7 @@ class Component extends DCLogic {
       this._rootH = root.offsetHeight || 10769;
       this._scale();
       try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
+      try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
       if (!this._animated) {
         this._animated = true;
@@ -2593,6 +2594,56 @@ class Component extends DCLogic {
       getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);
     empties.forEach((d, i) => {
       if (i < tHashes.length) d.style.background = `url(${asset(tHashes[i])}) center / cover no-repeat`;
+    });
+  }
+
+  // ─── Wire up real clicks on the canvas's CTA pills ─────────────────────────
+  // This Figma export has no <a>/onClick anywhere - "Book Now", "View
+  // Treatments", and "Call Us" are just positioned text with zero click
+  // behavior. The hidden native nav's own "Book Now" duplicate (see
+  // _hideNativeChrome) is skipped automatically via the offsetParent check,
+  // since display:none elements report a null offsetParent.
+  _patchLinks(root) {
+    const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1';
+
+    const wire = (el, onActivate) => {
+      if (!el || el.dataset.linkPatched === '1') return;
+      el.dataset.linkPatched = '1';
+      el.style.cursor = 'pointer';
+      el.setAttribute('role', 'link');
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('click', onActivate);
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onActivate(); }
+      });
+    };
+
+    const spansWithText = (text) => Array.from(root.querySelectorAll('span'))
+      .filter((s) => (s.textContent || '').trim() === text);
+
+    spansWithText('Book Now').forEach((span) => {
+      const pill = span.parentElement;
+      if (pill && pill.offsetParent !== null) {
+        wire(pill, () => window.open(BOOKING_URL, '_blank', 'noopener'));
+      }
+    });
+
+    spansWithText('View Treatments').forEach((span) => {
+      const pill = span.parentElement;
+      if (pill && pill.offsetParent !== null) {
+        wire(pill, () => {
+          const heading = Array.from(root.querySelectorAll('span'))
+            .find((s) => (s.textContent || '').trim() === 'Menu / Price List');
+          if (heading) heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    });
+
+    spansWithText('Call Us').forEach((span) => {
+      const block = span.parentElement;
+      if (block && block.offsetParent !== null) {
+        wire(block, () => { window.location.href = 'tel:+17025266763'; });
+      }
     });
   }
 

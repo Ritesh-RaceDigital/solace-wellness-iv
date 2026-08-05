@@ -147,7 +147,7 @@
     return current === 'home' ? item.hash : PAGES.home + item.hash;
   }
 
-  const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/';
+  const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1';
 
   function bookHref() {
     return BOOKING_URL;
