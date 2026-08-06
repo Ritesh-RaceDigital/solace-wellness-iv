@@ -409,6 +409,10 @@
       "dest": "/Solace Wellness IV - Press & Recognition.dc.html"
     },
     {
+      "src": "^/myers-miracle-drip$",
+      "dest": "/Solace Wellness IV - Myers Miracle Drip.dc.html"
+    },
+    {
       "handle": "filesystem"
     },
     {

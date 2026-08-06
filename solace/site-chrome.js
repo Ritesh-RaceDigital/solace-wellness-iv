@@ -30,6 +30,7 @@
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
     myersCocktail: '/myers-cocktail-iv',
+    myersMiracleDrip: '/myers-miracle-drip',
     glutathioneIvTherapy: '/glutathione-iv-therapy',
     energyTherapy: '/energy-therapy',
     vitaminInjections: '/vitamin-injections',
@@ -105,6 +106,7 @@
       name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy,
       items: [
         { name: 'Classic Myers Cocktail', href: PAGES.myersCocktail },
+        { name: 'Myers Miracle Drip', href: PAGES.myersMiracleDrip },
         { name: 'Solace RevitaDrip', href: PAGES.revitadrip },
         { name: 'Wellness Hydration IV', href: PAGES.wellnessHydrationIv },
         { name: 'Vitamin IV Therapy', href: PAGES.vitaminIvTherapy },
