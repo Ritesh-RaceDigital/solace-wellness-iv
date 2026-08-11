@@ -258,10 +258,18 @@
         }
 
         .pr-feature-logo {
-          width: 76px;
-          height: 44px;
+          width: 128px;
+          height: 60px;
           object-fit: contain;
+          object-position: left center;
           flex: none;
+        }
+
+        @media (max-width: 480px) {
+          .pr-feature-logo {
+            width: 96px;
+            height: 48px;
+          }
         }
 
         .pr-feature-card h3 {
