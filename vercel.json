@@ -69,13 +69,6 @@
       }
     },
     {
-      "src": "^/Solace%20Wellness%20IV%20-%20Myers%20Cocktail%20IV\\.dc\\.html$",
-      "status": 308,
-      "headers": {
-        "Location": "/myers-cocktail-iv"
-      }
-    },
-    {
       "src": "^/Solace%20Wellness%20IV%20-%20Glutathione%20IV%20Therapy\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -101,27 +94,6 @@
       "status": 308,
       "headers": {
         "Location": "/metabofusion-iv"
-      }
-    },
-    {
-      "src": "^/Solace%20Wellness%20IV%20-%20Energy%20Boost%20IV\\.dc\\.html$",
-      "status": 308,
-      "headers": {
-        "Location": "/energy-boost-iv"
-      }
-    },
-    {
-      "src": "^/Solace%20Wellness%20IV%20-%20Brain%20Fog%20IV\\.dc\\.html$",
-      "status": 308,
-      "headers": {
-        "Location": "/brain-fog-iv"
-      }
-    },
-    {
-      "src": "^/Solace%20Wellness%20IV%20-%20Fatigue%20Recovery%20IV\\.dc\\.html$",
-      "status": 308,
-      "headers": {
-        "Location": "/fatigue-recovery-iv"
       }
     },
     {
@@ -297,10 +269,6 @@
       "dest": "/Solace Wellness IV - NAD+ Therapy.dc.html"
     },
     {
-      "src": "^/myers-cocktail-iv$",
-      "dest": "/Solace Wellness IV - Myers Cocktail IV.dc.html"
-    },
-    {
       "src": "^/glutathione-iv-therapy$",
       "dest": "/Solace Wellness IV - Glutathione IV Therapy.dc.html"
     },
@@ -315,18 +283,6 @@
     {
       "src": "^/metabofusion-iv$",
       "dest": "/Solace Wellness IV - MetaboFusion IV.dc.html"
-    },
-    {
-      "src": "^/energy-boost-iv$",
-      "dest": "/Solace Wellness IV - Energy Boost IV.dc.html"
-    },
-    {
-      "src": "^/brain-fog-iv$",
-      "dest": "/Solace Wellness IV - Brain Fog IV.dc.html"
-    },
-    {
-      "src": "^/fatigue-recovery-iv$",
-      "dest": "/Solace Wellness IV - Fatigue Recovery IV.dc.html"
     },
     {
       "src": "^/beauty-skin-glow-iv$",

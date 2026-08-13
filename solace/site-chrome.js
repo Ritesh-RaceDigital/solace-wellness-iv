@@ -29,15 +29,11 @@
     beautyIvTherapy: '/beauty-iv-therapy',
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
-    myersCocktail: '/myers-cocktail-iv',
     myersMiracleDrip: '/myers-miracle-drip',
     glutathioneIvTherapy: '/glutathione-iv-therapy',
     energyTherapy: '/energy-therapy',
     vitaminInjections: '/vitamin-injections',
     metaboFusionIv: '/metabofusion-iv',
-    energyBoostIv: '/energy-boost-iv',
-    brainFogIv: '/brain-fog-iv',
-    fatigueRecoveryIv: '/fatigue-recovery-iv',
     beautySkinGlowIv: '/beauty-skin-glow-iv',
     beautyDrip: '/beauty-drip',
     skinBrighteningIv: '/skin-brightening-iv',
@@ -73,9 +69,6 @@
       name: 'Energy Therapy', href: PAGES.energyTherapy,
       items: [
         { name: 'MetaboFusion IV', href: PAGES.metaboFusionIv },
-        { name: 'Energy Boost IV', href: PAGES.energyBoostIv },
-        { name: 'Brain Fog IV', href: PAGES.brainFogIv },
-        { name: 'Fatigue Recovery IV', href: PAGES.fatigueRecoveryIv },
       ],
     },
     {
@@ -105,7 +98,6 @@
     {
       name: 'Wellness IV Therapy', href: PAGES.wellnessIvTherapy,
       items: [
-        { name: 'Classic Myers Cocktail', href: PAGES.myersCocktail },
         { name: 'Myers Miracle Drip', href: PAGES.myersMiracleDrip },
         { name: 'Solace RevitaDrip', href: PAGES.revitadrip },
         { name: 'Wellness Hydration IV', href: PAGES.wellnessHydrationIv },

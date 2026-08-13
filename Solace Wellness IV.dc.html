@@ -62,7 +62,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
       <link rel="stylesheet" href="./solace/fig-assets.css">
       <link rel="canonical" href="https://solacewellnessiv.com/">
@@ -193,14 +193,6 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Most appointments take approximately 45 to 60 minutes, including a brief health assessment, setup, infusion, and post-treatment check-in."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is included in the Myers Cocktail?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our Myers Cocktail IV blends vitamin C, B-complex vitamins, calcium, and magnesium in a single infusion - a classic formula used to support hydration, energy, and overall wellness."
             }
           },
           {
@@ -710,6 +702,86 @@
           margin: 8px 0 0;
           padding-top: 8px;
           border-top: 1px solid var(--line);
+        }
+
+        /* featured "snapshot" style treatment card (photo + logo overlay + icon row) */
+        .solace-mobile .sm-treat-card.sm-feature-card {
+          background: var(--cream);
+        }
+
+        .solace-mobile .sm-feature-card .sm-treat-photo {
+          aspect-ratio: 368/280;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .solace-mobile .sm-feature-card .sm-feature-logo {
+          width: 108px;
+          height: auto;
+          filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.25));
+        }
+
+        .solace-mobile .sm-feature-card .sm-feature-body {
+          padding: 22px 20px 24px;
+          text-align: center;
+        }
+
+        .solace-mobile .sm-feature-card .sm-feature-eyebrow {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+          color: var(--tan-text);
+          margin: 0 0 8px;
+        }
+
+        .solace-mobile .sm-feature-card h4 {
+          font-family: 'Playfair Display', serif;
+          font-weight: 700;
+          font-size: 28px;
+          color: var(--brown-800);
+          margin: 0 0 16px;
+        }
+
+        .solace-mobile .sm-feature-card .sm-feature-supports {
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: .04em;
+          text-transform: uppercase;
+          color: var(--ink-soft);
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 10px;
+          margin: 0 0 18px;
+        }
+
+        .solace-mobile .sm-feature-icons {
+          display: flex;
+          justify-content: center;
+          gap: 28px;
+        }
+
+        .solace-mobile .sm-feature-icons .sm-feature-icon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          width: 84px;
+        }
+
+        .solace-mobile .sm-feature-icons .sm-ic-badge {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 0;
+        }
+
+        .solace-mobile .sm-feature-icons span {
+          font-size: 12.5px;
+          font-weight: 600;
+          color: var(--ink-soft);
+          line-height: 1.3;
         }
 
         /* 3-step process */
@@ -1369,7 +1441,7 @@
                   d="M8 1.4c.4 2.6 1.2 4.2 2.4 5.4 1.2 1.2 2.8 2 5.2 2.4-2.4.4-4 1.2-5.2 2.4-1.2 1.2-2 2.8-2.4 5.4-.4-2.6-1.2-4.2-2.4-5.4C4.4 10.4 2.8 9.6.4 9.2c2.4-.4 4-1.2 5.2-2.4C6.8 5.6 7.6 4 8 1.4Z" />
               </svg></div>
             <h3>Personalized treatments</h3>
-            <p>From Myers Cocktail IV to NAD+ Therapy Las Vegas, we have therapies for your wellness goals.</p>
+            <p>From Myers Miracle Drip to NAD+ Therapy Las Vegas, we have therapies for your wellness goals.</p>
           </div>
           <div class="sm-why-card" style="grid-column:1 / -1;">
             <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
@@ -1463,72 +1535,6 @@
                 <li>Hydration Support Pre &amp; Post-Operative</li>
               </ul>
               <p class="sm-tagline">A go-to for Party Prep IV and Pre-Party IV Therapy.</p>
-            </div>
-          </div>
-
-          <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/89b96124c6eb0599.webp" role="img" aria-label="Morning After Hangover IV treatment for dehydration and hangover relief"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$220</div>
-              <h4>Morning After Hangover IV</h4>
-              <p class="sm-desc">Helps relieve symptoms associated with dehydration and hangovers.</p>
-              <ul class="sm-bullets">
-                <li>Recovery from Hangovers</li>
-                <li>Rehydrate</li>
-                <li>Electrolyte replacement</li>
-                <li>May help relieve dehydration-related headaches</li>
-                <li>May help reduce nausea associated with dehydration</li>
-                <li>Quicker Recovery</li>
-              </ul>
-              <p class="sm-tagline">Perfect for those seeking Hangover IV Drip and Recovery IV Therapy in Las Vegas.</p>
-            </div>
-          </div>
-
-          <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-revitadrip-card.webp" style="background-position:center top;" role="img" aria-label="Energy Boost IV treatment, also known as RevitaDrip Energy IV"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$300</div>
-              <h4>Energy Boost IV</h4>
-              <p class="sm-desc">Energy Boost IV provides excellent hydration with added vitamins and antioxidants to
-                help recover energy and promote overall wellness.</p>
-              <ul class="sm-bullets">
-                <li>Hydration premium</li>
-                <li>Quick Energy Boost</li>
-                <li>Reduces tiredness</li>
-                <li>Supports immune system</li>
-                <li>Supports Healthy Cellular Function</li>
-                <li>Clarity of Mind</li>
-                <li>Relaxation with magnesium</li>
-                <li>Antioxidant Support</li>
-                <li>Wellness &amp; Energy &ndash; Overall</li>
-              </ul>
-              <p class="sm-tagline">Ideal for those looking for an Energy IV Drip, Vitamin B Complex IV or a
-                comprehensive wellness infusion. Also known as RevitaDrip Energy IV.</p>
-              <p class="sm-tagline"><a href="/energy-boost-iv"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Energy Boost
-                  IV &rarr;</a></p>
-            </div>
-          </div>
-
-          <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/3e0f377529cc2fa7.webp" style="background-position:center bottom;" role="img" aria-label="Classic Myers Cocktail treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$300</div>
-              <h4>Classic Myers Cocktail</h4>
-              <p class="sm-desc">Our take on the popular Myers Cocktail IV Infusion gives both hydration and a
-                well-balanced blend of vitamins and minerals.</p>
-              <ul class="sm-bullets">
-                <li>Supports Overall Wellness</li>
-                <li>Exhaustion Support</li>
-                <li>Foggy Mind</li>
-                <li>Supports Normal Energy Metabolism</li>
-                <li>Helps Replenish Vitamins &amp; Minerals</li>
-              </ul>
-              <p class="sm-tagline">Great if you are looking for Myers Vitamin Cocktail IV. Myers Cocktail IV Drip,
-                Myers Cocktail IV At Home.</p>
-              <p class="sm-tagline"><a href="/myers-cocktail-iv"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Myers
-                  Cocktail IV &rarr;</a></p>
             </div>
           </div>
 
@@ -1721,17 +1727,45 @@
             style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
             Vitamin Injections &rarr;</a></p>
         <div class="sm-treatment-grid">
-          <div class="sm-treat-card">
-            <div class="sm-treat-photo" data-bg="./solace/assets/9e6cf73f3151de71.webp" role="img" aria-label="Glutathione Booster IV treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$40</div>
+          <div class="sm-treat-card sm-feature-card">
+            <div class="sm-treat-photo" data-bg="./solace/assets/9e6cf73f3151de71.webp" role="img" aria-label="Glutathione Booster IV treatment">
+              <img class="sm-feature-logo" src="./solace/assets/header-logo.webp" alt="Solace Wellness IV">
+            </div>
+            <div class="sm-feature-body">
+              <p class="sm-feature-eyebrow">Vitamin Booster Shots</p>
               <h4>Glutathione Booster</h4>
-              <p class="sm-supports">Supports:</p>
-              <ul class="sm-bullets">
-                <li>Detoxification</li>
-                <li>Immune Health</li>
-                <li>Healthy Glowing Skin</li>
-              </ul>
+              <p class="sm-feature-supports">Supports:</p>
+              <div class="sm-feature-icons">
+                <div class="sm-feature-icon">
+                  <div class="sm-ic-badge">
+                    <svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                      <path d="M13 3C7 3 3 7 3 13c6 0 10-4 10-10Z" />
+                      <path d="M4.5 11.5 11 5" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <span>Detoxification</span>
+                </div>
+                <div class="sm-feature-icon">
+                  <div class="sm-ic-badge">
+                    <svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                      <circle cx="8" cy="8" r="6" />
+                      <path d="M5.6 9.2c.6.9 1.4 1.4 2.4 1.4s1.8-.5 2.4-1.4" stroke-linecap="round" />
+                      <circle cx="5.9" cy="6.7" r=".6" fill="currentColor" stroke="none" />
+                      <circle cx="10.1" cy="6.7" r=".6" fill="currentColor" stroke="none" />
+                    </svg>
+                  </div>
+                  <span>Healthy Glowing Skin</span>
+                </div>
+                <div class="sm-feature-icon">
+                  <div class="sm-ic-badge">
+                    <svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3">
+                      <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
+                      <path d="M5.7 7.9 7.3 9.5l3-3.3" />
+                    </svg>
+                  </div>
+                  <span>Immune Health</span>
+                </div>
+              </div>
               <p class="sm-tagline">Popular for Glutathione Injection, Glutathione IV, and Glutathione IV Therapy.</p>
               <p class="sm-tagline"><a href="/glutathione-iv-therapy"
                   style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Glutathione
@@ -1871,7 +1905,7 @@
           <h3>Visit Our Summerlin Suite or Book Mobile IV Therapy in Las Vegas</h3>
           <p class="sm-body">Solace Wellness IV gives professional, medically guided care whether you visit our
             private Summerlin wellness suite or we come to you, for IV hydration, energy IV therapy, hangover
-            IV therapy, immune support IV therapy, Myers Cocktail IV, NAD+ Therapy, beauty IV therapy, or
+            IV therapy, immune support IV therapy, NAD+ Therapy, beauty IV therapy, or
             Vitamin B12 IV Therapy. Schedule your Solace Wellness IV appointment now by calling or booking
             online and experience premium hydration and wellness care, in our Summerlin suite or delivered
             right to your doorstep.</p>
@@ -2143,19 +2177,6 @@
             <div class="sm-faq-a">
               <p>Most appointments take approximately 45 to 60 minutes, including a brief health assessment, setup,
                 infusion, and post-treatment check-in.</p>
-            </div>
-          </div>
-          <div class="sm-faq-item">
-            <button type="button" class="sm-faq-q" aria-expanded="false">
-              <span>What is included in the Myers Cocktail?</span>
-              <svg class="sm-faq-caret" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </button>
-            <div class="sm-faq-a">
-              <p>Our Myers Cocktail IV blends vitamin C, B-complex vitamins, calcium, and magnesium in a single
-                infusion - a classic formula used to support hydration, energy, and overall wellness.</p>
             </div>
           </div>
           <div class="sm-faq-item">
