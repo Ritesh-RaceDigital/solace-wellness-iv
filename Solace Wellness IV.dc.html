@@ -453,12 +453,12 @@
 
         .solace-mobile .sm-mission-photo {
           width: 240px;
-          aspect-ratio: 232.8/320.1;
+          aspect-ratio: 1/1;
           margin: 0 auto 20px;
           background-size: cover;
-          background-position: 36% center;
-          clip-path: path('M 116.4 0 C 116.4 0 0 145.5 0 214.613 C 0 276.45 52.38 320.1 116.4 320.1 C 180.42 320.1 232.8 276.45 232.8 214.613 C 232.8 145.5 116.4 0 116.4 0 Z');
-          filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.22));
+          background-position: center;
+          border-radius: 16px;
+          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.22);
         }
 
         .solace-mobile .sm-mission {
@@ -2424,14 +2424,12 @@ class Component extends DCLogic {
       getComputedStyle(d).backgroundImage === 'none');
     if (hero) hero.style.background = `url(${asset('b70d42f2fbb71bbe')}) 99.904% 50% / 125.679% 100% no-repeat`;
 
-    // Mission teardrop svg
-    const mission = Array.from(root.querySelectorAll('svg')).find(s =>
-      near(s.getBoundingClientRect().width / this._curScale(), 232.8, 6) &&
-      near(s.getBoundingClientRect().height / this._curScale(), 320.1, 6));
+    // Mission photo
+    const mission = Array.from(root.querySelectorAll('div')).find(d =>
+      near(d.offsetWidth, 232.8, 4) && near(d.offsetHeight, 320.1, 4) &&
+      getComputedStyle(d).backgroundImage === 'none');
     if (mission) {
       mission.style.background = `url(${asset('7a204e693ec0df14')}) center / cover no-repeat`;
-      mission.style.clipPath = "path('M 116.4 0 C 116.4 0 0 145.5 0 214.613 C 0 276.45 52.38 320.1 116.4 320.1 C 180.42 320.1 232.8 276.45 232.8 214.613 C 232.8 145.5 116.4 0 116.4 0 Z')";
-      mission.querySelectorAll('path').forEach(p => { p.setAttribute('fill', 'transparent'); });
     }
 
     // Gallery photos
