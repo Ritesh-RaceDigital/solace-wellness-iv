@@ -509,7 +509,7 @@
 
         .solace-mobile .sm-serving-photo {
           width: 100%;
-          aspect-ratio: 16/10;
+          aspect-ratio: 1024/769;
           background-size: cover;
           background-position: center;
           border-radius: 16px;
@@ -1737,7 +1737,7 @@
       </section>
 
       <section class="sm-serving">
-        <div class="sm-serving-photo" data-bg="./solace/assets/b70d42f2fbb71bbe.webp" role="img" aria-label="Solace Wellness IV nurse practitioner preparing an IV treatment"></div>
+        <div class="sm-serving-photo" data-bg="./solace/assets/b70d42f2fbb71bbe.webp" role="img" aria-label="Solace Wellness IV nurse arriving with mobile IV therapy supplies on the Las Vegas Strip"></div>
         <p class="sm-eyebrow light">Where We Go</p>
         <h2 class="light">Proudly Serving Las Vegas</h2>
         <p class="sm-body light">Solace Wellness IV proudly provides mobile IV therapy throughout:</p>
@@ -2420,9 +2420,9 @@ class Component extends DCLogic {
 
     // Hero large photo
     const hero = Array.from(root.querySelectorAll('div')).find(d =>
-      near(d.offsetWidth, 874, 4) && near(d.offsetHeight, 586, 4) &&
+      near(d.offsetWidth, 599, 4) && near(d.offsetHeight, 450, 4) &&
       getComputedStyle(d).backgroundImage === 'none');
-    if (hero) hero.style.background = `url(${asset('b70d42f2fbb71bbe')}) 99.904% 50% / 125.679% 100% no-repeat`;
+    if (hero) hero.style.background = `url(${asset('b70d42f2fbb71bbe')}) center / cover no-repeat`;
 
     // Mission photo
     const mission = Array.from(root.querySelectorAll('div')).find(d =>
