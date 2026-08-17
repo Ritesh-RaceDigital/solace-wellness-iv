@@ -619,6 +619,18 @@
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
         }
 
+        .solace-mobile a.sm-treat-card {
+          display: block;
+          color: inherit;
+          text-decoration: none;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .solace-mobile a.sm-treat-card:active {
+          opacity: 0.88;
+        }
+
         .solace-mobile .sm-treat-photo {
           width: 100%;
           aspect-ratio: 368/210;
@@ -1458,7 +1470,7 @@
             </div>
           </div>
 
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/myers-miracle-drip">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-myersmiracle-hero.webp" style="background-position:top;" role="img" aria-label="Myers Miracle Drip treatment for headaches, stress, chronic pain, and fatigue"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$240</div>
@@ -1473,13 +1485,11 @@
               </ul>
               <p class="sm-tagline">A go-to for Migraine Relief IV, Chronic Pain IV Drip, and Anti-Stress IV
                 Therapy.</p>
-              <p class="sm-tagline"><a href="/myers-miracle-drip"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Myers
-                  Miracle Drip &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Myers Miracle Drip &rarr;</p>
             </div>
-          </div>
+          </a>
 
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/immune-iv-therapy">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-immunoshield.webp" style="background-position:center top;" role="img" aria-label="IV Immunoshield immune support IV treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
@@ -1496,13 +1506,11 @@
               </ul>
               <p class="sm-tagline">For people looking for Immune IV Therapy, Immune Support IV Therapy, and Immunity IV
                 Drip.</p>
-              <p class="sm-tagline"><a href="/immune-iv-therapy"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Immune IV
-                  Therapy &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Immune IV Therapy &rarr;</p>
             </div>
-          </div>
+          </a>
 
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/jetset-travel-recovery-iv">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-jetset-revival.webp" style="background-position:center top;" role="img" aria-label="JetSet Travel Recovery IV treatment for travel fatigue and jet lag"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$250</div>
@@ -1518,13 +1526,11 @@
               </ul>
               <p class="sm-tagline">Great for travelers looking for Travel Recovery IV, Jet Lag IV Drip or Jet Lag
                 Therapy.</p>
-              <p class="sm-tagline"><a href="/jetset-travel-recovery-iv"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about JetSet
-                  Travel Recovery IV &rarr;</a></p>
+              <p class="sm-tagline">Learn more about JetSet Travel Recovery IV &rarr;</p>
             </div>
-          </div>
+          </a>
 
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/beauty-skin-glow-iv">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-flawless-fusion.webp" style="background-position:center top;" role="img" aria-label="Beauty & Skin Glow IV treatment, also known as Flawless Fusion IV"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$300</div>
@@ -1538,16 +1544,33 @@
                 <li>Supporting Recovery</li>
               </ul>
               <p class="sm-tagline">Great option for Beauty IV Therapy and Skin Glow IV Therapy.</p>
-              <p class="sm-tagline"><a href="/beauty-skin-glow-iv"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Beauty
-                  &amp; Skin Glow IV &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Beauty &amp; Skin Glow IV &rarr;</p>
             </div>
-          </div>
+          </a>
+
+          <a class="sm-treat-card" href="/morning-after-martini">
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-martini-hero.webp" style="background-position:center top;" role="img" aria-label="Morning After Martini IV treatment for hangover recovery and rehydration"></div>
+            <div class="sm-treat-body">
+              <div class="sm-treat-price">$260</div>
+              <h4>Morning After Martini</h4>
+              <p class="sm-desc">Rehydration, electrolytes, and vitamins after a long night out, with anti-nausea
+                support if you need it.</p>
+              <ul class="sm-bullets">
+                <li>Rapid Rehydration</li>
+                <li>Electrolyte Replacement</li>
+                <li>Headache &amp; Fatigue Relief</li>
+                <li>Nausea Support (optional)</li>
+              </ul>
+              <p class="sm-tagline">A go-to for Hangover IV Drip, Hangover Recovery IV, and Post-Party IV
+                Therapy.</p>
+              <p class="sm-tagline">Learn more about Morning After Martini &rarr;</p>
+            </div>
+          </a>
         </div>
 
         <h3 class="sm-group-label">Specialty Care</h3>
         <div class="sm-treatment-grid">
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/metabofusion-iv">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-metabo-hero.webp" role="img" aria-label="MetaboFusion IV metabolism support treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$280</div>
@@ -1564,11 +1587,9 @@
               </ul>
               <p class="sm-tagline">Perfect for anyone looking for Metabolism Boost IV, Metabolism Booster IV Drip, and
                 IV Therapy for Metabolism.</p>
-              <p class="sm-tagline"><a href="/metabofusion-iv"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about MetaboFusion
-                  IV &rarr;</a></p>
+              <p class="sm-tagline">Learn more about MetaboFusion IV &rarr;</p>
             </div>
-          </div>
+          </a>
         </div>
 
         <h3 class="sm-group-label">NAD+ Therapy in Las Vegas</h3>
@@ -1576,11 +1597,11 @@
             style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
             NAD+ Therapy &rarr;</a></p>
         <div class="sm-treatment-grid">
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/nad-250mg">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img" aria-label="NAD+ 250mg IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$299</div>
-              <h4><a href="/nad-250mg" style="color:inherit;text-decoration:none;">NAD+ 250mg &rarr;</a></h4>
+              <h4>NAD+ 250mg &rarr;</h4>
               <p class="sm-desc">Great for people starting NAD+ therapy.</p>
               <p class="sm-supports">Cellular Energies</p>
               <ul class="sm-bullets">
@@ -1590,14 +1611,14 @@
                 <li>Decreased Fatigue</li>
                 <li>Recovery supports</li>
               </ul>
-              <p class="sm-tagline"><a href="/nad-250mg" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about NAD+ 250mg &rarr;</a></p>
+              <p class="sm-tagline">Learn more about NAD+ 250mg &rarr;</p>
             </div>
-          </div>
-          <div class="sm-treat-card">
+          </a>
+          <a class="sm-treat-card" href="/nad-500mg">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img" aria-label="NAD+ 500mg IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$499</div>
-              <h4><a href="/nad-500mg" style="color:inherit;text-decoration:none;">NAD+ 500mg &rarr;</a></h4>
+              <h4>NAD+ 500mg &rarr;</h4>
               <p class="sm-desc">Supports Cellular Energy Production.</p>
               <ul class="sm-bullets">
                 <li>Cell Support</li>
@@ -1607,14 +1628,14 @@
                 <li>Support for Brain Function</li>
                 <li>Supports Long-Term Wellness Goals</li>
               </ul>
-              <p class="sm-tagline"><a href="/nad-500mg" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about NAD+ 500mg &rarr;</a></p>
+              <p class="sm-tagline">Learn more about NAD+ 500mg &rarr;</p>
             </div>
-          </div>
-          <div class="sm-treat-card">
+          </a>
+          <a class="sm-treat-card" href="/cellular-repair">
             <div class="sm-treat-photo" data-bg="./solace/assets/b280d8466fc811da.webp" role="img" aria-label="Cellular Repair IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$299+</div>
-              <h4><a href="/cellular-repair" style="color:inherit;text-decoration:none;">Cellular Repair IV &rarr;</a></h4>
+              <h4>Cellular Repair IV &rarr;</h4>
               <p class="sm-desc">Support DNA repair and mitochondrial health.</p>
               <ul class="sm-bullets">
                 <li>DNA Repair Support</li>
@@ -1622,14 +1643,14 @@
                 <li>Oxidative Stress Management</li>
                 <li>Cellular Resilience</li>
               </ul>
-              <p class="sm-tagline"><a href="/cellular-repair" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Cellular Repair IV &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Cellular Repair IV &rarr;</p>
             </div>
-          </div>
-          <div class="sm-treat-card">
+          </a>
+          <a class="sm-treat-card" href="/healthy-aging">
             <div class="sm-treat-photo" data-bg="./solace/assets/28011f9776f04463.webp" role="img" aria-label="Healthy Aging IV therapy treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$299+</div>
-              <h4><a href="/healthy-aging" style="color:inherit;text-decoration:none;">Healthy Aging IV &rarr;</a></h4>
+              <h4>Healthy Aging IV &rarr;</h4>
               <p class="sm-desc">Proactive longevity therapy to restore vital coenzymes.</p>
               <ul class="sm-bullets">
                 <li>Sustained Daily Energy</li>
@@ -1637,9 +1658,9 @@
                 <li>Biological Longevity Support</li>
                 <li>Immune & Detox Resilience</li>
               </ul>
-              <p class="sm-tagline"><a href="/healthy-aging" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Healthy Aging IV &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Healthy Aging IV &rarr;</p>
             </div>
-          </div>
+          </a>
         </div>
 
         <h3 class="sm-group-label">Vitamin Booster Shots</h3>
@@ -1647,7 +1668,7 @@
             style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
             Vitamin Injections &rarr;</a></p>
         <div class="sm-treatment-grid">
-          <div class="sm-treat-card">
+          <a class="sm-treat-card" href="/glutathione-iv-therapy">
             <div class="sm-treat-photo" data-bg="./solace/assets/9e6cf73f3151de71.webp" role="img" aria-label="Glutathione Booster IV treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$40</div>
@@ -1659,12 +1680,10 @@
                 <li>Healthy Glowing Skin</li>
               </ul>
               <p class="sm-tagline">Popular for Glutathione Injection, Glutathione IV, and Glutathione IV Therapy.</p>
-              <p class="sm-tagline"><a href="/glutathione-iv-therapy"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Glutathione
-                  IV Therapy &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Glutathione IV Therapy &rarr;</p>
             </div>
-          </div>
-          <div class="sm-treat-card">
+          </a>
+          <a class="sm-treat-card" href="/vitamin-b12-injection">
             <div class="sm-treat-photo" data-bg="./solace/assets/8ca6133ce1e2810b.webp" role="img" aria-label="Vitamin B12 injection treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$40</div>
@@ -1677,12 +1696,10 @@
               </ul>
               <p class="sm-tagline">Great for Vitamin B12 Booster, Vitamin B12 IV, Methylcobalamin Injection and B12
                 Energy Booster.</p>
-              <p class="sm-tagline"><a href="/vitamin-b12-injection"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Vitamin B12
-                  Injections &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Vitamin B12 Injections &rarr;</p>
             </div>
-          </div>
-          <div class="sm-treat-card">
+          </a>
+          <a class="sm-treat-card" href="/vitamin-injections">
             <div class="sm-treat-photo" data-bg="./solace/assets/de3f47f0661426b8.webp" role="img" aria-label="Vitamin D3 Booster injection treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$40</div>
@@ -1695,11 +1712,9 @@
                 <li>General Wellness</li>
               </ul>
               <p class="sm-tagline">Available as a Vitamin D3 Shot, Vitamin D Therapy, or Vitamin D Injection.</p>
-              <p class="sm-tagline"><a href="/vitamin-injections"
-                  style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Learn more about Vitamin
-                  Injections &rarr;</a></p>
+              <p class="sm-tagline">Learn more about Vitamin Injections &rarr;</p>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
