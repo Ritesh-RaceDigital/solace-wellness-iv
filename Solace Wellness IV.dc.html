@@ -2271,15 +2271,18 @@ class Component extends DCLogic {
       // Must run before the height/scale read below - it changes root's
       // own height, and the wrap/scale math needs the post-crop number.
       try { this._hideNativeChrome(root); } catch (e) { console.warn('chrome hide', e); }
-      // Reveal only once the native header/footer are actually cropped, so
-      // the canvas never shows its own chrome stacked under the shared one.
-      if (this.wrap) this.wrap.classList.add('sc-chrome-ready');
       this._rootH = root.offsetHeight || 10769;
       this._scale();
       try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
       try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
       try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
+      // Reveal only once the native header/footer are cropped AND the text/
+      // photo/card overflow fixes above have run - otherwise the canvas
+      // flashes its raw Figma-fixed-box state (overlapping bullet lists,
+      // clipped card text, misaligned photos) for a frame before the fixes
+      // land, which is especially visible on a loaded/throttled browser.
+      if (this.wrap) this.wrap.classList.add('sc-chrome-ready');
       if (!this._animated) {
         this._animated = true;
         try { this._animate(root); } catch (e) { console.warn('anim', e); }
@@ -2598,10 +2601,17 @@ class Component extends DCLogic {
           // height:auto can't measure it (absolutely positioned descendants
           // don't contribute to an auto-height ancestor's size). Measure the
           // deepest descendant's bottom edge directly instead.
+          // getBoundingClientRect() reports post-transform (scaled) visual
+          // pixels, but el.style.height lives in the canvas's un-scaled
+          // 1440-design-space pixels (the whole canvas is one scale(s)
+          // transform) - divide back into design space before comparing/
+          // assigning, or this only grows cards correctly at exactly the
+          // 1:1 (1440px viewport) scale and over/under-grows everywhere else.
+          const s = this._curScale() || 1;
           const er = el.getBoundingClientRect();
           let maxBottom = 0;
           el.querySelectorAll('*').forEach(child => {
-            const rel = child.getBoundingClientRect().bottom - er.top;
+            const rel = (child.getBoundingClientRect().bottom - er.top) / s;
             if (rel > maxBottom) maxBottom = rel;
           });
           if (maxBottom > cardFixedH) el.style.height = Math.ceil(maxBottom + 16) + 'px';
