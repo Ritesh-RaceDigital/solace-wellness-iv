@@ -2277,6 +2277,7 @@ class Component extends DCLogic {
       try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
       try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
+      try { this._tightenHeroSpacing(root); } catch (e) { console.warn('hero spacing', e); }
       // Reveal only once the native header/footer are cropped AND the text/
       // photo/card overflow fixes above have run - otherwise the canvas
       // flashes its raw Figma-fixed-box state (overlapping bullet lists,
@@ -2523,6 +2524,81 @@ class Component extends DCLogic {
         wire(block, () => { window.location.href = 'tel:+17025266763'; });
       }
     });
+
+    // ── Social icon row (Contact card) ──────────────────────────────────
+    // The Figma export draws two round brown icon badges here - Instagram
+    // and one unused/placeholder glyph - neither wired to anything. Only
+    // Instagram should show, and it needs a real link. This exact style
+    // signature (42x42, fully round, brown-700) is unique to these two
+    // badges on the page, in DOM order [Instagram, the other one].
+    const circleIcons = Array.from(root.querySelectorAll('div')).filter((d) =>
+      d.style.width === '42px' && d.style.height === '42px' &&
+      d.style.borderRadius === '21px' && d.style.backgroundColor === 'rgb(75, 33, 18)');
+    const [insta, ...extraIcons] = circleIcons;
+    if (insta) {
+      wire(insta, () => window.open(
+        'https://www.instagram.com/solacewellnessiv?igsh=ajF2NHc3bnM0YXA5', '_blank', 'noopener'));
+      insta.setAttribute('aria-label', 'Instagram');
+    }
+    extraIcons.forEach((el) => {
+      el.style.display = 'none';
+      const wrap = el.parentElement;
+      if (wrap && parseFloat(wrap.style.width) > 42) wrap.style.width = '42px';
+    });
+  }
+
+  // ─── Tighten the hero's oversized heading/subhead/paragraph gaps ──────────
+  // The Figma export leaves a much bigger visual gap under the H1 (its
+  // declared box height doesn't match what a 46px/0.82-line-height heading
+  // actually renders as) and again between the subhead and the paragraph
+  // below the divider line than anywhere else in the stack. Rather than
+  // hardcode pixel guesses against Figma's fixed-position numbers, measure
+  // the real rendered edges at runtime and pull each element up to a fixed,
+  // comfortable gap from the one above it - then cascade that same shift to
+  // every element below so the rest of the stack (which already looked
+  // fine) keeps its original spacing instead of drifting apart.
+  _tightenHeroSpacing(root) {
+    const spans = Array.from(root.querySelectorAll('span'));
+    const heading = spans.find((s) => (s.textContent || '').trim() === 'Premium IV Therapy in Las Vegas');
+    const subhead = spans.find((s) => (s.textContent || '').trim() ===
+      'Visit Our Summerlin Suite or We Come to Your Hotel, Home & Office');
+    const bodyPara = spans.find((s) => (s.textContent || '').startsWith('Las Vegas residents and visitors depend on'));
+    if (!heading || !subhead || !bodyPara || subhead.dataset.gapTightened === '1') return;
+    const parent = subhead.offsetParent;
+    if (!parent) return;
+    subhead.dataset.gapTightened = '1';
+
+    const sc = this._curScale() || 1;
+    const relTop = (el) => (el.getBoundingClientRect().top - parent.getBoundingClientRect().top) / sc;
+    const relBottom = (el) => (el.getBoundingClientRect().bottom - parent.getBoundingClientRect().top) / sc;
+    const shiftFrom = (el, delta) => {
+      while (el) {
+        el.style.top = ((parseFloat(el.style.top) || 0) - delta) + 'px';
+        el = el.nextElementSibling;
+      }
+    };
+
+    const GAP_HEAD_SUB = 8, GAP_SUB_DIV = 14, GAP_DIV_BODY = 14;
+
+    // 1) Pull the subhead (and everything after it in the stack, divider
+    //    line included) up so it sits GAP_HEAD_SUB below the heading's
+    //    real rendered bottom edge instead of Figma's much larger gap.
+    const delta1 = relTop(subhead) - (relBottom(heading) + GAP_HEAD_SUB);
+    if (delta1 > 0) shiftFrom(subhead, delta1);
+
+    // 2) Pull the body paragraph (and everything after it) up so it sits
+    //    GAP_DIV_BODY below where the divider will end up, preserving the
+    //    paragraph/schedule-line/buttons spacing among themselves.
+    const divider = Array.from(parent.querySelectorAll('svg'))
+      .find((sv) => sv.getAttribute('width') === '260' && sv.getAttribute('height') === '2');
+    const dividerBottomAfterShift1 = relBottom(subhead) + GAP_SUB_DIV + 2;
+    const delta2 = relTop(bodyPara) - (dividerBottomAfterShift1 + GAP_DIV_BODY);
+    if (delta2 > 0) shiftFrom(bodyPara, delta2);
+
+    // 3) Snap the divider to sit just under the subhead - it lives last in
+    //    DOM order (not right after the subhead), so steps 1-2 already
+    //    cascaded it along for the ride; give it its final exact spot now.
+    if (divider) divider.style.top = (relBottom(subhead) + GAP_SUB_DIV) + 'px';
   }
 
   // ─── Replace the contact-form card's dead inputs with one real button ─────
