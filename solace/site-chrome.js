@@ -26,7 +26,6 @@
     wellnessIvTherapy: '/wellness-iv-therapy',
     recoveryIvTherapy: '/recovery-iv-therapy',
     vitaminB12: '/vitamin-b12-injection',
-    beautyIvTherapy: '/beauty-iv-therapy',
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
     myersMiracleDrip: '/myers-miracle-drip',
@@ -34,22 +33,13 @@
     energyTherapy: '/energy-therapy',
     vitaminInjections: '/vitamin-injections',
     metaboFusionIv: '/metabofusion-iv',
-    beautySkinGlowIv: '/beauty-skin-glow-iv',
-    beautyDrip: '/beauty-drip',
-    skinBrighteningIv: '/skin-brightening-iv',
     nad250mg: '/nad-250mg',
     nad500mg: '/nad-500mg',
     cellularRepair: '/cellular-repair',
     healthyAging: '/healthy-aging',
     revitadrip: '/solace-revitadrip',
-    wellnessHydrationIv: '/wellness-hydration-iv',
-    vitaminIvTherapy: '/vitamin-iv-therapy',
     morningAfterMartini: '/morning-after-martini',
     jetsetTravelRecoveryIv: '/jetset-travel-recovery-iv',
-    athleticRecoveryIv: '/athletic-recovery-iv',
-    vitaminCIv: '/vitamin-c-iv',
-    immuneBoostTherapy: '/immune-boost-therapy',
-    seasonalWellnessIv: '/seasonal-wellness-iv',
     process: '/how-it-works',
     contact: '/contact',
     reviews: '/reviews',
@@ -72,15 +62,6 @@
       ],
     },
     {
-      name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
-      items: [
-        { name: 'Beauty & Skin Glow IV', href: PAGES.beautySkinGlowIv },
-        { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy },
-        { name: 'Beauty Drip', href: PAGES.beautyDrip },
-        { name: 'Skin Brightening IV', href: PAGES.skinBrighteningIv },
-      ],
-    },
-    {
       name: 'NAD+ Therapy', href: PAGES.nadTherapy,
       items: [
         { name: 'NAD+ 250mg', href: PAGES.nad250mg },
@@ -100,8 +81,6 @@
       items: [
         { name: 'Myers Miracle Drip', href: PAGES.myersMiracleDrip },
         { name: 'Solace RevitaDrip', href: PAGES.revitadrip },
-        { name: 'Wellness Hydration IV', href: PAGES.wellnessHydrationIv },
-        { name: 'Vitamin IV Therapy', href: PAGES.vitaminIvTherapy },
       ],
     },
     {
@@ -109,17 +88,12 @@
       items: [
         { name: 'Morning After Martini', href: PAGES.morningAfterMartini },
         { name: 'JetSet Travel Recovery IV', href: PAGES.jetsetTravelRecoveryIv },
-        { name: 'Beauty & Skin Glow IV', href: PAGES.beautySkinGlowIv },
-        { name: 'Athletic Recovery IV', href: PAGES.athleticRecoveryIv },
       ],
     },
     {
       name: 'Immune Therapy', href: PAGES.immuneIvTherapy,
       items: [
         { name: 'ImmunoShield IV', href: PAGES.immuneIvTherapy },
-        { name: 'Vitamin C IV', href: PAGES.vitaminCIv },
-        { name: 'Immune Boost Therapy', href: PAGES.immuneBoostTherapy },
-        { name: 'Seasonal Wellness IV', href: PAGES.seasonalWellnessIv },
       ],
     },
   ];
