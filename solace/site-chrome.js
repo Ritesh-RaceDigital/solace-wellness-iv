@@ -27,6 +27,7 @@
     recoveryIvTherapy: '/recovery-iv-therapy',
     vitaminB12: '/vitamin-b12-injection',
     beautyIvTherapy: '/beauty-iv-therapy',
+    flawlessFusionIv: '/flawless-fusion-iv',
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
     myersMiracleDrip: '/myers-miracle-drip',
@@ -66,6 +67,7 @@
     {
       name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
       items: [
+        { name: 'Flawless Fusion IV', href: PAGES.flawlessFusionIv },
         { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy },
       ],
     },

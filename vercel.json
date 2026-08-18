@@ -55,6 +55,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Flawless%20Fusion%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/flawless-fusion-iv"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20Immune%20IV%20Therapy\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -203,6 +210,10 @@
     {
       "src": "^/beauty-iv-therapy$",
       "dest": "/Solace Wellness IV - Beauty IV Therapy.dc.html"
+    },
+    {
+      "src": "^/flawless-fusion-iv$",
+      "dest": "/Solace Wellness IV - Flawless Fusion IV.dc.html"
     },
     {
       "src": "^/immune-iv-therapy$",
