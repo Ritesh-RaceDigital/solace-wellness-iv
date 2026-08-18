@@ -41,6 +41,7 @@
     revitadrip: '/solace-revitadrip',
     morningAfterMartini: '/morning-after-martini',
     jetsetTravelRecoveryIv: '/jetset-travel-recovery-iv',
+    pregamePotionIv: '/pregame-potion-iv',
     process: '/how-it-works',
     contact: '/contact',
     reviews: '/reviews',
@@ -95,6 +96,7 @@
       items: [
         { name: 'Morning After Martini', href: PAGES.morningAfterMartini },
         { name: 'JetSet Travel Recovery IV', href: PAGES.jetsetTravelRecoveryIv },
+        { name: 'PreGame Potion IV', href: PAGES.pregamePotionIv },
       ],
     },
     {

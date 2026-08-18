@@ -432,6 +432,17 @@
           margin-top: 36px;
         }
 
+        /* When an odd card is left dangling alone in the last row of a
+           2-column grid, span and center it instead of leaving a gap. */
+        @media (min-width: 640px) {
+          .rt-card-grid.rt-cols-2 > .rt-svc-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 9px);
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+
         .rt-card {
           background: var(--cream);
           border-radius: 18px;
@@ -838,6 +849,7 @@
               <ul class="rt-chip-grid">
                 <li class="rt-chip">Morning After Martini IV</li>
                 <li class="rt-chip">JetSet Travel Recovery IV</li>
+                <li class="rt-chip">PreGame Potion IV</li>
               </ul>
               <p class="rt-body" style="margin-top:18px;">Whether you're a tourist in Las Vegas or a local who wants
                 a rapid recovery, our licensed healthcare specialists come to you, wherever you are.</p>
@@ -1059,6 +1071,55 @@
                   <a href="/jetset-travel-recovery-iv"
                     style="color:var(--tan-text);font-weight:600;">See our full JetSet Travel Recovery IV page &rarr;</a></p>
               </div>
+              <div class="rt-svc-card rt-reveal">
+                <h3>PreGame Potion IV</h3>
+                <p class="rt-svc-tagline">Pre-party hydration &amp; energy support</p>
+                <p class="rt-svc-desc">Get your body ready for concerts, bachelor parties, festivals, athletic
+                  events, or a night out. The PreGame Potion IV loads you up with hydration and energy support
+                  before you go.</p>
+                <p class="rt-svc-tag-label">Perfect For</p>
+                <ul class="rt-svc-tags">
+                  <li>Concerts</li>
+                  <li>Bachelor &amp; bachelorette parties</li>
+                  <li>Festivals</li>
+                  <li>Athletic events</li>
+                  <li>A big night out</li>
+                </ul>
+                <p class="rt-svc-tag-label">Advantages</p>
+                <ul class="rt-svc-tags">
+                  <li>Increases energy and endurance</li>
+                  <li>Hydration &amp; electrolytes</li>
+                  <li>Immune support</li>
+                  <li>Improves performance</li>
+                </ul>
+                <p class="rt-svc-tag-label">Ingredients</p>
+                <ul class="rt-svc-tags">
+                  <li>IV fluids (saline)</li>
+                  <li>B-Complex vitamins</li>
+                  <li>Electrolytes</li>
+                  <li>Vitamin C</li>
+                </ul>
+                <div class="rt-svc-meta">
+                  <div>
+                    <strong>Treatment Time</strong>
+                    <span>Approx. 45-60 minutes</span>
+                  </div>
+                  <div>
+                    <strong>Hydration</strong>
+                    <span>~500-1000mL IV fluids</span>
+                  </div>
+                </div>
+                <p class="rt-svc-tag-label">Who Should Avoid This</p>
+                <p class="rt-svc-detail">Not recommended for those who are pregnant or nursing, or who have certain
+                  kidney, heart, or liver conditions. A brief health screening confirms whether this treatment is
+                  right for you.</p>
+                <p class="rt-svc-tag-label">Aftercare</p>
+                <p class="rt-svc-detail">No downtime - most clients head straight into their event feeling
+                  refreshed and ready to go.</p>
+                <p class="rt-svc-note">Show up feeling like your best self, wherever the night takes you.
+                  <a href="/pregame-potion-iv"
+                    style="color:var(--tan-text);font-weight:600;">See our full PreGame Potion IV page &rarr;</a></p>
+              </div>
             </div>
             <div class="rt-alert rt-reveal">
               <strong>Important</strong>
@@ -1228,7 +1289,7 @@
               <p class="rt-body light rt-center" style="max-width:60ch;margin-left:auto;margin-right:auto;">Don't
                 let dehydration, tiredness, jet lag, or muscle aches hold you back. Choose Solace Wellness IV for
                 professional Recovery IV Therapy delivered directly to your location. Whether you need the Morning
-                After Martini or JetSet Travel Recovery, our experienced team is
+                After Martini, JetSet Travel Recovery, or the PreGame Potion IV, our experienced team is
                 ready to help you recover comfortably and conveniently.</p>
               <p class="rt-lede light rt-center">Get refreshed. Get well sooner. Experience wellness at your door
                 with Solace Wellness IV.</p>

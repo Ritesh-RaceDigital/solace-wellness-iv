@@ -146,6 +146,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20PreGame%20Potion%20IV\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/pregame-potion-iv"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -248,6 +255,10 @@
     {
       "src": "^/jetset-travel-recovery-iv$",
       "dest": "/Solace Wellness IV - JetSet Travel Recovery IV.dc.html"
+    },
+    {
+      "src": "^/pregame-potion-iv$",
+      "dest": "/Solace Wellness IV - PreGame Potion IV.dc.html"
     },
     {
       "src": "^/how-it-works$",
