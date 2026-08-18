@@ -30,6 +30,7 @@
     flawlessFusionIv: '/flawless-fusion-iv',
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
+    nadIvTherapy: '/nad-iv-therapy',
     myersMiracleDrip: '/myers-miracle-drip',
     glutathioneIvTherapy: '/glutathione-iv-therapy',
     energyTherapy: '/energy-therapy',
@@ -75,6 +76,7 @@
     {
       name: 'NAD+ Therapy', href: PAGES.nadTherapy,
       items: [
+        { name: 'NAD+ IV Therapy', href: PAGES.nadIvTherapy },
         { name: 'NAD+ 250mg', href: PAGES.nad250mg },
         { name: 'NAD+ 500mg', href: PAGES.nad500mg },
       ],

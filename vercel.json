@@ -76,6 +76,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-iv-therapy"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20Glutathione%20IV%20Therapy\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -229,6 +236,10 @@
     {
       "src": "^/nad-therapy$",
       "dest": "/Solace Wellness IV - NAD+ Therapy.dc.html"
+    },
+    {
+      "src": "^/nad-iv-therapy$",
+      "dest": "/Solace Wellness IV - NAD+ IV Therapy.dc.html"
     },
     {
       "src": "^/glutathione-iv-therapy$",
