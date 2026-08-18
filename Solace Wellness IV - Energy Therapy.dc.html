@@ -434,6 +434,19 @@
           border-left: 3px solid var(--tan);
         }
 
+        .et-svc-intro {
+          max-width: 720px;
+        }
+
+        .et-svc-cols {
+          display: block;
+          margin-top: 8px;
+        }
+
+        .et-svc-cols>div+div {
+          margin-top: 28px;
+        }
+
         .et-svc-card h3 {
           font-size: 19px;
           margin-bottom: 4px;
@@ -694,6 +707,16 @@
             grid-template-columns: repeat(4, 1fr);
           }
 
+          .et-svc-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+
+          .et-svc-cols>div+div {
+            margin-top: 0;
+          }
+
           .et-cta {
             padding: 72px 48px;
             margin: 0 20px;
@@ -830,54 +853,59 @@
               <p class="et-eyebrow">The Collection</p>
               <h2>Choose Your Energy Treatment</h2>
             </div>
-            <div class="et-split" style="align-items:start;margin-top:36px;">
-              <div class="et-split-photo et-reveal" data-bg="./solace/assets/sw-metabo-hero.webp" role="img" aria-label="MetaboFusion IV energy infusion treatment"></div>
-              <div class="et-svc-card et-reveal">
+            <div class="et-svc-card et-reveal" style="margin-top:36px;max-width:1080px;margin-left:auto;margin-right:auto;padding:36px 40px;">
+              <div class="et-svc-intro">
                 <h3><a href="/metabofusion-iv">MetaboFusion IV</a></h3>
                 <p class="et-svc-tagline">$280 &middot; Targeted B12, B-Complex &amp; Taurine blend</p>
                 <p class="et-svc-desc">A more targeted infusion combining Vitamin B12, Vitamin B-Complex, and
                   Taurine to help support your metabolism naturally.</p>
-                <p class="et-svc-tag-label">Best For</p>
-                <ul class="et-svc-tags">
-                  <li>Sluggish metabolism</li>
-                  <li>Active lifestyles</li>
-                  <li>Weight management support</li>
-                  <li>Ongoing fatigue</li>
-                </ul>
-                <p class="et-svc-tag-label">Benefits</p>
-                <ul class="et-svc-tags">
-                  <li>Supports metabolic function</li>
-                  <li>Natural energy</li>
-                  <li>Helps turn food into energy</li>
-                  <li>Decreased fatigue</li>
-                </ul>
-                <p class="et-svc-tag-label">Ingredients</p>
-                <ul class="et-svc-tags">
-                  <li>IV fluids (saline)</li>
-                  <li>Vitamin B12</li>
-                  <li>Vitamin B-Complex</li>
-                  <li>Taurine</li>
-                </ul>
-                <div class="et-svc-meta">
-                  <div>
-                    <strong>Treatment Time</strong>
-                    <span>Approx. 30-45 minutes</span>
-                  </div>
-                  <div>
-                    <strong>Hydration</strong>
-                    <span>~500mL IV fluids</span>
-                  </div>
+              </div>
+              <div class="et-svc-cols">
+                <div>
+                  <p class="et-svc-tag-label">Best For</p>
+                  <ul class="et-svc-tags">
+                    <li>Sluggish metabolism</li>
+                    <li>Active lifestyles</li>
+                    <li>Weight management support</li>
+                    <li>Ongoing fatigue</li>
+                  </ul>
+                  <p class="et-svc-tag-label">Benefits</p>
+                  <ul class="et-svc-tags">
+                    <li>Supports metabolic function</li>
+                    <li>Natural energy</li>
+                    <li>Helps turn food into energy</li>
+                    <li>Decreased fatigue</li>
+                  </ul>
+                  <p class="et-svc-tag-label">Ingredients</p>
+                  <ul class="et-svc-tags">
+                    <li>IV fluids (saline)</li>
+                    <li>Vitamin B12</li>
+                    <li>Vitamin B-Complex</li>
+                    <li>Taurine</li>
+                  </ul>
                 </div>
-                <p class="et-svc-tag-label">Who Should Avoid This</p>
-                <p class="et-svc-detail">Not recommended for those who are pregnant or nursing, or who have
-                  certain kidney, heart, or liver conditions. A brief health screening confirms whether this
-                  treatment is right for you.</p>
-                <p class="et-svc-tag-label">Aftercare</p>
-                <p class="et-svc-detail">Stay hydrated and keep up regular meals. Best paired with an active
-                  lifestyle and consistent routine for ongoing support.</p>
-                <p class="et-svc-note">Ideal for anyone looking for a Metabolism Booster IV or IV Therapy for
-                  Metabolism.</p>
-                <a href="/metabofusion-iv" class="et-btn et-btn-outline" style="margin-top:14px;">Learn More</a>
+                <div>
+                  <div class="et-svc-meta">
+                    <div>
+                      <strong>Treatment Time</strong>
+                      <span>Approx. 30-45 minutes</span>
+                    </div>
+                    <div>
+                      <strong>Hydration</strong>
+                      <span>~500mL IV fluids</span>
+                    </div>
+                  </div>
+                  <p class="et-svc-tag-label">Who Should Avoid This</p>
+                  <p class="et-svc-detail">Not recommended for those who are pregnant or nursing, or who have
+                    certain kidney, heart, or liver conditions. A brief health screening confirms whether this
+                    treatment is right for you.</p>
+                  <p class="et-svc-tag-label">Aftercare</p>
+                  <p class="et-svc-detail">Stay hydrated and keep up regular meals. Best paired with an active
+                    lifestyle and consistent routine for ongoing support.</p>
+                  <p class="et-svc-note">Ideal for anyone looking for a Metabolism Booster IV or IV Therapy for
+                    Metabolism.</p>
+                  <a href="/metabofusion-iv" class="et-btn et-btn-outline" style="margin-top:14px;">Learn More</a>
+                </div>
               </div>
             </div>
             <div class="et-alert et-reveal" style="margin-left:auto;margin-right:auto;">
