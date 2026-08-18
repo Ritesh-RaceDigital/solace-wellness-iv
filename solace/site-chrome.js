@@ -26,6 +26,7 @@
     wellnessIvTherapy: '/wellness-iv-therapy',
     recoveryIvTherapy: '/recovery-iv-therapy',
     vitaminB12: '/vitamin-b12-injection',
+    beautyIvTherapy: '/beauty-iv-therapy',
     immuneIvTherapy: '/immune-iv-therapy',
     nadTherapy: '/nad-therapy',
     myersMiracleDrip: '/myers-miracle-drip',
@@ -59,6 +60,12 @@
       name: 'Energy Therapy', href: PAGES.energyTherapy,
       items: [
         { name: 'MetaboFusion IV', href: PAGES.metaboFusionIv },
+      ],
+    },
+    {
+      name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
+      items: [
+        { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy },
       ],
     },
     {

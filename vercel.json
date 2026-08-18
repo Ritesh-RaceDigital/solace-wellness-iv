@@ -48,6 +48,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Beauty%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/beauty-iv-therapy"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20Immune%20IV%20Therapy\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -185,6 +192,10 @@
     {
       "src": "^/vitamin-b12-injection$",
       "dest": "/Solace Wellness IV - Vitamin B12 Injection.dc.html"
+    },
+    {
+      "src": "^/beauty-iv-therapy$",
+      "dest": "/Solace Wellness IV - Beauty IV Therapy.dc.html"
     },
     {
       "src": "^/immune-iv-therapy$",
