@@ -40,6 +40,7 @@
     cellularRepair: '/cellular-repair',
     healthyAging: '/healthy-aging',
     revitadrip: '/solace-revitadrip',
+    basicHydrationIv: '/basic-hydration-iv-therapy',
     morningAfterMartini: '/morning-after-martini',
     jetsetTravelRecoveryIv: '/jetset-travel-recovery-iv',
     pregamePotionIv: '/pregame-potion-iv',
@@ -91,6 +92,7 @@
       items: [
         { name: 'Myers Miracle Drip', href: PAGES.myersMiracleDrip },
         { name: 'Solace RevitaDrip', href: PAGES.revitadrip },
+        { name: 'Basic Hydration IV Therapy', href: PAGES.basicHydrationIv },
       ],
     },
     {

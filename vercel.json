@@ -139,6 +139,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Basic%20Hydration%20IV%20Therapy\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/basic-hydration-iv-therapy"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20Morning%20After%20Martini\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -258,6 +265,10 @@
     {
       "src": "^/solace-revitadrip$",
       "dest": "/Solace Wellness IV - Solace RevitaDrip.dc.html"
+    },
+    {
+      "src": "^/basic-hydration-iv-therapy$",
+      "dest": "/Solace Wellness IV - Basic Hydration IV Therapy.dc.html"
     },
     {
       "src": "^/morning-after-martini$",
