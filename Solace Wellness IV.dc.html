@@ -2172,7 +2172,13 @@ class Component extends DCLogic {
     });
 
     // Treatment card photos
-    const tHashes = ['sw-flawless-fusion','69dee31f18bf38c1','sw-nad-combo',
+    // One entry per still-empty placeholder, in DOM order: MetaboFusion IV,
+    // NAD+ 250mg, NAD+ 500mg, Glutathione Booster, Vitamin B12 Injection,
+    // Vitamin D3 Booster. Flawless Fusion IV, RevitaDrip IV, and JetSet
+    // Revival IV are excluded here since they already set their own photo
+    // directly and are no longer "empty" - keeping a stale entry for them
+    // shifted every hash below down by one slot onto the wrong card.
+    const tHashes = ['69dee31f18bf38c1','sw-nad-combo',
       'sw-nad-combo','sw-glutathione-booster','sw-vitaminb12-injection','sw-vitamind3-booster'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
