@@ -2180,15 +2180,16 @@ class Component extends DCLogic {
     // directly and are no longer "empty" - keeping a stale entry for them
     // shifted every hash below down by one slot onto the wrong card.
     const tHashes = ['69dee31f18bf38c1','sw-nad-combo',
-      'sw-nad-combo','sw-glutathione-booster','sw-vitaminb12-injection','sw-vitamind3-booster'];
+      'sw-nad-combo','sw-glutathione-booster',['sw-vitaminb12-injection','center','cover','-41px'],'sw-vitamind3-booster'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
       getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);
     empties.forEach((d, i) => {
       if (i >= tHashes.length) return;
       const entry = tHashes[i];
-      const [hash, pos, size, color] = Array.isArray(entry) ? entry : [entry, 'center', 'cover'];
-      d.style.background = `${color || ''} url(${asset(hash)}) ${pos} / ${size || 'cover'} no-repeat`;
+      const [hash, pos, size, top] = Array.isArray(entry) ? entry : [entry, 'center', 'cover'];
+      d.style.background = `url(${asset(hash)}) ${pos} / ${size || 'cover'} no-repeat`;
+      if (top) d.style.top = top;
     });
   }
 
