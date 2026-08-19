@@ -237,7 +237,14 @@
     /* On desktop: full width, no scroll. On mobile: clips to viewport width.    */
     .solace-scale-wrap {
       width: 100%;
-      overflow-x: hidden;
+      /* overflow-x:hidden paired with overflow-y:visible triggers a CSS-spec
+         quirk: browsers force the "visible" axis to compute as auto
+         whenever the other axis is hidden/scroll/auto, so this box became
+         independently vertically scrollable (a second scrollbar next to
+         the page's own) even though it's declared visible. overflow:clip
+         is exempt from that forced-conversion, so it clips horizontally
+         without silently gaining its own scrollbar. */
+      overflow-x: clip;
       overflow-y: visible;
       background: #fff;
       position: relative;
