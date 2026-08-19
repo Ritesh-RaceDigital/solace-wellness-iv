@@ -1615,7 +1615,8 @@
             </div>
           </a>
           <a class="sm-treat-card" href="/vitamin-b12-injection">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-vitaminb12-injection.webp" role="img"
+            <div class="sm-treat-photo" data-bg="./solace/assets/sw-vitaminb12-injection.webp"
+              style="background-position:center 65%;" role="img"
               aria-label="Vitamin B12 injection treatment"></div>
             <div class="sm-treat-body">
               <div class="sm-treat-price">$40</div>
@@ -2179,12 +2180,15 @@ class Component extends DCLogic {
     // directly and are no longer "empty" - keeping a stale entry for them
     // shifted every hash below down by one slot onto the wrong card.
     const tHashes = ['69dee31f18bf38c1','sw-nad-combo',
-      'sw-nad-combo','sw-glutathione-booster','sw-vitaminb12-injection','sw-vitamind3-booster'];
+      'sw-nad-combo','sw-glutathione-booster',['sw-vitaminb12-injection','center 65%'],'sw-vitamind3-booster'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
       getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);
     empties.forEach((d, i) => {
-      if (i < tHashes.length) d.style.background = `url(${asset(tHashes[i])}) center / cover no-repeat`;
+      if (i >= tHashes.length) return;
+      const entry = tHashes[i];
+      const [hash, pos] = Array.isArray(entry) ? entry : [entry, 'center'];
+      d.style.background = `url(${asset(hash)}) ${pos} / cover no-repeat`;
     });
   }
 
