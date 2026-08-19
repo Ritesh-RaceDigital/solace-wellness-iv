@@ -1551,44 +1551,22 @@
         </div>
 
         <h3 class="sm-group-label">NAD+ Therapy in Las Vegas</h3>
-        <p style="margin:-8px 0 12px;"><a href="/nad-therapy"
-            style="color:var(--tan-text);font-weight:600;text-decoration:underline;font-size:13px;">Learn more about
-            NAD+ Therapy &rarr;</a></p>
         <div class="sm-treatment-grid">
-          <a class="sm-treat-card" href="/nad-250mg">
+          <a class="sm-treat-card" href="/nad-therapy">
             <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img"
-              aria-label="NAD+ 250mg IV therapy treatment"></div>
+              aria-label="NAD+ IV therapy treatment"></div>
             <div class="sm-treat-body">
-              <div class="sm-treat-price">$299</div>
-              <h4>NAD+ 250mg &rarr;</h4>
-              <p class="sm-desc">Great for people starting NAD+ therapy.</p>
-              <p class="sm-supports">Cellular Energies</p>
+              <div class="sm-treat-price">$299+</div>
+              <h4>NAD+ Therapy &rarr;</h4>
+              <p class="sm-desc">NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging.</p>
               <ul class="sm-bullets">
                 <li>Clear Thinking</li>
-                <li>Better Concentration</li>
                 <li>Support for Mood</li>
                 <li>Decreased Fatigue</li>
-                <li>Recovery supports</li>
-              </ul>
-              <p class="sm-tagline">Learn more about NAD+ 250mg &rarr;</p>
-            </div>
-          </a>
-          <a class="sm-treat-card" href="/nad-500mg">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img"
-              aria-label="NAD+ 500mg IV therapy treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$499</div>
-              <h4>NAD+ 500mg &rarr;</h4>
-              <p class="sm-desc">Supports Cellular Energy Production.</p>
-              <ul class="sm-bullets">
-                <li>Cell Support</li>
                 <li>Supports Healthy Aging</li>
                 <li>Energy Support</li>
-                <li>Improved Performance</li>
-                <li>Support for Brain Function</li>
-                <li>Supports Long-Term Wellness Goals</li>
               </ul>
-              <p class="sm-tagline">Learn more about NAD+ 500mg &rarr;</p>
+              <p class="sm-tagline">Learn more about NAD+ Therapy &rarr;</p>
             </div>
           </a>
         </div>
@@ -2174,13 +2152,16 @@ class Component extends DCLogic {
 
     // Treatment card photos
     // One entry per still-empty placeholder, in DOM order: MetaboFusion IV,
-    // NAD+ 250mg, NAD+ 500mg, Glutathione Booster, Vitamin B12 Injection,
-    // Vitamin D3 Booster. Flawless Fusion IV, RevitaDrip IV, and JetSet
-    // Revival IV are excluded here since they already set their own photo
-    // directly and are no longer "empty" - keeping a stale entry for them
-    // shifted every hash below down by one slot onto the wrong card.
+    // NAD+ Therapy (merged 250mg/500mg card), Glutathione Booster, Vitamin
+    // B12 Injection, Vitamin D3 Booster. Flawless Fusion IV, RevitaDrip IV,
+    // and JetSet Revival IV are excluded here since they already set their
+    // own photo directly and are no longer "empty" - keeping a stale entry
+    // for them shifted every hash below down by one slot onto the wrong
+    // card. The old NAD+ 500mg card is now display:none (see
+    // Components.bundle.js), so it no longer reports as "empty" either -
+    // only one 'sw-nad-combo' entry remains for the surviving merged card.
     const tHashes = ['69dee31f18bf38c1','sw-nad-combo',
-      'sw-nad-combo',['sw-glutathione-booster','center','cover','-41px'],['sw-vitaminb12-injection','center','cover','-41px'],'sw-vitamind3-booster'];
+      ['sw-glutathione-booster','center','cover','-41px'],['sw-vitaminb12-injection','center','cover','-41px'],'sw-vitamind3-booster'];
     const empties = Array.from(root.querySelectorAll('div')).filter(d =>
       near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
       getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);

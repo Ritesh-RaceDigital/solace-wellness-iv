@@ -114,14 +114,28 @@
       "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20250mg\\.dc\\.html$",
       "status": 308,
       "headers": {
-        "Location": "/nad-250mg"
+        "Location": "/nad-therapy"
       }
     },
     {
       "src": "^/Solace%20Wellness%20IV%20-%20NAD%2B%20500mg\\.dc\\.html$",
       "status": 308,
       "headers": {
-        "Location": "/nad-500mg"
+        "Location": "/nad-therapy"
+      }
+    },
+    {
+      "src": "^/nad-250mg$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-therapy"
+      }
+    },
+    {
+      "src": "^/nad-500mg$",
+      "status": 308,
+      "headers": {
+        "Location": "/nad-therapy"
       }
     },
     {
@@ -256,14 +270,6 @@
     {
       "src": "^/metabofusion-iv$",
       "dest": "/Solace Wellness IV - MetaboFusion IV.dc.html"
-    },
-    {
-      "src": "^/nad-250mg$",
-      "dest": "/Solace Wellness IV - NAD+ 250mg.dc.html"
-    },
-    {
-      "src": "^/nad-500mg$",
-      "dest": "/Solace Wellness IV - NAD+ 500mg.dc.html"
     },
     {
       "src": "^/cellular-repair$",

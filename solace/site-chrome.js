@@ -36,8 +36,6 @@
     energyTherapy: '/energy-therapy',
     vitaminInjections: '/vitamin-injections',
     metaboFusionIv: '/metabofusion-iv',
-    nad250mg: '/nad-250mg',
-    nad500mg: '/nad-500mg',
     cellularRepair: '/cellular-repair',
     healthyAging: '/healthy-aging',
     revitadrip: '/solace-revitadrip',
@@ -77,8 +75,6 @@
       name: 'NAD+ Therapy', href: PAGES.nadTherapy,
       items: [
         { name: 'NAD+ IV Therapy', href: PAGES.nadIvTherapy },
-        { name: 'NAD+ 250mg', href: PAGES.nad250mg },
-        { name: 'NAD+ 500mg', href: PAGES.nad500mg },
       ],
     },
     {
