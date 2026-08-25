@@ -216,6 +216,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Neck%20Rejuvenation\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/neck-rejuvenation"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -338,6 +345,10 @@
     {
       "src": "^/masseter-contouring$",
       "dest": "/Solace Wellness IV - Masseter Contouring.dc.html"
+    },
+    {
+      "src": "^/neck-rejuvenation$",
+      "dest": "/Solace Wellness IV - Neck Rejuvenation.dc.html"
     },
     {
       "src": "^/how-it-works$",

@@ -47,6 +47,7 @@
     singleAreaNeurotoxin: '/single-area-neurotoxin-treatment',
     upperFace: '/upper-face',
     masseterContouring: '/masseter-contouring',
+    neckRejuvenation: '/neck-rejuvenation',
     process: '/how-it-works',
     contact: '/contact',
     reviews: '/reviews',
@@ -117,6 +118,7 @@
         { name: 'Single Area Neurotoxin Treatment', href: PAGES.singleAreaNeurotoxin },
         { name: 'Upper Face', href: PAGES.upperFace },
         { name: 'Masseter Contouring', href: PAGES.masseterContouring },
+        { name: 'Neck Rejuvenation', href: PAGES.neckRejuvenation },
       ],
     },
   ];
