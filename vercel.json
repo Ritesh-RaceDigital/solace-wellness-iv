@@ -100,7 +100,14 @@
       "src": "^/Solace%20Wellness%20IV%20-%20Vitamin%20Injections\\.dc\\.html$",
       "status": 308,
       "headers": {
-        "Location": "/vitamin-injections"
+        "Location": "/Vitamin-D3-Booster"
+      }
+    },
+    {
+      "src": "^/vitamin-injections$",
+      "status": 308,
+      "headers": {
+        "Location": "/Vitamin-D3-Booster"
       }
     },
     {
@@ -264,7 +271,7 @@
       "dest": "/Solace Wellness IV - Energy Therapy.dc.html"
     },
     {
-      "src": "^/vitamin-injections$",
+      "src": "^/Vitamin-D3-Booster$",
       "dest": "/Solace Wellness IV - Vitamin Injections.dc.html"
     },
     {
