@@ -195,6 +195,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Single%20Area%20Neurotoxin%20Treatment\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/single-area-neurotoxin-treatment"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -305,6 +312,10 @@
     {
       "src": "^/pregame-potion-iv$",
       "dest": "/Solace Wellness IV - PreGame Potion IV.dc.html"
+    },
+    {
+      "src": "^/single-area-neurotoxin-treatment$",
+      "dest": "/Solace Wellness IV - Single Area Neurotoxin Treatment.dc.html"
     },
     {
       "src": "^/how-it-works$",

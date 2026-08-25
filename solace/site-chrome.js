@@ -44,6 +44,7 @@
     morningAfterMartini: '/morning-after-martini',
     jetsetTravelRecoveryIv: '/jetset-travel-recovery-iv',
     pregamePotionIv: '/pregame-potion-iv',
+    singleAreaNeurotoxin: '/single-area-neurotoxin-treatment',
     process: '/how-it-works',
     contact: '/contact',
     reviews: '/reviews',
@@ -106,6 +107,12 @@
       name: 'Immune Therapy', href: PAGES.immuneIvTherapy,
       items: [
         { name: 'ImmunoShield IV', href: PAGES.immuneIvTherapy },
+      ],
+    },
+    {
+      name: 'Aesthetic Injectables', href: PAGES.singleAreaNeurotoxin,
+      items: [
+        { name: 'Single Area Neurotoxin Treatment', href: PAGES.singleAreaNeurotoxin },
       ],
     },
   ];
