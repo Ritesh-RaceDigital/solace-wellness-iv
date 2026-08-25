@@ -83,6 +83,7 @@
         { name: 'Vitamin B12', href: PAGES.vitaminB12 },
 
         { name: 'Vitamin D3', href: PAGES.vitaminD3Booster },
+        { name: 'Glutathione Booster', href: PAGES.glutathioneIvTherapy },
       ],
     },
     {
