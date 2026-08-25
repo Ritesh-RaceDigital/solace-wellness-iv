@@ -46,6 +46,7 @@
     pregamePotionIv: '/pregame-potion-iv',
     singleAreaNeurotoxin: '/single-area-neurotoxin-treatment',
     upperFace: '/upper-face',
+    masseterContouring: '/masseter-contouring',
     process: '/how-it-works',
     contact: '/contact',
     reviews: '/reviews',
@@ -115,6 +116,7 @@
       items: [
         { name: 'Single Area Neurotoxin Treatment', href: PAGES.singleAreaNeurotoxin },
         { name: 'Upper Face', href: PAGES.upperFace },
+        { name: 'Masseter Contouring', href: PAGES.masseterContouring },
       ],
     },
   ];

@@ -209,6 +209,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Masseter%20Contouring\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/masseter-contouring"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -327,6 +334,10 @@
     {
       "src": "^/upper-face$",
       "dest": "/Solace Wellness IV - Upper Face.dc.html"
+    },
+    {
+      "src": "^/masseter-contouring$",
+      "dest": "/Solace Wellness IV - Masseter Contouring.dc.html"
     },
     {
       "src": "^/how-it-works$",
