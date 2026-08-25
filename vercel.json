@@ -202,6 +202,13 @@
       }
     },
     {
+      "src": "^/Solace%20Wellness%20IV%20-%20Upper%20Face\\.dc\\.html$",
+      "status": 308,
+      "headers": {
+        "Location": "/upper-face"
+      }
+    },
+    {
       "src": "^/Solace%20Wellness%20IV%20-%20How%20It%20Works\\.dc\\.html$",
       "status": 308,
       "headers": {
@@ -316,6 +323,10 @@
     {
       "src": "^/single-area-neurotoxin-treatment$",
       "dest": "/Solace Wellness IV - Single Area Neurotoxin Treatment.dc.html"
+    },
+    {
+      "src": "^/upper-face$",
+      "dest": "/Solace Wellness IV - Upper Face.dc.html"
     },
     {
       "src": "^/how-it-works$",
