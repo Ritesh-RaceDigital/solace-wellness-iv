@@ -458,7 +458,7 @@ solace-footer *,
 
   .gh-nav-drop-panel .gh-drop-list li {
     font-size: 13.5px;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .gh-nav-actions {
