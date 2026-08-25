@@ -35,6 +35,7 @@
     glutathioneIvTherapy: '/glutathione-iv-therapy',
     energyTherapy: '/energy-therapy',
     vitaminInjections: '/vitamin-injections',
+    vitaminD3Booster: '/vitamin-injections',
     metaboFusionIv: '/metabofusion-iv',
     cellularRepair: '/cellular-repair',
     healthyAging: '/healthy-aging',
@@ -68,7 +69,6 @@
       name: 'Beauty Therapy', href: PAGES.beautyIvTherapy,
       items: [
         { name: 'Flawless Fusion IV', href: PAGES.flawlessFusionIv },
-        { name: 'Glutathione Therapy', href: PAGES.glutathioneIvTherapy },
       ],
     },
     {
@@ -81,8 +81,8 @@
       name: 'Vitamin Injections', href: PAGES.vitaminInjections,
       items: [
         { name: 'Vitamin B12', href: PAGES.vitaminB12 },
-        { name: 'Glutathione', href: PAGES.glutathioneIvTherapy },
-        { name: 'Vitamin D3', href: PAGES.vitaminInjections },
+
+        { name: 'Vitamin D3', href: PAGES.vitaminD3Booster },
       ],
     },
     {
