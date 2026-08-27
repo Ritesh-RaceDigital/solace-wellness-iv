@@ -138,7 +138,11 @@ solace-footer *,
 }
 
 .gh-nav-drop-panel.open {
-  max-height: 1200px;
+  /* Comfortably taller than the full 8-category list can ever reach, so
+     it isn't silently clipped (overflow:hidden, no scrollbar) as more
+     categories get added - see the .gh-menu.open cap above for the same
+     reasoning. */
+  max-height: 5000px;
   opacity: 1;
 }
 
@@ -289,11 +293,14 @@ solace-footer *,
 }
 
 .gh-menu.open {
-  /* The Treatments dropdown, once expanded, is taller than any fixed cap
-     comfortably fits on a phone screen - scroll within the cap instead of
-     silently clipping content under overflow:hidden. */
-  max-height: min(480px, 70vh);
-  overflow-y: auto;
+  /* The Treatments accordion, once expanded, is taller than any fixed cap
+     comfortably fits on a phone screen. A short cap with its own inner
+     scroll buried the last categories (Immune Therapy, Aesthetic
+     Injectables) in a nested scroll area easy to miss on a touch screen -
+     use a cap far taller than the menu could ever realistically need
+     instead, so it just grows and the normal page scroll reaches
+     everything. */
+  max-height: 3000px;
 }
 
 .gh-menu a {
