@@ -397,7 +397,7 @@ solace-footer *,
     grid-template-columns: repeat(3, minmax(150px, 1fr));
     gap: 0;
     width: max-content;
-    max-width: min(660px, 90vw);
+    max-width: min(660px, calc(100vw - 40px));
     max-height: none;
     overflow: visible;
     background: var(--sc-cream-2);
@@ -495,6 +495,27 @@ solace-footer *,
 @media (min-width: 768px) and (max-width: 1023px) {
   .gh-nav-phone-text {
     display: none;
+  }
+
+  /* The Treatments toggle sits close to the left edge (right after the
+     logo), so the flyout's normal 3-column width (~600px+) runs past the
+     right edge of the viewport in this range and gets clipped. Two
+     narrower columns keep the whole panel on-screen. */
+  .gh-nav-drop-panel {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    max-width: min(480px, calc(100vw - 40px));
+  }
+
+  .gh-nav-drop-panel .gh-drop-col:not(:nth-child(2n)) {
+    border-right: 1px solid var(--sc-line);
+  }
+
+  .gh-nav-drop-panel .gh-drop-col:nth-child(2n) {
+    border-right: none;
+  }
+
+  .gh-nav-drop-panel .gh-drop-col:nth-child(n+3) {
+    border-top: 1px solid var(--sc-line);
   }
 }
 
