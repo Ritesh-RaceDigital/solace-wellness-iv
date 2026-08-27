@@ -372,19 +372,15 @@
     .hp-hero-badge .hp-stars-sm { color: rgb(224, 171, 62); font-size: 12px; letter-spacing: 1px; margin-bottom: 4px; }
     .hp-hero-badge strong { display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 13px; color: var(--brown-800); line-height: 1.3; }
 
-    /* ─── Mission ──────────────────────────────────────────────────────────── */
+    /* ─── Mission (simple centered icon + statement, no photo) ─────────────── */
     .hp-mission { background: #fff; text-align: center; }
-    .hp-mission-card { background: var(--cream); border-radius: 24px; padding: 32px 22px; }
-    .hp-mission .hp-body { text-align: left; }
-    .hp-mission-photo {
-      width: 240px;
-      aspect-ratio: 1 / 1;
-      margin: 0 auto 20px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 16px;
-      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.22);
+    .hp-mission-inner { max-width: 720px; }
+    .hp-mission-icon {
+      width: 44px; height: 44px; margin: 0 auto 16px; color: var(--tan);
+      display: flex; align-items: center; justify-content: center;
     }
+    .hp-mission-icon svg { width: 100%; height: 100%; }
+    .hp-page .hp-center { text-align: center; margin-left: auto; margin-right: auto; }
 
     /* ─── Foundation (dark banner) ─────────────────────────────────────────── */
     .hp-foundation, .hp-serving { background: var(--brown-900); }
@@ -535,11 +531,6 @@
       .hp-hero-copy { order: 1; padding: 0; }
       .hp-hero-copy h1 { font-size: 52px; }
 
-      .hp-mission { text-align: left; }
-      .hp-mission-card { padding: 56px; }
-      .hp-mission-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
-      .hp-mission-photo { width: 100%; max-width: none; margin: 0; }
-
       .hp-foundation .hp-container { max-width: 1100px; }
       .hp-foundation .hp-pill-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
       .hp-foundation .hp-pill { justify-content: flex-start; }
@@ -549,18 +540,11 @@
       .hp-why-grid { grid-template-columns: repeat(5, 1fr); gap: 18px; }
       .hp-why-card.hp-span-all { grid-column: auto; }
 
-      .hp-treatment-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      a.hp-treat-card { display: flex; align-items: stretch; }
-      .hp-treat-photo { width: 42%; flex: none; aspect-ratio: auto; }
-      .hp-treat-body { flex: 1; padding: 22px 26px; }
-      /* Vitamin booster shots keep the original compact vertical card (photo
-         on top) in a 3-column row, rather than the wide flex-row treatment
-         cards use above - matches how these small $40 shot cards are laid
-         out at desktop, distinct from the full IV-drip cards. */
-      .hp-vitamin-grid { grid-template-columns: repeat(3, 1fr); }
-      .hp-vitamin-grid a.hp-treat-card { display: block; }
-      .hp-vitamin-grid .hp-treat-photo { width: 100%; aspect-ratio: 368 / 210; }
-      .hp-vitamin-grid .hp-treat-body { padding: 16px 18px 18px; }
+      /* Compact vertical cards (photo on top, price badge inside its corner)
+         in a 3-column row at desktop - same card shape at every group size
+         (main grid, Specialty Care, NAD+, Vitamin Booster Shots). */
+      .hp-treatment-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .hp-treat-body { padding: 18px 20px 20px; }
 
       .hp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
       .hp-step { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
@@ -659,24 +643,21 @@
 
       <!-- ═══ MISSION ═══ -->
       <section class="hp-mission" id="mission">
-        <div class="hp-container">
-          <div class="hp-mission-card hp-reveal">
-            <div class="hp-mission-inner">
-              <div class="hp-mission-photo" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img"
-                aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
-              <div class="hp-mission-copy">
-                <h2>Our Mission</h2>
-                <p class="hp-body">Solace Wellness IV was built on the belief that wellness should be proactive,
-                  personalized, and medically guided.</p>
-                <p class="hp-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
-                  specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
-                  prioritizes education, individualized care, and genuine patient relationships.</p>
-                <p class="hp-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
-                  every treatment begins with a personalized health assessment to ensure it is appropriate for their
-                  individual needs.</p>
-              </div>
-            </div>
+        <div class="hp-container hp-mission-inner hp-reveal">
+          <div class="hp-mission-icon">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
+            </svg>
           </div>
+          <h2>Our Mission</h2>
+          <p class="hp-body hp-center">Solace Wellness IV was built on the belief that wellness should be proactive,
+            personalized, and medically guided.</p>
+          <p class="hp-body hp-center">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
+            specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
+            prioritizes education, individualized care, and genuine patient relationships.</p>
+          <p class="hp-body hp-center">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
+            every treatment begins with a personalized health assessment to ensure it is appropriate for their
+            individual needs.</p>
         </div>
       </section>
 
