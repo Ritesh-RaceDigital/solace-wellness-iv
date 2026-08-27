@@ -2271,6 +2271,13 @@ class Component extends DCLogic {
     if (!parent) return;
     subhead.dataset.gapTightened = '1';
 
+    // The Figma export's 0.82 line-height is tight enough that once this
+    // heading wraps to two lines, "Premium" and "Las Vegas" visually
+    // overlap instead of stacking. Loosen it before measuring anything
+    // below, so the gap math that follows accounts for the corrected
+    // (taller) rendered height.
+    heading.style.lineHeight = '1.15';
+
     const sc = this._curScale() || 1;
     const relTop = (el) => (el.getBoundingClientRect().top - parent.getBoundingClientRect().top) / sc;
     const relBottom = (el) => (el.getBoundingClientRect().bottom - parent.getBoundingClientRect().top) / sc;
