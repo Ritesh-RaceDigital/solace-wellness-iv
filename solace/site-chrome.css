@@ -351,7 +351,17 @@ solace-footer *,
   color: #fff;
 }
 
-@media (min-width: 768px) {
+/* The nav row (logo + 6 links/dropdown + phone + Book Now) measures out to
+   needing ~1235-1250px before it actually fits on one line without
+   wrapping/overflowing - measured directly in a real rendered browser, not
+   guessed. Below that, the row silently overflows off the right edge of the
+   viewport (confirmed via headless-Chrome measurement: at 768px the row
+   demands ~977px in a 753px-wide slot). So the switch from the hamburger
+   menu to the horizontal desktop nav happens at 1300px (with a safety
+   margin), not 768px - the hamburger menu (with the full nav, including the
+   Treatments dropdown, already inside it) covers every width below that
+   instead of showing a broken partial row. */
+@media (min-width: 1300px) {
   .gh-nav-actions .gh-btn-solid {
     font-size: 16px;
     letter-spacing: 0.54px;
@@ -359,7 +369,7 @@ solace-footer *,
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1300px) {
   .gh-nav-wrap {
     padding: 0 20px;
   }
@@ -487,14 +497,6 @@ solace-footer *,
   .gh-hamburger,
   .gh-menu {
     display: none !important;
-  }
-}
-
-/* Tight tablet range: keep the click-to-call icon, drop the number text so
-   the nav row never wraps/overflows before there's room for it again. */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .gh-nav-phone-text {
-    display: none;
   }
 }
 

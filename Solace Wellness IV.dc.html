@@ -233,76 +233,15 @@
       }
       </script>
   <style>
-    /* ─── Outer viewport wrapper ─────────────────────────────────────────────── */
-    /* On desktop: full width, no scroll. On mobile: clips to viewport width.    */
-    .solace-scale-wrap {
-      width: 100%;
-      /* overflow-x:hidden paired with overflow-y:visible triggers a CSS-spec
-         quirk: browsers force the "visible" axis to compute as auto
-         whenever the other axis is hidden/scroll/auto, so this box became
-         independently vertically scrollable (a second scrollbar next to
-         the page's own) even though it's declared visible. overflow:clip
-         is exempt from that forced-conversion, so it clips horizontally
-         without silently gaining its own scrollbar. */
-      overflow-x: clip;
-      overflow-y: visible;
-      background: #fff;
-      position: relative;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ─── The 1440-px Figma canvas ───────────────────────────────────────────── */
-    .solace-inner {
-      width: 1440px;
-      transform-origin: top left;
-      will-change: transform;
-    }
-
-    /* Stay hidden until _hideNativeChrome() has cropped the canvas's own
-           baked-in header/footer - otherwise, on load/refresh, this native
-           chrome is briefly visible underneath the shared <solace-header>,
-           reading as two headers stacked on top of each other. */
-    .solace-scale-wrap:not(.sc-chrome-ready) {
-      visibility: hidden;
-    }
-
-    /* ─── Float keyframe (decorative watermarks) ─────────────────────────────── */
-    @keyframes solaceFloat {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-22px) rotate(3deg);
-      }
-
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-    }
-
     /* ══════════════════════════════════════════════════════════════════════
-     Real mobile layout - a hand-built, stacked, single-column experience.
-     Below 768px this REPLACES the scaled desktop canvas entirely instead of
-     shrinking it, so type stays readable and sections stack like a normal
-     mobile site instead of looking like a tiny desktop screenshot.
-     ══════════════════════════════════════════════════════════════════════ */
-    .solace-mobile {
-      display: none;
-    }
-
-    @media (max-width: 767px) {
-      .solace-scale-wrap {
-        display: none !important;
-      }
-
-      .solace-mobile {
-        display: block;
-      }
-    }
-
-    .solace-mobile {
+       Homepage - ONE shared markup for every viewport (mobile/tablet/
+       desktop). No duplicated desktop-vs-mobile DOM: every section below
+       renders identically in the DOM at every width, and CSS (mobile-first
+       base rules + the two @media blocks at the bottom of this file) is
+       entirely responsible for adapting layout, sizing and spacing. Add or
+       edit content once here and it applies to every breakpoint.
+       ══════════════════════════════════════════════════════════════════════ */
+    .hp-page {
       --brown-900: rgb(40, 20, 13);
       --brown-800: rgb(43, 23, 16);
       --brown-700: rgb(75, 33, 18);
@@ -317,15 +256,20 @@
       color: var(--ink);
       background: #fff;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .solace-mobile .sm-ic {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
+    .hp-page .hp-ic { width: 16px; height: 16px; display: block; flex: none; }
 
-    .solace-mobile .sm-eyebrow {
+    /* Centers/insets content while letting a section's own background span
+       full width - the same container pattern every other page on this
+       site uses (see .cr-container etc.). */
+    .hp-container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+    .hp-page section { padding: 44px 0; }
+
+    .hp-page .hp-eyebrow {
       font-family: 'Lato', sans-serif;
       font-weight: 700;
       font-size: 12px;
@@ -335,64 +279,52 @@
       margin: 0 0 8px;
     }
 
-    .solace-mobile .sm-eyebrow.light {
-      color: rgba(255, 255, 255, 0.85);
-    }
+    .hp-page .hp-eyebrow.light { color: rgba(255, 255, 255, 0.85); }
 
-    .solace-mobile .sm-hero-inner .sm-eyebrow {
-      white-space: nowrap;
+    .hp-hero-copy .hp-eyebrow {
+      /* No white-space:nowrap here on purpose - this specific eyebrow's copy
+         ("IV Therapy in Summerlin & Mobile Across Las Vegas") measures wider
+         than the available column below ~360px, and nowrap would force it to
+         silently overflow/clip (confirmed in a real rendered browser at
+         320-344px) rather than simply wrapping to a second line. */
       font-size: 11px;
       letter-spacing: 0.04em;
     }
 
-    .solace-mobile h1,
-    .solace-mobile h2,
-    .solace-mobile h3 {
+    .hp-page h1,
+    .hp-page h2,
+    .hp-page h3 {
       font-family: 'Poppins', sans-serif;
       color: var(--brown-800);
       margin: 0 0 12px;
       line-height: 1.25;
     }
 
-    .solace-mobile h2 {
-      font-size: 24px;
-      font-weight: 700;
-    }
+    /* clamp() lets headings scale continuously with viewport width instead
+       of jumping at fixed breakpoints, so nothing looks cramped or oversized
+       at the widths in between 768px/1024px. */
+    .hp-page h2 { font-size: clamp(24px, 3.6vw, 40px); font-weight: 700; }
+    .hp-page h3 { font-size: 19px; font-weight: 600; }
 
-    .solace-mobile h3 {
-      font-size: 19px;
-      font-weight: 600;
-    }
-
-    .solace-mobile .sm-body {
+    .hp-page .hp-body {
       font-size: 15px;
       line-height: 1.65;
       color: var(--ink);
       margin: 0 0 12px;
+      max-width: 62ch;
     }
 
-    .solace-mobile .sm-subhead2 {
-      font-size: 15px;
-      color: var(--ink-soft);
-      margin: -6px 0 20px;
+    .hp-page .hp-subhead2 { font-size: 15px; color: var(--ink-soft); margin: -6px 0 20px; max-width: 62ch; }
+
+    .hp-page .light { color: rgba(255, 255, 255, 0.92) !important; }
+
+    .hp-btn-row { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+
+    @media (min-width: 480px) {
+      .hp-btn-row { flex-direction: row; flex-wrap: wrap; }
     }
 
-    .solace-mobile section {
-      padding: 44px 20px;
-    }
-
-    .solace-mobile .light {
-      color: rgba(255, 255, 255, 0.92) !important;
-    }
-
-    .solace-mobile .sm-btn-row {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .solace-mobile .sm-btn {
+    .hp-btn {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -401,68 +333,38 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 14px 20px;
+      padding: 14px 22px;
       border-radius: 999px;
       text-align: center;
+      transition: transform .2s ease;
     }
 
-    .solace-mobile .sm-btn-solid {
-      background: linear-gradient(90deg, var(--brown-700), #000);
-      color: #fff;
-    }
+    .hp-btn:hover { transform: translateY(-2px); }
+    .hp-btn-solid { background: linear-gradient(90deg, var(--brown-700), #000); color: #fff; }
+    .hp-btn-outline { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+    .hp-btn.full { width: 100%; margin-top: 16px; }
 
-    .solace-mobile .sm-btn-outline {
-      background: transparent;
-      color: var(--ink);
-      box-shadow: inset 0 0 0 1.5px var(--ink);
-    }
+    .hp-reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s cubic-bezier(.16, .84, .44, 1), transform .7s cubic-bezier(.16, .84, .44, 1); }
+    .hp-reveal.hp-in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } }
 
-    .solace-mobile .sm-btn.full {
-      width: 100%;
-      margin-top: 16px;
-    }
+    /* ─── Hero ─────────────────────────────────────────────────────────────── */
+    .hp-hero { background: var(--cream); padding: 0; }
+    /* Negative margin cancels .hp-container's own side padding so the photo
+       stays full-bleed edge-to-edge on mobile; removed again at desktop
+       once the photo becomes a normal, rounded grid column. */
+    .hp-hero-media { margin: 0 -20px; }
+    .hp-hero-photo { width: 100%; aspect-ratio: 5 / 4; background-size: cover; background-position: left center; }
+    .hp-hero-copy { padding: 32px 0 44px; }
+    .hp-hero-copy h1 { font-size: 30px; font-weight: 800; line-height: 1.12; }
+    .hp-hero-subhead { font-size: 16px; font-weight: 400; color: var(--brown-800); margin: 0 0 14px; max-width: 62ch; }
 
-    /* hero */
-    .solace-mobile .sm-hero {
-      background-color: var(--cream);
-      background-size: cover;
-      background-position: center;
-      padding: 0;
-    }
-
-    .solace-mobile .sm-hero-photo {
-      width: 100%;
-      aspect-ratio: 5/4;
-      background-size: cover;
-      background-position: center 22%;
-    }
-
-    .solace-mobile .sm-hero-inner {
-      padding: 32px 20px 44px;
-    }
-
-    .solace-mobile .sm-hero h1 {
-      font-size: 30px;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .solace-mobile .sm-hero .sm-subhead {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--brown-800);
-      margin: 0 0 14px;
-    }
-
-    /* mission */
-    .solace-mobile .sm-mission {
-      background: #fff;
-      text-align: left;
-    }
-
-    .solace-mobile .sm-mission-photo {
+    /* ─── Mission ──────────────────────────────────────────────────────────── */
+    .hp-mission { background: #fff; text-align: center; }
+    .hp-mission .hp-body { text-align: left; }
+    .hp-mission-photo {
       width: 240px;
-      aspect-ratio: 1/1;
+      aspect-ratio: 1 / 1;
       margin: 0 auto 20px;
       background-size: cover;
       background-position: center;
@@ -470,716 +372,163 @@
       box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.22);
     }
 
-    .solace-mobile .sm-mission {
-      text-align: center;
-    }
+    /* ─── Foundation (dark banner) ─────────────────────────────────────────── */
+    .hp-foundation, .hp-serving { background: var(--brown-900); }
 
-    .solace-mobile .sm-mission .sm-body {
-      text-align: left;
+    .hp-pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .hp-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: inset 0 0 0 1px rgba(255, 253, 251, 0.22);
+      color: #fff; font-size: 13px; padding: 9px 14px; border-radius: 999px;
     }
+    .hp-pill .hp-ic { color: var(--tan-text); width: 14px; height: 14px; }
+    .hp-city-pill { background: rgba(255, 255, 255, 0.07); color: #fff; font-size: 13px; padding: 9px 14px; border-radius: 999px; }
 
-    /* meet your provider */
-    .solace-mobile .sm-provider {
-      background: #fff;
-      text-align: center;
+    /* ─── Why-us cards ─────────────────────────────────────────────────────── */
+    .hp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+    .hp-why-card { background: var(--cream); border-radius: 16px; padding: 18px 14px; text-align: left; }
+    .hp-why-card .hp-ic-badge {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--tan);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
     }
+    .hp-why-card .hp-ic-badge .hp-ic { color: #fff; width: 19px; height: 19px; }
+    .hp-why-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .hp-why-card p { font-size: 13px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
 
-    .solace-mobile .sm-provider .sm-body {
-      text-align: left;
+    /* ─── Treatment / product cards ────────────────────────────────────────── */
+    .hp-group-label {
+      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--tan-text); margin: 32px 0 4px; padding-top: 24px; border-top: 1px solid var(--line);
     }
-
-    .solace-mobile .sm-provider-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 10px 24px -12px rgba(43, 23, 16, 0.35);
+    .hp-treatment-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+    .hp-treat-card { background: var(--cream-2); border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); transition: transform .25s ease, box-shadow .25s ease; }
+    a.hp-treat-card { display: block; color: inherit; text-decoration: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    a.hp-treat-card:active { opacity: 0.88; }
+    a.hp-treat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(43, 23, 16, 0.35); }
+    .hp-treat-photo { width: 100%; aspect-ratio: 368 / 210; background-size: cover; background-position: center; background-color: rgb(228, 217, 217); }
+    .hp-treat-body { padding: 16px 18px 18px; position: relative; }
+    .hp-treat-price {
+      position: absolute; top: -18px; right: 16px; background: #fff; border-radius: 999px;
+      padding: 7px 14px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 13px;
+      color: var(--brown-800); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     }
+    .hp-treat-card h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 17px; color: var(--brown-800); margin: 4px 60px 8px 0; }
+    .hp-treat-card .hp-desc { font-size: 13px; line-height: 1.5; margin: 0 0 10px; white-space: pre-line; color: var(--ink); }
+    .hp-treat-card .hp-supports { font-size: 12px; font-weight: 700; margin: 0 0 6px; }
+    .hp-bullets { list-style: none; margin: 0 0 10px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
+    .hp-bullets li { font-size: 12px; color: var(--ink-soft); padding-left: 13px; position: relative; line-height: 1.5; }
+    .hp-bullets li::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--tan); }
+    .hp-tagline { font-size: 15.5px; font-style: italic; color: var(--ink-soft); margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
 
-    .solace-mobile .sm-provider-name {
-      margin-bottom: 2px;
+    /* ─── 3-step process ───────────────────────────────────────────────────── */
+    .hp-process { background: var(--cream-2); }
+    .hp-steps { display: flex; flex-direction: column; gap: 22px; margin-top: 20px; }
+    .hp-step { display: flex; gap: 16px; align-items: flex-start; }
+    .hp-step-num {
+      flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--cream-2);
+      box-shadow: 0 0 0 1px var(--line); display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; color: var(--tan-text);
     }
+    .hp-step h3 { font-size: 16px; margin-bottom: 4px; }
+    .hp-step p { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; white-space: pre-line; }
 
-    .solace-mobile .sm-provider-role {
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--tan-text);
-      margin: 0 0 18px;
-    }
-
-    /* dark banner sections (foundation + serving) */
-    .solace-mobile .sm-foundation,
-    .solace-mobile .sm-serving {
-      background: var(--brown-900);
-    }
-
-    .solace-mobile .sm-serving-photo {
+    /* ─── Serving area ─────────────────────────────────────────────────────── */
+    .hp-serving-photo {
       width: 100%;
-      aspect-ratio: 1024/769;
+      aspect-ratio: 1024 / 769;
       background-size: cover;
       background-position: center;
       border-radius: 16px;
       margin-bottom: 24px;
     }
 
-    .solace-mobile .sm-pill-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
-
-    .solace-mobile .sm-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.07);
-      box-shadow: inset 0 0 0 1px rgba(255, 253, 251, 0.22);
-      color: #fff;
-      font-size: 13px;
-      padding: 9px 14px;
-      border-radius: 999px;
-    }
-
-    .solace-mobile .sm-pill .sm-ic {
-      color: var(--tan-text);
-      width: 14px;
-      height: 14px;
-    }
-
-    .solace-mobile .sm-city-pill {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-      font-size: 13px;
-      padding: 9px 14px;
-      border-radius: 999px;
-    }
-
-    /* why-us cards */
-    .solace-mobile .sm-card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .solace-mobile .sm-why-card {
-      background: var(--cream);
-      border-radius: 16px;
-      padding: 18px 14px;
-      text-align: left;
-    }
-
-    .solace-mobile .sm-why-card .sm-ic-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--tan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-    }
-
-    .solace-mobile .sm-why-card .sm-ic-badge .sm-ic {
-      color: #fff;
-      width: 19px;
-      height: 19px;
-    }
-
-    .solace-mobile .sm-why-card h3 {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .solace-mobile .sm-why-card p {
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--ink-soft);
-      margin: 0;
-    }
-
-    /* treatment / product cards */
-    .solace-mobile .sm-group-label {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      color: var(--tan-text);
-      margin: 32px 0 4px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .solace-mobile .sm-treatment-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .solace-mobile .sm-treat-card {
-      background: var(--cream-2);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    }
-
-    .solace-mobile a.sm-treat-card {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .solace-mobile a.sm-treat-card:active {
-      opacity: 0.88;
-    }
-
-    .solace-mobile .sm-treat-photo {
-      width: 100%;
-      aspect-ratio: 368/210;
-      background-size: cover;
-      background-position: center;
-      background-color: rgb(228, 217, 217);
-    }
-
-    .solace-mobile .sm-treat-body {
-      padding: 16px 18px 18px;
-      position: relative;
-    }
-
-    .solace-mobile .sm-treat-price {
-      position: absolute;
-      top: -18px;
-      right: 16px;
-      background: #fff;
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--brown-800);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    }
-
-    .solace-mobile .sm-treat-card h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 17px;
-      color: var(--brown-800);
-      margin: 4px 60px 8px 0;
-    }
-
-    .solace-mobile .sm-treat-card .sm-desc {
-      font-size: 13px;
-      line-height: 1.5;
-      margin: 0 0 10px;
-      white-space: pre-line;
-    }
-
-    .solace-mobile .sm-treat-card .sm-supports {
-      font-size: 12px;
-      font-weight: 700;
-      margin: 0 0 6px;
-    }
-
-    .solace-mobile .sm-bullets {
-      list-style: none;
-      margin: 0 0 10px;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px 10px;
-    }
-
-    .solace-mobile .sm-bullets li {
-      font-size: 12px;
-      color: var(--ink-soft);
-      padding-left: 13px;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .solace-mobile .sm-bullets li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 6px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--tan);
-    }
-
-    .solace-mobile .sm-tagline {
-      font-size: 15.5px;
-      font-style: italic;
-      color: var(--ink-soft);
-      margin: 8px 0 0;
-      padding-top: 8px;
-      border-top: 1px solid var(--line);
-    }
-
-    /* 3-step process */
-    .solace-mobile .sm-process {
-      background: var(--cream-2);
-    }
-
-    .solace-mobile .sm-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin-top: 20px;
-    }
-
-    .solace-mobile .sm-step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .solace-mobile .sm-step-num {
-      flex: none;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--cream-2);
-      box-shadow: 0 0 0 1px var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 18px;
-      color: var(--tan-text);
-    }
-
-    .solace-mobile .sm-step h3 {
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    .solace-mobile .sm-step p {
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--ink-soft);
-      margin: 0;
-      white-space: pre-line;
-    }
-
-    /* trust / CTA banner */
-    .solace-mobile .sm-trust {
-      background: var(--cream);
-    }
-
-    .solace-mobile .sm-trust-card {
-      background: var(--cream-2);
-      border-radius: 20px;
-      padding: 26px 20px;
-    }
-
-    .solace-mobile .sm-checklist {
-      list-style: none;
-      margin: 0 0 20px;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .solace-mobile .sm-checklist li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .solace-mobile .sm-checklist .sm-ic {
-      color: var(--tan-text);
-      flex: none;
-    }
-
-    /* testimonials */
-    .solace-mobile .sm-testi-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .solace-mobile .sm-testi-card {
-      background: var(--cream-2);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .solace-mobile .sm-stars {
-      color: rgb(224, 171, 62);
-      font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .solace-mobile .sm-testi-card h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--brown-800);
-      margin: 0 0 8px;
-    }
-
-    .solace-mobile .sm-testi-card p {
-      font-size: 13.5px;
-      line-height: 1.55;
-      margin: 0 0 12px;
-      white-space: pre-line;
-    }
-
-    .solace-mobile .sm-testi-card .sm-attr {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 12.5px;
-      color: var(--brown-700);
-    }
-
-    /* gallery */
-    .solace-mobile .sm-gallery-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .solace-mobile .sm-gallery-tile {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--brown-800);
-    }
-
-    .solace-mobile .sm-gallery-tile::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%);
-    }
-
-    .solace-mobile .sm-gallery-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 14px 16px;
-      z-index: 1;
-    }
-
-    .solace-mobile .sm-gallery-tag {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      color: rgb(205, 177, 140);
-      margin-bottom: 4px;
-    }
-
-    .solace-mobile .sm-gallery-tag .sm-ic {
-      width: 12px;
-      height: 12px;
-    }
-
-    .solace-mobile .sm-gallery-caption h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 15px;
-      color: #fff;
-      margin: 0;
-    }
-
-    /* FAQ accordion */
-    .solace-mobile .sm-faq-list {
-      margin: 20px 0 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .solace-mobile .sm-faq-item {
-      background: var(--cream);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .solace-mobile .sm-faq-q {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      background: none;
-      border: none;
-      text-align: left;
-      padding: 16px 18px;
-      font: inherit;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14.5px;
-      color: var(--brown-800);
-      cursor: pointer;
-    }
-
-    .solace-mobile .sm-faq-caret {
-      flex: none;
-      color: var(--tan-text);
-      transition: transform .25s ease;
-    }
-
-    .solace-mobile .sm-faq-q[aria-expanded="true"] .sm-faq-caret {
-      transform: rotate(180deg);
-    }
-
-    .solace-mobile .sm-faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease;
-    }
-
-    .solace-mobile .sm-faq-a p {
-      margin: 0;
-      padding: 0 18px 18px;
-      font-size: 13.5px;
-      line-height: 1.7;
-      color: var(--ink-soft);
-    }
-
-    .solace-mobile .sm-faq-item.open .sm-faq-a {
-      max-height: 320px;
-    }
-
-    /* contact + subscribe + footer */
-    .solace-mobile .sm-contact {
-      background: var(--cream-2);
-    }
-
-    .solace-mobile .sm-contact-form {
-      background: #fff;
-      border-radius: 20px;
-      padding: 24px 20px;
-      margin-bottom: 28px;
-    }
-
-    .solace-mobile .sm-contact-info h3 {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--brown-700);
-    }
-
-    .solace-mobile .sm-info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .solace-mobile .sm-info-icon {
-      flex: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: var(--brown-700);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .solace-mobile .sm-info-icon .sm-ic {
-      color: rgb(240, 228, 211);
-    }
-
-    .solace-mobile .sm-info-row strong {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--brown-800);
-    }
-
-    .solace-mobile .sm-info-row span {
-      font-size: 13.5px;
-      color: var(--ink-soft);
-    }
-
-    .solace-mobile .sm-social-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .solace-mobile .sm-social-row a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--brown-700);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-
-    /* press & recognition (top strip) */
-    .solace-mobile .sm-press {
-      background: var(--cream);
-      padding: 32px 20px;
-    }
-
-    .solace-mobile .sm-press-row {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    .solace-mobile .sm-press-award {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      box-shadow: 0 10px 24px -16px rgba(43, 23, 16, 0.35);
-    }
-
-    .solace-mobile .sm-press-trophy {
-      font-size: 24px;
-      line-height: 1;
-      flex: none;
-    }
-
-    .solace-mobile .sm-press-award strong {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--brown-800);
-      line-height: 1.35;
-    }
-
-    .solace-mobile .sm-press-award small {
-      display: block;
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-top: 2px;
-    }
-
-    .solace-mobile .sm-press-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .solace-mobile .sm-press-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #fff;
-      box-shadow: inset 0 0 0 1px var(--line);
-      color: var(--brown-800);
-      font-family: 'Poppins', sans-serif;
-      font-size: 12.5px;
-      font-weight: 600;
-      padding: 9px 16px;
-      border-radius: 999px;
-    }
-
-    /* recognition section (after Meet Your Provider) */
-    .solace-mobile .sm-recognition {
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .solace-mobile .sm-recognition-award {
-      font-size: 20px;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      color: var(--brown-800);
-      margin: 0 0 4px;
-    }
-
-    .solace-mobile .sm-recognition-featured {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--tan-text);
-      margin: 20px 0 10px;
-    }
-
-    .solace-mobile .sm-recognition-list {
-      list-style: none;
-      margin: 0 0 8px;
-      padding: 0;
-    }
-
-    .solace-mobile .sm-recognition-list li {
-      margin-bottom: 8px;
-    }
-
-    .solace-mobile .sm-recognition-list a {
-      color: var(--tan-text);
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    /* trust checklist (under provider bio, and final reminder) */
-    .solace-mobile .sm-trust-list {
-      list-style: none;
-      margin: 16px 0 0;
-      padding: 0;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .solace-mobile .sm-trust-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14.5px;
-      color: var(--ink);
-    }
-
-    .solace-mobile .sm-trust-check {
-      flex: none;
-      width: 18px;
-      height: 18px;
-      color: var(--tan-text);
-      margin-top: 1px;
-    }
-
-    .solace-mobile .sm-trust-final {
-      background: var(--brown-900);
-    }
-
-    .solace-mobile .sm-trust-final .sm-trust-list li {
-      color: rgba(255, 255, 255, 0.92);
-    }
-
-    .solace-mobile .sm-trust-final .sm-trust-check {
-      color: var(--tan-text);
+    /* ─── Testimonials ─────────────────────────────────────────────────────── */
+    .hp-testi-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+    .hp-testi-card { background: var(--cream-2); border-radius: 16px; padding: 20px; }
+    .hp-stars { color: rgb(224, 171, 62); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+    .hp-testi-card h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px; color: var(--brown-800); margin: 0 0 8px; }
+    .hp-testi-card p { font-size: 13.5px; line-height: 1.55; margin: 0 0 12px; white-space: pre-line; }
+    .hp-testi-card .hp-attr { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 12.5px; color: var(--brown-700); }
+
+    /* ─── Gallery ──────────────────────────────────────────────────────────── */
+    .hp-gallery-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+    .hp-gallery-tile { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background-size: cover; background-position: center; background-color: var(--brown-800); }
+    .hp-gallery-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 55%); }
+    .hp-gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px; z-index: 1; }
+    .hp-gallery-tag { display: flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: rgb(205, 177, 140); margin-bottom: 4px; }
+    .hp-gallery-tag .hp-ic { width: 12px; height: 12px; }
+    .hp-gallery-caption h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px; color: #fff; margin: 0; }
+
+    /* ─── Contact ──────────────────────────────────────────────────────────── */
+    .hp-contact { background: var(--cream-2); }
+    .hp-contact-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .hp-contact-form { background: #fff; border-radius: 20px; padding: 24px 20px; }
+    .hp-contact-info h3 { font-size: 22px; font-weight: 600; color: var(--brown-700); }
+    .hp-info-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px; }
+    .hp-info-icon {
+      flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--brown-700);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hp-info-icon .hp-ic { color: rgb(240, 228, 211); }
+    .hp-info-row strong { display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; color: var(--brown-800); }
+    .hp-info-row span { font-size: 13.5px; color: var(--ink-soft); }
+    .hp-social-row { display: flex; gap: 10px; margin-top: 8px; }
+    .hp-social-row a { width: 40px; height: 40px; border-radius: 50%; background: var(--brown-700); display: flex; align-items: center; justify-content: center; color: #fff; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       Tablet (~768-1023px)
+       ══════════════════════════════════════════════════════════════════════ */
+    @media (min-width: 768px) {
+      .hp-page section { padding: 64px 0; }
+      .hp-container { padding: 0 32px; }
+      .hp-page .hp-body { font-size: 16px; }
+      .hp-hero-copy h1 { font-size: 40px; }
+      .hp-treatment-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .hp-testi-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .hp-gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .hp-why-grid { gap: 16px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       Desktop (1024px+)
+       ══════════════════════════════════════════════════════════════════════ */
+    @media (min-width: 1024px) {
+      .hp-page section { padding: 88px 0; }
+      .hp-container { padding: 0 40px; }
+
+      .hp-hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 56px; }
+      .hp-hero-media { margin: 0; order: 2; }
+      /* Keep "left" positioning (matches mobile) rather than centering - the
+         source photo's actual subject (chairs/wall) sits in roughly the left
+         55% of the frame, with a deliberate fade-to-white on the right; a
+         centered crop pulls the visible window rightward into that fade,
+         which looks like a broken/empty image rather than a framing choice. */
+      .hp-hero-photo { aspect-ratio: 4 / 3; border-radius: 24px; box-shadow: 0 30px 60px -30px rgba(43, 23, 16, 0.45); background-position: left center; }
+      .hp-hero-copy { order: 1; padding: 0; }
+      .hp-hero-copy h1 { font-size: 52px; }
+
+      .hp-mission { text-align: left; }
+      .hp-mission .hp-container { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
+      .hp-mission-photo { width: 100%; max-width: none; margin: 0; }
+
+      .hp-foundation .hp-container { max-width: 900px; }
+
+      .hp-why-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+      .hp-treatment-grid { grid-template-columns: repeat(4, 1fr); }
+
+      .hp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+      .hp-serving .hp-container { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
+      .hp-serving-photo { margin-bottom: 0; }
+
+      .hp-testi-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .hp-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+
+      .hp-contact-grid { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+      .hp-contact-form { padding: 36px; }
     }
   </style>
 
@@ -1204,701 +553,727 @@
     <!-- Global header (shared across every page) - see ./solace/site-chrome.js. -->
     <solace-header current="home"></solace-header>
 
-    <div class="solace-mobile" id="solace-mobile">
+    <div class="hp-page" id="hp-page">
 
-      <section class="sm-hero">
-        <div class="sm-hero-photo" style="background-image:url(./solace/assets/herobg.webp);background-position:left center;" role="img"
-          aria-label="Solace Wellness IV Summerlin suite"></div>
-        <div class="sm-hero-inner">
-          <p class="sm-eyebrow">IV Therapy in Summerlin &amp; Mobile Across Las Vegas</p>
-          <h1>Premium IV Therapy in Summerlin &amp; Mobile IV Service Across Las Vegas</h1>
-          <p class="sm-subhead">Visit our comfortable wellness suite in Summerlin, or let us come to you - mobile
-            appointments available at homes, hotels, offices &amp; events.</p>
-          <p class="sm-body">Las Vegas residents and visitors depend on Solace Wellness IV for hydration, recovery,
-            vitality, immunity, beauty, and wellness IV therapy. Our licensed medical professionals provide
-            personalized IV treatments in our private Summerlin wellness suite, or directly to your hotel, home,
-            Airbnb, office, or event location throughout Las Vegas.</p>
-          <p class="sm-body" style="font-family:'Poppins',sans-serif;font-weight:500;">
-            <svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"
-              style="display:inline-block;vertical-align:-3px;margin-right:6px;">
-              <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
-              <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
-            </svg>900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin) &middot; By appointment
-          </p>
-          <p class="sm-body">Schedule your appointment today and receive professional wellness care in Summerlin or
-            at your doorstep.</p>
-          <div class="sm-btn-row">
-            <a href="#treatments" class="sm-btn sm-btn-outline">View Treatments</a>
-            <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
-              rel="noopener" class="sm-btn sm-btn-solid">Book Now</a>
+      <!-- ═══ HERO ═══ -->
+      <section class="hp-hero">
+        <div class="hp-container hp-hero-grid">
+          <div class="hp-hero-media hp-reveal">
+            <div class="hp-hero-photo" style="background-image:url(./solace/assets/herobg.webp);" role="img"
+              aria-label="Solace Wellness IV Summerlin suite"></div>
           </div>
-        </div>
-      </section>
-
-
-      <section class="sm-mission" id="mission">
-        <div class="sm-mission-photo" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img"
-          aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
-        <h2>Our Mission</h2>
-        <p class="sm-body">Solace Wellness IV was built on the belief that wellness should be proactive,
-          personalized, and medically guided.</p>
-        <p class="sm-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
-          specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
-          prioritizes education, individualized care, and genuine patient relationships.</p>
-        <p class="sm-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
-          every treatment begins with a personalized health assessment to ensure it is appropriate for their
-          individual needs. We are committed to delivering compassionate, professional care while helping our
-          clients feel their best through hydration, wellness, and preventive health support.</p>
-      </section>
-
-      <section class="sm-foundation">
-        <p class="sm-eyebrow light">Foundation of Wellness</p>
-        <h2 class="light">Improved Hydration is the Foundation of Wellness</h2>
-        <p class="sm-body light">Las Vegas is an exhilarating destination; however, the desert heat, busy schedules,
-          celebrations, and demanding lifestyles can rapidly result in dehydration and fatigue. Our IV treatment
-          services in Las Vegas deliver fluids, electrolytes, vitamins, and minerals directly into your bloodstream,
-          ensuring rapid absorption and hydration.</p>
-        <p class="sm-body light" style="font-family:'Poppins',sans-serif;font-weight:500;margin-bottom:0;">Our therapies
-          are ideal for:</p>
-        <div class="sm-pill-wrap">
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
-            </svg>IV Hydration in Las Vegas</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
-            </svg>Recovery from a Hangover</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-              stroke-width="1.3">
-              <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
-              <path d="M5.7 7.9 7.3 9.5l3-3.3" />
-            </svg>Immune Support</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8.8 1 3.6 9.1h3.3L6.3 15l5.7-8.4H8.5L8.8 1Z" />
-            </svg>Performance and Energy</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
-            </svg>Skin and Beauty Health</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-              stroke-width="1.2">
-              <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z" />
-              <path d="M5.5 6V4.5a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5V6" />
-            </svg>Recovery from Jet Lag</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8.8 1 3.6 9.1h3.3L6.3 15l5.7-8.4H8.5L8.8 1Z" />
-            </svg>Athletic Recovery</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-              stroke-width="1.3">
-              <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
-              <path d="M5.7 7.9 7.3 9.5l3-3.3" />
-            </svg>General Health</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
-            </svg>Event and Pre-Party Planning</span>
-          <span class="sm-pill"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-              stroke-width="1.2">
-              <path d="M1.5 8 14.5 3l-3 12-3-4.5L1.5 8Z" />
-            </svg>Recovery from Travel</span>
-        </div>
-      </section>
-
-      <section class="sm-why">
-        <p class="sm-eyebrow">The Solace Difference</p>
-        <h2>Why Solace Wellness IV?</h2>
-        <div class="sm-card-grid">
-          <div class="sm-why-card">
-            <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                stroke-width="1.4">
+          <div class="hp-hero-copy hp-reveal">
+            <p class="hp-eyebrow">IV Therapy in Summerlin &amp; Mobile Across Las Vegas</p>
+            <h1>Premium IV Therapy in Summerlin &amp; Mobile IV Service Across Las Vegas</h1>
+            <p class="hp-hero-subhead">Visit our comfortable wellness suite in Summerlin, or let us come to you - mobile
+              appointments available at homes, hotels, offices &amp; events.</p>
+            <p class="hp-body">Las Vegas residents and visitors depend on Solace Wellness IV for hydration, recovery,
+              vitality, immunity, beauty, and wellness IV therapy. Our licensed medical professionals provide
+              personalized IV treatments in our private Summerlin wellness suite, or directly to your hotel, home,
+              Airbnb, office, or event location throughout Las Vegas.</p>
+            <p class="hp-body" style="font-family:'Poppins',sans-serif;font-weight:500;">
+              <svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"
+                style="display:inline-block;vertical-align:-3px;margin-right:6px;">
                 <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
                 <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
-              </svg></div>
-            <h3>Visit Us or We'll Come to You</h3>
-            <p>Come relax in our Summerlin wellness suite, or let us bring skilled IV therapy anywhere in Las
-              Vegas.</p>
+              </svg>900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin) &middot; By appointment
+            </p>
+            <p class="hp-body">Schedule your appointment today and receive professional wellness care in Summerlin or
+              at your doorstep.</p>
+            <div class="hp-btn-row">
+              <a href="#treatments" class="hp-btn hp-btn-outline">View Treatments</a>
+              <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
+                rel="noopener" class="hp-btn hp-btn-solid">Book Now</a>
+            </div>
           </div>
-          <div class="sm-why-card">
-            <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+        </div>
+      </section>
+
+      <!-- ═══ MISSION ═══ -->
+      <section class="hp-mission" id="mission">
+        <div class="hp-container">
+          <div class="hp-mission-photo hp-reveal" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img"
+            aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
+          <div class="hp-mission-copy hp-reveal">
+            <h2>Our Mission</h2>
+            <p class="hp-body">Solace Wellness IV was built on the belief that wellness should be proactive,
+              personalized, and medically guided.</p>
+            <p class="hp-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
+              specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
+              prioritizes education, individualized care, and genuine patient relationships.</p>
+            <p class="hp-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
+              every treatment begins with a personalized health assessment to ensure it is appropriate for their
+              individual needs. We are committed to delivering compassionate, professional care while helping our
+              clients feel their best through hydration, wellness, and preventive health support.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FOUNDATION OF WELLNESS ═══ -->
+      <section class="hp-foundation">
+        <div class="hp-container hp-reveal">
+          <p class="hp-eyebrow light">Foundation of Wellness</p>
+          <h2 class="light">Improved Hydration is the Foundation of Wellness</h2>
+          <p class="hp-body light">Las Vegas is an exhilarating destination; however, the desert heat, busy schedules,
+            celebrations, and demanding lifestyles can rapidly result in dehydration and fatigue. Our IV treatment
+            services in Las Vegas deliver fluids, electrolytes, vitamins, and minerals directly into your bloodstream,
+            ensuring rapid absorption and hydration.</p>
+          <p class="hp-body light" style="font-family:'Poppins',sans-serif;font-weight:500;margin-bottom:0;">Our therapies
+            are ideal for:</p>
+          <div class="hp-pill-wrap">
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
+              </svg>IV Hydration in Las Vegas</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
+              </svg>Recovery from a Hangover</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
                 stroke-width="1.3">
                 <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
                 <path d="M5.7 7.9 7.3 9.5l3-3.3" />
-              </svg></div>
-            <h3>Board-Certified Nurse Practitioner &amp; Licensed Medical Professionals</h3>
-            <p>Every infusion is administered by trained healthcare professionals dedicated to safe and comfortable
-              treatment.</p>
-          </div>
-          <div class="sm-why-card">
-            <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
+              </svg>Immune Support</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8.8 1 3.6 9.1h3.3L6.3 15l5.7-8.4H8.5L8.8 1Z" />
+              </svg>Performance and Energy</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
-              </svg></div>
-            <h3>Premium Medical-Grade Ingredients</h3>
-            <p>IV therapies with premium vitamins, minerals, antioxidants and electrolytes to help with hydration and
-              wellness.</p>
-          </div>
-          <div class="sm-why-card">
-            <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-                <path
-                  d="M8 1.4c.4 2.6 1.2 4.2 2.4 5.4 1.2 1.2 2.8 2 5.2 2.4-2.4.4-4 1.2-5.2 2.4-1.2 1.2-2 2.8-2.4 5.4-.4-2.6-1.2-4.2-2.4-5.4C4.4 10.4 2.8 9.6.4 9.2c2.4-.4 4-1.2 5.2-2.4C6.8 5.6 7.6 4 8 1.4Z" />
-              </svg></div>
-            <h3>Personalized treatments</h3>
-            <p>From Myers Miracle Drip to NAD+ Therapy Las Vegas, we have therapies for your wellness goals.</p>
-          </div>
-          <div class="sm-why-card" style="grid-column:1 / -1;">
-            <div class="sm-ic-badge"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                stroke-width="1.3">
-                <circle cx="8" cy="8" r="6.3" />
-                <path d="M8 4.5V8l2.6 1.6" stroke-linecap="round" />
-              </svg></div>
-            <h3>Same Day Appointments</h3>
-            <p>Want rapid relief? We provide flexible scheduling and same day appointments when available.</p>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="sm-treatments" id="treatments">
-        <p class="sm-eyebrow">Menu / Price List</p>
-        <h2>IV Therapy Treatments We Offer</h2>
-        <p class="sm-subhead2">Unlock optimal wellness with our signature infusions</p>
-        <p class="sm-subhead2">Explore our dedicated pages:
-          <a href="/wellness-iv-therapy"
-            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Wellness IV Therapy</a>
-          &middot;
-          <a href="/recovery-iv-therapy"
-            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Recovery IV Therapy</a>
-          &middot;
-          <a href="/energy-therapy" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Energy
-            Therapy</a>
-          &middot;
-          <a href="/vitamin-d3-booster" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Vitamin
-            D3 Booster</a>
-        </p>
-
-        <div class="sm-treatment-grid">
-          <a class="sm-treat-card" href="/pregame-potion-iv">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-pregame-potion.webp"
-              style="background-position:center top;" role="img"
-              aria-label="PreGame Potion IV pre-party hydration treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$180</div>
-              <h4>PreGame Potion IV</h4>
-              <p class="sm-desc">Get your body ready for concerts, bachelor parties, festivals, athletic events or
-                nightlife.</p>
-              <ul class="sm-bullets">
-                <li>Increases energy and endurance</li>
-                <li>Hydration &amp; Electrolytes</li>
-                <li>Immune Support</li>
-                <li>Improves Performance</li>
-                <li>Makes you feel your best</li>
-                <li>Ideal Before a Night Out</li>
-                <li>Helps Quicker Recovery</li>
-                <li>Hydration Support Pre &amp; Post-Operative</li>
-              </ul>
-              <p class="sm-tagline">A go-to for Party Prep IV and Pre-Party IV Therapy.</p>
-              <p class="sm-tagline">Learn more about PreGame Potion IV &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/solace-revitadrip">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-revitadrip-card.webp"
-              style="background-position:center top;" role="img"
-              aria-label="RevitaDrip IV signature IV treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$300</div>
-              <h4>RevitaDrip IV</h4>
-              <p class="sm-desc">RevitaDrip provides excellent hydration with added vitamins and antioxidants to
-                help recover energy and promote overall wellness.</p>
-              <ul class="sm-bullets">
-                <li>Hydration premium</li>
-                <li>Quick Energy Boost</li>
-                <li>Supports immune system</li>
-                <li>Reduces tiredness</li>
-                <li>Relaxation with magnesium</li>
-                <li>Cellular Support</li>
-                <li>Antioxidant Support</li>
-                <li>Clarity of Mind</li>
-                <li>Wellness &amp; Energy &ndash; Overall</li>
-              </ul>
-              <p class="sm-tagline">Ideal for those looking for an Energy IV Drip, Vitamin B Complex IV or a
-                comprehensive wellness infusion.</p>
-              <p class="sm-tagline">Learn more about RevitaDrip IV &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/myers-miracle-drip">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-myersmiracle-hero-v2.webp"
-              role="img"
-              aria-label="Myers Miracle Drip treatment for headaches, stress, chronic pain, and fatigue"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$240</div>
-              <h4>Myers Miracle Drip</h4>
-              <p class="sm-desc">Our enhanced Myers-style blend, formulated for headache relief, stress support,
-                chronic discomfort, and fatigue.</p>
-              <ul class="sm-bullets">
-                <li>Headaches &amp; Migraines</li>
-                <li>Anxiety &amp; Stress</li>
-                <li>Chronic Pain Comfort</li>
-                <li>Fatigue &amp; Brain Fog</li>
-              </ul>
-              <p class="sm-tagline">A go-to for Migraine Relief IV, Chronic Pain IV Drip, and Anti-Stress IV
-                Therapy.</p>
-              <p class="sm-tagline">Learn more about Myers Miracle Drip &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/immune-iv-therapy">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-immunoshield.webp"
-              style="background-position:center top;" role="img"
-              aria-label="IV Immunoshield immune support IV treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$350</div>
-              <h4>IV Immunoshield</h4>
-              <p class="sm-desc">Boost your well-being with our premier IV Immune Booster.</p>
-              <ul class="sm-bullets">
-                <li>High Dose Vitamin C</li>
-                <li>Health of the Season</li>
-                <li>Quicker Recovery</li>
-                <li>Zinc</li>
-                <li>Glutathione</li>
-                <li>Immune System Support</li>
-                <li>Seasonal Immune Support</li>
-              </ul>
-              <p class="sm-tagline">For people looking for Immune IV Therapy, Immune Support IV Therapy, and Immunity IV
-                Drip.</p>
-              <p class="sm-tagline">Learn more about Immune IV Therapy &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/jetset-travel-recovery-iv">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-jetset-revival.webp"
-              style="background-position:center top;" role="img"
-              aria-label="JetSet Revival IV treatment for travel fatigue and jet lag"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$250</div>
-              <h4>JetSet Revival IV</h4>
-              <p class="sm-desc">Our travel-inspired infusion helps you to recover from travel and dehydration.</p>
-              <ul class="sm-bullets">
-                <li>Riding the jetlag</li>
-                <li>Reset and Recharge</li>
-                <li>Recovery from Travel Fatigue</li>
-                <li>Rehydration</li>
-                <li>Headache Relief</li>
-                <li>Energy Assistance</li>
-              </ul>
-              <p class="sm-tagline">Great for travelers looking for Travel Recovery IV, Jet Lag IV Drip or Jet Lag
-                Therapy.</p>
-              <p class="sm-tagline">Learn more about JetSet Revival IV &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/morning-after-martini">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-martini-hero-v2.webp"
-              role="img"
-              aria-label="Morning After Martini IV treatment for hangover recovery and rehydration"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$220</div>
-              <h4>Morning After Martini</h4>
-              <p class="sm-desc">Rehydration, electrolytes, and vitamins after a long night out, with anti-nausea
-                support if you need it.</p>
-              <ul class="sm-bullets">
-                <li>Rapid Rehydration</li>
-                <li>Electrolyte Replacement</li>
-                <li>Headache &amp; Fatigue Relief</li>
-                <li>Nausea Support (optional)</li>
-              </ul>
-              <p class="sm-tagline">A go-to for Hangover IV Drip, Hangover Recovery IV, and Post-Party IV
-                Therapy.</p>
-              <p class="sm-tagline">Learn more about Morning After Martini &rarr;</p>
-            </div>
-          </a>
-
-          <a class="sm-treat-card" href="/flawless-fusion-iv">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-flawless-fusion.webp"
-              style="background-position:center top;" role="img"
-              aria-label="Flawless Fusion IV treatment for healthy, glowing skin"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$300</div>
-              <h4>Flawless Fusion IV</h4>
-              <p class="sm-desc">Biotin, Vitamin C, Glutathione &amp; antioxidants to nourish healthy, glowing
-                skin from within.</p>
-              <ul class="sm-bullets">
-                <li>Healthy, Glowing Skin</li>
-                <li>Collagen Support</li>
-                <li>Antioxidant Protection</li>
-                <li>Total Wellness</li>
-              </ul>
-              <p class="sm-tagline">A go-to for Beauty IV Therapy and Skin Glow IV Therapy.</p>
-              <p class="sm-tagline">Learn more about Flawless Fusion IV &rarr;</p>
-            </div>
-          </a>
-
-        </div>
-
-        <h3 class="sm-group-label">Specialty Care</h3>
-        <div class="sm-treatment-grid">
-          <a class="sm-treat-card" href="/metabofusion-iv">
-            <div class="sm-treat-photo" data-bg="./solace/assets/69dee31f18bf38c1.webp" role="img"
-              aria-label="MetaboFusion IV metabolism support treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$280</div>
-              <h4>MetaboFusion IV</h4>
-              <p class="sm-desc">Boost your metabolism naturally with a combination of Vitamin B12, Vitamin B Complex
-                &amp; Taurine.</p>
-              <ul class="sm-bullets">
-                <li>Supports metabolic function</li>
-                <li>Energy Natural</li>
-                <li>Support for Weight Management</li>
-                <li>Helps turn food into energy</li>
-                <li>Support for an Active Life</li>
-                <li>Decreases Fatigue</li>
-              </ul>
-              <p class="sm-tagline">Perfect for anyone looking for Metabolism Boost IV, Metabolism Booster IV Drip, and
-                IV Therapy for Metabolism.</p>
-              <p class="sm-tagline">Learn more about MetaboFusion IV &rarr;</p>
-            </div>
-          </a>
-        </div>
-
-        <h3 class="sm-group-label">NAD+ Therapy in Las Vegas</h3>
-        <div class="sm-treatment-grid">
-          <a class="sm-treat-card" href="/nad-therapy">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img"
-              aria-label="NAD+ IV therapy treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$299+</div>
-              <h4>NAD+ Therapy &rarr;</h4>
-              <p class="sm-desc">NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging.</p>
-              <ul class="sm-bullets">
-                <li>Clear Thinking</li>
-                <li>Support for Mood</li>
-                <li>Decreased Fatigue</li>
-                <li>Supports Healthy Aging</li>
-                <li>Energy Support</li>
-              </ul>
-              <p class="sm-tagline">Learn more about NAD+ Therapy &rarr;</p>
-            </div>
-          </a>
-        </div>
-
-        <h3 class="sm-group-label">Vitamin Booster Shots</h3>
-
-        <div class="sm-treatment-grid">
-          <a class="sm-treat-card" href="/glutathione-iv-therapy">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-glutathione-booster.webp" role="img"
-              aria-label="Glutathione Booster IV treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$40</div>
-              <h4>Glutathione Booster</h4>
-              <p class="sm-supports">Supports:</p>
-              <ul class="sm-bullets">
-                <li>Detoxification</li>
-                <li>Immune Health</li>
-                <li>Healthy Glowing Skin</li>
-              </ul>
-              <p class="sm-tagline">Popular for Glutathione Injection, Glutathione IV, and Glutathione IV Therapy.</p>
-              <p class="sm-tagline">Learn more about Glutathione IV Therapy &rarr;</p>
-            </div>
-          </a>
-          <a class="sm-treat-card" href="/vitamin-b12-injection">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-vitaminb12-injection.webp"
-              role="img"
-              aria-label="Vitamin B12 injection treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$40</div>
-              <h4>Vitamin B12 Injection</h4>
-              <p class="sm-supports">Supports:</p>
-              <ul class="sm-bullets">
-                <li>Energy Generation</li>
-                <li>Cognitive Health</li>
-                <li>Red Blood Cell Production</li>
-              </ul>
-              <p class="sm-tagline">Great for Vitamin B12 Booster, Vitamin B12 IV, Methylcobalamin Injection and B12
-                Energy Booster.</p>
-              <p class="sm-tagline">Learn more about Vitamin B12 Injections &rarr;</p>
-            </div>
-          </a>
-          <a class="sm-treat-card" href="/vitamin-d3-booster">
-            <div class="sm-treat-photo" data-bg="./solace/assets/sw-vitamind3-booster.webp" role="img"
-              aria-label="Vitamin D3 Booster injection treatment"></div>
-            <div class="sm-treat-body">
-              <div class="sm-treat-price">$40</div>
-              <h4>Vitamin D3 Booster</h4>
-              <p class="sm-supports">Supports:</p>
-              <ul class="sm-bullets">
-                <li>Immune system</li>
-                <li>Bone Wellness</li>
-                <li>Mood</li>
-                <li>General Wellness</li>
-              </ul>
-              <p class="sm-tagline">Available as a Vitamin D3 Shot, Vitamin D Therapy, or Vitamin D Injection.</p>
-              <p class="sm-tagline">Learn more about Vitamin D3 Booster &rarr;</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="sm-process" id="process">
-        <p class="sm-eyebrow">Simple &amp; Seamless</p>
-        <h2>Our Easy 3-Step Process</h2>
-        <div class="sm-steps">
-          <div class="sm-step">
-            <div class="sm-step-num">1</div>
-            <div>
-              <h3>Schedule Appointment</h3>
-              <p>Choose the IV therapy for your wellness needs and schedule online or by phone.</p>
-            </div>
-          </div>
-          <div class="sm-step">
-            <div class="sm-step-num">2</div>
-            <div>
-              <h3>Visit Us or We'll Come to You</h3>
-              <p>Stop by our Summerlin wellness suite, or our qualified medical professionals will come right to
-                you, anywhere in Las Vegas.</p>
-            </div>
-          </div>
-          <div class="sm-step">
-            <div class="sm-step-num">3</div>
-            <div>
-              <h3>Rest and Recharge</h3>
-              <p>Treatments are 30-60 minutes, allowing you to rest while receiving professional hydration and vitamin
-                therapy.</p>
-            </div>
-          </div>
-        </div>
-        <p class="sm-tagline" style="margin-top:20px;"><a href="/how-it-works"
-            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">See the full walkthrough,
-            including what to expect at your first visit &rarr;</a></p>
-      </section>
-
-      <section class="sm-serving">
-        <div class="sm-serving-photo" data-bg="./solace/assets/b70d42f2fbb71bbe.webp" role="img"
-          aria-label="Solace Wellness IV nurse arriving with mobile IV therapy supplies on the Las Vegas Strip"></div>
-        <p class="sm-eyebrow light">Where We Go</p>
-        <h2 class="light">Proudly Serving Las Vegas</h2>
-        <p class="sm-body light">Solace Wellness IV proudly provides mobile IV therapy throughout:</p>
-        <div class="sm-pill-wrap">
-          <span class="sm-city-pill">Las Vegas Strip</span>
-          <span class="sm-city-pill">Downtown Las Vegas</span>
-          <span class="sm-city-pill">Henderson</span>
-          <span class="sm-city-pill">Summerlin</span>
-          <span class="sm-city-pill">Paradise</span>
-          <span class="sm-city-pill">Spring Valley</span>
-          <span class="sm-city-pill">North Las Vegas</span>
-          <span class="sm-city-pill">Hotels &amp; Resorts</span>
-          <span class="sm-city-pill">Vacation Rentals</span>
-          <span class="sm-city-pill">Private Homes</span>
-          <span class="sm-city-pill">Offices</span>
-          <span class="sm-city-pill">Event Venues</span>
-        </div>
-      </section>
-
-
-      <section class="sm-testimonials" id="reviews">
-        <p class="sm-eyebrow">What Our Clients Say</p>
-        <h2>Trusted by Las Vegas Residents &amp; Visitors, in Summerlin and Beyond</h2>
-        <p class="sm-body">At Solace Wellness IV, we're committed to providing safe, convenient, and professional IV
-          therapy with exceptional customer care, whether you visit our Summerlin wellness suite or we come to you.
-          Whether you're recovering after a night on the Strip, rehydrating after travel, or investing in your
-          wellness, our goal is to deliver a five-star experience every time.</p>
-        <div class="sm-testi-grid">
-          <div class="sm-testi-card">
-            <div class="sm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <h4>Fast, Professional &amp; Convenient</h4>
-            <p>"I booked a same-day appointment after arriving in Las Vegas feeling dehydrated from travel. The nurse
-              arrived on time, explained everything clearly, and I felt refreshed within an hour. Highly recommend
-              Solace Wellness IV!"</p>
-            <div class="sm-attr">Emily R., Visitor</div>
-          </div>
-          <div class="sm-testi-card">
-            <div class="sm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <h4>The Best Hangover Recovery Service</h4>
-            <p>"Our group booked the Morning After Hangover IV following a bachelor party weekend, and it made a huge
-              difference.
-              Professional service, quick response, and they came directly to our hotel."</p>
-            <div class="sm-attr">Michael T.</div>
-          </div>
-          <div class="sm-testi-card">
-            <div class="sm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <h4>Excellent Wellness Experience</h4>
-            <p>"I chose the RevitaDrip for an energy boost before a busy conference. The process was smooth, the staff
-              was knowledgeable, and I felt hydrated and energized for the rest of my trip."</p>
-            <div class="sm-attr">Sarah L., Business Traveler</div>
-          </div>
-          <div class="sm-testi-card">
-            <div class="sm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <h4>Perfect Before a Night Out</h4>
-            <p>"We booked the PreGame Potion before heading to the Las Vegas Strip. It helped us stay hydrated and feel
-              great throughout the evening. The convenience of having the IV service come to our Airbnb was amazing."
-            </p>
-            <div class="sm-attr">Jessica M., Arizona</div>
-          </div>
-          <div class="sm-testi-card">
-            <div class="sm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <h4>Highly Recommend NAD+ Therapy</h4>
-            <p>"I've been using Solace Wellness IV for monthly NAD+ infusions, and the team is always professional and
-              friendly. Scheduling is easy, and the mobile service saves me so much time."</p>
-            <div class="sm-attr">David K., Las Vegas</div>
-          </div>
-        </div>
-        <p class="sm-tagline" style="margin-top:20px;"><a href="/reviews"
-            style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Read our real Google reviews
-            (5.0 stars from 13 reviews) &rarr;</a></p>
-      </section>
-
-      <section class="sm-gallery">
-        <p class="sm-eyebrow">Real Appointments</p>
-        <h2>Original Treatment Photos</h2>
-        <p class="sm-body">A look inside real Solace Wellness IV appointments across Las Vegas - in hotel suites,
-          private homes, and group gatherings.</p>
-        <div class="sm-gallery-grid">
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-lounge.webp" role="img"
-            aria-label="Solace Wellness IV team celebrating at a Summerlin wellness event">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>Signature Setup</div>
-              <h4>The Solace IV Lounge Experience</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-insuite.webp" role="img"
-            aria-label="Solace Wellness IV team members at the Summerlin wellness suite">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>In-Suite</div>
-              <h4>Comfort, Right in Your Room</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-friends.webp" role="img"
-            aria-label="Two friends receiving IV therapy together with a Solace Wellness IV nurse">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>Group Session</div>
-              <h4>Wellness With Friends</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-solo.webp" role="img"
-            aria-label="Solace Wellness IV storefront and welcome banner in Summerlin">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>Solo Visit</div>
-              <h4>Rest &amp; Recharge</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-inprogress.webp" role="img"
-            aria-label="Solace Wellness IV team member administering IV therapy to multiple clients">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>In Progress</div>
-              <h4>Real IV Therapy, Real Results</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-gathering.webp" role="img"
-            aria-label="Group of friends smiling together during a Solace Wellness IV group appointment">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>Group Gathering</div>
-              <h4>Making Wellness a Shared Moment</h4>
-            </div>
-          </div>
-          <div class="sm-gallery-tile" data-bg="./solace/assets/sw-real-onlocation.webp"
-            style="background-position:center 20%;" role="img"
-            aria-label="The Solace Wellness IV team gathered together">
-            <div class="sm-gallery-caption">
-              <div class="sm-gallery-tag"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                  stroke-width="1.2">
-                  <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
-                  <circle cx="8" cy="8.6" r="2.3" />
-                </svg>On Location</div>
-              <h4>Anywhere You're Staying in Vegas</h4>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sm-contact" id="book">
-        <div class="sm-contact-form">
-          <p class="sm-eyebrow">Ready When You Are</p>
-          <h3>Book Now!</h3>
-          <p class="sm-body">Rehydrate, revive, and thrive with personalized IV treatments - from energy boosts to
-            immune support, we've got you covered. Visit our Summerlin wellness suite, or let us bring wellness
-            straight to your doorstep.</p>
-          <p class="sm-body">No forms, no waiting on email - booking takes less than a minute, and a real person
-            confirms every appointment.</p>
-          <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
-            rel="noopener" class="sm-btn sm-btn-solid full">Book Now</a>
-        </div>
-        <div class="sm-contact-info">
-          <p class="sm-eyebrow">Get In Touch</p>
-          <h3>Visit Our Wellness Suite or We Come to You</h3>
-          <div class="sm-info-row">
-            <div class="sm-info-icon"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                stroke-width="1.4">
-                <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
-                <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
-              </svg></div>
-            <div><strong>Solace Wellness IV</strong><span>900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144
-                (Summerlin) &middot; Free parking available &middot; By appointment</span></div>
-          </div>
-          <div class="sm-info-row">
-            <div class="sm-info-icon"><svg class="sm-ic" viewBox="0 0 16 16" fill="currentColor">
-                <path
-                  d="M4.4 1.6 6.7 2 7.4 4.7 5.9 6.2c.6 1.4 1.7 2.5 3.1 3.1l1.5-1.5 2.7.7.4 2.3c0 .9-.7 1.6-1.6 1.6C6.9 12.4 3.6 9.1 3.6 4.6c0-.9.7-1.6 1.6-1.6z" />
-              </svg></div>
-            <div><strong>Call Us</strong><span>+1 (702) 526-6763</span></div>
-          </div>
-          <div class="sm-info-row">
-            <div class="sm-info-icon"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                stroke-width="1.3">
-                <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
-                <path d="M2 4.2 8 9l6-4.8" />
-              </svg></div>
-            <div><strong>Email</strong><span>info@solacewellnessiv.com</span></div>
-          </div>
-          <div class="sm-info-row">
-            <div class="sm-info-icon"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-                stroke-width="1.3">
-                <circle cx="8" cy="8" r="6.3" />
-                <path d="M8 4.5V8l2.6 1.6" stroke-linecap="round" />
-              </svg></div>
-            <div><strong>Open 24hrs</strong><span>Today: By Appointment</span></div>
-          </div>
-          <div class="sm-social-row">
-            <a href="https://www.instagram.com/solacewellnessiv?igsh=ajF2NHc3bnM0YXA5" target="_blank" rel="noopener"
-              aria-label="Instagram"><svg class="sm-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              </svg>Skin and Beauty Health</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
                 stroke-width="1.2">
-                <rect x="1.5" y="1.5" width="13" height="13" rx="4" />
-                <circle cx="8" cy="8" r="3.2" />
-                <circle cx="11.6" cy="4.4" r="0.8" fill="currentColor" stroke="none" />
-              </svg></a>
+                <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z" />
+                <path d="M5.5 6V4.5a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5V6" />
+              </svg>Recovery from Jet Lag</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8.8 1 3.6 9.1h3.3L6.3 15l5.7-8.4H8.5L8.8 1Z" />
+              </svg>Athletic Recovery</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                stroke-width="1.3">
+                <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
+                <path d="M5.7 7.9 7.3 9.5l3-3.3" />
+              </svg>General Health</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
+              </svg>Event and Pre-Party Planning</span>
+            <span class="hp-pill"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                stroke-width="1.2">
+                <path d="M1.5 8 14.5 3l-3 12-3-4.5L1.5 8Z" />
+              </svg>Recovery from Travel</span>
           </div>
-          <p class="sm-body" style="margin-top:18px;"><a href="/contact"
-              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Visit our full Contact page
-              for parking info, service area, and more &rarr;</a></p>
         </div>
       </section>
 
-    </div>
+      <!-- ═══ WHY SOLACE ═══ -->
+      <section class="hp-why">
+        <div class="hp-container">
+          <p class="hp-eyebrow">The Solace Difference</p>
+          <h2>Why Solace Wellness IV?</h2>
+          <div class="hp-why-grid">
+            <div class="hp-why-card hp-reveal">
+              <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.4">
+                  <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
+                  <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
+                </svg></div>
+              <h3>Visit Us or We'll Come to You</h3>
+              <p>Come relax in our Summerlin wellness suite, or let us bring skilled IV therapy anywhere in Las
+                Vegas.</p>
+            </div>
+            <div class="hp-why-card hp-reveal">
+              <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.3">
+                  <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
+                  <path d="M5.7 7.9 7.3 9.5l3-3.3" />
+                </svg></div>
+              <h3>Board-Certified Nurse Practitioner &amp; Licensed Medical Professionals</h3>
+              <p>Every infusion is administered by trained healthcare professionals dedicated to safe and comfortable
+                treatment.</p>
+            </div>
+            <div class="hp-why-card hp-reveal">
+              <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 1.6S3.2 7.4 3.2 10.3a4.8 4.8 0 0 0 9.6 0C12.8 7.4 8 1.6 8 1.6Z" />
+                </svg></div>
+              <h3>Premium Medical-Grade Ingredients</h3>
+              <p>IV therapies with premium vitamins, minerals, antioxidants and electrolytes to help with hydration and
+                wellness.</p>
+            </div>
+            <div class="hp-why-card hp-reveal">
+              <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M8 1.4c.4 2.6 1.2 4.2 2.4 5.4 1.2 1.2 2.8 2 5.2 2.4-2.4.4-4 1.2-5.2 2.4-1.2 1.2-2 2.8-2.4 5.4-.4-2.6-1.2-4.2-2.4-5.4C4.4 10.4 2.8 9.6.4 9.2c2.4-.4 4-1.2 5.2-2.4C6.8 5.6 7.6 4 8 1.4Z" />
+                </svg></div>
+              <h3>Personalized treatments</h3>
+              <p>From Myers Miracle Drip to NAD+ Therapy Las Vegas, we have therapies for your wellness goals.</p>
+            </div>
+            <div class="hp-why-card hp-reveal" style="grid-column:1 / -1;">
+              <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.3">
+                  <circle cx="8" cy="8" r="6.3" />
+                  <path d="M8 4.5V8l2.6 1.6" stroke-linecap="round" />
+                </svg></div>
+              <h3>Same Day Appointments</h3>
+              <p>Want rapid relief? We provide flexible scheduling and same day appointments when available.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="solace-scale-wrap" ref="{{ wrapRef }}">
-      <div class="solace-inner" ref="{{ innerRef }}">
-        <x-import component-from-global-scope="SOLACEHP" from="./solace/Components.bundle.js"
-          hint-size="1440px,10769px"></x-import>
-      </div>
+      <!-- ═══ TREATMENTS ═══ -->
+      <section class="hp-treatments" id="treatments">
+        <div class="hp-container">
+          <p class="hp-eyebrow">Menu / Price List</p>
+          <h2>IV Therapy Treatments We Offer</h2>
+          <p class="hp-subhead2">Unlock optimal wellness with our signature infusions</p>
+          <p class="hp-subhead2">Explore our dedicated pages:
+            <a href="/wellness-iv-therapy"
+              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Wellness IV Therapy</a>
+            &middot;
+            <a href="/recovery-iv-therapy"
+              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Recovery IV Therapy</a>
+            &middot;
+            <a href="/energy-therapy" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Energy
+              Therapy</a>
+            &middot;
+            <a href="/vitamin-d3-booster" style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Vitamin
+              D3 Booster</a>
+          </p>
+
+          <div class="hp-treatment-grid">
+            <a class="hp-treat-card hp-reveal" href="/pregame-potion-iv">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-pregame-potion.webp"
+                style="background-position:center top;" role="img"
+                aria-label="PreGame Potion IV pre-party hydration treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$180</div>
+                <h4>PreGame Potion IV</h4>
+                <p class="hp-desc">Get your body ready for concerts, bachelor parties, festivals, athletic events or
+                  nightlife.</p>
+                <ul class="hp-bullets">
+                  <li>Increases energy and endurance</li>
+                  <li>Hydration &amp; Electrolytes</li>
+                  <li>Immune Support</li>
+                  <li>Improves Performance</li>
+                  <li>Makes you feel your best</li>
+                  <li>Ideal Before a Night Out</li>
+                  <li>Helps Quicker Recovery</li>
+                  <li>Hydration Support Pre &amp; Post-Operative</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Party Prep IV and Pre-Party IV Therapy.</p>
+                <p class="hp-tagline">Learn more about PreGame Potion IV &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/solace-revitadrip">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-revitadrip-card.webp"
+                style="background-position:center top;" role="img"
+                aria-label="RevitaDrip IV signature IV treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$300</div>
+                <h4>RevitaDrip IV</h4>
+                <p class="hp-desc">RevitaDrip provides excellent hydration with added vitamins and antioxidants to
+                  help recover energy and promote overall wellness.</p>
+                <ul class="hp-bullets">
+                  <li>Hydration premium</li>
+                  <li>Quick Energy Boost</li>
+                  <li>Supports immune system</li>
+                  <li>Reduces tiredness</li>
+                  <li>Relaxation with magnesium</li>
+                  <li>Cellular Support</li>
+                  <li>Antioxidant Support</li>
+                  <li>Clarity of Mind</li>
+                  <li>Wellness &amp; Energy &ndash; Overall</li>
+                </ul>
+                <p class="hp-tagline">Ideal for those looking for an Energy IV Drip, Vitamin B Complex IV or a
+                  comprehensive wellness infusion.</p>
+                <p class="hp-tagline">Learn more about RevitaDrip IV &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/myers-miracle-drip">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-myersmiracle-hero-v2.webp"
+                role="img"
+                aria-label="Myers Miracle Drip treatment for headaches, stress, chronic pain, and fatigue"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$240</div>
+                <h4>Myers Miracle Drip</h4>
+                <p class="hp-desc">Our enhanced Myers-style blend, formulated for headache relief, stress support,
+                  chronic discomfort, and fatigue.</p>
+                <ul class="hp-bullets">
+                  <li>Headaches &amp; Migraines</li>
+                  <li>Anxiety &amp; Stress</li>
+                  <li>Chronic Pain Comfort</li>
+                  <li>Fatigue &amp; Brain Fog</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Migraine Relief IV, Chronic Pain IV Drip, and Anti-Stress IV
+                  Therapy.</p>
+                <p class="hp-tagline">Learn more about Myers Miracle Drip &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/immune-iv-therapy">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-immunoshield.webp"
+                style="background-position:center top;" role="img"
+                aria-label="IV Immunoshield immune support IV treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$350</div>
+                <h4>IV Immunoshield</h4>
+                <p class="hp-desc">Boost your well-being with our premier IV Immune Booster.</p>
+                <ul class="hp-bullets">
+                  <li>High Dose Vitamin C</li>
+                  <li>Health of the Season</li>
+                  <li>Quicker Recovery</li>
+                  <li>Zinc</li>
+                  <li>Glutathione</li>
+                  <li>Immune System Support</li>
+                  <li>Seasonal Immune Support</li>
+                </ul>
+                <p class="hp-tagline">For people looking for Immune IV Therapy, Immune Support IV Therapy, and Immunity IV
+                  Drip.</p>
+                <p class="hp-tagline">Learn more about Immune IV Therapy &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/jetset-travel-recovery-iv">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-jetset-revival.webp"
+                style="background-position:center top;" role="img"
+                aria-label="JetSet Revival IV treatment for travel fatigue and jet lag"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$250</div>
+                <h4>JetSet Revival IV</h4>
+                <p class="hp-desc">Our travel-inspired infusion helps you to recover from travel and dehydration.</p>
+                <ul class="hp-bullets">
+                  <li>Riding the jetlag</li>
+                  <li>Reset and Recharge</li>
+                  <li>Recovery from Travel Fatigue</li>
+                  <li>Rehydration</li>
+                  <li>Headache Relief</li>
+                  <li>Energy Assistance</li>
+                </ul>
+                <p class="hp-tagline">Great for travelers looking for Travel Recovery IV, Jet Lag IV Drip or Jet Lag
+                  Therapy.</p>
+                <p class="hp-tagline">Learn more about JetSet Revival IV &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/morning-after-martini">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-martini-hero-v2.webp"
+                role="img"
+                aria-label="Morning After Martini IV treatment for hangover recovery and rehydration"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$220</div>
+                <h4>Morning After Martini</h4>
+                <p class="hp-desc">Rehydration, electrolytes, and vitamins after a long night out, with anti-nausea
+                  support if you need it.</p>
+                <ul class="hp-bullets">
+                  <li>Rapid Rehydration</li>
+                  <li>Electrolyte Replacement</li>
+                  <li>Headache &amp; Fatigue Relief</li>
+                  <li>Nausea Support (optional)</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Hangover IV Drip, Hangover Recovery IV, and Post-Party IV
+                  Therapy.</p>
+                <p class="hp-tagline">Learn more about Morning After Martini &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/flawless-fusion-iv">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-flawless-fusion.webp"
+                style="background-position:center top;" role="img"
+                aria-label="Flawless Fusion IV treatment for healthy, glowing skin"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$300</div>
+                <h4>Flawless Fusion IV</h4>
+                <p class="hp-desc">Biotin, Vitamin C, Glutathione &amp; antioxidants to nourish healthy, glowing
+                  skin from within.</p>
+                <ul class="hp-bullets">
+                  <li>Healthy, Glowing Skin</li>
+                  <li>Collagen Support</li>
+                  <li>Antioxidant Protection</li>
+                  <li>Total Wellness</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Beauty IV Therapy and Skin Glow IV Therapy.</p>
+                <p class="hp-tagline">Learn more about Flawless Fusion IV &rarr;</p>
+              </div>
+            </a>
+
+          </div>
+
+          <h3 class="hp-group-label">Specialty Care</h3>
+          <div class="hp-treatment-grid">
+            <a class="hp-treat-card hp-reveal" href="/metabofusion-iv">
+              <div class="hp-treat-photo" data-bg="./solace/assets/69dee31f18bf38c1.webp" role="img"
+                aria-label="MetaboFusion IV metabolism support treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$280</div>
+                <h4>MetaboFusion IV</h4>
+                <p class="hp-desc">Boost your metabolism naturally with a combination of Vitamin B12, Vitamin B Complex
+                  &amp; Taurine.</p>
+                <ul class="hp-bullets">
+                  <li>Supports metabolic function</li>
+                  <li>Energy Natural</li>
+                  <li>Support for Weight Management</li>
+                  <li>Helps turn food into energy</li>
+                  <li>Support for an Active Life</li>
+                  <li>Decreases Fatigue</li>
+                </ul>
+                <p class="hp-tagline">Perfect for anyone looking for Metabolism Boost IV, Metabolism Booster IV Drip, and
+                  IV Therapy for Metabolism.</p>
+                <p class="hp-tagline">Learn more about MetaboFusion IV &rarr;</p>
+              </div>
+            </a>
+          </div>
+
+          <h3 class="hp-group-label">NAD+ Therapy in Las Vegas</h3>
+          <div class="hp-treatment-grid">
+            <a class="hp-treat-card hp-reveal" href="/nad-therapy">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img"
+                aria-label="NAD+ IV therapy treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$299+</div>
+                <h4>NAD+ Therapy &rarr;</h4>
+                <p class="hp-desc">NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging.</p>
+                <ul class="hp-bullets">
+                  <li>Clear Thinking</li>
+                  <li>Support for Mood</li>
+                  <li>Decreased Fatigue</li>
+                  <li>Supports Healthy Aging</li>
+                  <li>Energy Support</li>
+                </ul>
+                <p class="hp-tagline">Learn more about NAD+ Therapy &rarr;</p>
+              </div>
+            </a>
+          </div>
+
+          <h3 class="hp-group-label">Vitamin Booster Shots</h3>
+
+          <div class="hp-treatment-grid">
+            <a class="hp-treat-card hp-reveal" href="/glutathione-iv-therapy">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-glutathione-booster.webp" role="img"
+                aria-label="Glutathione Booster IV treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$40</div>
+                <h4>Glutathione Booster</h4>
+                <p class="hp-supports">Supports:</p>
+                <ul class="hp-bullets">
+                  <li>Detoxification</li>
+                  <li>Immune Health</li>
+                  <li>Healthy Glowing Skin</li>
+                </ul>
+                <p class="hp-tagline">Popular for Glutathione Injection, Glutathione IV, and Glutathione IV Therapy.</p>
+                <p class="hp-tagline">Learn more about Glutathione IV Therapy &rarr;</p>
+              </div>
+            </a>
+            <a class="hp-treat-card hp-reveal" href="/vitamin-b12-injection">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-vitaminb12-injection.webp"
+                role="img"
+                aria-label="Vitamin B12 injection treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$40</div>
+                <h4>Vitamin B12 Injection</h4>
+                <p class="hp-supports">Supports:</p>
+                <ul class="hp-bullets">
+                  <li>Energy Generation</li>
+                  <li>Cognitive Health</li>
+                  <li>Red Blood Cell Production</li>
+                </ul>
+                <p class="hp-tagline">Great for Vitamin B12 Booster, Vitamin B12 IV, Methylcobalamin Injection and B12
+                  Energy Booster.</p>
+                <p class="hp-tagline">Learn more about Vitamin B12 Injections &rarr;</p>
+              </div>
+            </a>
+            <a class="hp-treat-card hp-reveal" href="/vitamin-d3-booster">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-vitamind3-booster.webp" role="img"
+                aria-label="Vitamin D3 Booster injection treatment"></div>
+              <div class="hp-treat-body">
+                <div class="hp-treat-price">$40</div>
+                <h4>Vitamin D3 Booster</h4>
+                <p class="hp-supports">Supports:</p>
+                <ul class="hp-bullets">
+                  <li>Immune system</li>
+                  <li>Bone Wellness</li>
+                  <li>Mood</li>
+                  <li>General Wellness</li>
+                </ul>
+                <p class="hp-tagline">Available as a Vitamin D3 Shot, Vitamin D Therapy, or Vitamin D Injection.</p>
+                <p class="hp-tagline">Learn more about Vitamin D3 Booster &rarr;</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ 3-STEP PROCESS ═══ -->
+      <section class="hp-process" id="process">
+        <div class="hp-container">
+          <p class="hp-eyebrow">Simple &amp; Seamless</p>
+          <h2>Our Easy 3-Step Process</h2>
+          <div class="hp-steps">
+            <div class="hp-step hp-reveal">
+              <div class="hp-step-num">1</div>
+              <div>
+                <h3>Schedule Appointment</h3>
+                <p>Choose the IV therapy for your wellness needs and schedule online or by phone.</p>
+              </div>
+            </div>
+            <div class="hp-step hp-reveal">
+              <div class="hp-step-num">2</div>
+              <div>
+                <h3>Visit Us or We'll Come to You</h3>
+                <p>Stop by our Summerlin wellness suite, or our qualified medical professionals will come right to
+                  you, anywhere in Las Vegas.</p>
+              </div>
+            </div>
+            <div class="hp-step hp-reveal">
+              <div class="hp-step-num">3</div>
+              <div>
+                <h3>Rest and Recharge</h3>
+                <p>Treatments are 30-60 minutes, allowing you to rest while receiving professional hydration and vitamin
+                  therapy.</p>
+              </div>
+            </div>
+          </div>
+          <p class="hp-tagline" style="margin-top:20px;"><a href="/how-it-works"
+              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">See the full walkthrough,
+              including what to expect at your first visit &rarr;</a></p>
+        </div>
+      </section>
+
+      <!-- ═══ SERVING AREA ═══ -->
+      <section class="hp-serving">
+        <div class="hp-container">
+          <div class="hp-serving-photo hp-reveal" data-bg="./solace/assets/b70d42f2fbb71bbe.webp" role="img"
+            aria-label="Solace Wellness IV nurse arriving with mobile IV therapy supplies on the Las Vegas Strip"></div>
+          <div class="hp-serving-copy hp-reveal">
+            <p class="hp-eyebrow light">Where We Go</p>
+            <h2 class="light">Proudly Serving Las Vegas</h2>
+            <p class="hp-body light">Solace Wellness IV proudly provides mobile IV therapy throughout:</p>
+            <div class="hp-pill-wrap">
+              <span class="hp-city-pill">Las Vegas Strip</span>
+              <span class="hp-city-pill">Downtown Las Vegas</span>
+              <span class="hp-city-pill">Henderson</span>
+              <span class="hp-city-pill">Summerlin</span>
+              <span class="hp-city-pill">Paradise</span>
+              <span class="hp-city-pill">Spring Valley</span>
+              <span class="hp-city-pill">North Las Vegas</span>
+              <span class="hp-city-pill">Hotels &amp; Resorts</span>
+              <span class="hp-city-pill">Vacation Rentals</span>
+              <span class="hp-city-pill">Private Homes</span>
+              <span class="hp-city-pill">Offices</span>
+              <span class="hp-city-pill">Event Venues</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TESTIMONIALS ═══ -->
+      <section class="hp-testimonials" id="reviews">
+        <div class="hp-container">
+          <p class="hp-eyebrow">What Our Clients Say</p>
+          <h2>Trusted by Las Vegas Residents &amp; Visitors, in Summerlin and Beyond</h2>
+          <p class="hp-body">At Solace Wellness IV, we're committed to providing safe, convenient, and professional IV
+            therapy with exceptional customer care, whether you visit our Summerlin wellness suite or we come to you.
+            Whether you're recovering after a night on the Strip, rehydrating after travel, or investing in your
+            wellness, our goal is to deliver a five-star experience every time.</p>
+          <div class="hp-testi-grid">
+            <div class="hp-testi-card hp-reveal">
+              <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h4>Fast, Professional &amp; Convenient</h4>
+              <p>"I booked a same-day appointment after arriving in Las Vegas feeling dehydrated from travel. The nurse
+                arrived on time, explained everything clearly, and I felt refreshed within an hour. Highly recommend
+                Solace Wellness IV!"</p>
+              <div class="hp-attr">Emily R., Visitor</div>
+            </div>
+            <div class="hp-testi-card hp-reveal">
+              <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h4>The Best Hangover Recovery Service</h4>
+              <p>"Our group booked the Morning After Hangover IV following a bachelor party weekend, and it made a huge
+                difference.
+                Professional service, quick response, and they came directly to our hotel."</p>
+              <div class="hp-attr">Michael T.</div>
+            </div>
+            <div class="hp-testi-card hp-reveal">
+              <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h4>Excellent Wellness Experience</h4>
+              <p>"I chose the RevitaDrip for an energy boost before a busy conference. The process was smooth, the staff
+                was knowledgeable, and I felt hydrated and energized for the rest of my trip."</p>
+              <div class="hp-attr">Sarah L., Business Traveler</div>
+            </div>
+            <div class="hp-testi-card hp-reveal">
+              <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h4>Perfect Before a Night Out</h4>
+              <p>"We booked the PreGame Potion before heading to the Las Vegas Strip. It helped us stay hydrated and feel
+                great throughout the evening. The convenience of having the IV service come to our Airbnb was amazing."
+              </p>
+              <div class="hp-attr">Jessica M., Arizona</div>
+            </div>
+            <div class="hp-testi-card hp-reveal">
+              <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <h4>Highly Recommend NAD+ Therapy</h4>
+              <p>"I've been using Solace Wellness IV for monthly NAD+ infusions, and the team is always professional and
+                friendly. Scheduling is easy, and the mobile service saves me so much time."</p>
+              <div class="hp-attr">David K., Las Vegas</div>
+            </div>
+          </div>
+          <p class="hp-tagline" style="margin-top:20px;"><a href="/reviews"
+              style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Read our real Google reviews
+              (5.0 stars from 13 reviews) &rarr;</a></p>
+        </div>
+      </section>
+
+      <!-- ═══ GALLERY ═══ -->
+      <section class="hp-gallery">
+        <div class="hp-container">
+          <p class="hp-eyebrow">Real Appointments</p>
+          <h2>Original Treatment Photos</h2>
+          <p class="hp-body">A look inside real Solace Wellness IV appointments across Las Vegas - in hotel suites,
+            private homes, and group gatherings.</p>
+          <div class="hp-gallery-grid">
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-lounge.webp" role="img"
+              aria-label="Solace Wellness IV team celebrating at a Summerlin wellness event">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>Signature Setup</div>
+                <h4>The Solace IV Lounge Experience</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-insuite.webp" role="img"
+              aria-label="Solace Wellness IV team members at the Summerlin wellness suite">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>In-Suite</div>
+                <h4>Comfort, Right in Your Room</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-friends.webp" role="img"
+              aria-label="Two friends receiving IV therapy together with a Solace Wellness IV nurse">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>Group Session</div>
+                <h4>Wellness With Friends</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-solo.webp" role="img"
+              aria-label="Solace Wellness IV storefront and welcome banner in Summerlin">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>Solo Visit</div>
+                <h4>Rest &amp; Recharge</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-inprogress.webp" role="img"
+              aria-label="Solace Wellness IV team member administering IV therapy to multiple clients">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>In Progress</div>
+                <h4>Real IV Therapy, Real Results</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-gathering.webp" role="img"
+              aria-label="Group of friends smiling together during a Solace Wellness IV group appointment">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>Group Gathering</div>
+                <h4>Making Wellness a Shared Moment</h4>
+              </div>
+            </div>
+            <div class="hp-gallery-tile hp-reveal" data-bg="./solace/assets/sw-real-onlocation.webp"
+              style="background-position:center 20%;" role="img"
+              aria-label="The Solace Wellness IV team gathered together">
+              <div class="hp-gallery-caption">
+                <div class="hp-gallery-tag"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                    stroke-width="1.2">
+                    <path d="M2 5.2h2.2L5 3.6h6l.8 1.6H14v7.2H2z" />
+                    <circle cx="8" cy="8.6" r="2.3" />
+                  </svg>On Location</div>
+                <h4>Anywhere You're Staying in Vegas</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ CONTACT / BOOK ═══ -->
+      <section class="hp-contact" id="book">
+        <div class="hp-container hp-contact-grid">
+          <div class="hp-contact-form hp-reveal">
+            <p class="hp-eyebrow">Ready When You Are</p>
+            <h3>Book Now!</h3>
+            <p class="hp-body">Rehydrate, revive, and thrive with personalized IV treatments - from energy boosts to
+              immune support, we've got you covered. Visit our Summerlin wellness suite, or let us bring wellness
+              straight to your doorstep.</p>
+            <p class="hp-body">No forms, no waiting on email - booking takes less than a minute, and a real person
+              confirms every appointment.</p>
+            <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
+              rel="noopener" class="hp-btn hp-btn-solid full">Book Now</a>
+          </div>
+          <div class="hp-contact-info hp-reveal">
+            <p class="hp-eyebrow">Get In Touch</p>
+            <h3>Visit Our Wellness Suite or We Come to You</h3>
+            <div class="hp-info-row">
+              <div class="hp-info-icon"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.4">
+                  <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
+                  <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
+                </svg></div>
+              <div><strong>Solace Wellness IV</strong><span>900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144
+                  (Summerlin) &middot; Free parking available &middot; By appointment</span></div>
+            </div>
+            <div class="hp-info-row">
+              <div class="hp-info-icon"><svg class="hp-ic" viewBox="0 0 16 16" fill="currentColor">
+                  <path
+                    d="M4.4 1.6 6.7 2 7.4 4.7 5.9 6.2c.6 1.4 1.7 2.5 3.1 3.1l1.5-1.5 2.7.7.4 2.3c0 .9-.7 1.6-1.6 1.6C6.9 12.4 3.6 9.1 3.6 4.6c0-.9.7-1.6 1.6-1.6z" />
+                </svg></div>
+              <div><strong>Call Us</strong><span>+1 (702) 526-6763</span></div>
+            </div>
+            <div class="hp-info-row">
+              <div class="hp-info-icon"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.3">
+                  <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
+                  <path d="M2 4.2 8 9l6-4.8" />
+                </svg></div>
+              <div><strong>Email</strong><span>info@solacewellnessiv.com</span></div>
+            </div>
+            <div class="hp-info-row">
+              <div class="hp-info-icon"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.3">
+                  <circle cx="8" cy="8" r="6.3" />
+                  <path d="M8 4.5V8l2.6 1.6" stroke-linecap="round" />
+                </svg></div>
+              <div><strong>Open 24hrs</strong><span>Today: By Appointment</span></div>
+            </div>
+            <div class="hp-social-row">
+              <a href="https://www.instagram.com/solacewellnessiv?igsh=ajF2NHc3bnM0YXA5" target="_blank" rel="noopener"
+                aria-label="Instagram"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                  stroke-width="1.2">
+                  <rect x="1.5" y="1.5" width="13" height="13" rx="4" />
+                  <circle cx="8" cy="8" r="3.2" />
+                  <circle cx="11.6" cy="4.4" r="0.8" fill="currentColor" stroke="none" />
+                </svg></a>
+            </div>
+            <p class="hp-body" style="margin-top:18px;"><a href="/contact"
+                style="color:var(--tan-text);font-weight:600;text-decoration:underline;">Visit our full Contact page
+                for parking info, service area, and more &rarr;</a></p>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <!-- Global footer (shared across every page) - see ./solace/site-chrome.js. -->
@@ -1907,102 +1282,12 @@
 
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  renderVals() {
-    return {
-      wrapRef: (el) => { this.wrap = el; },
-      innerRef: (el) => { this.inner = el; },
-    };
-  }
-
   componentDidMount() {
-    // Header and footer have been removed site-wide pending a new design.
-    // Below 768px there's simply no header/footer markup anymore. At
-    // ≥768px this page's content is one opaque Figma-exported canvas
-    // (Components.bundle.js) with its own native header/footer baked in
-    // as absolutely-positioned blocks - _hideNativeChrome() below hides
-    // just those blocks, leaving a blank gap until the new design lands.
-
-    // ─── Mobile-aware scale ──────────────────────────────────────────────────
-    // The Figma design is 1440 px wide. We scale it to fit the viewport,
-    // but we never go below a "minimum design width" of 390 px so that the
-    // text stays legible on phones (anything smaller than 390 css-px is
-    // treated as if it were 390 px, which fills the screen at that scale).
-    const MIN_DESIGN_W = 390; // px - smallest phone we design for
-
-    this._scale = () => {
-      if (!this.wrap || !this.inner) return;
-      const vw = this.wrap.clientWidth || window.innerWidth;
-      // On a 390-px phone  → s = 390/1440 = 0.2708 (fills the screen)
-      // On a 768-px tablet → s = 768/1440 = 0.5333
-      // On a 1440-px desktop → s = 1.0
-      const s = Math.max(vw, MIN_DESIGN_W) / 1440;
-      this.inner.style.transform = `scale(${s})`;
-      this.inner.style.width = '1440px';
-      this.inner.style.height = this._rootH + 'px';
-      // Shrink the wrapper height to match the scaled content
-      this.wrap.style.height = Math.round(this._rootH * s) + 'px';
-      this.inner.style.marginLeft = '0';
-      // Center the canvas horizontally if viewport > MIN_DESIGN_W scaled width
-      const scaledW = Math.round(1440 * s);
-      if (scaledW < vw) {
-        this.inner.style.marginLeft = Math.round((vw - scaledW) / 2) + 'px';
-      }
-    };
-    this._rootH = 10769;
-    this._scale();
-    window.addEventListener('resize', this._scale);
-
-    this._animated = false;
-    this._shrunk = new WeakSet();
-
-    const settle = () => {
-      const root = this._findRoot();
-      if (!root) return;
-      // Must run before the height/scale read below - it changes root's
-      // own height, and the wrap/scale math needs the post-crop number.
-      try { this._hideNativeChrome(root); } catch (e) { console.warn('chrome hide', e); }
-      this._rootH = root.offsetHeight || 10769;
-      this._scale();
-      try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
-      try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
-      try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
-      try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
-      try { this._tightenHeroSpacing(root); } catch (e) { console.warn('hero spacing', e); }
-      // Reveal only once the native header/footer are cropped AND the text/
-      // photo/card overflow fixes above have run - otherwise the canvas
-      // flashes its raw Figma-fixed-box state (overlapping bullet lists,
-      // clipped card text, misaligned photos) for a frame before the fixes
-      // land, which is especially visible on a loaded/throttled browser.
-      if (this.wrap) this.wrap.classList.add('sc-chrome-ready');
-      if (!this._animated) {
-        this._animated = true;
-        try { this._animate(root); } catch (e) { console.warn('anim', e); }
-      }
-    };
-
-    this._debounce = () => { clearTimeout(this._t); this._t = setTimeout(settle, 260); };
-    this._mo = new MutationObserver(this._debounce);
-    if (this.inner) this._mo.observe(this.inner, { childList: true, subtree: true });
-    this._debounce();
-
-    const reRelax = () => {
-      const r = this._findRoot();
-      if (r) try { this._relaxText(r); } catch (e) {}
-    };
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reRelax);
-    setTimeout(reRelax, 1500);
-
-    // Safety net: if the canvas never mounts / root is never found, don't
-    // leave the page permanently blank - reveal it uncropped as a fallback.
-    setTimeout(() => { if (this.wrap) this.wrap.classList.add('sc-chrome-ready'); }, 2000);
-
-    // Below-fold mobile photos (mission/treatment-card/serving/gallery) load
-    // lazily via data-bg, swapped in only once scrolled near the viewport -
-    // this markup has no existing reveal system to piggyback on, so it gets
-    // its own small observer here.
+    // Below-fold photos (mission/treatment-card/serving/gallery) load
+    // lazily via data-bg, swapped in only once scrolled near the viewport.
     const bgEls = document.querySelectorAll('[data-bg]');
+    const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
     if (bgEls.length) {
-      const applyBg = (el) => { if (el.dataset.bg) el.style.backgroundImage = `url(${el.dataset.bg})`; };
       if (!('IntersectionObserver' in window)) {
         bgEls.forEach(applyBg);
       } else {
@@ -2018,557 +1303,31 @@ class Component extends DCLogic {
       }
     }
 
-    // FAQ accordion - one panel open at a time.
-    document.querySelectorAll('.sm-faq-q').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.sm-faq-item');
-        const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.sm-faq-item.open').forEach((el) => {
-          el.classList.remove('open');
-          el.querySelector('.sm-faq-q').setAttribute('aria-expanded', 'false');
+    // Fade sections up into view on scroll - same pattern used site-wide
+    // (see the treatment pages' .cr-reveal/.wt-reveal/etc. equivalents).
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealEls = document.querySelectorAll('.hp-reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      revealEls.forEach((el) => el.classList.add('hp-in'));
+    } else {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('hp-in');
+            this._io.unobserve(entry.target);
+          }
         });
-        if (!wasOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      revealEls.forEach((el, i) => {
+        el.style.transitionDelay = (Math.min(i % 5, 4) * 70) + 'ms';
+        this._io.observe(el);
       });
-    });
+    }
   }
 
   componentWillUnmount() {
-    if (this._scale) window.removeEventListener('resize', this._scale);
     if (this._io) this._io.disconnect();
     if (this._bgIo) this._bgIo.disconnect();
-    if (this._mo) this._mo.disconnect();
-  }
-
-  _findRoot() {
-    if (!this.inner) return null;
-    return Array.from(this.inner.querySelectorAll('div'))
-      .find(d => Math.abs(d.offsetWidth - 1440) < 3 && d.offsetHeight > 9000) || null;
-  }
-
-  // ─── Remove the native header/footer baked into the Figma canvas ──────────
-  // The global <solace-header>/<solace-footer> components (see
-  // ./solace/site-chrome.js) now cover 100% of this page's chrome at every
-  // viewport width, so this canvas's own baked-in announce bar (top:0,
-  // height:36), nav row (top:36, height:80), and subscribe+footer block
-  // (top:10200-10769) are hidden - they'd otherwise duplicate the shared
-  // component. Hiding alone isn't enough: root has a fixed inline height
-  // (10769) from the Figma export, so display:none'ing children leaves
-  // their reserved space behind as a blank gap. To actually close that
-  // gap, every remaining child is shifted up by the announce+nav height,
-  // and root's own height is trimmed by both the top and bottom amounts -
-  // this must happen before settle() reads root.offsetHeight for the
-  // scale/wrap-height math, see the reordered call in settle() above.
-  //
-  // Idempotent via a dataset marker: the dc-runtime periodically
-  // re-reconciles this canvas, and depending on whether it reuses these
-  // exact DOM nodes or recreates them from scratch, settle() may run this
-  // more than once against the same nodes - shifting `top` a second time
-  // would double-apply the crop and misplace every section.
-  _hideNativeChrome(root) {
-    const TOP_CROP = 116; // announce(36) + nav(80)
-    const BOTTOM_CROP = 520; // subscribe+footer block (10769 - 10249)
-
-    Array.from(root.children).forEach((c) => {
-      if (c.dataset.chromeCropped === '1') return;
-      const t = parseFloat(c.style && c.style.top);
-      const h = parseFloat(c.style && c.style.height);
-      const isAnnounceBar = t === 0 && Math.abs(h - 36) < 3;
-      const isNavRow = Math.abs(t - 36) < 3 && Math.abs(h - 80) < 3;
-      const isSubscribeOrFooter = t > 10200 && t < 10769;
-      if (isAnnounceBar || isNavRow || isSubscribeOrFooter) {
-        c.style.display = 'none';
-      } else if (!isNaN(t)) {
-        c.style.top = (t - TOP_CROP) + 'px';
-      }
-      c.dataset.chromeCropped = '1';
-    });
-
-    if (root.dataset.chromeCropped !== '1') {
-      root.style.height = (10769 - TOP_CROP - BOTTOM_CROP) + 'px';
-      root.dataset.chromeCropped = '1';
-    }
-  }
-
-  // ─── 3) Patch photos ───────────────────────────────────────────────────────
-  _patchPhotos(root) {
-    const near = (v, t, tol) => Math.abs(v - t) <= tol;
-    const asset = (id) =>
-      (window.__resources && window.__resources[id]) || ('./solace/assets/' + id + '.webp');
-
-    // Hero banner background
-    const heroSec = Array.from(root.children).find(c =>
-      near(c.offsetHeight, 700, 4) && getComputedStyle(c).backgroundColor === 'rgb(254, 250, 245)');
-    if (heroSec) {
-      heroSec.style.background = `rgb(254,250,245) url(${asset('herobg')}) center / cover no-repeat`;
-      Array.from(heroSec.querySelectorAll('div')).forEach(d => {
-        if (d.className && d.className.indexOf('fig-asset-9ad7525aacbc8a19') !== -1) { d.style.display = 'none'; return; }
-        const bi = getComputedStyle(d).backgroundImage;
-        if (bi.indexOf('gradient') !== -1 && !(d.textContent || '').trim() && d.offsetWidth > 150) {
-          d.style.display = 'none';
-        }
-      });
-    }
-
-    // Hero large photo
-    const hero = Array.from(root.querySelectorAll('div')).find(d =>
-      near(d.offsetWidth, 599, 4) && near(d.offsetHeight, 450, 4) &&
-      getComputedStyle(d).backgroundImage === 'none');
-    if (hero) hero.style.background = `url(${asset('b70d42f2fbb71bbe')}) center / cover no-repeat`;
-
-    // Mission photo
-    const mission = Array.from(root.querySelectorAll('div')).find(d =>
-      near(d.offsetWidth, 280, 4) && near(d.offsetHeight, 320.1, 4) &&
-      getComputedStyle(d).backgroundImage === 'none');
-    if (mission) {
-      mission.style.background = `url(${asset('7a204e693ec0df14')}) center / cover no-repeat`;
-    }
-
-    // Gallery photos
-    const gallery = {
-      'The Solace IV Lounge Experience':   ['sw-real-lounge', 'center / cover'],
-      'Comfort, Right in Your Room':       ['sw-real-insuite', 'center / cover'],
-      'Wellness With Friends':             ['sw-real-friends', 'center / cover'],
-      'Rest & Recharge':                   ['sw-real-solo', 'center / cover'],
-      'Real IV Therapy, Real Results':     ['sw-real-inprogress', 'center / cover'],
-      'Making Wellness a Shared Moment':   ['sw-real-gathering', 'center / cover'],
-      "Anywhere You're Staying in Vegas":  ['sw-real-onlocation', 'center 20% / cover'],
-    };
-    Array.from(root.querySelectorAll('span')).forEach(sp => {
-      const key = (sp.textContent || '').trim();
-      const g = gallery[key];
-      if (!g) return;
-      let node = sp, card = null;
-      for (let i = 0; i < 8 && node; i++) {
-        node = node.parentElement;
-        if (node && node.querySelector('svg')) {
-          const svg = Array.from(node.querySelectorAll('svg'))
-            .find(s => s.getBoundingClientRect().width / this._curScale() > 120);
-          if (svg) { card = svg; break; }
-        }
-      }
-      if (card && getComputedStyle(card).backgroundImage === 'none') {
-        card.style.background = `url(${asset(g[0])}) ${g[1]} no-repeat`;
-        card.querySelectorAll('path').forEach(p => p.setAttribute('fill', 'transparent'));
-      }
-    });
-
-    // Treatment card photos
-    // One entry per still-empty placeholder, in DOM order: MetaboFusion IV,
-    // NAD+ Therapy (merged 250mg/500mg card), Glutathione Booster, Vitamin
-    // B12 Injection, Vitamin D3 Booster. Flawless Fusion IV, RevitaDrip IV,
-    // and JetSet Revival IV are excluded here since they already set their
-    // own photo directly and are no longer "empty" - keeping a stale entry
-    // for them shifted every hash below down by one slot onto the wrong
-    // card. The old NAD+ 500mg card is now display:none (see
-    // Components.bundle.js), so it no longer reports as "empty" either -
-    // only one 'sw-nad-combo' entry remains for the surviving merged card.
-    const tHashes = ['69dee31f18bf38c1','sw-nad-combo',
-      ['sw-glutathione-booster','center','cover','-41px'],['sw-vitaminb12-injection','center','cover','-41px'],'sw-vitamind3-booster'];
-    const empties = Array.from(root.querySelectorAll('div')).filter(d =>
-      near(d.offsetWidth, 368, 8) && d.offsetHeight >= 235 && d.offsetHeight <= 255 &&
-      getComputedStyle(d).backgroundImage === 'none' && d.children.length === 0);
-    empties.forEach((d, i) => {
-      if (i >= tHashes.length) return;
-      const entry = tHashes[i];
-      const [hash, pos, size, top] = Array.isArray(entry) ? entry : [entry, 'center', 'cover'];
-      d.style.background = `url(${asset(hash)}) ${pos} / ${size || 'cover'} no-repeat`;
-      if (top) d.style.top = top;
-    });
-  }
-
-  // ─── Wire up real clicks on the canvas's CTA pills ─────────────────────────
-  // This Figma export has no <a>/onClick anywhere - "Book Now", "View
-  // Treatments", and "Call Us" are just positioned text with zero click
-  // behavior. The hidden native nav's own "Book Now" duplicate (see
-  // _hideNativeChrome) is skipped automatically via the offsetParent check,
-  // since display:none elements report a null offsetParent.
-  _patchLinks(root) {
-    const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1';
-
-    const wire = (el, onActivate) => {
-      if (!el || el.dataset.linkPatched === '1') return;
-      el.dataset.linkPatched = '1';
-      el.style.cursor = 'pointer';
-      el.setAttribute('role', 'button');
-      el.setAttribute('tabindex', '0');
-      el.addEventListener('click', onActivate);
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onActivate(); }
-      });
-    };
-
-    const spansWithText = (text) => Array.from(root.querySelectorAll('span'))
-      .filter((s) => (s.textContent || '').trim() === text);
-
-    spansWithText('Book Now').forEach((span) => {
-      const pill = span.parentElement;
-      if (pill && pill.offsetParent !== null) {
-        wire(pill, () => window.open(BOOKING_URL, '_blank', 'noopener'));
-      }
-    });
-
-    spansWithText('View Treatments').forEach((span) => {
-      const pill = span.parentElement;
-      if (pill && pill.offsetParent !== null) {
-        wire(pill, () => {
-          const heading = Array.from(root.querySelectorAll('span'))
-            .find((s) => (s.textContent || '').trim() === 'Menu / Price List');
-          if (heading) heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-    });
-
-    spansWithText('Call Us').forEach((span) => {
-      const block = span.parentElement;
-      if (block && block.offsetParent !== null) {
-        wire(block, () => { window.location.href = 'tel:+17025266763'; });
-      }
-    });
-
-    // ── Social icon row (Contact card) ──────────────────────────────────
-    // The Figma export draws two round brown icon badges here - Instagram
-    // and one unused/placeholder glyph - neither wired to anything. Only
-    // Instagram should show, and it needs a real link. This exact style
-    // signature (42x42, fully round, brown-700) is unique to these two
-    // badges on the page, in DOM order [Instagram, the other one].
-    const circleIcons = Array.from(root.querySelectorAll('div')).filter((d) =>
-      d.style.width === '42px' && d.style.height === '42px' &&
-      d.style.borderRadius === '21px' && d.style.backgroundColor === 'rgb(75, 33, 18)');
-    const [insta, ...extraIcons] = circleIcons;
-    if (insta) {
-      wire(insta, () => window.open(
-        'https://www.instagram.com/solacewellnessiv?igsh=ajF2NHc3bnM0YXA5', '_blank', 'noopener'));
-      insta.setAttribute('aria-label', 'Instagram');
-    }
-    extraIcons.forEach((el) => {
-      el.style.display = 'none';
-      const wrap = el.parentElement;
-      if (wrap && parseFloat(wrap.style.width) > 42) wrap.style.width = '42px';
-    });
-  }
-
-  // ─── Tighten the hero's oversized heading/subhead/paragraph gaps ──────────
-  // The Figma export leaves a much bigger visual gap under the H1 (its
-  // declared box height doesn't match what a 46px/0.82-line-height heading
-  // actually renders as) and again between the subhead and the paragraph
-  // below the divider line than anywhere else in the stack. Rather than
-  // hardcode pixel guesses against Figma's fixed-position numbers, measure
-  // the real rendered edges at runtime and pull each element up to a fixed,
-  // comfortable gap from the one above it - then cascade that same shift to
-  // every element below so the rest of the stack (which already looked
-  // fine) keeps its original spacing instead of drifting apart.
-  _tightenHeroSpacing(root) {
-    const spans = Array.from(root.querySelectorAll('span'));
-    const heading = spans.find((s) => (s.textContent || '').trim() === 'Premium IV Therapy in Las Vegas');
-    const subhead = spans.find((s) => (s.textContent || '').trim() ===
-      'Visit Our Summerlin Suite or We Come to Your Hotel, Home & Office');
-    const bodyPara = spans.find((s) => (s.textContent || '').startsWith('Las Vegas residents and visitors depend on'));
-    if (!heading || !subhead || !bodyPara || subhead.dataset.gapTightened === '1') return;
-    const parent = subhead.offsetParent;
-    if (!parent) return;
-    subhead.dataset.gapTightened = '1';
-
-    // The Figma export's 0.82 line-height is tight enough that once this
-    // heading wraps to two lines, "Premium" and "Las Vegas" visually
-    // overlap instead of stacking. Loosen it before measuring anything
-    // below, so the gap math that follows accounts for the corrected
-    // (taller) rendered height.
-    heading.style.lineHeight = '1.15';
-
-    const sc = this._curScale() || 1;
-    const relTop = (el) => (el.getBoundingClientRect().top - parent.getBoundingClientRect().top) / sc;
-    const relBottom = (el) => (el.getBoundingClientRect().bottom - parent.getBoundingClientRect().top) / sc;
-    const shiftFrom = (el, delta) => {
-      while (el) {
-        el.style.top = ((parseFloat(el.style.top) || 0) - delta) + 'px';
-        el = el.nextElementSibling;
-      }
-    };
-
-    const GAP_HEAD_SUB = 8, GAP_SUB_DIV = 14, GAP_DIV_BODY = 14;
-
-    // 1) Pull the subhead (and everything after it in the stack, divider
-    //    line included) up so it sits GAP_HEAD_SUB below the heading's
-    //    real rendered bottom edge instead of Figma's much larger gap.
-    const delta1 = relTop(subhead) - (relBottom(heading) + GAP_HEAD_SUB);
-    if (delta1 > 0) shiftFrom(subhead, delta1);
-
-    // 2) Pull the body paragraph (and everything after it) up so it sits
-    //    GAP_DIV_BODY below where the divider will end up, preserving the
-    //    paragraph/schedule-line/buttons spacing among themselves.
-    const divider = Array.from(parent.querySelectorAll('svg'))
-      .find((sv) => sv.getAttribute('width') === '260' && sv.getAttribute('height') === '2');
-    const dividerBottomAfterShift1 = relBottom(subhead) + GAP_SUB_DIV + 2;
-    const delta2 = relTop(bodyPara) - (dividerBottomAfterShift1 + GAP_DIV_BODY);
-    if (delta2 > 0) shiftFrom(bodyPara, delta2);
-
-    // 3) Snap the divider to sit just under the subhead - it lives last in
-    //    DOM order (not right after the subhead), so steps 1-2 already
-    //    cascaded it along for the ride; give it its final exact spot now.
-    if (divider) divider.style.top = (relBottom(subhead) + GAP_SUB_DIV) + 'px';
-  }
-
-  // ─── Replace the contact-form card's dead inputs with one real button ─────
-  // The client asked to drop the Name/Email/Phone/Notes fields on the "Book
-  // Now!" card entirely - just a description and one working Book Now button.
-  // The fields (and their "Send Request" pill) are just more un-wired Figma
-  // text/divs like the buttons _patchLinks fixes, so they're hidden here and
-  // a real clickable button takes their place.
-  _patchContactForm(root) {
-    const BOOKING_URL = 'https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1';
-
-    const heading = Array.from(root.querySelectorAll('span'))
-      .find((s) => (s.textContent || '').trim() === 'Book Now!');
-    if (!heading) return;
-    const card = heading.parentElement;
-    if (!card || card.dataset.formPatched === '1') return;
-    card.dataset.formPatched = '1';
-
-    const nameLabel = Array.from(card.querySelectorAll('span'))
-      .find((s) => (s.textContent || '').trim() === 'Name');
-    const fieldsWrap = nameLabel && nameLabel.parentElement;
-    if (fieldsWrap) fieldsWrap.style.display = 'none';
-
-    const NEW_H = 300;
-    card.style.height = NEW_H + 'px';
-    const shadowBox = Array.from(card.children)
-      .find((c) => getComputedStyle(c).backgroundColor === 'rgba(255, 255, 255, 0.002)');
-    if (shadowBox) shadowBox.style.height = NEW_H + 'px';
-
-    const btn = document.createElement('div');
-    btn.textContent = 'Book Now';
-    Object.assign(btn.style, {
-      position: 'absolute', left: '44px', top: '212px', width: '260px', height: '52px',
-      borderRadius: '999px',
-      background: 'linear-gradient(90deg, rgb(75,33,18) 13.88%, rgb(34,34,34) 82.27%)',
-      boxShadow: '0px 8px 12px 0px rgba(0,0,0,0.25)',
-      color: 'rgb(255,253,251)',
-      fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-      fontWeight: '600', fontSize: '13.5px', letterSpacing: '0.54px', textTransform: 'uppercase',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-    });
-    btn.setAttribute('role', 'button');
-    btn.setAttribute('tabindex', '0');
-    const go = () => window.open(BOOKING_URL, '_blank', 'noopener');
-    btn.addEventListener('click', go);
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
-    });
-    card.appendChild(btn);
-  }
-
-  // ─── 4) Fix text cropping ──────────────────────────────────────────────────
-  // Figma exports use fixed-size boxes. Real web fonts are slightly larger,
-  // causing descenders and long words to clip. We fix every affected element.
-  _relaxText(root) {
-    root.querySelectorAll('*').forEach(el => {
-      if (!(el instanceof HTMLElement)) return;
-      const cs = getComputedStyle(el);
-      if (!(el.textContent || '').trim()) return;
-      if (cs.backgroundImage !== 'none') return;
-      const cls = typeof el.className === 'string' ? el.className : '';
-      if (cls.indexOf('fig-asset') !== -1) return;
-
-      // ── Card containers that clip their own (edited/grown) content ───────
-      // A "card" here is a fixed-height, overflow:hidden box with its own
-      // background/shadow (as opposed to a plain photo-crop mask). If content
-      // inside now needs more room than the Figma-fixed height allows, grow
-      // the card instead of silently clipping it. Runs ahead of the "skip
-      // photo cards" filter below, since cards containing a product photo
-      // are exactly the ones that need this check.
-      {
-        const cardFixedH = parseFloat(el.style.height) || 0;
-        if (el.children.length !== 0 && cardFixedH >= 100 && cs.overflow === 'hidden' && cs.boxShadow !== 'none' &&
-            el.scrollHeight > el.clientHeight + 1 && !this._grownCard?.has(el)) {
-          // All of this card's content is Figma-absolute-positioned, so
-          // height:auto can't measure it (absolutely positioned descendants
-          // don't contribute to an auto-height ancestor's size). Measure the
-          // deepest descendant's bottom edge directly instead.
-          // getBoundingClientRect() reports post-transform (scaled) visual
-          // pixels, but el.style.height lives in the canvas's un-scaled
-          // 1440-design-space pixels (the whole canvas is one scale(s)
-          // transform) - divide back into design space before comparing/
-          // assigning, or this only grows cards correctly at exactly the
-          // 1:1 (1440px viewport) scale and over/under-grows everywhere else.
-          const s = this._curScale() || 1;
-          const er = el.getBoundingClientRect();
-          let maxBottom = 0;
-          el.querySelectorAll('*').forEach(child => {
-            const rel = (child.getBoundingClientRect().bottom - er.top) / s;
-            if (rel > maxBottom) maxBottom = rel;
-          });
-          if (maxBottom > cardFixedH) el.style.height = Math.ceil(maxBottom + 16) + 'px';
-          (this._grownCard || (this._grownCard = new WeakSet())).add(el);
-        }
-      }
-
-      // Skip elements that contain large photos (photo cards)
-      let bigMedia = false;
-      el.querySelectorAll('img, svg').forEach(m => {
-        const r = m.getBoundingClientRect();
-        if (r.width > 60 && r.height > 60) bigMedia = true;
-      });
-      el.querySelectorAll('div').forEach(m => {
-        if (getComputedStyle(m).backgroundImage === 'none') return;
-        const r = m.getBoundingClientRect();
-        if (r.width > 60 && r.height > 60) bigMedia = true;
-      });
-      if (bigMedia) return;
-
-      const isLeaf = el.children.length === 0;
-      const fixedH = parseFloat(el.style.height) || 0;
-      const usesTextBoxTrim = (el.style.cssText || '').indexOf('text-box:') !== -1;
-
-      // ── text-box-trim labels flush against a clipping ancestor ───────────
-      // text-box-trim aligns flat-top capitals (M, H, T, I, L, B) exactly to
-      // the box edge, but round/pointed capitals (O, A, V, W, S...) are drawn
-      // with a small optical "overshoot" above that line by design. When the
-      // label sits flush (top ~0) against an ancestor with overflow:hidden,
-      // that sliver of overshoot gets clipped - invisible to scrollHeight/
-      // clientHeight checks since the box itself measures as "fitting".
-      if (isLeaf && fixedH > 0 && fixedH < 20 && usesTextBoxTrim && !this._unclipped?.has(el)) {
-        const er = el.getBoundingClientRect();
-        let parent = el.parentElement;
-        while (parent && parent !== root) {
-          const pcs = getComputedStyle(parent);
-          if (pcs.overflow === 'hidden' || pcs.overflowY === 'hidden') {
-            const pr = parent.getBoundingClientRect();
-            if (er.top - pr.top < 3) parent.style.overflow = 'visible';
-            break;
-          }
-          parent = parent.parentElement;
-        }
-        (this._unclipped || (this._unclipped = new WeakSet())).add(el);
-      }
-
-      // ── Drop shadows flush against a clipping ancestor ───────────────────
-      // A card's box-shadow naturally bleeds a few px past its own edges. If
-      // the card's box is exactly flush with an ancestor's overflow:hidden
-      // boundary (a Figma "frame clips content" convention with no real
-      // cropping need), that bleed gets hard-clipped into a flat cut line
-      // instead of fading out. Open the ancestor up so the shadow renders.
-      if (cs.boxShadow && cs.boxShadow !== 'none' && !this._unclippedShadow?.has(el)) {
-        const er = el.getBoundingClientRect();
-        let parent = el.parentElement;
-        while (parent && parent !== root) {
-          const pcs = getComputedStyle(parent);
-          if (pcs.overflow === 'hidden' || pcs.overflowY === 'hidden') {
-            const pr = parent.getBoundingClientRect();
-            if (Math.abs(er.bottom - pr.bottom) < 3 || Math.abs(er.top - pr.top) < 3) {
-              parent.style.overflow = 'visible';
-            }
-            break;
-          }
-          parent = parent.parentElement;
-        }
-        (this._unclippedShadow || (this._unclippedShadow = new WeakSet())).add(el);
-      }
-
-      // ── Small trimmed-text labels (Figma's text-box-trim boxes) ──────────
-      // These tiny (~10px) boxes are sized to cap-height and rely on the
-      // text-box-trim CSS property. Browsers without support use normal line
-      // metrics, which are taller than the box, cropping the glyph tops. Let
-      // the box grow instead of shrinking the already-small label font.
-      if (isLeaf && fixedH > 0 && fixedH < 20 && el.scrollHeight > el.clientHeight + 1 && !this._shrunk.has(el)) {
-        el.style.height = 'auto';
-        el.style.minHeight = fixedH + 'px';
-        el.style.lineHeight = 'normal';
-        this._shrunk.add(el);
-        return;
-      }
-
-      // ── Leaf text node that overflows its fixed box ──────────────────────
-      if (isLeaf && fixedH >= 20 && el.scrollHeight > el.clientHeight + 1 && !this._shrunk.has(el)) {
-        // First, try a comfortable line-height adjustment
-        el.style.lineHeight = '1.5';
-        // If still overflowing, gradually reduce font-size
-        if (el.scrollHeight > el.clientHeight + 1 && parseFloat(cs.fontSize) < 28) {
-          let fs = parseFloat(cs.fontSize), n = 0;
-          while (el.scrollHeight > el.clientHeight + 1 && n < 30 && fs > 7) {
-            fs -= 0.4; el.style.fontSize = fs + 'px'; n++;
-          }
-        }
-        // If still clipping (very stubborn box), expand the height
-        if (el.scrollHeight > el.clientHeight + 1) {
-          el.style.height = 'auto';
-          el.style.minHeight = fixedH + 'px';
-        }
-        this._shrunk.add(el);
-        return;
-      }
-
-      // ── Container with overflow:hidden that is clipping children ─────────
-      const hidden = cs.overflow === 'hidden' || cs.overflowX === 'hidden' || cs.overflowY === 'hidden';
-      const overflows = el.scrollHeight > el.clientHeight + 2 || el.scrollWidth > el.clientWidth + 2;
-      if (hidden && (overflows || fixedH < 28)) {
-        el.style.overflow = 'visible';
-      }
-
-      // ── whiteSpace:nowrap spans that get cut off ──────────────────────────
-      if (isLeaf && cs.whiteSpace === 'nowrap' && el.scrollWidth > el.clientWidth + 2) {
-        // Allow wrapping so text isn't cut off on smaller rendered sizes
-        el.style.whiteSpace = 'normal';
-        el.style.wordBreak = 'break-word';
-        if (fixedH > 0 && el.scrollHeight > el.clientHeight + 1) {
-          el.style.height = 'auto';
-        }
-      }
-    });
-  }
-
-  _curScale() {
-    const t = this.inner && this.inner.style.transform.match(/scale\(([\d.]+)\)/);
-    return t ? parseFloat(t[1]) : 1;
-  }
-
-  // ─── 5) Scroll-in animations ───────────────────────────────────────────────
-  _animate(root) {
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    Array.from(root.querySelectorAll('div')).forEach(d => {
-      const o = parseFloat(getComputedStyle(d).opacity);
-      if (o > 0 && o <= 0.05 && d.offsetWidth > 120 && d.offsetWidth < 220) {
-        if (!reduce) d.style.animation = 'solaceFloat 9s ease-in-out infinite';
-      }
-    });
-    if (reduce) return;
-
-    const EASE = 'cubic-bezier(.16,.84,.44,1)';
-    const sections = Array.from(root.children).filter(c => c.offsetHeight > 60);
-    const groups = [];
-    sections.forEach((sec, i) => {
-      if (i < 2) return; // leave announcement bar + nav static
-      let content = sec.firstElementChild || sec;
-      let items = Array.from(content.children).filter(c => c.offsetHeight > 20);
-      let hop = 0;
-      while (items.length < 2 && hop < 3 && content.firstElementChild) {
-        content = content.firstElementChild;
-        items = Array.from(content.children).filter(c => c.offsetHeight > 20);
-        hop++;
-      }
-      const targets = items.length >= 2 ? items : [sec];
-      targets.forEach((t, k) => {
-        t.style.opacity = '0';
-        t.style.transform = 'translateY(46px)';
-        t.style.transition = `opacity .8s ${EASE}, transform .8s ${EASE}`;
-        t.style.transitionDelay = (k * 80) + 'ms';
-        t.style.willChange = 'opacity, transform';
-      });
-      groups.push({ sec, targets });
-    });
-
-    this._io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const g = groups.find(x => x.sec === e.target);
-        if (g) g.targets.forEach(t => { t.style.opacity = '1'; t.style.transform = 'translateY(0)'; });
-        this._io.unobserve(e.target);
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
-    groups.forEach(g => this._io.observe(g.sec));
   }
 }
 </script>

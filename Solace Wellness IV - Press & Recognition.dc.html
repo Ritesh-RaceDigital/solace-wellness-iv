@@ -270,6 +270,31 @@
             width: 96px;
             height: 48px;
           }
+
+          /* Logo (96px) + nowrap "Read Article ->" link left no room at all
+             for the heading/description column on a narrow phone - measured
+             overflowing the viewport by ~50px in a real rendered browser.
+             Wrapping the link onto its own row below fixes that without
+             shrinking the logo further or truncating the link's text. */
+          .pr-feature-card {
+            flex-wrap: wrap;
+          }
+
+          .pr-feature-card .pr-feature-link {
+            margin-left: 0;
+            margin-top: 4px;
+            width: 100%;
+          }
+        }
+
+        .pr-feature-text {
+          /* Flex items default to min-width:auto, which refuses to shrink
+             below the text's own min-content width - on a narrow phone that
+             held the logo + "Read Article ->" to their full size and let
+             the row overflow instead of wrapping this middle column down.
+             min-width:0 lets it actually shrink/wrap within what's left. */
+          min-width: 0;
+          flex: 1 1 auto;
         }
 
         .pr-feature-card h3 {
@@ -465,7 +490,7 @@
             <div class="pr-feature-grid">
               <a href="https://usanews.com/newsroom/from-military-medicine-to-wellness-in-summerlin" target="_blank" rel="noopener" class="pr-feature-card pr-reveal">
                 <img src="./solace/assets/logo-usanews.webp" alt="USA News logo" class="pr-feature-logo" loading="lazy">
-                <div>
+                <div class="pr-feature-text">
                   <h3>USA News</h3>
                   <p>Feature covering Solace Wellness IV's approach to medically guided IV therapy.</p>
                 </div>
@@ -473,7 +498,7 @@
               </a>
               <a href="https://womensinsider.com/health/from-military-medicine-to-wellness-in-summerlin/" target="_blank" rel="noopener" class="pr-feature-card pr-reveal">
                 <img src="./solace/assets/logo-womensinsider.webp" alt="Women's Insider logo" class="pr-feature-logo" loading="lazy">
-                <div>
+                <div class="pr-feature-text">
                   <h3>Women's Insider</h3>
                   <p>Feature on Solace Wellness IV and its founder's background in medicine and wellness.</p>
                 </div>
