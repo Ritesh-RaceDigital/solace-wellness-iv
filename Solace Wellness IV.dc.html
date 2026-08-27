@@ -353,14 +353,28 @@
     /* Negative margin cancels .hp-container's own side padding so the photo
        stays full-bleed edge-to-edge on mobile; removed again at desktop
        once the photo becomes a normal, rounded grid column. */
-    .hp-hero-media { margin: 0 -20px; }
+    .hp-hero-media { margin: 0 -20px; position: relative; }
     .hp-hero-photo { width: 100%; aspect-ratio: 5 / 4; background-size: cover; background-position: left center; }
     .hp-hero-copy { padding: 32px 0 44px; }
     .hp-hero-copy h1 { font-size: 30px; font-weight: 800; line-height: 1.12; }
-    .hp-hero-subhead { font-size: 16px; font-weight: 400; color: var(--brown-800); margin: 0 0 14px; max-width: 62ch; }
+    .hp-hero-subhead {
+      font-size: 16px; font-weight: 400; color: var(--brown-800); margin: 0 0 14px; max-width: 62ch;
+      padding-bottom: 12px; border-bottom: 2px solid var(--line);
+    }
+    .hp-hero-checklist { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .hp-hero-checklist li { display: flex; align-items: flex-start; gap: 8px; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 14px; color: var(--ink); }
+    .hp-hero-checklist .hp-check { flex: none; color: var(--tan-text); width: 15px; height: 15px; margin-top: 2px; }
+    .hp-hero-badge {
+      position: absolute; left: 14px; bottom: 14px; z-index: 2;
+      background: var(--cream-2); border-radius: 14px; padding: 12px 16px;
+      box-shadow: 0 10px 24px -10px rgba(43, 23, 16, 0.45); max-width: 220px;
+    }
+    .hp-hero-badge .hp-stars-sm { color: rgb(224, 171, 62); font-size: 12px; letter-spacing: 1px; margin-bottom: 4px; }
+    .hp-hero-badge strong { display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 13px; color: var(--brown-800); line-height: 1.3; }
 
     /* ─── Mission ──────────────────────────────────────────────────────────── */
     .hp-mission { background: #fff; text-align: center; }
+    .hp-mission-card { background: var(--cream); border-radius: 24px; padding: 32px 22px; }
     .hp-mission .hp-body { text-align: left; }
     .hp-mission-photo {
       width: 240px;
@@ -387,14 +401,18 @@
 
     /* ─── Why-us cards ─────────────────────────────────────────────────────── */
     .hp-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-    .hp-why-card { background: var(--cream); border-radius: 16px; padding: 18px 14px; text-align: left; }
+    .hp-why-card {
+      background: var(--cream); border-radius: 18px; padding: 18px 14px; text-align: left;
+      box-shadow: inset 0 0 0 1px var(--line), 0 4px 6px rgba(34, 34, 34, 0.1);
+    }
     .hp-why-card .hp-ic-badge {
-      width: 40px; height: 40px; border-radius: 50%; background: var(--tan);
+      width: 40px; height: 40px; border-radius: 12px; background: var(--tan);
       display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
     }
     .hp-why-card .hp-ic-badge .hp-ic { color: #fff; width: 19px; height: 19px; }
     .hp-why-card h3 { font-size: 15px; margin-bottom: 6px; }
     .hp-why-card p { font-size: 13px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+    .hp-why-card.hp-span-all { grid-column: 1 / -1; }
 
     /* ─── Treatment / product cards ────────────────────────────────────────── */
     .hp-group-label {
@@ -402,24 +420,24 @@
       color: var(--tan-text); margin: 32px 0 4px; padding-top: 24px; border-top: 1px solid var(--line);
     }
     .hp-treatment-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-    .hp-treat-card { background: var(--cream-2); border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06); transition: transform .25s ease, box-shadow .25s ease; }
+    .hp-treat-card { background: var(--cream-2); border-radius: 18px; overflow: hidden; box-shadow: 0 10px 25px -15px rgba(43, 35, 25, 0.4); transition: transform .25s ease, box-shadow .25s ease; }
     a.hp-treat-card { display: block; color: inherit; text-decoration: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     a.hp-treat-card:active { opacity: 0.88; }
     a.hp-treat-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(43, 23, 16, 0.35); }
-    .hp-treat-photo { width: 100%; aspect-ratio: 368 / 210; background-size: cover; background-position: center; background-color: rgb(228, 217, 217); }
+    .hp-treat-photo { width: 100%; aspect-ratio: 368 / 210; background-size: cover; background-position: center; background-color: rgb(228, 217, 217); position: relative; }
     .hp-treat-body { padding: 16px 18px 18px; position: relative; }
     .hp-treat-price {
-      position: absolute; top: -18px; right: 16px; background: #fff; border-radius: 999px;
+      position: absolute; top: 14px; right: 14px; background: var(--cream-2); border-radius: 999px;
       padding: 7px 14px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 13px;
-      color: var(--brown-800); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      color: var(--brown-800); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18); z-index: 1;
     }
-    .hp-treat-card h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 17px; color: var(--brown-800); margin: 4px 60px 8px 0; }
+    .hp-treat-card h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 17px; color: var(--brown-800); margin: 0 0 8px; }
     .hp-treat-card .hp-desc { font-size: 13px; line-height: 1.5; margin: 0 0 10px; white-space: pre-line; color: var(--ink); }
     .hp-treat-card .hp-supports { font-size: 12px; font-weight: 700; margin: 0 0 6px; }
     .hp-bullets { list-style: none; margin: 0 0 10px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
     .hp-bullets li { font-size: 12px; color: var(--ink-soft); padding-left: 13px; position: relative; line-height: 1.5; }
     .hp-bullets li::before { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--tan); }
-    .hp-tagline { font-size: 15.5px; font-style: italic; color: var(--ink-soft); margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
+    .hp-tagline { font-size: 15.5px; font-style: italic; color: var(--ink-soft); margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed var(--line); }
 
     /* ─── 3-step process ───────────────────────────────────────────────────── */
     .hp-process { background: var(--cream-2); }
@@ -443,12 +461,20 @@
       margin-bottom: 24px;
     }
 
+    /* ─── Why Solace checklist + CTA card ─────────────────────────────────── */
+    .hp-trust-card { background: var(--cream); border-radius: 24px; padding: 30px 22px; }
+    .hp-trust-card h2 { font-size: 16px; font-weight: 700; text-transform: none; letter-spacing: normal; margin-bottom: 4px; }
+    .hp-trust-card h3 { font-size: 20px; margin-top: 24px; }
+    .hp-trust-checklist { list-style: none; margin: 16px 0 24px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .hp-trust-checklist li { display: flex; align-items: flex-start; gap: 10px; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 15px; color: var(--ink); }
+    .hp-trust-checklist .hp-check { flex: none; color: var(--tan-text); width: 16px; height: 16px; margin-top: 2px; }
+
     /* ─── Testimonials ─────────────────────────────────────────────────────── */
     .hp-testi-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
-    .hp-testi-card { background: var(--cream-2); border-radius: 16px; padding: 20px; }
+    .hp-testi-card { background: var(--cream-2); border-radius: 18px; padding: 20px; }
     .hp-stars { color: rgb(224, 171, 62); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
     .hp-testi-card h4 { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px; color: var(--brown-800); margin: 0 0 8px; }
-    .hp-testi-card p { font-size: 13.5px; line-height: 1.55; margin: 0 0 12px; white-space: pre-line; }
+    .hp-testi-card p { font-size: 13.5px; font-weight: 300; line-height: 1.55; margin: 0 0 12px; white-space: pre-line; }
     .hp-testi-card .hp-attr { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 12.5px; color: var(--brown-700); }
 
     /* ─── Gallery ──────────────────────────────────────────────────────────── */
@@ -488,6 +514,7 @@
       .hp-testi-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .hp-gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .hp-why-grid { gap: 16px; }
+      .hp-trust-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
     }
 
     /* ══════════════════════════════════════════════════════════════════════
@@ -509,26 +536,64 @@
       .hp-hero-copy h1 { font-size: 52px; }
 
       .hp-mission { text-align: left; }
-      .hp-mission .hp-container { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
+      .hp-mission-card { padding: 56px; }
+      .hp-mission-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
       .hp-mission-photo { width: 100%; max-width: none; margin: 0; }
 
-      .hp-foundation .hp-container { max-width: 900px; }
+      .hp-foundation .hp-container { max-width: 1100px; }
+      .hp-foundation .hp-pill-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+      .hp-foundation .hp-pill { justify-content: flex-start; }
+      .hp-serving .hp-pill-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .hp-serving .hp-city-pill { text-align: center; }
 
-      .hp-why-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .hp-why-grid { grid-template-columns: repeat(5, 1fr); gap: 18px; }
+      .hp-why-card.hp-span-all { grid-column: auto; }
 
-      .hp-treatment-grid { grid-template-columns: repeat(4, 1fr); }
+      .hp-treatment-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      a.hp-treat-card { display: flex; align-items: stretch; }
+      .hp-treat-photo { width: 42%; flex: none; aspect-ratio: auto; }
+      .hp-treat-body { flex: 1; padding: 22px 26px; }
+      /* Vitamin booster shots keep the original compact vertical card (photo
+         on top) in a 3-column row, rather than the wide flex-row treatment
+         cards use above - matches how these small $40 shot cards are laid
+         out at desktop, distinct from the full IV-drip cards. */
+      .hp-vitamin-grid { grid-template-columns: repeat(3, 1fr); }
+      .hp-vitamin-grid a.hp-treat-card { display: block; }
+      .hp-vitamin-grid .hp-treat-photo { width: 100%; aspect-ratio: 368 / 210; }
+      .hp-vitamin-grid .hp-treat-body { padding: 16px 18px 18px; }
 
       .hp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+      .hp-step { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+      .hp-step-num { width: 68px; height: 68px; font-size: 22px; box-shadow: inset 0 0 0 1px var(--tan-soft); }
 
-      .hp-serving .hp-container { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
-      .hp-serving-photo { margin-bottom: 0; }
+      .hp-serving .hp-container { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; }
+      .hp-serving-photo { margin-bottom: 0; order: 2; }
+      .hp-serving-copy { order: 1; }
+
+      .hp-trust-card { padding: 48px 56px; }
+      /* Column-major fill (down each column, then across) so 7 items split
+         3/3/1 across the three columns, matching the original layout,
+         instead of grid's default row-major 3/3/1-from-the-left ordering. */
+      .hp-trust-checklist { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, auto); grid-auto-flow: column; }
 
       .hp-testi-grid { grid-template-columns: repeat(3, 1fr); }
 
-      .hp-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .hp-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, minmax(140px, auto));
+      }
+      .hp-gallery-tile:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+      .hp-gallery-tile:nth-child(2) { grid-column: 2; grid-row: 1; }
+      .hp-gallery-tile:nth-child(3) { grid-column: 3; grid-row: 1; }
+      .hp-gallery-tile:nth-child(4) { grid-column: 2; grid-row: 2; }
+      .hp-gallery-tile:nth-child(5) { grid-column: 3; grid-row: 2; }
+      .hp-gallery-tile:nth-child(6) { grid-column: 1; grid-row: 3; }
+      .hp-gallery-tile:nth-child(7) { grid-column: 2 / span 2; grid-row: 3; }
+      .hp-gallery-grid .hp-gallery-tile { aspect-ratio: auto; }
 
       .hp-contact-grid { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
       .hp-contact-form { padding: 36px; }
+      .hp-contact-info h3 { font-size: 32px; }
     }
   </style>
 
@@ -561,29 +626,32 @@
           <div class="hp-hero-media hp-reveal">
             <div class="hp-hero-photo" style="background-image:url(./solace/assets/herobg.webp);" role="img"
               aria-label="Solace Wellness IV Summerlin suite"></div>
+            <div class="hp-hero-badge">
+              <div class="hp-stars-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <strong>Best IV Therapy Clinic in Las Vegas &ndash; 2026</strong>
+            </div>
           </div>
           <div class="hp-hero-copy hp-reveal">
             <p class="hp-eyebrow">IV Therapy in Summerlin &amp; Mobile Across Las Vegas</p>
-            <h1>Premium IV Therapy in Summerlin &amp; Mobile IV Service Across Las Vegas</h1>
-            <p class="hp-hero-subhead">Visit our comfortable wellness suite in Summerlin, or let us come to you - mobile
-              appointments available at homes, hotels, offices &amp; events.</p>
+            <h1>Premium IV Therapy in Las Vegas</h1>
+            <p class="hp-hero-subhead">Visit Our Summerlin Suite or We Come to Your Hotel, Home &amp; Office</p>
             <p class="hp-body">Las Vegas residents and visitors depend on Solace Wellness IV for hydration, recovery,
-              vitality, immunity, beauty, and wellness IV therapy. Our licensed medical professionals provide
-              personalized IV treatments in our private Summerlin wellness suite, or directly to your hotel, home,
-              Airbnb, office, or event location throughout Las Vegas.</p>
-            <p class="hp-body" style="font-family:'Poppins',sans-serif;font-weight:500;">
-              <svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"
-                style="display:inline-block;vertical-align:-3px;margin-right:6px;">
-                <path d="M8 15S3 9.5 3 6a5 5 0 0 1 10 0c0 3.5-5 9-5 9Z" />
-                <circle cx="8" cy="6" r="1.6" fill="currentColor" stroke="none" />
-              </svg>900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin) &middot; By appointment
-            </p>
-            <p class="hp-body">Schedule your appointment today and receive professional wellness care in Summerlin or
-              at your doorstep.</p>
+              vitality, immunity, beauty, and wellness IV therapy.</p>
+            <ul class="hp-hero-checklist">
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Licensed medical professionals</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Same-day appointments available</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>In our Summerlin suite, or we come to you</li>
+            </ul>
             <div class="hp-btn-row">
-              <a href="#treatments" class="hp-btn hp-btn-outline">View Treatments</a>
               <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
                 rel="noopener" class="hp-btn hp-btn-solid">Book Now</a>
+              <a href="#treatments" class="hp-btn hp-btn-outline">View Treatments</a>
             </div>
           </div>
         </div>
@@ -592,19 +660,22 @@
       <!-- ═══ MISSION ═══ -->
       <section class="hp-mission" id="mission">
         <div class="hp-container">
-          <div class="hp-mission-photo hp-reveal" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img"
-            aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
-          <div class="hp-mission-copy hp-reveal">
-            <h2>Our Mission</h2>
-            <p class="hp-body">Solace Wellness IV was built on the belief that wellness should be proactive,
-              personalized, and medically guided.</p>
-            <p class="hp-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
-              specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
-              prioritizes education, individualized care, and genuine patient relationships.</p>
-            <p class="hp-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
-              every treatment begins with a personalized health assessment to ensure it is appropriate for their
-              individual needs. We are committed to delivering compassionate, professional care while helping our
-              clients feel their best through hydration, wellness, and preventive health support.</p>
+          <div class="hp-mission-card hp-reveal">
+            <div class="hp-mission-inner">
+              <div class="hp-mission-photo" data-bg="./solace/assets/7a204e693ec0df14.webp" role="img"
+                aria-label="Solace Wellness IV team providing personalized IV therapy care"></div>
+              <div class="hp-mission-copy">
+                <h2>Our Mission</h2>
+                <p class="hp-body">Solace Wellness IV was built on the belief that wellness should be proactive,
+                  personalized, and medically guided.</p>
+                <p class="hp-body">Founded by a board-certified Nurse Practitioner with years of experience in hospital,
+                  specialty, and military medicine, our mission is to provide safe, evidence-informed IV therapy that
+                  prioritizes education, individualized care, and genuine patient relationships.</p>
+                <p class="hp-body">Whether clients visit our Summerlin wellness suite or choose our mobile IV service,
+                  every treatment begins with a personalized health assessment to ensure it is appropriate for their
+                  individual needs.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -684,7 +755,7 @@
                   <path d="M8 1.6 13.4 3.5V7.8c0 3.6-2.3 5.7-5.4 6.5-3.1-.8-5.4-2.9-5.4-6.5V3.5L8 1.6Z" />
                   <path d="M5.7 7.9 7.3 9.5l3-3.3" />
                 </svg></div>
-              <h3>Board-Certified Nurse Practitioner &amp; Licensed Medical Professionals</h3>
+              <h3>Board-Certified Nurse Practitioner &amp; Licensed Professionals</h3>
               <p>Every infusion is administered by trained healthcare professionals dedicated to safe and comfortable
                 treatment.</p>
             </div>
@@ -704,7 +775,7 @@
               <h3>Personalized treatments</h3>
               <p>From Myers Miracle Drip to NAD+ Therapy Las Vegas, we have therapies for your wellness goals.</p>
             </div>
-            <div class="hp-why-card hp-reveal" style="grid-column:1 / -1;">
+            <div class="hp-why-card hp-reveal hp-span-all">
               <div class="hp-ic-badge"><svg class="hp-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"
                   stroke-width="1.3">
                   <circle cx="8" cy="8" r="6.3" />
@@ -738,36 +809,13 @@
           </p>
 
           <div class="hp-treatment-grid">
-            <a class="hp-treat-card hp-reveal" href="/pregame-potion-iv">
-              <div class="hp-treat-photo" data-bg="./solace/assets/sw-pregame-potion.webp"
-                style="background-position:center top;" role="img"
-                aria-label="PreGame Potion IV pre-party hydration treatment"></div>
-              <div class="hp-treat-body">
-                <div class="hp-treat-price">$180</div>
-                <h4>PreGame Potion IV</h4>
-                <p class="hp-desc">Get your body ready for concerts, bachelor parties, festivals, athletic events or
-                  nightlife.</p>
-                <ul class="hp-bullets">
-                  <li>Increases energy and endurance</li>
-                  <li>Hydration &amp; Electrolytes</li>
-                  <li>Immune Support</li>
-                  <li>Improves Performance</li>
-                  <li>Makes you feel your best</li>
-                  <li>Ideal Before a Night Out</li>
-                  <li>Helps Quicker Recovery</li>
-                  <li>Hydration Support Pre &amp; Post-Operative</li>
-                </ul>
-                <p class="hp-tagline">A go-to for Party Prep IV and Pre-Party IV Therapy.</p>
-                <p class="hp-tagline">Learn more about PreGame Potion IV &rarr;</p>
-              </div>
-            </a>
-
             <a class="hp-treat-card hp-reveal" href="/solace-revitadrip">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-revitadrip-card.webp"
                 style="background-position:center top;" role="img"
-                aria-label="RevitaDrip IV signature IV treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="RevitaDrip IV signature IV treatment">
                 <div class="hp-treat-price">$300</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>RevitaDrip IV</h4>
                 <p class="hp-desc">RevitaDrip provides excellent hydration with added vitamins and antioxidants to
                   help recover energy and promote overall wellness.</p>
@@ -788,33 +836,38 @@
               </div>
             </a>
 
-            <a class="hp-treat-card hp-reveal" href="/myers-miracle-drip">
-              <div class="hp-treat-photo" data-bg="./solace/assets/sw-myersmiracle-hero-v2.webp"
-                role="img"
-                aria-label="Myers Miracle Drip treatment for headaches, stress, chronic pain, and fatigue"></div>
+            <a class="hp-treat-card hp-reveal" href="/pregame-potion-iv">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-pregame-potion.webp"
+                style="background-position:center top;" role="img"
+                aria-label="PreGame Potion IV pre-party hydration treatment">
+                <div class="hp-treat-price">$180</div>
+              </div>
               <div class="hp-treat-body">
-                <div class="hp-treat-price">$240</div>
-                <h4>Myers Miracle Drip</h4>
-                <p class="hp-desc">Our enhanced Myers-style blend, formulated for headache relief, stress support,
-                  chronic discomfort, and fatigue.</p>
+                <h4>PreGame Potion IV</h4>
+                <p class="hp-desc">Get your body ready for concerts, bachelor parties, festivals, athletic events or
+                  nightlife.</p>
                 <ul class="hp-bullets">
-                  <li>Headaches &amp; Migraines</li>
-                  <li>Anxiety &amp; Stress</li>
-                  <li>Chronic Pain Comfort</li>
-                  <li>Fatigue &amp; Brain Fog</li>
+                  <li>Increases energy and endurance</li>
+                  <li>Hydration &amp; Electrolytes</li>
+                  <li>Immune Support</li>
+                  <li>Improves Performance</li>
+                  <li>Makes you feel your best</li>
+                  <li>Ideal Before a Night Out</li>
+                  <li>Helps Quicker Recovery</li>
+                  <li>Hydration Support Pre &amp; Post-Operative</li>
                 </ul>
-                <p class="hp-tagline">A go-to for Migraine Relief IV, Chronic Pain IV Drip, and Anti-Stress IV
-                  Therapy.</p>
-                <p class="hp-tagline">Learn more about Myers Miracle Drip &rarr;</p>
+                <p class="hp-tagline">A go-to for Party Prep IV and Pre-Party IV Therapy.</p>
+                <p class="hp-tagline">Learn more about PreGame Potion IV &rarr;</p>
               </div>
             </a>
 
             <a class="hp-treat-card hp-reveal" href="/immune-iv-therapy">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-immunoshield.webp"
                 style="background-position:center top;" role="img"
-                aria-label="IV Immunoshield immune support IV treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="IV Immunoshield immune support IV treatment">
                 <div class="hp-treat-price">$350</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>IV Immunoshield</h4>
                 <p class="hp-desc">Boost your well-being with our premier IV Immune Booster.</p>
                 <ul class="hp-bullets">
@@ -835,9 +888,10 @@
             <a class="hp-treat-card hp-reveal" href="/jetset-travel-recovery-iv">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-jetset-revival.webp"
                 style="background-position:center top;" role="img"
-                aria-label="JetSet Revival IV treatment for travel fatigue and jet lag"></div>
-              <div class="hp-treat-body">
+                aria-label="JetSet Revival IV treatment for travel fatigue and jet lag">
                 <div class="hp-treat-price">$250</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>JetSet Revival IV</h4>
                 <p class="hp-desc">Our travel-inspired infusion helps you to recover from travel and dehydration.</p>
                 <ul class="hp-bullets">
@@ -854,44 +908,45 @@
               </div>
             </a>
 
-            <a class="hp-treat-card hp-reveal" href="/morning-after-martini">
-              <div class="hp-treat-photo" data-bg="./solace/assets/sw-martini-hero-v2.webp"
-                role="img"
-                aria-label="Morning After Martini IV treatment for hangover recovery and rehydration"></div>
-              <div class="hp-treat-body">
-                <div class="hp-treat-price">$220</div>
-                <h4>Morning After Martini</h4>
-                <p class="hp-desc">Rehydration, electrolytes, and vitamins after a long night out, with anti-nausea
-                  support if you need it.</p>
-                <ul class="hp-bullets">
-                  <li>Rapid Rehydration</li>
-                  <li>Electrolyte Replacement</li>
-                  <li>Headache &amp; Fatigue Relief</li>
-                  <li>Nausea Support (optional)</li>
-                </ul>
-                <p class="hp-tagline">A go-to for Hangover IV Drip, Hangover Recovery IV, and Post-Party IV
-                  Therapy.</p>
-                <p class="hp-tagline">Learn more about Morning After Martini &rarr;</p>
-              </div>
-            </a>
-
             <a class="hp-treat-card hp-reveal" href="/flawless-fusion-iv">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-flawless-fusion.webp"
                 style="background-position:center top;" role="img"
-                aria-label="Flawless Fusion IV treatment for healthy, glowing skin"></div>
-              <div class="hp-treat-body">
+                aria-label="Flawless Fusion IV treatment for healthy, glowing skin">
                 <div class="hp-treat-price">$300</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>Flawless Fusion IV</h4>
-                <p class="hp-desc">Biotin, Vitamin C, Glutathione &amp; antioxidants to nourish healthy, glowing
-                  skin from within.</p>
+                <p class="hp-desc">Biotin, Vitamin C, Glutathione and antioxidants for glowing skin.</p>
                 <ul class="hp-bullets">
                   <li>Healthy, Glowing Skin</li>
                   <li>Collagen Support</li>
                   <li>Antioxidant Protection</li>
                   <li>Total Wellness</li>
+                  <li>Immune Support</li>
                 </ul>
                 <p class="hp-tagline">A go-to for Beauty IV Therapy and Skin Glow IV Therapy.</p>
                 <p class="hp-tagline">Learn more about Flawless Fusion IV &rarr;</p>
+              </div>
+            </a>
+
+            <a class="hp-treat-card hp-reveal" href="/morning-after-martini">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-martini-hero-v2.webp"
+                role="img"
+                aria-label="Morning After Martini IV treatment for hangover recovery and rehydration">
+                <div class="hp-treat-price">$220</div>
+              </div>
+              <div class="hp-treat-body">
+                <h4>Morning After Martini</h4>
+                <p class="hp-desc">Rehydration and vitamins after a long night out.</p>
+                <ul class="hp-bullets">
+                  <li>Rapid Rehydration</li>
+                  <li>Electrolyte Support</li>
+                  <li>Headache Relief</li>
+                  <li>Nausea Support</li>
+                  <li>Same-Day Recovery</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Hangover IV Drip and Post-Party IV Therapy.</p>
+                <p class="hp-tagline">Learn more about Morning After Martini &rarr;</p>
               </div>
             </a>
 
@@ -901,9 +956,10 @@
           <div class="hp-treatment-grid">
             <a class="hp-treat-card hp-reveal" href="/metabofusion-iv">
               <div class="hp-treat-photo" data-bg="./solace/assets/69dee31f18bf38c1.webp" role="img"
-                aria-label="MetaboFusion IV metabolism support treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="MetaboFusion IV metabolism support treatment">
                 <div class="hp-treat-price">$280</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>MetaboFusion IV</h4>
                 <p class="hp-desc">Boost your metabolism naturally with a combination of Vitamin B12, Vitamin B Complex
                   &amp; Taurine.</p>
@@ -920,23 +976,46 @@
                 <p class="hp-tagline">Learn more about MetaboFusion IV &rarr;</p>
               </div>
             </a>
+
+            <a class="hp-treat-card hp-reveal" href="/myers-miracle-drip">
+              <div class="hp-treat-photo" data-bg="./solace/assets/sw-myersmiracle-hero-v2.webp"
+                role="img"
+                aria-label="Myers Miracle Drip treatment for headaches, stress, chronic pain, and fatigue">
+                <div class="hp-treat-price">$240</div>
+              </div>
+              <div class="hp-treat-body">
+                <h4>Myers Miracle Drip</h4>
+                <p class="hp-desc">Headache relief, stress support, and fatigue care.</p>
+                <ul class="hp-bullets">
+                  <li>Headaches &amp; Migraines</li>
+                  <li>Anxiety &amp; Stress Relief</li>
+                  <li>Chronic Pain Comfort</li>
+                  <li>Fatigue &amp; Brain Fog</li>
+                  <li>Whole-Body Wellness</li>
+                </ul>
+                <p class="hp-tagline">A go-to for Migraine Relief IV and Anti-Stress IV Therapy.</p>
+                <p class="hp-tagline">Learn more about Myers Miracle Drip &rarr;</p>
+              </div>
+            </a>
           </div>
 
           <h3 class="hp-group-label">NAD+ Therapy in Las Vegas</h3>
           <div class="hp-treatment-grid">
             <a class="hp-treat-card hp-reveal" href="/nad-therapy">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-nad-combo.webp" role="img"
-                aria-label="NAD+ IV therapy treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="NAD+ IV therapy treatment">
                 <div class="hp-treat-price">$299+</div>
-                <h4>NAD+ Therapy &rarr;</h4>
-                <p class="hp-desc">NAD+ 250mg and NAD+ 500mg infusions for cellular energy, focus, and healthy aging.</p>
+              </div>
+              <div class="hp-treat-body">
+                <h4>NAD+ Therapy</h4>
+                <p class="hp-desc">NAD+ 250mg and 500mg infusions available.</p>
+                <p class="hp-supports">Cellular Energies</p>
                 <ul class="hp-bullets">
                   <li>Clear Thinking</li>
+                  <li>Better Concentration</li>
                   <li>Support for Mood</li>
                   <li>Decreased Fatigue</li>
-                  <li>Supports Healthy Aging</li>
-                  <li>Energy Support</li>
+                  <li>Recovery supports</li>
                 </ul>
                 <p class="hp-tagline">Learn more about NAD+ Therapy &rarr;</p>
               </div>
@@ -945,12 +1024,13 @@
 
           <h3 class="hp-group-label">Vitamin Booster Shots</h3>
 
-          <div class="hp-treatment-grid">
+          <div class="hp-treatment-grid hp-vitamin-grid">
             <a class="hp-treat-card hp-reveal" href="/glutathione-iv-therapy">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-glutathione-booster.webp" role="img"
-                aria-label="Glutathione Booster IV treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="Glutathione Booster IV treatment">
                 <div class="hp-treat-price">$40</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>Glutathione Booster</h4>
                 <p class="hp-supports">Supports:</p>
                 <ul class="hp-bullets">
@@ -965,9 +1045,10 @@
             <a class="hp-treat-card hp-reveal" href="/vitamin-b12-injection">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-vitaminb12-injection.webp"
                 role="img"
-                aria-label="Vitamin B12 injection treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="Vitamin B12 injection treatment">
                 <div class="hp-treat-price">$40</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>Vitamin B12 Injection</h4>
                 <p class="hp-supports">Supports:</p>
                 <ul class="hp-bullets">
@@ -982,9 +1063,10 @@
             </a>
             <a class="hp-treat-card hp-reveal" href="/vitamin-d3-booster">
               <div class="hp-treat-photo" data-bg="./solace/assets/sw-vitamind3-booster.webp" role="img"
-                aria-label="Vitamin D3 Booster injection treatment"></div>
-              <div class="hp-treat-body">
+                aria-label="Vitamin D3 Booster injection treatment">
                 <div class="hp-treat-price">$40</div>
+              </div>
+              <div class="hp-treat-body">
                 <h4>Vitamin D3 Booster</h4>
                 <p class="hp-supports">Supports:</p>
                 <ul class="hp-bullets">
@@ -1064,15 +1146,56 @@
         </div>
       </section>
 
+      <!-- ═══ WHY SOLACE CHECKLIST + CTA ═══ -->
+      <section class="hp-trust">
+        <div class="hp-container">
+          <div class="hp-trust-card hp-reveal">
+            <h2>Why Solace Wellness IV?</h2>
+            <ul class="hp-trust-checklist">
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Certified Medical Professionals</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Mobile IV Therapy, at your location</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Trusted by the People of Las Vegas</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Premium Vitamins &amp; Hydration</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Personalized Wellness Treatments</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Same-Day Availability</li>
+              <li><svg class="hp-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path d="M3 8.5 6.2 12 13 4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>Safe &amp; Comfortable Care</li>
+            </ul>
+            <h3>Book IV Mobile Therapy in Las Vegas Now</h3>
+            <p class="hp-body">Solace Wellness IV gives professional care wherever you are, whether you require IV
+              hydration Las Vegas, energy IV therapy, hangover IV therapy, immune boost IV therapy, NAD+ Therapy,
+              beauty IV therapy, or Vitamin B12 IV Therapy. Mobile IV therapy tailored to your lifestyle to help you
+              feel renewed, recover faster and maintain your wellness. Schedule your Solace Wellness IV appointment
+              now by calling or booking online and experience premium hydration and wellness delivered right to your
+              doorstep.</p>
+            <a href="https://solacewellnessiv.janeapp.com/?utm_id=97760_v0_s00_e0_tv3#staff_member/1" target="_blank"
+              rel="noopener" class="hp-btn hp-btn-solid">Book Now</a>
+          </div>
+        </div>
+      </section>
+
       <!-- ═══ TESTIMONIALS ═══ -->
       <section class="hp-testimonials" id="reviews">
         <div class="hp-container">
           <p class="hp-eyebrow">What Our Clients Say</p>
-          <h2>Trusted by Las Vegas Residents &amp; Visitors, in Summerlin and Beyond</h2>
-          <p class="hp-body">At Solace Wellness IV, we're committed to providing safe, convenient, and professional IV
-            therapy with exceptional customer care, whether you visit our Summerlin wellness suite or we come to you.
-            Whether you're recovering after a night on the Strip, rehydrating after travel, or investing in your
-            wellness, our goal is to deliver a five-star experience every time.</p>
+          <h2>Trusted by Las Vegas Residents &amp; Visitors for Mobile IV Therapy</h2>
+          <p class="hp-body">At Solace Wellness IV, we're committed to providing safe, convenient, and professional
+            mobile IV therapy with exceptional customer care. Whether you're recovering after a night on the Strip,
+            rehydrating after travel, or investing in your wellness, our goal is to deliver a five-star experience
+            every time.</p>
           <div class="hp-testi-grid">
             <div class="hp-testi-card hp-reveal">
               <div class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
