@@ -302,7 +302,6 @@
             <a href="https://maps.google.com/?q=900+S+Pavilion+Center+Dr+Suite+180,+Las+Vegas,+NV+89144" target="_blank" rel="noopener">900 S Pavilion Center Dr Suite 180, Las Vegas, NV 89144 (Summerlin)</a><br>
             By appointment &middot; Mobile service also available throughout Las Vegas
           </address>
-          <p class="gf-footer-url">solaceWELLNESSiv.com</p>
           <p class="gf-copyright">Copyright &copy; 2026 Solace Wellness IV - All Rights Reserved</p>
         </footer>
       `;

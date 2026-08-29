@@ -622,14 +622,6 @@ solace-footer *,
   color: #fff;
 }
 
-.gf-footer-url {
-  color: #fff;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin: 0 0 32px;
-}
-
 .gf-copyright {
   color: rgba(255, 255, 255, 0.85);
   font-size: 12.5px;
@@ -669,11 +661,6 @@ solace-footer *,
 
   .gf-logo {
     height: 80px;
-  }
-
-  .gf-footer-url {
-    font-size: 16px;
-    margin-bottom: 40px;
   }
 
   .gf-copyright {
