@@ -251,6 +251,34 @@
       }
     },
     {
+      "src": "^/beauty-drip$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "^/beauty-skin-glow-iv$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "^/myers-cocktail-iv$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "^/skin-brightening-iv$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
       "src": "^/$",
       "dest": "/Solace Wellness IV.dc.html"
     },
