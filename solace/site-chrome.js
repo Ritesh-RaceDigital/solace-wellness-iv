@@ -289,13 +289,6 @@
       this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./solace/site-chrome.css">
         <footer class="gf-footer">
-          <div class="gf-subscribe">
-            <h2>Subscribe</h2>
-            <form class="gf-subscribe-form">
-              <input type="email" required placeholder="Enter your email" aria-label="Email address">
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
           <img class="gf-logo" src="./solace/assets/footer-logo.webp" alt="Solace Wellness IV" loading="lazy">
           <address class="gf-address">
             <strong>Solace Wellness IV</strong><br>
@@ -305,14 +298,6 @@
           <p class="gf-copyright">Copyright &copy; 2026 Solace Wellness IV - All Rights Reserved</p>
         </footer>
       `;
-
-      const form = this.shadowRoot.querySelector('.gf-subscribe-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const input = form.querySelector('input');
-        input.value = '';
-        input.placeholder = 'Thanks for subscribing!';
-      });
     }
   }
 

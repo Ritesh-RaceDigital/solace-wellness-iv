@@ -533,65 +533,6 @@ solace-footer *,
   padding: 56px 20px 40px;
 }
 
-.gf-subscribe {
-  margin-bottom: 48px;
-}
-
-.gf-subscribe h2 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  letter-spacing: -0.26px;
-  color: var(--sc-cream-2);
-  margin: 0 0 22px;
-}
-
-.gf-subscribe-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 360px;
-  margin: 0 auto;
-}
-
-.gf-subscribe-form input {
-  width: 100%;
-  height: 48px;
-  border: none;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-  padding: 0 22px;
-  font-family: 'Lato', sans-serif;
-  font-size: 15px;
-  color: #fff;
-}
-
-.gf-subscribe-form input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.gf-subscribe-form button {
-  height: 48px;
-  border: none;
-  border-radius: 999px;
-  background: var(--sc-cream-2);
-  color: var(--sc-ink);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.54px;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-  padding: 0 20px;
-  transition: transform .2s ease;
-}
-
-.gf-subscribe-form button:hover {
-  transform: translateY(-2px);
-}
-
 .gf-logo {
   height: 56px;
   margin: 0 auto 16px;
@@ -628,35 +569,9 @@ solace-footer *,
   margin: 0;
 }
 
-@media (min-width: 600px) {
-  .gf-subscribe-form {
-    flex-direction: row;
-    justify-content: center;
-    max-width: 452px;
-    gap: 22px;
-  }
-
-  .gf-subscribe-form input {
-    flex: 1;
-  }
-
-  .gf-subscribe-form button {
-    flex: none;
-    width: 146px;
-  }
-}
-
 @media (min-width: 768px) {
   .gf-footer {
     padding: 72px 20px 48px;
-  }
-
-  .gf-subscribe {
-    margin-bottom: 56px;
-  }
-
-  .gf-subscribe h2 {
-    font-size: 26px;
   }
 
   .gf-logo {
