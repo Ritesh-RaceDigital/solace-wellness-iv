@@ -1975,6 +1975,7 @@ class Component extends DCLogic {
       this._rootH = root.offsetHeight || 10769;
       this._scale();
       try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
+      try { this._patchPriceBadgeText(root); } catch (e) { console.warn('price badge text patch', e); }
       try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
       try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
@@ -2187,6 +2188,19 @@ class Component extends DCLogic {
       const [hash, pos, size, top] = Array.isArray(entry) ? entry : [entry, 'center', 'cover'];
       d.style.background = `url(${asset(hash)}) ${pos} / ${size || 'cover'} no-repeat`;
       if (top) d.style.top = top;
+    });
+  }
+
+  // ─── Nudge the price-badge text down for better vertical centering ────────
+  // Each "$300"-style span is exported with top:7px inside its 35px-tall
+  // pill; bumping it to 10px centers the text better against the font's
+  // visual (not em-box) height. Idempotent via a dataset marker.
+  _patchPriceBadgeText(root) {
+    Array.from(root.querySelectorAll('span')).forEach((sp) => {
+      if (!/^\$[\d,]+\+?$/.test((sp.textContent || '').trim())) return;
+      if (sp.dataset.priceTextPatched === '1') return;
+      sp.dataset.priceTextPatched = '1';
+      sp.style.top = '10px';
     });
   }
 
