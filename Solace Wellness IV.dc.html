@@ -2201,6 +2201,11 @@ class Component extends DCLogic {
       if (sp.dataset.priceTextPatched === '1') return;
       sp.dataset.priceTextPatched = '1';
       sp.style.top = '10px';
+      // The NAD+ Therapy card's badge ("$299+") is wider than the rest -
+      // narrow its pill to match.
+      if (sp.textContent.trim() === '$299+' && sp.parentElement) {
+        sp.parentElement.style.width = '75px';
+      }
     });
   }
 
