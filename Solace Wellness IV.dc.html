@@ -1975,6 +1975,7 @@ class Component extends DCLogic {
       this._rootH = root.offsetHeight || 10769;
       this._scale();
       try { this._patchPhotos(root);      } catch (e) { console.warn('photo patch', e); }
+      try { this._patchPriceBadges(root); } catch (e) { console.warn('price badge patch', e); }
       try { this._patchLinks(root);       } catch (e) { console.warn('link patch', e); }
       try { this._patchContactForm(root); } catch (e) { console.warn('contact form patch', e); }
       try { this._relaxText(root);        } catch (e) { console.warn('text fix', e); }
@@ -2187,6 +2188,28 @@ class Component extends DCLogic {
       const [hash, pos, size, top] = Array.isArray(entry) ? entry : [entry, 'center', 'cover'];
       d.style.background = `url(${asset(hash)}) ${pos} / ${size || 'cover'} no-repeat`;
       if (top) d.style.top = top;
+    });
+  }
+
+  // ─── Shrink the treatment-card price badges ────────────────────────────────
+  // Each "$300"-style pill is exported as its own absolutely-positioned div
+  // (border-radius:999px) with hardcoded per-card left/top/width/height - no
+  // shared class to hook a CSS rule onto, and no two cards share the exact
+  // same pixel values. Rather than hand-tune dozens of one-off positions,
+  // scale each pill down uniformly from its own top-right corner (where it
+  // already sits, pinned to the card photo's corner) so it shrinks in place
+  // without shifting off that corner. Idempotent via a dataset marker for the
+  // same reason as _hideNativeChrome above.
+  _patchPriceBadges(root) {
+    Array.from(root.querySelectorAll('span')).forEach((sp) => {
+      if (!/^\$[\d,]+\+?$/.test((sp.textContent || '').trim())) return;
+      const badge = sp.parentElement;
+      if (!badge || badge.dataset.priceBadgePatched === '1') return;
+      const cs = getComputedStyle(badge);
+      if (cs.position !== 'absolute' || cs.borderRadius !== '999px' || badge.offsetWidth > 160) return;
+      badge.dataset.priceBadgePatched = '1';
+      badge.style.transform = 'scale(0.7)';
+      badge.style.transformOrigin = 'top right';
     });
   }
 
